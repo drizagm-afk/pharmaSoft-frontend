@@ -1,3 +1,4 @@
+import { provideRouter } from '@angular/router';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NoEncontrado } from './no-encontrado';
@@ -8,6 +9,7 @@ describe('NoEncontrado', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      providers: [provideRouter([])],
       imports: [NoEncontrado],
     }).compileComponents();
 
