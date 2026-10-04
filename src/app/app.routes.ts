@@ -13,6 +13,11 @@ export const routes: Routes = [
                 loadComponent: () => import('./features/inicio/inicio').then(m => m.Inicio),
             },
             {
+                path: 'clientes',
+                loadChildren: () =>
+                    import('./features/clientes/clientes.routes').then(m => m.CLIENTES_ROUTES),
+            },
+            {
                 path: 'categorias',
                 loadChildren: () =>
                     import('./features/categorias/categorias.routes').then(m => m.CATEGORIAS_ROUTES),

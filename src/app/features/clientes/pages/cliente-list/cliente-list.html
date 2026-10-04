@@ -1,0 +1,60 @@
+<section class="page">
+  <header class="page-header">
+    <h2>Clientes</h2>
+    <a routerLink="nuevo" class="btn btn-primary">+ Nuevo cliente</a>
+  </header>
+  <div class="controles">
+    <label>Buscar en esta página
+      <input class="input" placeholder="DNI, nombres o apellidos" [value]="filtro()"
+        (input)="filtro.set($any($event.target).value)" />
+    </label>
+    <label>Clientes por página
+      <select class="input" [value]="tamanio()" (change)="cambiarTamanio($any($event.target).value)"
+        [disabled]="cargando() || dandoBaja() !== null">
+        <option value="5">5</option><option value="10">10</option><option value="20">20</option>
+      </select>
+    </label>
+  </div>
+  @if (error()) {
+    <div class="alerta" role="alert">{{ error() }}</div>
+    <button type="button" class="btn" (click)="cargar()" [disabled]="cargando() || dandoBaja() !== null">Reintentar</button>
+  }
+  @if (cargando()) {
+    <p role="status">Cargando clientes...</p>
+  } @else if (respuesta(); as datos) {
+    <div class="tabla-contenedor">
+      <table class="tabla">
+        <thead><tr>
+          <th [attr.aria-sort]="ordenarPor() === 'dni' ? (direccion() === 'asc' ? 'ascending' : 'descending') : 'none'">
+            <button type="button" class="orden" (click)="ordenar('dni')" [disabled]="dandoBaja() !== null">DNI {{ ordenarPor() === 'dni' ? (direccion() === 'asc' ? '↑' : '↓') : '↕' }}</button>
+          </th>
+          <th [attr.aria-sort]="ordenarPor() === 'apellidos' ? (direccion() === 'asc' ? 'ascending' : 'descending') : 'none'">
+            <button type="button" class="orden" (click)="ordenar('apellidos')" [disabled]="dandoBaja() !== null">Apellidos y nombres {{ ordenarPor() === 'apellidos' ? (direccion() === 'asc' ? '↑' : '↓') : '↕' }}</button>
+          </th>
+          <th>Correo</th><th>Teléfono</th><th>Estado</th><th>Acciones</th>
+        </tr></thead>
+        <tbody>
+          @for (c of filtrados(); track c.id) {
+            <tr><td>{{ c.dni }}</td><td>{{ c.apellidos }}, {{ c.nombres }}</td><td>{{ c.email }}</td>
+              <td>{{ c.telefono ?? '—' }}</td>
+              <td><span class="badge" [class.inactivo]="!c.estado">{{ c.estado ? 'Activo' : 'Inactivo' }}</span></td>
+              <td><div class="acciones">
+                <a [routerLink]="[c.id, 'editar']" class="btn">Editar</a>
+                <button type="button" class="btn btn-peligro" (click)="eliminar(c)" [disabled]="dandoBaja() !== null">
+                  {{ dandoBaja() === c.id ? 'Procesando...' : 'Dar de baja' }}
+                </button>
+              </div></td>
+            </tr>
+          } @empty {
+            <tr><td colspan="6" class="vacio">{{ filtro().trim() ? 'No hay coincidencias en esta página.' : 'No hay clientes registrados.' }}</td></tr>
+          }
+        </tbody>
+      </table>
+    </div>
+    <nav class="paginacion" aria-label="Paginación de clientes">
+      <button type="button" class="btn" (click)="cambiarPagina(-1)" [disabled]="pagina() === 0 || dandoBaja() !== null">Anterior</button>
+      <span role="status">Página {{ datos.totalPaginas === 0 ? 0 : pagina() + 1 }} de {{ datos.totalPaginas }} · {{ datos.totalElementos }} clientes</span>
+      <button type="button" class="btn" (click)="cambiarPagina(1)" [disabled]="datos.ultima || datos.totalPaginas === 0 || dandoBaja() !== null">Siguiente</button>
+    </nav>
+  }
+</section>
