@@ -1,0 +1,76 @@
+﻿[
+    {
+        "caso":  "Listado de clientes",
+        "endpoint":  "/clientes?pagina=0\u0026tamanio=5\u0026ordenarPor=apellidos\u0026direccion=asc",
+        "status":  200,
+        "cors":  "http://localhost:4200",
+        "pagina":  0,
+        "totalElementos":  5,
+        "ultima":  true,
+        "estado":  null
+    },
+    {
+        "caso":  "Segunda pagina",
+        "endpoint":  "/clientes?pagina=1\u0026tamanio=5\u0026ordenarPor=apellidos\u0026direccion=asc",
+        "status":  200,
+        "cors":  "http://localhost:4200",
+        "pagina":  1,
+        "totalElementos":  5,
+        "ultima":  true,
+        "estado":  null
+    },
+    {
+        "caso":  "Orden descendente",
+        "endpoint":  "/clientes?pagina=0\u0026tamanio=5\u0026ordenarPor=apellidos\u0026direccion=desc",
+        "status":  200,
+        "cors":  "http://localhost:4200",
+        "pagina":  0,
+        "totalElementos":  5,
+        "ultima":  true,
+        "estado":  null
+    },
+    {
+        "caso":  "Regresion categorias",
+        "endpoint":  "/categorias",
+        "status":  200,
+        "cors":  "http://localhost:4200",
+        "pagina":  [
+                       null,
+                       null,
+                       null,
+                       null,
+                       null
+                   ],
+        "totalElementos":  [
+                               null,
+                               null,
+                               null,
+                               null,
+                               null
+                           ],
+        "ultima":  [
+                       null,
+                       null,
+                       null,
+                       null,
+                       null
+                   ],
+        "estado":  [
+                       true,
+                       true,
+                       true,
+                       true,
+                       true
+                   ]
+    },
+    {
+        "caso":  "Baja logica QA 41",
+        "endpoint":  "/clientes/41",
+        "status":  200,
+        "cors":  "http://localhost:4200",
+        "pagina":  null,
+        "totalElementos":  null,
+        "ultima":  null,
+        "estado":  false
+    }
+]

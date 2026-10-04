@@ -1,0 +1,125 @@
+--- /dev/null
++++ b/src/main/java/com/edu/upeu/PharmaBackend/dto/PaginaResponseDTO.java
+@@ -0,0 +1,12 @@
++package com.edu.upeu.PharmaBackend.dto;
++
++import java.util.List;
++
++public record PaginaResponseDTO<T>(
++        List<T> contenido,
++        int pagina,
++        int tamanio,
++        long totalElementos,
++        int totalPaginas,
++        boolean ultima
++) {}
+--- a/src/main/java/com/edu/upeu/PharmaBackend/service/service/ClienteService.java
++++ b/src/main/java/com/edu/upeu/PharmaBackend/service/service/ClienteService.java
+@@ -1,8 +1,10 @@
+ package com.edu.upeu.PharmaBackend.service.service;
+ 
++import com.edu.upeu.PharmaBackend.dto.PaginaResponseDTO;
+ import com.edu.upeu.PharmaBackend.dto.ClienteRequestDTO;
+ import com.edu.upeu.PharmaBackend.dto.ClienteResponseDTO;
+ import com.edu.upeu.PharmaBackend.service.generic.CrudService;
+ 
+ public interface ClienteService extends CrudService<ClienteRequestDTO, ClienteResponseDTO, Long> {
++    PaginaResponseDTO<ClienteResponseDTO> listar(int pagina, int tamanio, String ordenarPor, String direccion);
+ }
+\ No newline at end of file
+--- a/src/main/java/com/edu/upeu/PharmaBackend/service/impl/ClienteServiceImpl.java
++++ b/src/main/java/com/edu/upeu/PharmaBackend/service/impl/ClienteServiceImpl.java
+@@ -14,6 +14,11 @@
+ import com.edu.upeu.PharmaBackend.service.service.ClienteService;
+ 
+ import java.util.List;
++import java.util.Set;
++import org.springframework.data.domain.Page;
++import org.springframework.data.domain.PageRequest;
++import org.springframework.data.domain.Sort;
++import com.edu.upeu.PharmaBackend.dto.PaginaResponseDTO;
+ 
+ @Service
+ public class ClienteServiceImpl
+@@ -196,12 +201,42 @@
+                                 )
+                         );
+ 
+-        clienteRepository.delete(cliente);
+-
+-        log.info(
+-                "Cliente id={} eliminado correctamente",
++        if (!Boolean.TRUE.equals(cliente.getEstado())) {
++            throw new ReglaNegocioException("El cliente ya esta inactivo.");
++        }
++        cliente.setEstado(false);
++        clienteRepository.save(cliente);
++
++        log.info(
++                "Cliente id={} dado de baja correctamente",
+                 id
+         );
++    }
++
++    @Override
++    @Transactional(readOnly = true)
++    public PaginaResponseDTO<ClienteResponseDTO> listar(
++            int pagina, int tamanio, String ordenarPor, String direccion) {
++        if (pagina < 0 || tamanio < 1 || tamanio > 100) {
++            throw new ReglaNegocioException("Pagina o tamanio fuera de rango.");
++        }
++        if (!Set.of("id", "dni", "nombres", "apellidos", "email").contains(ordenarPor)) {
++            throw new ReglaNegocioException("Campo de orden no permitido.");
++        }
++        if (!"asc".equalsIgnoreCase(direccion) && !"desc".equalsIgnoreCase(direccion)) {
++            throw new ReglaNegocioException("La direccion debe ser asc o desc.");
++        }
++        Sort.Direction sentido = Sort.Direction.fromString(direccion);
++        Sort orden = Sort.by(sentido, ordenarPor);
++        if (!"id".equals(ordenarPor)) {
++            orden = orden.and(Sort.by(Sort.Direction.ASC, "id"));
++        }
++        Page<ClienteResponseDTO> resultado = clienteRepository
++                .findAll(PageRequest.of(pagina, tamanio, orden))
++                .map(ClienteMapper::ConvertToResponse);
++        return new PaginaResponseDTO<>(resultado.getContent(), resultado.getNumber(),
++                resultado.getSize(), resultado.getTotalElements(), resultado.getTotalPages(),
++                resultado.isLast());
+     }
+ 
+     private String normalizar(String valor) {
+--- a/src/main/java/com/edu/upeu/PharmaBackend/controller/ClienteController.java
++++ b/src/main/java/com/edu/upeu/PharmaBackend/controller/ClienteController.java
+@@ -1,5 +1,6 @@
+ package com.edu.upeu.PharmaBackend.controller;
+ 
++import com.edu.upeu.PharmaBackend.dto.PaginaResponseDTO;
+ import com.edu.upeu.PharmaBackend.dto.ClienteRequestDTO;
+ import com.edu.upeu.PharmaBackend.dto.ClienteResponseDTO;
+ import com.edu.upeu.PharmaBackend.service.service.ClienteService;
+@@ -17,10 +18,12 @@
+ 
+     //READ
+     @GetMapping
+-    public ResponseEntity<Iterable<ClienteResponseDTO>> getClientes() {
+-        return ResponseEntity.ok(
+-                clienteService.readAll()
+-        );
++    public ResponseEntity<PaginaResponseDTO<ClienteResponseDTO>> getClientes(
++            @RequestParam(defaultValue = "0") int pagina,
++            @RequestParam(defaultValue = "10") int tamanio,
++            @RequestParam(defaultValue = "apellidos") String ordenarPor,
++            @RequestParam(defaultValue = "asc") String direccion) {
++        return ResponseEntity.ok(clienteService.listar(pagina, tamanio, ordenarPor, direccion));
+     }
+ 
+     @GetMapping("/{id}")
+@@ -48,7 +51,7 @@
+     ) {
+         ClienteResponseDTO clienteResponseDTO = clienteService.update(id, request);
+ 
+-        return ResponseEntity.status(HttpStatus.CREATED).body(clienteResponseDTO);
++        return ResponseEntity.ok(clienteResponseDTO);
+     }
+ 
+     //DELETE
