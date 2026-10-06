@@ -1,0 +1,55 @@
+<section class="page">
+  <header class="page-header"><h2>Productos</h2><a routerLink="nuevo" class="btn btn-primary">+ Nuevo producto</a></header>
+  <div class="controles">
+    <label>Categoría
+      <select class="input" [value]="categoriaFiltro() ?? ''" (change)="filtrarPorCategoria($any($event.target).value)">
+        <option value="">Todas</option>
+        @for (c of categorias(); track c.id) { <option [value]="c.id">{{ c.nombre }}{{ c.estado ? '' : ' (inactiva)' }}</option> }
+      </select>
+    </label>
+    <label>Productos por página
+      <select class="input" [value]="tamanio()" (change)="cambiarTamanio($any($event.target).value)" [disabled]="cargando()">
+        <option value="5">5</option><option value="10">10</option><option value="20">20</option>
+      </select>
+    </label>
+  </div>
+  <p class="nota">El filtro por categoría se aplica a la página actual.</p>
+  @if (errorCategorias()) {
+    <div class="alerta" role="alert">No se pudieron cargar las categorías: {{ errorCategorias() }}</div>
+    <button class="btn" type="button" (click)="cargarCategorias()">Reintentar categorías</button>
+  }
+  @if (error()) {
+    <div class="alerta" role="alert">{{ error() }}</div>
+    <button class="btn" type="button" (click)="cargar()" [disabled]="cargando()">Reintentar</button>
+  }
+  @if (cargando()) { <p role="status">Cargando productos...</p> }
+  @else if (resultado(); as datos) {
+    <div class="tabla-contenedor"><table class="tabla">
+      <thead><tr>
+        @for (col of columnasOrden; track col.campo) {
+          <th [attr.aria-sort]="ordenarPor() === col.campo ? (direccion() === 'asc' ? 'ascending' : 'descending') : 'none'">
+            <button type="button" class="orden" (click)="ordenar(col.campo)">{{ col.etiqueta }} {{ ordenarPor() === col.campo ? (direccion() === 'asc' ? '↑' : '↓') : '↕' }}</button>
+          </th>
+          @if (col.campo === 'nombre') { <th>Categoría</th> }
+        }
+        <th>Estado</th><th>Acciones</th>
+      </tr></thead>
+      <tbody>
+        @for (p of productos(); track p.id) {
+          <tr><td>{{ p.nombre }}</td><td><span class="chip">{{ p.categoriaNombre }}</span></td>
+            <td>{{ p.precio | currency:'PEN':'S/ ' }}</td><td>{{ p.stock }}</td>
+            <td><span class="badge" [class.inactivo]="!p.estado">{{ p.estado ? 'Activo' : 'Inactivo' }}</span></td>
+            <td><div class="acciones"><a [routerLink]="[p.id, 'editar']" class="btn">Editar</a>
+              <button type="button" class="btn btn-peligro" [disabled]="!p.estado || dandoBaja() !== null" (click)="darDeBaja(p)">{{ dandoBaja() === p.id ? 'Procesando...' : 'Dar de baja' }}</button>
+            </div></td>
+          </tr>
+        } @empty { <tr><td colspan="6" class="vacio">{{ categoriaFiltro() !== null ? 'No hay productos de esta categoría en la página actual.' : 'No hay productos registrados.' }}</td></tr> }
+      </tbody>
+    </table></div>
+    <nav class="paginacion" aria-label="Paginación de productos">
+      <button type="button" class="btn" (click)="cambiarPagina(-1)" [disabled]="pagina() === 0">Anterior</button>
+      <span role="status">Página {{ datos.totalPaginas === 0 ? 0 : pagina() + 1 }} de {{ datos.totalPaginas }} · {{ datos.totalElementos }} productos</span>
+      <button type="button" class="btn" (click)="cambiarPagina(1)" [disabled]="datos.ultima || datos.totalPaginas === 0">Siguiente</button>
+    </nav>
+  }
+</section>

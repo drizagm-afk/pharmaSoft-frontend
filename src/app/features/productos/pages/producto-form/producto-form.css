@@ -1,0 +1,7 @@
+.formulario { max-width: 600px; }
+fieldset { display: flex; flex-direction: column; gap: 10px; border: 0; padding: 0; margin: 0; }
+label { font-weight: 600; }
+.check, .acciones { display: flex; align-items: center; gap: 10px; }
+.acciones { justify-content: flex-end; margin-top: 12px; }
+.error { color: #b42318; }
+.aviso { padding: 18px; background: #fff6dc; border-radius: 8px; }

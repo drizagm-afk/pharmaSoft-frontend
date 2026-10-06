@@ -1,0 +1,32 @@
+<section class="page">
+  <h2>{{ id() ? 'Editar cliente' : 'Nuevo cliente' }}</h2>
+  @if (error()) { <div class="alerta" role="alert">{{ error() }}</div> }
+  @if (cargando()) { <p role="status">Cargando cliente...</p> }
+  <form [formGroup]="form" (ngSubmit)="guardar()" class="card formulario">
+    <fieldset [disabled]="cargando() || guardando() || cargaFallida()">
+      @for (campo of campos; track campo.clave) {
+        <label [for]="campo.clave">{{ campo.etiqueta }}</label>
+        <input class="input" [id]="campo.clave" [type]="campo.tipo" [formControlName]="campo.clave"
+          [attr.maxlength]="campo.maximo" [attr.inputmode]="campo.clave === 'dni' || campo.clave === 'telefono' ? 'numeric' : null"
+          [attr.aria-describedby]="campo.clave + '-error'"
+          [attr.aria-invalid]="form.controls[campo.clave].touched && form.controls[campo.clave].invalid" />
+        <div [id]="campo.clave + '-error'">
+          @if (form.controls[campo.clave].touched && form.controls[campo.clave].invalid) { <small class="error">{{ campo.ayuda }}</small> }
+          @if (erroresServidor()[campo.clave]; as mensaje) { <small class="error">{{ mensaje }}</small> }
+        </div>
+      }
+      <label for="direccion">Dirección (opcional)</label>
+      <textarea id="direccion" class="input" rows="3" formControlName="direccion" maxlength="250"></textarea>
+      @if (form.controls.direccion.touched && form.controls.direccion.invalid) { <small class="error">Máximo 250 caracteres.</small> }
+      @if (erroresServidor()['direccion']; as mensaje) { <small class="error">{{ mensaje }}</small> }
+      <label class="check"><input type="checkbox" formControlName="estado" /> Activo</label>
+      @if (erroresServidor()['estado']; as mensaje) { <small class="error">{{ mensaje }}</small> }
+    </fieldset>
+    <div class="acciones">
+      <a routerLink="/clientes" class="btn">Cancelar</a>
+      <button type="submit" class="btn btn-primary" [disabled]="guardando() || cargando() || cargaFallida()">
+        {{ guardando() ? 'Guardando...' : (id() ? 'Actualizar' : 'Registrar') }}
+      </button>
+    </div>
+  </form>
+</section>
