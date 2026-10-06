@@ -1,0 +1,12 @@
+.controles { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 16px; }
+.controles label { display: flex; flex-direction: column; gap: 6px; }
+.controles label:first-child { flex: 1; max-width: 400px; }
+.tabla-contenedor { overflow-x: auto; }
+.acciones { display: flex; gap: 8px; white-space: nowrap; }
+.orden { color: inherit; background: none; border: 0; font: inherit; font-weight: 600; cursor: pointer; padding: 0; }
+.orden:disabled { opacity: .6; cursor: not-allowed; }
+.vacio { text-align: center; color: #6b7280; padding: 24px; }
+.paginacion { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-top: 16px; }
+
+.chip { padding: 2px 10px; border-radius: 999px; background: #e9f0f9; color: #12325b; }
+.nota { color: #58667a; }
