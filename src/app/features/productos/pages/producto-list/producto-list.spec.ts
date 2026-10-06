@@ -3,6 +3,7 @@ import { provideHttpClient } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { ProductoList } from './producto-list';
 import { environment } from '../../../../../environments/environment';
+import { provideRouter } from '@angular/router';
 
 describe('ProductoList', () => {
   let http: HttpTestingController;
@@ -13,7 +14,7 @@ describe('ProductoList', () => {
   const page = { contenido: [product], pagina: 0, tamanio: 10,
     totalElementos: 12, totalPaginas: 2, ultima: false };
   beforeEach(() => {
-    TestBed.configureTestingModule({ imports: [ProductoList], providers: [provideHttpClient(), provideHttpClientTesting()] });
+    TestBed.configureTestingModule({ imports: [ProductoList], providers: [provideRouter([]), provideHttpClient(), provideHttpClientTesting()] });
     http = TestBed.inject(HttpTestingController);
   });
   afterEach(() => http.verify());
@@ -50,5 +51,16 @@ describe('ProductoList', () => {
     http.expectOne(r => r.url === url).flush(page); fixture.detectChanges();
     expect(fixture.nativeElement.textContent).toContain('No se pudieron cargar las');
     expect(fixture.nativeElement.textContent).toContain('QA Producto');
+  });
+  it('reloads after soft deletion and disables the inactive product button', () => {
+    const fixture = load(); const confirm = vi.spyOn(window, 'confirm').mockReturnValue(true);
+    fixture.componentInstance.darDeBaja(product);
+    const deletion = http.expectOne(`${url}/1`); expect(deletion.request.method).toBe('DELETE'); deletion.flush(null);
+    http.expectOne(r => r.url === url).flush({ ...page, contenido: [{ ...product, estado: false }] });
+    fixture.detectChanges();
+    expect(fixture.nativeElement.textContent).toContain('Inactivo');
+    const buttons = [...fixture.nativeElement.querySelectorAll('button')] as HTMLButtonElement[];
+    expect(buttons.find(b => b.textContent?.includes('Dar de baja'))?.disabled).toBe(true);
+    confirm.mockRestore();
   });
 });

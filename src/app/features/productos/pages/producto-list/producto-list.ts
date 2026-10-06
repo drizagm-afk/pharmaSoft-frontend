@@ -1,5 +1,6 @@
 import { Component, computed, DestroyRef, inject, OnInit, signal } from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Subscription } from 'rxjs';
 import { PaginaResponse } from '../../../../core/models/pagina-response';
@@ -10,7 +11,7 @@ import { Direccion, OrdenProducto, Producto } from '../../models/producto.model'
 import { ProductoService } from '../../services/producto-service';
 
 @Component({
-  selector: 'app-producto-list', imports: [CurrencyPipe],
+  selector: 'app-producto-list', imports: [CurrencyPipe, RouterLink],
   templateUrl: './producto-list.html', styleUrl: './producto-list.css',
 })
 export class ProductoList implements OnInit {
@@ -26,6 +27,7 @@ export class ProductoList implements OnInit {
   protected readonly ordenarPor = signal<OrdenProducto>('nombre');
   protected readonly direccion = signal<Direccion>('asc');
   protected readonly cargando = signal(false);
+  protected readonly dandoBaja = signal<number | null>(null);
   protected readonly error = signal<string | null>(null);
   protected readonly errorCategorias = signal<string | null>(null);
   protected readonly columnasOrden = [
@@ -59,7 +61,7 @@ export class ProductoList implements OnInit {
   }
   cambiarPagina(delta: number): void {
     const datos = this.resultado(); const siguiente = this.pagina() + delta;
-    if (this.cargando() || !datos || siguiente < 0 || siguiente >= datos.totalPaginas) return;
+    if (this.cargando() || this.dandoBaja() !== null || !datos || siguiente < 0 || siguiente >= datos.totalPaginas) return;
     this.pagina.set(siguiente); this.cargar();
   }
   cambiarTamanio(valor: string): void {
@@ -73,5 +75,13 @@ export class ProductoList implements OnInit {
   filtrarPorCategoria(valor: string): void {
     const id = Number(valor);
     this.categoriaFiltro.set(valor && Number.isSafeInteger(id) && id > 0 ? id : null);
+  }
+  darDeBaja(producto: Producto): void {
+    if (!producto.estado || this.dandoBaja() !== null || !confirm(`¿Dar de baja el producto "${producto.nombre}"?`)) return;
+    this.error.set(null); this.dandoBaja.set(producto.id);
+    this.service.darDeBaja(producto.id).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+      next: () => { this.dandoBaja.set(null); this.cargar(); },
+      error: err => { this.dandoBaja.set(null); this.error.set(mensajeError(err)); },
+    });
   }
 }

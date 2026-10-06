@@ -1,5 +1,5 @@
 <section class="page">
-  <header class="page-header"><h2>Productos</h2></header>
+  <header class="page-header"><h2>Productos</h2><a routerLink="nuevo" class="btn btn-primary">+ Nuevo producto</a></header>
   <div class="controles">
     <label>Categoría
       <select class="input" [value]="categoriaFiltro() ?? ''" (change)="filtrarPorCategoria($any($event.target).value)">
@@ -32,15 +32,18 @@
           </th>
           @if (col.campo === 'nombre') { <th>Categoría</th> }
         }
-        <th>Estado</th>
+        <th>Estado</th><th>Acciones</th>
       </tr></thead>
       <tbody>
         @for (p of productos(); track p.id) {
           <tr><td>{{ p.nombre }}</td><td><span class="chip">{{ p.categoriaNombre }}</span></td>
             <td>{{ p.precio | currency:'PEN':'S/ ' }}</td><td>{{ p.stock }}</td>
             <td><span class="badge" [class.inactivo]="!p.estado">{{ p.estado ? 'Activo' : 'Inactivo' }}</span></td>
+            <td><div class="acciones"><a [routerLink]="[p.id, 'editar']" class="btn">Editar</a>
+              <button type="button" class="btn btn-peligro" [disabled]="!p.estado || dandoBaja() !== null" (click)="darDeBaja(p)">{{ dandoBaja() === p.id ? 'Procesando...' : 'Dar de baja' }}</button>
+            </div></td>
           </tr>
-        } @empty { <tr><td colspan="5" class="vacio">{{ categoriaFiltro() !== null ? 'No hay productos de esta categoría en la página actual.' : 'No hay productos registrados.' }}</td></tr> }
+        } @empty { <tr><td colspan="6" class="vacio">{{ categoriaFiltro() !== null ? 'No hay productos de esta categoría en la página actual.' : 'No hay productos registrados.' }}</td></tr> }
       </tbody>
     </table></div>
     <nav class="paginacion" aria-label="Paginación de productos">
