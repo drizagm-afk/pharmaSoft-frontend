@@ -1,0 +1,40 @@
+<section class="page">
+  <h2>{{ id() ? 'Editar producto' : 'Nuevo producto' }}</h2>
+  @if (error()) { <div class="alerta" role="alert">{{ error() }}</div> }
+  @if (cargando()) { <p role="status">Cargando datos...</p> }
+  @else if (!cargaFallida() && !hayCategoriasActivas()) {
+    <div class="aviso">No hay categorías activas. Registre o active una categoría antes de guardar productos.
+      <a routerLink="/categorias/nuevo" class="btn">Nueva categoría</a>
+    </div>
+  }
+  @if (!cargando() && !cargaFallida() && hayCategoriasActivas()) {
+    <form [formGroup]="form" (ngSubmit)="guardar()" class="card formulario">
+      <fieldset [disabled]="guardando()">
+        <label for="categoriaId">Categoría</label>
+        <select class="input" id="categoriaId" formControlName="categoriaId">
+          <option [ngValue]="null" disabled>Seleccione una categoría...</option>
+          @for (c of opciones(); track c.id) { <option [ngValue]="c.id">{{ c.nombre }}{{ c.estado ? '' : ' (inactiva)' }}</option> }
+        </select>
+        @if (form.controls.categoriaId.touched && form.controls.categoriaId.invalid) { <small class="error">Seleccione una categoría.</small> }
+        @if (categoriaInactiva()) { <small class="error">La categoría elegida está inactiva. Elija una categoría activa.</small> }
+        <label for="nombre">Nombre</label>
+        <input class="input" id="nombre" formControlName="nombre" maxlength="150" />
+        @if (form.controls.nombre.touched && form.controls.nombre.invalid) { <small class="error">El nombre debe tener entre 3 y 150 caracteres.</small> }
+        <label for="precio">Precio (S/)</label>
+        <input class="input" id="precio" type="number" min="0.01" step="0.01" formControlName="precio" />
+        @if (form.controls.precio.touched && form.controls.precio.invalid) { <small class="error">El precio debe ser mayor o igual a 0.01.</small> }
+        <label for="stock">Stock</label>
+        <input class="input" id="stock" type="number" min="0" step="1" formControlName="stock" />
+        @if (form.controls.stock.touched && form.controls.stock.invalid) { <small class="error">El stock debe ser un entero mayor o igual a cero.</small> }
+        @for (campo of ['categoriaId', 'nombre', 'precio', 'stock', 'estado']; track campo) {
+          @if (erroresServidor()[campo]; as mensaje) { <small class="error">{{ mensaje }}</small> }
+        }
+        <label class="check"><input type="checkbox" formControlName="estado" /> Activo</label>
+        <div class="acciones"><a routerLink="/productos" class="btn">Cancelar</a>
+          <button type="submit" class="btn btn-primary">{{ guardando() ? 'Guardando...' : (id() ? 'Actualizar' : 'Registrar') }}</button>
+        </div>
+      </fieldset>
+    </form>
+  }
+  @if (cargaFallida()) { <a routerLink="/productos" class="btn">Volver a Productos</a> }
+</section>
