@@ -1,0 +1,26 @@
+{
+  "case": "B-04_api",
+  "executedBy": "Codex",
+  "capturedAt": "2026-10-06T16:26:42.876988-05:00",
+  "request": {
+    "method": "DELETE",
+    "url": "http://localhost:8080/api/v1/categorias/66",
+    "body": null
+  },
+  "status": 409,
+  "headers": {
+    "Vary": "Origin",
+    "Content-Type": "application/json",
+    "Transfer-Encoding": "chunked",
+    "Date": "Tue, 06 Oct 2026 21:26:42 GMT",
+    "Connection": "close"
+  },
+  "body": {
+    "timestamp": "2026-10-06T16:26:42.8759507",
+    "status": 409,
+    "error": "Conflict",
+    "message": "No se puede eliminar la categoría porque tiene productos asociados. Reasigne esos productos a otra categoría antes de intentarlo de nuevo.",
+    "path": "/api/v1/categorias/66",
+    "validationErrors": null
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "case": "regresion-categoria-PUT-valida",
+  "executedBy": "Codex",
+  "capturedAt": "2026-10-06T16:33:56.205812-05:00",
+  "request": {
+    "method": "PUT",
+    "url": "http://localhost:8080/api/v1/categorias/69",
+    "body": {
+      "nombre": "QA S8 FIX 20261006163355 Activa",
+      "descripcion": "Edicion valida",
+      "estado": true
+    }
+  },
+  "status": 200,
+  "headers": {
+    "Vary": "Origin",
+    "Content-Type": "application/json",
+    "Transfer-Encoding": "chunked",
+    "Date": "Tue, 06 Oct 2026 21:33:56 GMT",
+    "Connection": "close"
+  },
+  "body": {
+    "id": 69,
+    "nombre": "QA S8 FIX 20261006163355 Activa",
+    "descripcion": "Edicion valida",
+    "estado": true,
+    "fechaCreacion": "2026-10-06T16:33:55.8118024",
+    "fechaModificacion": null
+  }
+}

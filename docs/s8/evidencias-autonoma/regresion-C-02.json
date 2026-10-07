@@ -1,0 +1,32 @@
+{
+  "case": "regresion-C-02",
+  "executedBy": "Codex",
+  "capturedAt": "2026-10-06T16:33:56.051607-05:00",
+  "request": {
+    "method": "PUT",
+    "url": "http://localhost:8080/api/v1/productos/94",
+    "body": {
+      "nombre": "QA S8 FIX 20261006163355 Producto",
+      "precio": 5.5,
+      "stock": 10,
+      "estado": true,
+      "categoriaId": 49
+    }
+  },
+  "status": 409,
+  "headers": {
+    "Vary": "Origin",
+    "Content-Type": "application/json",
+    "Transfer-Encoding": "chunked",
+    "Date": "Tue, 06 Oct 2026 21:33:56 GMT",
+    "Connection": "close"
+  },
+  "body": {
+    "timestamp": "2026-10-06T16:33:56.0500301",
+    "status": 409,
+    "error": "Conflict",
+    "message": "La categoría elegida está inactiva. Elija una categoría activa.",
+    "path": "/api/v1/productos/94",
+    "validationErrors": null
+  }
+}
