@@ -1,4 +1,4 @@
-import { Component, computed, DestroyRef, inject, OnInit, signal } from '@angular/core';
+import { Component, computed, DestroyRef, inject, input, OnChanges, OnInit, signal } from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -14,7 +14,9 @@ import { ProductoService } from '../../services/producto-service';
   selector: 'app-producto-list', imports: [CurrencyPipe, RouterLink],
   templateUrl: './producto-list.html', styleUrl: './producto-list.css',
 })
-export class ProductoList implements OnInit {
+export class ProductoList implements OnInit, OnChanges {
+  readonly categoriaId = input<string>();
+  private inicializado = false;
   private readonly service = inject(ProductoService);
   private readonly categoriaService = inject(CategoriaService);
   private readonly destroyRef = inject(DestroyRef);
@@ -38,7 +40,20 @@ export class ProductoList implements OnInit {
     const lista = this.resultado()?.contenido ?? [];
     return this.categoriaFiltro() === null ? lista : lista.filter(p => p.categoriaId === this.categoriaFiltro());
   });
-  ngOnInit(): void { this.cargarCategorias(); this.cargar(); }
+  protected readonly categoriaNombre = computed(() =>
+    this.categorias().find(c => c.id === this.categoriaFiltro())?.nombre ?? this.categoriaFiltro());
+  ngOnInit(): void {
+    this.aplicarCategoriaRuta(); this.inicializado = true;
+    this.cargarCategorias(); this.cargar();
+  }
+  ngOnChanges(): void {
+    if (this.inicializado) { this.aplicarCategoriaRuta(); this.cargar(); }
+  }
+  private aplicarCategoriaRuta(): void {
+    this.filtrarPorCategoria(this.categoriaId() ?? '');
+    this.tamanio.set(this.categoriaFiltro() !== null ? 100 : 10);
+    this.pagina.set(0);
+  }
   cargarCategorias(): void {
     this.errorCategorias.set(null);
     this.categoriaService.listar().pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
@@ -65,7 +80,7 @@ export class ProductoList implements OnInit {
     this.pagina.set(siguiente); this.cargar();
   }
   cambiarTamanio(valor: string): void {
-    const valorNumerico = Number(valor); if (![5, 10, 20].includes(valorNumerico)) return;
+    const valorNumerico = Number(valor); if (![5, 10, 20, 100].includes(valorNumerico)) return;
     this.tamanio.set(valorNumerico); this.pagina.set(0); this.cargar();
   }
   ordenar(campo: OrdenProducto): void {

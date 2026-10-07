@@ -3,17 +3,21 @@
   <div class="controles">
     <label>Categoría
       <select class="input" [value]="categoriaFiltro() ?? ''" (change)="filtrarPorCategoria($any($event.target).value)">
-        <option value="">Todas</option>
-        @for (c of categorias(); track c.id) { <option [value]="c.id">{{ c.nombre }}{{ c.estado ? '' : ' (inactiva)' }}</option> }
+        <option value="" [selected]="categoriaFiltro() === null">Todas</option>
+        @for (c of categorias(); track c.id) { <option [value]="c.id" [selected]="categoriaFiltro() === c.id">{{ c.nombre }}{{ c.estado ? '' : ' (inactiva)' }}</option> }
       </select>
     </label>
     <label>Productos por página
       <select class="input" [value]="tamanio()" (change)="cambiarTamanio($any($event.target).value)" [disabled]="cargando()">
-        <option value="5">5</option><option value="10">10</option><option value="20">20</option>
+        <option value="5">5</option><option value="10">10</option><option value="20">20</option><option value="100">100</option>
       </select>
     </label>
   </div>
-  <p class="nota">El filtro por categoría se aplica a la página actual.</p>
+  @if (categoriaFiltro() !== null && tamanio() === 100) {
+    <p class="nota">Mostrando productos de la categoría {{ categoriaNombre() }} en los {{ pagina() === 0 ? 'primeros 100 registros' : '100 registros de la página actual' }}.</p>
+  } @else {
+    <p class="nota">El filtro por categoría se aplica a la página actual.</p>
+  }
   @if (errorCategorias()) {
     <div class="alerta" role="alert">No se pudieron cargar las categorías: {{ errorCategorias() }}</div>
     <button class="btn" type="button" (click)="cargarCategorias()">Reintentar categorías</button>
