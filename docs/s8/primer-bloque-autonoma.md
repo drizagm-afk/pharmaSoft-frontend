@@ -1,6 +1,6 @@
 # Primer bloque de ejecución: A-01 y A-02
 
-Ejecutar después de fusionar la práctica y crear la rama autónoma. Estos pasos no se han ejecutado todavía.
+Ejecutar después de fusionar la práctica y crear la rama autónoma. Guía histórica de preparación, escrita antes de ejecutar. A-01 y A-02 ya fueron realizados; los resultados constan en la matriz. No ejecutar de nuevo estas instrucciones sobre los IDs actuales sin recrear precondiciones.
 
 ## Configuración
 

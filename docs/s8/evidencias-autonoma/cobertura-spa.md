@@ -1,4 +1,6 @@
-# Cobertura SPA realizada por Codex
+# Cobertura SPA histórica y evidencia posterior
+
+Las secciones se ordenan por etapa. Las menciones iniciales a pendientes describen ese momento; el estado actual consta en la actualización final.
 
 C-04: dos pestañas, formulario original seleccionado con categoría 67 activa; segunda pestaña desactiva 67; original guarda producto 92. Capturas reales del formulario y categoría guardadas.
 C-06: formulario producto 87 renombra a qa s8 auto a04 y asigna categoría 46; SPA vuelve a lista; siguiente página muestra ambos nombres duplicados. Capturas reales guardadas.
@@ -27,4 +29,4 @@ La evidencia HTTP esencial de los casos pendientes está cubierta. Para presenta
 
 ## Actualización final con ocho capturas adicionales
 Se incorporan originales sin edición, con sufijo adicional para preservar los intentos anteriores. C-03/C-06/C-04 ahora incluyen Response: 409 y mensajes de negocio concordantes con la SPA. C-04 incluye además la respuesta de categoría 72 con estado false y fecha de modificación. B-04 aporta Headers/Response de otro intento DELETE categoría 69: 409 y referencia conservada. El mensaje largo sigue cortado y el banner fuera del encuadre; se documenta ese límite, sin pedir repetir la operación. Los JSON API registran el texto completo.
-La petición anterior de capturas complementarias queda supersedida por esta incorporación. La evidencia esencial disponible está reunida; no se afirma que cada captura muestre todas las precondiciones o el texto JSON íntegro. Informe de cuatro páginas actualizado. Commits del estudiante verificados: 8b4e9af, fae118a y backend 79f0dd4.
+La petición anterior de capturas complementarias queda supersedida por esta incorporación. La evidencia esencial disponible está reunida; no se afirma que cada captura muestre todas las precondiciones o el texto JSON íntegro. Informe de cinco páginas actualizado tras la revisión; seis fichas para seis casos fallidos. Commits del estudiante verificados: 8b4e9af, fae118a y backend 79f0dd4.
