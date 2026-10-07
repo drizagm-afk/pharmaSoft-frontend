@@ -38,9 +38,24 @@ Las evidencias nuevas están en docs/s8/evidencias-autonoma. Los JSON contienen 
 Estado QA final: producto 87 inactivo, nombre qa s8 auto a04, categoría 46; producto 91 inactivo en categoría 66; categoría 68 eliminada; categorías 66 y 67 inactivas conservadas; productos 92 y 93 activos en categoría 67, como evidencia del fallo. No se modificaron productos ajenos a los casos S8.
 
 ## Regresión posterior
-Las correcciones pasan 19 pruebas de servicio/HTTP y 28 verificaciones API reales, incluida una comprobación por cada uno de los 18 casos. Resultados separados en docs/s8/regresion-backend-s8.md y regresion-api-s8.json. Capturas SPA/Network pendientes siguen pendientes; la tabla anterior conserva los fallos originales.
+Las correcciones pasan 19 pruebas de servicio/HTTP y 28 verificaciones API reales, incluida una comprobación por cada uno de los 18 casos. Resultados separados en docs/s8/regresion-backend-s8.md y regresion-api-s8.json. Las capturas SPA/Network posteriores del estudiante completan los flujos descritos abajo; la tabla anterior conserva los fallos originales y sus límites históricos.
 
 ## Mejora Parte C y entrega
 Ver productos implementado con queryParams, input de categoría y tamaño 100. Selección asíncrona y cambios del input comprobados: 53 tests frontend y build de producción pasan. Navegación real a categoría 69 verificada; captura parte-C_ver-productos.png. La paginación sigue informando el total global; el filtro global se propone en el informe.
 
-Informe B1-B5 de cuatro páginas: docs/informe-hallazgos-s8.pdf. Estado parcial de evidencia identificado; pasos exactos y grupos de commit en docs/s8/pendientes-capturas-y-entrega.md. No se realizaron commits.
+Informe B1-B5 de cuatro páginas: docs/informe-hallazgos-s8.pdf. Evidencia posterior incorporada y límites de encuadre identificados; pasos finales en docs/s8/pendientes-capturas-y-entrega.md. Commits del estudiante verificados: frontend 8b4e9af y fae118a; backend 79f0dd4.
+
+## Cierre de evidencia SPA posterior
+| Caso | Evidencia aportada por el estudiante | Resultado observado |
+| --- | --- | --- |
+| B-01 | B01_regresion_headers.png | DELETE producto 95: 204, fila Inactivo y acción deshabilitada |
+| B-03 | B03_regresion_headers.png y B03_regresion_selector.png | DELETE categoría 71: 204; desaparece del selector actualizado |
+| B-04 | B04_regresion_headers-adicional.png y B04_regresion_response-adicional.png | DELETE categoría 69: 409; categoría conservada. Mensaje JSON recortado y banner fuera del encuadre |
+| B-05 | B05_regresion_headers.png y B05_regresion_response.png | DELETE categoría 67: 409 y mensaje visible en SPA |
+| A-02/A-06/A-07/C-02 | Capturas *_regresion_network-vacio.png | SPA bloquea sin petición; no acredita por sí sola rechazo API |
+| C-03 | C03_regresion_headers-adicional.png y C03_regresion_response-adicional.png | PUT categoría 46: 409 y mensaje completo en SPA; listado previo confirma que sigue activa |
+| C-06 | C06_regresion_headers-adicional.png y C06_regresion_response-adicional.png | PUT producto 94: 409 por nombre duplicado |
+| C-04 | C04_regresion_categoria-response.png y C04_regresion_response-adicional.png | Categoría 72 inactiva, fecha de modificación presente; POST productos: 409 |
+| Parte C | parte-C_regresion_network.png | Categoría 69 seleccionada, tamaño 100, GET 200; filtro local |
+
+Las ocho capturas adicionales se conservan sin edición. No se requieren nuevas escrituras para repetir estos resultados. La secuencia C-04 de categoría 72 no incluye una captura inicial activa; la repetición anterior de categoría 71 sí documenta esa precondición. La exportación final de Postman y la entrega siguen pendientes.

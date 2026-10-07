@@ -1,0 +1,875 @@
+{
+  "info": {
+    "name": "PharmaSoft - S8 Dependencias",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Borrador de preparación. No usar Run collection: varios casos requieren datos independientes, SPA y dos pestañas. Completar IDs antes de cada petición. Los tests comprueban la regla esperada y pueden fallar legítimamente: registrar el comportamiento real sin corregirlo antes de capturarlo. Línea base ejecutada: 18 casos API, 12 pasan/6 fallan; capturas SPA incompletas indicadas en matriz. IDs históricos: categoría 68 ya eliminada, producto 87 inactivo; recrear precondiciones antes de repetir."
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080/api/v1",
+      "type": "string"
+    },
+    {
+      "key": "categoriaActivaId",
+      "value": "46",
+      "type": "string"
+    },
+    {
+      "key": "otraCategoriaActivaId",
+      "value": "47",
+      "type": "string"
+    },
+    {
+      "key": "categoriaInactivaId",
+      "value": "49",
+      "type": "string"
+    },
+    {
+      "key": "productoId",
+      "value": "87",
+      "type": "string"
+    },
+    {
+      "key": "nombreProducto",
+      "value": "Aceite de Segunda Mano",
+      "type": "string"
+    },
+    {
+      "key": "nombreDuplicado",
+      "value": "aceite de segunda mano",
+      "type": "string"
+    },
+    {
+      "key": "categoriaC03Id",
+      "value": "66",
+      "type": "string"
+    },
+    {
+      "key": "categoriaC04Id",
+      "value": "67",
+      "type": "string"
+    },
+    {
+      "key": "categoriaVaciaId",
+      "value": "68",
+      "type": "string"
+    },
+    {
+      "key": "categoriaSoloInactivosId",
+      "value": "66",
+      "type": "string"
+    },
+    {
+      "key": "categoriaReferenciadaId",
+      "value": "67",
+      "type": "string"
+    },
+    {
+      "key": "nombreOtroProductoMinusculas",
+      "value": "qa s8 auto a04",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "00 - Verificar categorías",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/categorias",
+        "description": "Ejecutar individualmente después de verificar la precondición en la matriz. Guardar captura con ID, estado HTTP y cuerpo. Las peticiones API complementan y no sustituyen las pruebas de la SPA."
+      },
+      "response": []
+    },
+    {
+      "name": "00 - Verificar productos",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/productos?pagina=0&tamanio=100&ordenarPor=id&direccion=asc",
+        "description": "Ejecutar individualmente después de verificar la precondición en la matriz. Guardar captura con ID, estado HTTP y cuerpo. Las peticiones API complementan y no sustituyen las pruebas de la SPA."
+      },
+      "response": []
+    },
+    {
+      "name": "A-01 - Alta válida (ejecutar desde SPA; API opcional)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/productos",
+        "description": "Ejecutar individualmente después de verificar la precondición en la matriz. Guardar captura con ID, estado HTTP y cuerpo. Las peticiones API complementan y no sustituyen las pruebas de la SPA.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"{{nombreProducto}}\",\n  \"precio\": 5.50,\n  \"stock\": 10,\n  \"estado\": true,\n  \"categoriaId\": {{categoriaActivaId}}\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP esperado: 201\", function () { pm.response.to.have.status(201); });",
+              "if (pm.response.code === 201) { const data = pm.response.json(); pm.collectionVariables.set(\"productoId\", String(data.id)); }"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "A-02 - Sin categoría",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/productos",
+        "description": "Ejecutar individualmente después de verificar la precondición en la matriz. Guardar captura con ID, estado HTTP y cuerpo. Las peticiones API complementan y no sustituyen las pruebas de la SPA.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"QA S8 AUTO A02\",\n  \"precio\": 5.50,\n  \"stock\": 10,\n  \"estado\": true\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP esperado: 400\", function () { pm.response.to.have.status(400); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "A-03 - Categoría inexistente",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/productos",
+        "description": "Ejecutar individualmente después de verificar la precondición en la matriz. Guardar captura con ID, estado HTTP y cuerpo. Las peticiones API complementan y no sustituyen las pruebas de la SPA.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"QA S8 AUTO A03\",\n  \"precio\": 5.50,\n  \"stock\": 10,\n  \"estado\": true,\n  \"categoriaId\": 999\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP esperado: 404\", function () { pm.response.to.have.status(404); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "A-04 - Categoría inactiva",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/productos",
+        "description": "Ejecutar individualmente después de verificar la precondición en la matriz. Guardar captura con ID, estado HTTP y cuerpo. Las peticiones API complementan y no sustituyen las pruebas de la SPA.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"QA S8 AUTO A04\",\n  \"precio\": 5.50,\n  \"stock\": 10,\n  \"estado\": true,\n  \"categoriaId\": {{categoriaInactivaId}}\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP esperado: 409\", function () { pm.response.to.have.status(409); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "A-05 - Duplicado en minúsculas",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/productos",
+        "description": "Ejecutar individualmente después de verificar la precondición en la matriz. Guardar captura con ID, estado HTTP y cuerpo. Las peticiones API complementan y no sustituyen las pruebas de la SPA.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"{{nombreDuplicado}}\",\n  \"precio\": 5.50,\n  \"stock\": 10,\n  \"estado\": true,\n  \"categoriaId\": {{categoriaActivaId}}\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP esperado: 409\", function () { pm.response.to.have.status(409); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "A-06 - Precio y stock inválidos",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/productos",
+        "description": "Ejecutar individualmente después de verificar la precondición en la matriz. Guardar captura con ID, estado HTTP y cuerpo. Las peticiones API complementan y no sustituyen las pruebas de la SPA.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"QA S8 AUTO A06\",\n  \"precio\": 0,\n  \"stock\": -1,\n  \"estado\": true,\n  \"categoriaId\": {{categoriaActivaId}}\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP esperado: 400\", function () { pm.response.to.have.status(400); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "A-07 - Stock fraccionario",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/productos",
+        "description": "Ejecutar individualmente después de verificar la precondición en la matriz. Guardar captura con ID, estado HTTP y cuerpo. Las peticiones API complementan y no sustituyen las pruebas de la SPA.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"QA S8 AUTO A07\",\n  \"precio\": 5.50,\n  \"stock\": 1.5,\n  \"estado\": true,\n  \"categoriaId\": {{categoriaActivaId}}\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP esperado: 400\", function () { pm.response.to.have.status(400); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "C-01 - Cambiar a categoría activa",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/productos/{{productoId}}",
+        "description": "Ejecutar individualmente después de verificar la precondición en la matriz. Guardar captura con ID, estado HTTP y cuerpo. Las peticiones API complementan y no sustituyen las pruebas de la SPA.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"{{nombreProducto}}\",\n  \"precio\": 5.50,\n  \"stock\": 10,\n  \"estado\": true,\n  \"categoriaId\": {{otraCategoriaActivaId}}\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP esperado: 200\", function () { pm.response.to.have.status(200); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "C-02 - Cambiar a categoría inactiva",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/productos/{{productoId}}",
+        "description": "Ejecutar individualmente después de verificar la precondición en la matriz. Guardar captura con ID, estado HTTP y cuerpo. Las peticiones API complementan y no sustituyen las pruebas de la SPA.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"{{nombreProducto}}\",\n  \"precio\": 5.50,\n  \"stock\": 10,\n  \"estado\": true,\n  \"categoriaId\": {{categoriaInactivaId}}\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP esperado: 409\", function () { pm.response.to.have.status(409); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "C-03 - Desactivar categoría con productos activos",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/categorias/{{categoriaC03Id}}",
+        "description": "Ejecutar individualmente después de verificar la precondición en la matriz. Guardar captura con ID, estado HTTP y cuerpo. Las peticiones API complementan y no sustituyen las pruebas de la SPA.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"nombre\":\"QA S8 AUTO C03\", \"descripcion\":\"Caso C03 aislado\", \"estado\":false}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP esperado: 409\", function () { pm.response.to.have.status(409); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "C-04 - Alta con categoría desactivada en otra pestaña",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/productos",
+        "description": "Ejecutar individualmente después de verificar la precondición en la matriz. Guardar captura con ID, estado HTTP y cuerpo. Las peticiones API complementan y no sustituyen las pruebas de la SPA.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"QA S8 AUTO C04\",\n  \"precio\": 5.50,\n  \"stock\": 10,\n  \"estado\": true,\n  \"categoriaId\": {{categoriaC04Id}}\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "name": "Línea base Codex C-04",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "http://localhost:8080/api/v1/productos",
+            "body": {
+              "mode": "raw",
+              "raw": "{\"nombre\": \"QA S8 CODEX C04 API 20261006\", \"precio\": 5.5, \"stock\": 10, \"estado\": true, \"categoriaId\": 67}"
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "header": [
+            {
+              "key": "Vary",
+              "value": "Origin"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Tue, 06 Oct 2026 21:27:28 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "body": "{\n  \"id\": 93,\n  \"nombre\": \"QA S8 CODEX C04 API 20261006\",\n  \"descripcion\": null,\n  \"precio\": 5.5,\n  \"stock\": 10,\n  \"categoriaId\": 67,\n  \"categoriaNombre\": \"QA S8 AUTO C04\",\n  \"estado\": true,\n  \"fechaCreacion\": \"2026-10-06T16:27:28.7575888\",\n  \"fechaModificacion\": null\n}"
+        }
+      ],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP esperado: 409\", function () { pm.response.to.have.status(409); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "C-05 - Cambio a categoría inexistente",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/productos/{{productoId}}",
+        "description": "Ejecutar individualmente después de verificar la precondición en la matriz. Guardar captura con ID, estado HTTP y cuerpo. Las peticiones API complementan y no sustituyen las pruebas de la SPA.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"{{nombreProducto}}\",\n  \"precio\": 5.50,\n  \"stock\": 10,\n  \"estado\": true,\n  \"categoriaId\": 999\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP esperado: 404\", function () { pm.response.to.have.status(404); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "C-06 - Cambio a nombre de otro producto",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/productos/{{productoId}}",
+        "description": "Ejecutar individualmente después de verificar la precondición en la matriz. Guardar captura con ID, estado HTTP y cuerpo. Las peticiones API complementan y no sustituyen las pruebas de la SPA.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"{{nombreOtroProductoMinusculas}}\",\n  \"precio\": 5.50,\n  \"stock\": 10,\n  \"estado\": true,\n  \"categoriaId\": {{categoriaActivaId}}\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP esperado: 409\", function () { pm.response.to.have.status(409); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "B-01 - Baja lógica",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": "{{baseUrl}}/productos/{{productoId}}",
+        "description": "Ejecutar individualmente después de verificar la precondición en la matriz. Guardar captura con ID, estado HTTP y cuerpo. Las peticiones API complementan y no sustituyen las pruebas de la SPA."
+      },
+      "response": [
+        {
+          "name": "Línea base Codex B-01",
+          "originalRequest": {
+            "method": "DELETE",
+            "header": [],
+            "url": "http://localhost:8080/api/v1/productos/87"
+          },
+          "status": "No Content",
+          "code": 204,
+          "header": [
+            {
+              "key": "Vary",
+              "value": "Origin"
+            },
+            {
+              "key": "Date",
+              "value": "Tue, 06 Oct 2026 21:26:42 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "body": ""
+        }
+      ],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP esperado: 204\", function () { pm.response.to.have.status(204); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "B-02 - Repetir baja",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": "{{baseUrl}}/productos/{{productoId}}",
+        "description": "Ejecutar individualmente después de verificar la precondición en la matriz. Guardar captura con ID, estado HTTP y cuerpo. Las peticiones API complementan y no sustituyen las pruebas de la SPA."
+      },
+      "response": [
+        {
+          "name": "Línea base Codex B-02",
+          "originalRequest": {
+            "method": "DELETE",
+            "header": [],
+            "url": "http://localhost:8080/api/v1/productos/87"
+          },
+          "status": "Conflict",
+          "code": 409,
+          "header": [
+            {
+              "key": "Vary",
+              "value": "Origin"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Tue, 06 Oct 2026 21:26:42 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "body": "{\n  \"timestamp\": \"2026-10-06T16:26:42.7665684\",\n  \"status\": 409,\n  \"error\": \"Conflict\",\n  \"message\": \"El producto ya se encuentra inactivo.\",\n  \"path\": \"/api/v1/productos/87\",\n  \"validationErrors\": null\n}"
+        }
+      ],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP esperado: 409\", function () { pm.response.to.have.status(409); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "B-03 - Eliminar categoría vacía",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": "{{baseUrl}}/categorias/{{categoriaVaciaId}}",
+        "description": "Ejecutar individualmente después de verificar la precondición en la matriz. Guardar captura con ID, estado HTTP y cuerpo. Las peticiones API complementan y no sustituyen las pruebas de la SPA."
+      },
+      "response": [
+        {
+          "name": "Línea base Codex B-03",
+          "originalRequest": {
+            "method": "DELETE",
+            "header": [],
+            "url": "http://localhost:8080/api/v1/categorias/68"
+          },
+          "status": "No Content",
+          "code": 204,
+          "header": [
+            {
+              "key": "Vary",
+              "value": "Origin"
+            },
+            {
+              "key": "Date",
+              "value": "Tue, 06 Oct 2026 21:27:28 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "body": ""
+        }
+      ],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP esperado: 204\", function () { pm.response.to.have.status(204); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "B-04 - Categoría con productos inactivos",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": "{{baseUrl}}/categorias/{{categoriaSoloInactivosId}}",
+        "description": "Ejecutar individualmente después de verificar la precondición en la matriz. Guardar captura con ID, estado HTTP y cuerpo. Las peticiones API complementan y no sustituyen las pruebas de la SPA."
+      },
+      "response": [
+        {
+          "name": "Línea base Codex B-04",
+          "originalRequest": {
+            "method": "DELETE",
+            "header": [],
+            "url": "http://localhost:8080/api/v1/categorias/66"
+          },
+          "status": "Conflict",
+          "code": 409,
+          "header": [
+            {
+              "key": "Vary",
+              "value": "Origin"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Tue, 06 Oct 2026 21:26:42 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "body": "{\n  \"timestamp\": \"2026-10-06T16:26:42.8759507\",\n  \"status\": 409,\n  \"error\": \"Conflict\",\n  \"message\": \"No se puede eliminar la categoría porque tiene productos asociados. Reasigne esos productos a otra categoría antes de intentarlo de nuevo.\",\n  \"path\": \"/api/v1/categorias/66\",\n  \"validationErrors\": null\n}"
+        }
+      ],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP esperado: 409\", function () { pm.response.to.have.status(409); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "B-05 - Categoría con producto activo",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": "{{baseUrl}}/categorias/{{categoriaReferenciadaId}}",
+        "description": "Ejecutar individualmente después de verificar la precondición en la matriz. Guardar captura con ID, estado HTTP y cuerpo. Las peticiones API complementan y no sustituyen las pruebas de la SPA."
+      },
+      "response": [
+        {
+          "name": "Línea base Codex B-05",
+          "originalRequest": {
+            "method": "DELETE",
+            "header": [],
+            "url": "http://localhost:8080/api/v1/categorias/67"
+          },
+          "status": "Conflict",
+          "code": 409,
+          "header": [
+            {
+              "key": "Vary",
+              "value": "Origin"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Tue, 06 Oct 2026 21:26:42 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "body": "{\n  \"timestamp\": \"2026-10-06T16:26:42.9693509\",\n  \"status\": 409,\n  \"error\": \"Conflict\",\n  \"message\": \"No se puede eliminar la categoría porque tiene productos asociados. Reasigne esos productos a otra categoría antes de intentarlo de nuevo.\",\n  \"path\": \"/api/v1/categorias/67\",\n  \"validationErrors\": null\n}"
+        }
+      ],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP esperado: 409\", function () { pm.response.to.have.status(409); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Verificar producto después de un rechazo",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/productos/{{productoId}}",
+        "description": "Ejecutar individualmente después de verificar la precondición en la matriz. Guardar captura con ID, estado HTTP y cuerpo. Las peticiones API complementan y no sustituyen las pruebas de la SPA."
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP esperado: 200\", function () { pm.response.to.have.status(200); });"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
