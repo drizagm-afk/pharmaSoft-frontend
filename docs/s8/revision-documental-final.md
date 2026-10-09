@@ -48,3 +48,47 @@ No se editó documentación S7 ni la práctica S8: pertenecen a otras entregas y
 
 ## Exportación real incorporada
 El estudiante descargó PharmaSoft - S8 Dependencias.postman_collection.json. El archivo se validó como v2.1 y se copió byte por byte a postman/PharmaSoft-S8-Dependencias.json. El registro exportacion-postman-verificada.json incluye SHA-256, casos y límites. Esta actualización sustituye el estado anterior de exportación pendiente. No se rellenaron variables ni se inventaron respuestas guardadas.
+
+## Segunda revisión: redacción y correspondencia con la guía
+La documentación principal se revisó con redacción impersonal en las decisiones y la metodología. Se mantiene la atribución explícita de las verificaciones complementarias a Codex.
+
+- B1: describe alcance, casos propios, resultados originales y regresión posterior. Se retiraron instrucciones de commit/entrega y estados temporales del cuerpo académico; permanecen en el checklist operativo.
+- B2: cada ficha identifica caso, severidad, descripción, causa probable/capa, archivo/método, corrección y evidencia. H-06 conserva ficha independiente para C-04, aunque comparte causa con H-01.
+- B3: se corrigió la clasificación de validaciones. El nombre único y la protección de eliminación se validan en la API; la SPA muestra sus rechazos. Mostrar un error no equivale a validar la regla localmente.
+- B4: explica el alcance del filtro local y propone endpoint, consulta paginada y servicio frontend. La propuesta global permanece explícitamente sin implementar, como permite la guía.
+- B5: cinco preguntas visibles y un párrafo por respuesta; la respuesta 4 cita ProductoServiceImpl.java y CategoriaServiceImpl.java. La respuesta 5 explica que el manejo actual ya soporta el 409 y que deben actualizarse las pruebas.
+- Matriz: se corrigieron expresiones incorrectas y la tabla posterior, que mezclaba IDs antiguos con nuevos. Línea base: ocho columnas/18 filas; repetición SPA: cuatro columnas con IDs propios de cada intento.
+- Notas: H-06 ampliado con los mismos campos del informe; H-01 a H-06 diferenciados de su implementación posterior.
+- Validación: todas las referencias de evidencia de matriz e informe existen; tablas con número uniforme de columnas; PDF de cinco páginas renderizado y revisado completo; git diff --check sin errores. No se ejecutaron nuevos tests ni escrituras API durante esta revisión.
+
+La correspondencia del contenido A/B/C es satisfactoria dentro de los límites de evidencia ya descritos. El texto no demuestra requisitos administrativos: días distintos de commits, PR y aula deben verificarse por sus propios registros. Las variables vacías de la colección y el recorte visual de B-04 siguen declarados; no se presentan como resueltos mediante cambios de redacción.
+
+
+## Revisión de capturas, redacción y uso de IA
+
+
+La actividad autónoma, página 6, sección 3 (Criterios de entrega), dice: "Puedes usar asistentes de inteligencia artificial para consultar dudas, pero la matriz debe reflejar pruebas que ejecutaste tú; el docente podrá pedirte que repitas cualquier caso en clase." Esta autorización se refiere a consultar dudas. No autoriza explícitamente generar código con IA, ni establece en esa frase una prohibición general. La misma página permite implementar una corrección del backend en una rama propia y mencionarla en el informe; esa posibilidad no amplía por sí sola el permiso de uso de IA.
+
+La guía práctica exige, en la página 16, un PDF con las capturas de las 12 pruebas. La actividad autónoma pide registrar evidencia por caso en la página 3 y, para las fichas, captura y petición de Postman en la página 4. Aunque no exige expresamente insertar todas las capturas en el informe breve, se incorporaron figuras al PDF y las capturas disponibles a la matriz para facilitar su revisión.
+
+
+## Ajuste de estructura y voz
+
+Los dos informes usan redacción impersonal. El PDF de práctica adopta B1–B5 y conserva los doce escenarios prácticos y sus capturas. Los análisis que citan casos autónomos se identifican como correspondientes a la etapa posterior. El registro B-02 conserva sus referencias a JSON sin un apartado de ausencia de captura.
+
+
+## Presentación institucional
+
+Se reprodujo el encabezado UPeU con el logotipo original extraído de la guía, facultad, escuela profesional, curso, divisor dorado, título, subtítulo y tabla de identificación. Se incorporó el nombre Kevin Eduardo Del Carpio Alegría. Los datos de modalidad, duración y tecnologías de la práctica proceden de su guía; el plazo y puntaje de la autónoma proceden de la actividad autónoma. Ambos informes conservan cinco páginas, capturas y secciones B1–B5.
+
+
+## Revisión de identidad y ubicación de las evidencias
+
+La práctica corresponde al Reto 01 y conserva doce escenarios. El informe autónomo corresponde al Reto 02 y conserva 18 casos, seis fichas de hallazgos y B1–B5. Se generó DelCarpio_LP2_S8_Autonoma.pdf como copia idéntica de docs/informe-hallazgos-s8.pdf para la entrega.
+
+Las 18 apariciones de capturas de la práctica se trasladaron a los apartados P01–P12; la evidencia histórica y la repetición de P12 se presentan junto al hallazgo. El informe práctico tiene ahora nueve páginas para conservar los casos y su evidencia en contexto. La extensión de 3 a 5 páginas pertenece al informe autónomo, que conserva cinco. Se revisaron visualmente todas las páginas y se comprobó la identidad binaria de la copia autónoma. Los resultados históricos, regresiones y propuestas pendientes permanecen separados.
+
+
+## Revisión final de ambos informes
+
+Se revisaron el texto completo y todas las páginas renderizadas de la práctica y la autónoma. Se verificaron identificación, secciones B1–B5, separación de resultados históricos y regresiones, referencias de evidencia y ubicación de las capturas junto a los casos. Se eliminó el apartado Fuentes y lectura de las capturas de la práctica. La práctica conserva nueve páginas y 18 apariciones de capturas; la autónoma conserva cinco páginas y siete figuras. Los conteos excluyen el logotipo institucional. La copia de entrega autónoma coincide exactamente con el informe del repositorio. Esta revisión documental no equivale a una nueva ejecución de pruebas ni confirma la entrega al aula virtual.

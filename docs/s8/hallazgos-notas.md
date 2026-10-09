@@ -8,7 +8,7 @@ Las fichas iniciales describen la línea base antes de corregir. El estado vigen
 - Severidad: alta; permite datos inconsistentes con la regla de categoría activa.
 - Resultado esperado: API 409; la SPA no ofrece categorías inactivas.
 - Resultado observado: la SPA oculta la categoría 49, pero POST /api/v1/productos acepta categoriaId 49 y devuelve 201. Crea producto 88, QA S8 AUTO A04, estado true.
-- Evidencia: evidencias-autonoma/A-04_spa.png y A-04_postman.png, aportadas por el estudiante.
+- Evidencia: evidencias-autonoma/A-04_spa.png y A-04_postman.png, que reuní.
 - Causa: backend src/main/java/com/edu/upeu/PharmaBackend/service/impl/ProductoServiceImpl.java, create(). El método comprueba unicidad y existencia de la categoría, pero no su estado antes de mapear y guardar.
 - Corrección propuesta: después de findById, comprobar Boolean.TRUE.equals(categoria.getEstado()); si no, lanzar ReglaNegocioException con mensaje claro. GlobalExceptionHandler.handleBusinessRule ya transforma esa excepción en 409. Aplicar también a update(), y conservar el filtro preventivo y los mensajes de la SPA. La regla debe verificarse en el backend al guardar, incluso si la SPA cargó las opciones antes de un cambio de estado.
 - Estado en la línea base: propuesta, todavía no implementada; conservar la línea base de pruebas. Producto 88 identificado como dato QA de este caso.
@@ -19,7 +19,7 @@ Las fichas iniciales describen la línea base antes de corregir. El estado vigen
 - Esperado: SPA bloquea; API 400 para stock 1.5.
 - Observado: SPA muestra validación de entero y no envía. Postman envía QA S8 AUTO A99 con stock 1.5; API devuelve 201, id 90, stock 1.
 - Evidencia: evidencias-autonoma/A-07_spa.png y A-07_postman.png.
-- Incidencia: el estudiante cambió el nombre tras un rechazo por duplicado con QA S8 AUTO A07. El resultado calificado corresponde al intento nuevo mostrado; no se atribuye un ID al intento anterior sin evidencia.
+- Incidencia: cambié el nombre tras un rechazo por duplicado con QA S8 AUTO A07. El resultado calificado corresponde al intento nuevo mostrado; no se atribuye un ID al intento anterior sin evidencia.
 - Causa probable: ProductoRequestDTO.stock es Integer con @Min(0). La deserialización JSON convierte 1.5 a 1 antes de Bean Validation; @Min solo comprueba el entero resultante. No se encontró configuración explícita de coerción numérica en src/main.
 - Corrección propuesta: backend, deserialización estricta de stock que rechace fracciones antes de convertir a Integer (o configuración Jackson equivalente compatible con la versión usada); convertir el error de lectura de JSON en una respuesta 400 clara desde GlobalExceptionHandler. Mantener la validación de entero de la SPA. Verificar con pruebas que 1.5 se rechace, que 0 y enteros positivos se admitan, y que no se guarde un producto ante un error.
 - Estado en la línea base: propuesta sin implementar; preservar producto QA 90 y línea base.
@@ -29,7 +29,7 @@ Las fichas iniciales describen la línea base antes de corregir. El estado vigen
 - Caso: C-02.
 - Severidad: alta; permite un producto activo en una categoría inactiva.
 - Esperado: SPA bloquea; API 409 y conserva la categoría original del producto.
-- Observado: SPA bloquea guardar el fixture 73 y muestra la categoría original inactiva; Postman modifica producto 87 desde categoría 47 a 49, devuelve 200 y conserva estado true.
+- Observado: SPA bloquea guardar el producto de prueba 73 y muestra la categoría original inactiva; Postman modifica producto 87 desde categoría 47 a 49, devuelve 200 y conserva estado true.
 - Evidencia: evidencias-autonoma/C-02_spa.png y C-02_postman.png. La prueba SPA y la prueba API usan productos distintos, identificado expresamente en la matriz.
 - Causa: backend ProductoServiceImpl.update(), src/main/java/com/edu/upeu/PharmaBackend/service/impl/ProductoServiceImpl.java. Comprueba existencia de categoría, pero no estado antes de guardar.
 - Corrección propuesta: compartir con create() una validación de categoría activa; lanzar ReglaNegocioException antes de modificar o guardar para obtener 409. Agregar prueba de rechazo y conservación de los datos, además del caso válido. Mantener la prevención visual del frontend.
@@ -53,13 +53,19 @@ Las fichas iniciales describen la línea base antes de corregir. El estado vigen
 - Corrección: validar nombre recortado con comparación sin mayúsculas, excluir el ID actual, rechazar antes de mapear/guardar.
 
 ## H-06 - Formulario obsoleto (C-04; causa compartida con H-01)
-C-04 usa dos pestañas: alta abierta con categoría 67 activa; edición en segunda pestaña desactiva 67; formulario original guarda producto 92. Un POST complementario devuelve 201 y crea producto 93. El filtro preventivo de la SPA no sustituye la validación al guardar en el servidor.
+- Caso: C-04; severidad alta, por vínculo de un producto activo con una categoría inactiva.
+- Esperado: POST 409 y ningún producto creado después de desactivar la categoría.
+- Observado: el formulario cargó la categoría 67 activa; otra pestaña la desactivó y el formulario original creó producto 92. Un POST complementario devolvió 201 y creó producto 93.
+- Evidencia: C-04_formulario-obsoleto.png, C-04_categoria-inactiva.png, C-04_producto92.json y C-04_api.json. La ejecución complementaria de Codex está identificada en los registros.
+- Causa: ProductoServiceImpl.java, create(), comprobaba existencia sin revalidar estado al guardar; producto-form.ts conservaba una lista local anterior al cambio.
+- Corrección: revalidar en el backend dentro de una transacción coordinada con CategoriaServiceImpl.java, update(), mediante el bloqueo de categoría. Rechazar con 409 sin guardar y conservar el formulario para corregirlo.
+- Regresión: regresion-C-04_formulario.png, regresion-C-04_spa-rechazo.png y C04_regresion_response-adicional.png.
 
 ## Implementación posterior a la línea base
-Se implementan las correcciones de H-01 a H-05 y PUT categoría 200 en el backend. Los resultados de la matriz siguen siendo los observados antes de esos cambios. El rechazo de stock usa Jackson 3 sin ACCEPT_FLOAT_AS_INT; create/update y desactivación usan el mismo bloqueo de categoría en transacción. Las pruebas sin Oracle comprueban rechazo sin guardar, conservación de entidades, flujos válidos y códigos HTTP. La regresión real posterior está registrada en regresion-api-s8.json; las capturas posteriores constan en cobertura-spa.md.
+Con apoyo de Codex incorporé las correcciones de H-01 a H-06 y PUT categoría 200 en el backend. Los resultados de la matriz siguen siendo los observados antes de esos cambios. El rechazo de stock usa Jackson 3 sin ACCEPT_FLOAT_AS_INT; create/update y desactivación usan el mismo bloqueo de categoría en transacción. Las pruebas sin Oracle comprueban rechazo sin guardar, conservación de entidades, flujos válidos y códigos HTTP. La regresión real posterior está registrada en regresion-api-s8.json; las capturas posteriores constan en cobertura-spa.md.
 
 ## Resultado de regresión
 Correcciones implementadas: `mvn clean test -q` pasa 19 pruebas nuevas; 28 verificaciones API reales pasan, incluidas las 18 reglas/casos a nivel API. Véase regresion-backend-s8.md. El encuadre parcial de B-04 y la ausencia de pruebas concurrentes permanecen identificados como límites; no cambian la línea base original.
 
 ## Cierre posterior de capturas y commits
-El estudiante aportó 18 capturas SPA/Network y ocho complementarias. La matriz y cobertura-spa.md registran los IDs y límites de encuadre. B-01/B-03/B-04/B-05 y las respuestas C-03/C-06/C-04 cuentan ahora con evidencia posterior; las menciones anteriores a pendientes describen el estado histórico. Informe actualizado. Commits verificados: frontend 8b4e9af, fae118a y 5112e57; backend 79f0dd4. Exportación real Postman v2.1 incorporada. Quedan commit de la revisión posterior, push/PR y entrega. Dos eliminaciones locales de tests backend permanecen fuera del commit: CategoriaDeletionTest.java y ProductoContractTest.java.
+Reuní 18 capturas SPA/Network y ocho complementarias. La matriz y cobertura-spa.md registran los IDs y límites de encuadre. B-01/B-03/B-04/B-05 y las respuestas C-03/C-06/C-04 cuentan ahora con evidencia posterior; las menciones anteriores a pendientes describen el estado histórico. Informe actualizado. Commits verificados: frontend 8b4e9af, fae118a y 5112e57; backend 79f0dd4. Exportación real Postman v2.1 incorporada. La revisión inicial está en db5dd5c; quedan el commit de los ajustes de redacción posteriores, push/PR y entrega. Dos eliminaciones locales de tests backend permanecen fuera del commit: CategoriaDeletionTest.java y ProductoContractTest.java.
