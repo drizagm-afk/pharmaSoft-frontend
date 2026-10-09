@@ -1,0 +1,26 @@
+{
+  "case": "B-05_categoria-conservada",
+  "executedBy": "Codex",
+  "capturedAt": "2026-10-06T16:26:42.977825-05:00",
+  "request": {
+    "method": "GET",
+    "url": "http://localhost:8080/api/v1/categorias/67",
+    "body": null
+  },
+  "status": 200,
+  "headers": {
+    "Vary": "Origin",
+    "Content-Type": "application/json",
+    "Transfer-Encoding": "chunked",
+    "Date": "Tue, 06 Oct 2026 21:26:42 GMT",
+    "Connection": "close"
+  },
+  "body": {
+    "id": 67,
+    "nombre": "QA S8 AUTO C04",
+    "descripcion": null,
+    "estado": false,
+    "fechaCreacion": "2026-10-06T16:11:51.5607985",
+    "fechaModificacion": "2026-10-06T16:22:52.196263"
+  }
+}

@@ -22,11 +22,16 @@ export const routes: Routes = [
                 loadChildren: () =>
                     import('./features/categorias/categorias.routes').then(m => m.CATEGORIAS_ROUTES),
             },
+            {
+                path: 'productos',
+                loadChildren: () => import('./features/productos/productos.routes').then(m => m.PRODUCTOS_ROUTES),
+            },
+            { path: 'productos', loadChildren: () => import('./features/productos/productos.routes').then(m => m.PRODUCTOS_ROUTES) },
         ],
     },
     {
         path: '**',
-        title: 'Página no encontrada',
+        title: 'PÃ¡gina no encontrada',
         loadComponent: () =>
             import('./shared/pages/no-encontrado/no-encontrado').then(m => m.NoEncontrado),
     },

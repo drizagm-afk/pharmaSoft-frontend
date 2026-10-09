@@ -1,0 +1,194 @@
+{
+  "note": "Fixtures only; dependency matrix not yet executed. Product 07 belongs to inactive category for edit testing.",
+  "categories": [
+    {
+      "id": 46,
+      "nombre": "QA S8 DelCarpio Activa A",
+      "descripcion": "Datos aislados para pruebas S8",
+      "estado": true,
+      "fechaCreacion": "2026-10-06T10:40:41.9371936",
+      "fechaModificacion": null
+    },
+    {
+      "id": 47,
+      "nombre": "QA S8 DelCarpio Activa B",
+      "descripcion": "Datos aislados para pruebas S8",
+      "estado": true,
+      "fechaCreacion": "2026-10-06T10:40:42.0001117",
+      "fechaModificacion": null
+    },
+    {
+      "id": 48,
+      "nombre": "QA S8 DelCarpio Activa C",
+      "descripcion": "Datos aislados para pruebas S8",
+      "estado": true,
+      "fechaCreacion": "2026-10-06T10:40:42.0150245",
+      "fechaModificacion": null
+    },
+    {
+      "id": 49,
+      "nombre": "QA S8 DelCarpio Inactiva",
+      "descripcion": "Datos aislados para pruebas S8",
+      "estado": false,
+      "fechaCreacion": "2026-10-06T10:40:42.0320515",
+      "fechaModificacion": null
+    }
+  ],
+  "putStatus": 200,
+  "checks": [
+    {
+      "status": 200,
+      "query": "id/asc"
+    },
+    {
+      "status": 200,
+      "query": "id/desc"
+    },
+    {
+      "status": 200,
+      "query": "nombre/asc"
+    },
+    {
+      "status": 200,
+      "query": "nombre/desc"
+    },
+    {
+      "status": 200,
+      "query": "precio/asc"
+    },
+    {
+      "status": 200,
+      "query": "precio/desc"
+    },
+    {
+      "status": 200,
+      "query": "stock/asc"
+    },
+    {
+      "status": 200,
+      "query": "stock/desc"
+    },
+    {
+      "status": 409,
+      "query": "pagina=-1"
+    },
+    {
+      "status": 409,
+      "query": "tamanio=101"
+    },
+    {
+      "status": 409,
+      "query": "ordenarPor=categoriaId"
+    },
+    {
+      "status": 409,
+      "query": "direccion=wrong"
+    },
+    {
+      "operation": "QA soft delete",
+      "status": 204
+    },
+    {
+      "operation": "QA repeated delete",
+      "status": 409
+    }
+  ],
+  "products": [
+    {
+      "id": 67,
+      "nombre": "QA S8 DelCarpio Producto 01",
+      "descripcion": "Fixture S8",
+      "precio": 1.5,
+      "stock": 3,
+      "categoriaId": 46,
+      "categoriaNombre": "QA S8 DelCarpio Activa A",
+      "estado": true,
+      "fechaCreacion": "2026-10-06T10:40:42.1066089",
+      "fechaModificacion": null
+    },
+    {
+      "id": 68,
+      "nombre": "QA S8 DelCarpio Producto 02",
+      "descripcion": "Fixture S8",
+      "precio": 2.5,
+      "stock": 6,
+      "categoriaId": 47,
+      "categoriaNombre": "QA S8 DelCarpio Activa B",
+      "estado": true,
+      "fechaCreacion": "2026-10-06T10:40:42.1325622",
+      "fechaModificacion": null
+    },
+    {
+      "id": 69,
+      "nombre": "QA S8 DelCarpio Producto 03",
+      "descripcion": "Fixture S8",
+      "precio": 3.5,
+      "stock": 9,
+      "categoriaId": 48,
+      "categoriaNombre": "QA S8 DelCarpio Activa C",
+      "estado": true,
+      "fechaCreacion": "2026-10-06T10:40:42.1495788",
+      "fechaModificacion": null
+    },
+    {
+      "id": 70,
+      "nombre": "QA S8 DelCarpio Producto 04",
+      "descripcion": "Fixture S8",
+      "precio": 4.5,
+      "stock": 12,
+      "categoriaId": 46,
+      "categoriaNombre": "QA S8 DelCarpio Activa A",
+      "estado": true,
+      "fechaCreacion": "2026-10-06T10:40:42.1673451",
+      "fechaModificacion": null
+    },
+    {
+      "id": 71,
+      "nombre": "QA S8 DelCarpio Producto 05",
+      "descripcion": "Fixture S8",
+      "precio": 5.5,
+      "stock": 15,
+      "categoriaId": 47,
+      "categoriaNombre": "QA S8 DelCarpio Activa B",
+      "estado": true,
+      "fechaCreacion": "2026-10-06T10:40:42.1833837",
+      "fechaModificacion": null
+    },
+    {
+      "id": 72,
+      "nombre": "QA S8 DelCarpio Producto 06",
+      "descripcion": "Fixture S8",
+      "precio": 6.5,
+      "stock": 18,
+      "categoriaId": 48,
+      "categoriaNombre": "QA S8 DelCarpio Activa C",
+      "estado": true,
+      "fechaCreacion": "2026-10-06T10:40:42.2002827",
+      "fechaModificacion": null
+    },
+    {
+      "id": 73,
+      "nombre": "QA S8 DelCarpio Producto 07",
+      "descripcion": "Fixture S8",
+      "precio": 7.5,
+      "stock": 21,
+      "categoriaId": 49,
+      "categoriaNombre": "QA S8 DelCarpio Inactiva",
+      "estado": true,
+      "fechaCreacion": "2026-10-06T10:40:42.2186333",
+      "fechaModificacion": null
+    },
+    {
+      "id": 74,
+      "nombre": "QA S8 DelCarpio Producto 08",
+      "descripcion": "Fixture S8",
+      "precio": 8.5,
+      "stock": 24,
+      "categoriaId": 47,
+      "categoriaNombre": "QA S8 DelCarpio Activa B",
+      "estado": false,
+      "fechaCreacion": "2026-10-06T10:40:42.236419",
+      "fechaModificacion": "2026-10-06T10:40:42.2738507"
+    }
+  ]
+}

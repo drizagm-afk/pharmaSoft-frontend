@@ -1,0 +1,26 @@
+{
+  "case": "regresion-categoria-preservada",
+  "executedBy": "Codex",
+  "capturedAt": "2026-10-06T16:33:56.105693-05:00",
+  "request": {
+    "method": "GET",
+    "url": "http://localhost:8080/api/v1/categorias/69",
+    "body": null
+  },
+  "status": 200,
+  "headers": {
+    "Vary": "Origin",
+    "Content-Type": "application/json",
+    "Transfer-Encoding": "chunked",
+    "Date": "Tue, 06 Oct 2026 21:33:56 GMT",
+    "Connection": "close"
+  },
+  "body": {
+    "id": 69,
+    "nombre": "QA S8 FIX 20261006163355 Activa",
+    "descripcion": "Regresion aislada S8",
+    "estado": true,
+    "fechaCreacion": "2026-10-06T16:33:55.8118024",
+    "fechaModificacion": null
+  }
+}
