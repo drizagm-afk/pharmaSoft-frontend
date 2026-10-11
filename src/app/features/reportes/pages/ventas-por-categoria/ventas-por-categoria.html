@@ -1,0 +1,43 @@
+<section class="page">
+  <header class="page-header">
+    <h2>Ventas por categoría</h2>
+    <a routerLink="/ventas" class="btn no-imprimir">Consulta de ventas</a>
+  </header>
+  <p class="nota">Unidades e importe vendido por categoría. Solo se incluyen ventas registradas; las anuladas quedan excluidas.</p>
+  <form [formGroup]="filtros" (ngSubmit)="buscar()" class="card no-imprimir">
+    <fieldset class="filtros" [disabled]="cargando()">
+      <label>Desde <input class="input" type="date" formControlName="desde" /></label>
+      <label>Hasta <input class="input" type="date" formControlName="hasta" /></label>
+      <div class="acciones">
+        <button type="button" class="btn" (click)="limpiar()">Limpiar</button>
+        <button type="submit" class="btn btn-primary">Consultar</button>
+      </div>
+    </fieldset>
+  </form>
+  @if (error()) { <div class="alerta" role="alert">{{ error() }}</div> }
+  @if (cargando()) { <p role="status">Consultando ventas por categoría...</p> }
+  @else if (resultado(); as filas) {
+    <p class="periodo">Período aplicado: {{ resumenPeriodo() }}</p>
+    @if (filas.length) {
+      <dl class="resumen">
+        <div class="card"><dt>Categorías con ventas</dt><dd>{{ filas.length | number: '1.0-0' }}</dd></div>
+        <div class="card"><dt>Unidades vendidas</dt><dd>{{ totalUnidades() | number: '1.0-0' }}</dd></div>
+        <div class="card"><dt>Total vendido</dt><dd>{{ totalVendido() | currency: 'PEN' : 'S/ ' }}</dd></div>
+      </dl>
+    }
+    <div class="tabla-contenedor">
+      <table class="tabla">
+        <caption>Ventas registradas agrupadas por categoría, ordenadas por importe de mayor a menor.</caption>
+        <thead><tr><th scope="col">Categoría</th><th scope="col" class="monto">Unidades vendidas</th><th scope="col" class="monto">Total vendido</th></tr></thead>
+        <tbody>
+          @for (fila of filas; track fila.categoriaId) {
+            <tr><td>{{ fila.categoria }}</td><td class="monto">{{ fila.cantidad | number: '1.0-0' }}</td><td class="monto">{{ fila.total | currency: 'PEN' : 'S/ ' }}</td></tr>
+          } @empty { <tr><td colspan="3" class="vacio" role="status">No hay ventas registradas para el período seleccionado.</td></tr> }
+        </tbody>
+        @if (filas.length) {
+          <tfoot><tr><th scope="row">Total</th><td class="monto">{{ totalUnidades() | number: '1.0-0' }}</td><td class="monto">{{ totalVendido() | currency: 'PEN' : 'S/ ' }}</td></tr></tfoot>
+        }
+      </table>
+    </div>
+  }
+</section>

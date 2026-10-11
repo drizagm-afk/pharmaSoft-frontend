@@ -1,0 +1,18 @@
+.page-header { gap: 16px; flex-wrap: wrap; }
+.nota, .periodo { color: #4b5563; }
+form.card { margin: 16px 0; }
+.filtros { display: flex; flex-wrap: wrap; gap: 16px; align-items: end; border: 0; padding: 0; margin: 0; min-width: 0; }
+.filtros label { display: flex; flex: 1; flex-direction: column; gap: 4px; min-width: 160px; max-width: 300px; font-weight: 600; }
+.acciones { display: flex; gap: 8px; }
+.resumen { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin: 16px 0; }
+.resumen dt { color: #4b5563; }
+.resumen dd { margin: 6px 0 0; font-size: 22px; font-weight: 700; color: #0f2e5c; overflow-wrap: anywhere; }
+.tabla-contenedor { overflow-x: auto; }
+.tabla caption { text-align: left; color: #4b5563; font-size: 14px; padding-bottom: 10px; }
+.monto { text-align: right; white-space: nowrap; }
+.tabla th.monto { text-align: right; }
+.tabla tfoot { font-weight: 700; }
+.tabla tfoot th { background: #e9f0f9; color: #0f2e5c; }
+.vacio { text-align: center; padding: 24px; color: #6b7280; }
+@media (max-width: 700px) { .resumen { grid-template-columns: 1fr; } }
+@media print { .tabla-contenedor { overflow: visible; } }
