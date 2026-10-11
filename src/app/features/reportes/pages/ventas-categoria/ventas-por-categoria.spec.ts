@@ -27,6 +27,20 @@ describe('VentasPorCategoria', () => {
     fixture.detectChanges();
     expect(fixture.nativeElement.textContent).toContain('6.75');
     expect(fixture.nativeElement.querySelectorAll('tbody tr').length).toBe(2);
+    const barras: HTMLElement[] = Array.from(fixture.nativeElement.querySelectorAll('.barra'));
+    expect(parseFloat(barras[0].style.width)).toBeCloseTo((2.4 / 4.35) * 100);
+    expect(barras[1].style.width).toBe('100%');
+  });
+
+  it('renders zero amounts without invalid bar widths', () => {
+    const fixture = TestBed.createComponent(VentasPorCategoria);
+    fixture.detectChanges();
+    TestBed.inject(HttpTestingController)
+      .expectOne(url)
+      .flush([{ categoriaId: 1, categoria: 'Vitaminas', cantidad: 0, total: 0 }]);
+    fixture.detectChanges();
+    expect(fixture.nativeElement.querySelector('.barra').style.width).toBe('0%');
+    expect(fixture.nativeElement.textContent).not.toMatch(/NaN|Infinity/);
   });
 
   it('recovers from server failure with an empty result', () => {
@@ -39,7 +53,7 @@ describe('VentasPorCategoria', () => {
     fixture.componentInstance.buscar();
     http.expectOne(url).flush([]);
     fixture.detectChanges();
-    expect(fixture.nativeElement.textContent).toContain('No hay ventas registradas');
+    expect(fixture.nativeElement.textContent).toContain('No hay ventas en el periodo seleccionado');
     expect(fixture.nativeElement.textContent).not.toContain('Error temporal');
   });
 });

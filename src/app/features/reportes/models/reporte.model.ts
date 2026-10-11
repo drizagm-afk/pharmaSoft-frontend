@@ -1,9 +1,9 @@
 export interface VentaPorCategoria {
   categoriaId: number;
-  categoria: string;
+  categoriaNombre: string;
   /** Total units sold, rather than the number of sales. */
-  cantidad: number;
-  total: number;
+  cantidadVendida: number;
+  montoTotal: number;
 }
 
 export interface FiltroReporte {

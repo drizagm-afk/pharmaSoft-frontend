@@ -29,11 +29,20 @@ export class VentasPorCategoria implements OnInit {
     hasta: this.fb.control<string | null>(null),
   });
   protected readonly totalUnidades = computed(() =>
-    (this.resultado() ?? []).reduce((suma, fila) => suma + fila.cantidad, 0),
+    (this.resultado() ?? []).reduce((suma, fila) => suma + fila.cantidadVendida, 0),
   );
   protected readonly totalVendido = computed(() =>
-    redondear((this.resultado() ?? []).reduce((suma, fila) => suma + fila.total, 0)),
+    redondear((this.resultado() ?? []).reduce((suma, fila) => suma + fila.montoTotal, 0)),
   );
+  protected readonly montoMayor = computed(() =>
+    (this.resultado() ?? []).reduce((mayor, fila) => Math.max(mayor, fila.montoTotal), 0),
+  );
+
+  protected porcentaje(monto: number): number {
+    return this.montoMayor() > 0
+      ? Math.min(100, Math.max(0, (monto / this.montoMayor()) * 100))
+      : 0;
+  }
   protected readonly resumenPeriodo = computed(() => {
     const { desde, hasta } = this.filtrosAplicados();
     if (desde && hasta) return `Desde ${desde} hasta ${hasta}`;
@@ -68,7 +77,7 @@ export class VentasPorCategoria implements OnInit {
     this.error.set(null);
     const enviados = { ...filtro };
     this.peticion = this.service
-      .ventasPorCategoria(enviados)
+      .ventasPorCategoria(enviados.desde, enviados.hasta)
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (resultado) => {

@@ -76,6 +76,26 @@ form.card {
   padding: 24px;
   color: #6b7280;
 }
+.comparacion {
+  min-width: 200px;
+}
+.barra-fondo {
+  height: 12px;
+  border-radius: 6px;
+  background: #e9f0f9;
+  overflow: hidden;
+}
+.barra {
+  height: 100%;
+  background: #0f2e5c;
+  border-radius: inherit;
+}
+.comparacion span {
+  display: block;
+  margin-top: 5px;
+  color: #4b5563;
+  font-size: 12px;
+}
 @media (max-width: 700px) {
   .resumen {
     grid-template-columns: 1fr;

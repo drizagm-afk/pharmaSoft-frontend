@@ -13,7 +13,7 @@
       <label>Hasta <input class="input" type="date" formControlName="hasta" /></label>
       <div class="acciones">
         <button type="button" class="btn" (click)="limpiar()">Limpiar</button>
-        <button type="submit" class="btn btn-primary">Consultar</button>
+        <button type="submit" class="btn btn-primary">Generar</button>
       </div>
     </fieldset>
   </form>
@@ -50,19 +50,26 @@
             <th scope="col">Categoría</th>
             <th scope="col" class="monto">Unidades vendidas</th>
             <th scope="col" class="monto">Total vendido</th>
+            <th scope="col">Comparación de importes</th>
           </tr>
         </thead>
         <tbody>
           @for (fila of filas; track fila.categoriaId) {
             <tr>
-              <td>{{ fila.categoria }}</td>
-              <td class="monto">{{ fila.cantidad | number: '1.0-0' }}</td>
-              <td class="monto">{{ fila.total | currency: 'PEN' : 'S/ ' }}</td>
+              <td>{{ fila.categoriaNombre }}</td>
+              <td class="monto">{{ fila.cantidadVendida | number: '1.0-0' }}</td>
+              <td class="monto">{{ fila.montoTotal | currency: 'PEN' : 'S/ ' }}</td>
+              <td class="comparacion">
+                <div class="barra-fondo" aria-hidden="true">
+                  <div class="barra" [style.width.%]="porcentaje(fila.montoTotal)"></div>
+                </div>
+                <span>{{ porcentaje(fila.montoTotal) | number: '1.0-1' }}% del importe mayor</span>
+              </td>
             </tr>
           } @empty {
             <tr>
-              <td colspan="3" class="vacio" role="status">
-                No hay ventas registradas para el período seleccionado.
+              <td colspan="4" class="vacio" role="status">
+                No hay ventas en el periodo seleccionado.
               </td>
             </tr>
           }
@@ -73,6 +80,7 @@
               <th scope="row">Total</th>
               <td class="monto">{{ totalUnidades() | number: '1.0-0' }}</td>
               <td class="monto">{{ totalVendido() | currency: 'PEN' : 'S/ ' }}</td>
+              <td></td>
             </tr>
           </tfoot>
         }
