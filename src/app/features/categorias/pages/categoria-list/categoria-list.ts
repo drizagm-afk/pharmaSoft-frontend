@@ -1,4 +1,11 @@
-import { Component, computed, inject, OnInit, signal } from '@angular/core';
+import {
+  Component,
+  computed,
+  inject,
+  OnInit,
+  signal,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { RouterLink } from '@angular/router';
 import { Categoria } from '../../models/categoria.model';
@@ -9,6 +16,7 @@ import { mensajeError } from '../../../../core/utils/http-error';
   selector: 'app-categoria-list',
   imports: [RouterLink],
   templateUrl: './categoria-list.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './categoria-list.css',
 })
 export class CategoriaList implements OnInit {
@@ -19,7 +27,7 @@ export class CategoriaList implements OnInit {
   protected readonly filtro = signal('');
   protected readonly filtradas = computed(() => {
     const texto = this.filtro().trim().toLowerCase();
-    return this.categorias().filter(c => c.nombre.toLowerCase().includes(texto));
+    return this.categorias().filter((c) => c.nombre.toLowerCase().includes(texto));
   });
   ngOnInit(): void {
     this.cargar();
@@ -28,7 +36,7 @@ export class CategoriaList implements OnInit {
     this.cargando.set(true);
     this.error.set(null);
     this.categoriaService.listar().subscribe({
-      next: datos => {
+      next: (datos) => {
         this.categorias.set(datos);
         this.cargando.set(false);
       },
@@ -44,11 +52,14 @@ export class CategoriaList implements OnInit {
     }
     this.error.set(null);
     this.categoriaService.eliminar(categoria.id).subscribe({
-      next: () => this.categorias.update(lista => lista.filter(c => c.id !== categoria.id)),
-      error: (err: HttpErrorResponse) => this.error.set(mensajeError(
-        err,
-        'No se puede eliminar la categoría porque tiene productos asociados. Reasigne o elimine esos productos antes de intentarlo de nuevo.',
-      )),
+      next: () => this.categorias.update((lista) => lista.filter((c) => c.id !== categoria.id)),
+      error: (err: HttpErrorResponse) =>
+        this.error.set(
+          mensajeError(
+            err,
+            'No se puede eliminar la categoría porque tiene productos asociados. Reasigne o elimine esos productos antes de intentarlo de nuevo.',
+          ),
+        ),
     });
   }
 }
