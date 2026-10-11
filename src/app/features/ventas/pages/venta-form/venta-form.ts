@@ -1,9 +1,11 @@
-import { Component, DestroyRef, inject, OnInit, signal } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { Component, computed, DestroyRef, inject, OnInit, signal } from '@angular/core';
+import { CurrencyPipe } from '@angular/common';
+import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { FormControl, FormGroup, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { forkJoin } from 'rxjs';
 import { mensajeError } from '../../../../core/utils/http-error';
+import { redondear } from '../../../../core/utils/numeros';
 import { Cliente } from '../../../clientes/models/cliente.model';
 import { ClienteService } from '../../../clientes/services/cliente-service';
 import { Producto } from '../../../productos/models/producto.model';
@@ -16,7 +18,7 @@ interface LineaForm {
 
 @Component({
   selector: 'app-venta-form',
-  imports: [ReactiveFormsModule, RouterLink],
+  imports: [ReactiveFormsModule, RouterLink, CurrencyPipe],
   templateUrl: './venta-form.html',
   styleUrl: './venta-form.css',
 })
@@ -33,6 +35,28 @@ export class VentaForm implements OnInit {
     clienteId: this.fb.control<number | null>(null, Validators.required),
     detalles: this.fb.array<FormGroup<LineaForm>>([], Validators.required),
   });
+
+  private readonly valor = toSignal(this.form.valueChanges, { initialValue: this.form.value });
+  private readonly productoPorId = computed(() => new Map(this.productos().map(p => [p.id, p])));
+  protected readonly clienteElegido = computed(() =>
+    this.clientes().find(c => c.id === this.valor().clienteId));
+  protected readonly lineas = computed(() => (this.valor().detalles ?? []).map(d => {
+    const producto = d.productoId ? this.productoPorId().get(d.productoId) : undefined;
+    const cantidad = Number(d.cantidad) || 0;
+    const precio = producto?.precio ?? 0;
+    return {
+      producto,
+      cantidad,
+      precio,
+      subtotal: redondear(precio * cantidad),
+      excedeStock: !!producto && cantidad > producto.stock,
+    };
+  }));
+  protected readonly total = computed(() =>
+    redondear(this.lineas().reduce((suma, linea) => suma + linea.subtotal, 0)));
+  protected readonly unidades = computed(() =>
+    this.lineas().reduce((suma, linea) => suma + linea.cantidad, 0));
+  protected readonly hayExcesoDeStock = computed(() => this.lineas().some(linea => linea.excedeStock));
 
   get detalles() { return this.form.controls.detalles; }
 
@@ -68,7 +92,5 @@ export class VentaForm implements OnInit {
 
   quitarLinea(indice: number): void { this.detalles.removeAt(indice); }
 
-  protected nombreProducto(id: number | null): string {
-    return this.productos().find(p => p.id === id)?.nombre ?? '';
-  }
+  cambiarCliente(): void { this.form.controls.clienteId.setValue(null); }
 }

@@ -4,29 +4,41 @@
   @if (cargando()) { <p role="status">Cargando clientes y productos...</p> }
   @else if (!error()) {
     <form [formGroup]="form" class="card" (submit)="$event.preventDefault()">
-      <label for="cliente">Cliente</label>
-      <select id="cliente" class="input" formControlName="clienteId">
-        <option [ngValue]="null">Seleccione un cliente</option>
-        @for (c of clientes(); track c.id) { <option [ngValue]="c.id">{{ c.apellidos }}, {{ c.nombres }} · {{ c.dni }}</option> }
-      </select>
+      <h3>1. Cliente</h3>
+      @if (clienteElegido(); as c) {
+        <div class="elegido">
+          <span><strong>{{ c.apellidos }}, {{ c.nombres }}</strong> · DNI {{ c.dni }}</span>
+          <button type="button" class="btn" (click)="cambiarCliente()">Cambiar</button>
+        </div>
+      } @else {
+        <label for="cliente">Cliente</label>
+        <select id="cliente" class="input" formControlName="clienteId">
+          <option [ngValue]="null">Seleccione un cliente</option>
+          @for (c of clientes(); track c.id) { <option [ngValue]="c.id">{{ c.apellidos }}, {{ c.nombres }} · {{ c.dni }}</option> }
+        </select>
+      }
       <h3>Productos</h3>
       <div class="catalogo">
         @for (p of productos(); track p.id) {
-          <button type="button" class="btn" (click)="agregarProducto(p)">+ {{ p.nombre }}</button>
+          <button type="button" class="btn" (click)="agregarProducto(p)">+ {{ p.nombre }} · {{ p.precio | currency: 'PEN' : 'S/ ' }} · Stock {{ p.stock }}</button>
         }
       </div>
       <table class="tabla" formArrayName="detalles">
-        <thead><tr><th>Producto</th><th>Cantidad</th><th></th></tr></thead>
+        <thead><tr><th>Producto</th><th class="monto">Precio</th><th>Cantidad</th><th class="monto">Subtotal</th><th></th></tr></thead>
         <tbody>
           @for (linea of detalles.controls; track linea; let i = $index) {
             <tr [formGroupName]="i">
-              <td>{{ nombreProducto(linea.controls.productoId.value) }}</td>
-              <td><input class="input cantidad" type="number" min="1" step="1" formControlName="cantidad" [attr.aria-label]="'Cantidad de ' + nombreProducto(linea.controls.productoId.value)" /></td>
+              <td>{{ lineas()[i]?.producto?.nombre }}<small class="dato">{{ lineas()[i]?.producto?.categoriaNombre }}</small></td>
+              <td class="monto">{{ lineas()[i]?.precio | currency: 'PEN' : 'S/ ' }}</td>
+              <td><input class="input cantidad" type="number" min="1" step="1" formControlName="cantidad" [attr.aria-label]="'Cantidad de ' + lineas()[i]?.producto?.nombre" /></td>
+              <td class="monto">{{ lineas()[i]?.subtotal | currency: 'PEN' : 'S/ ' }}</td>
               <td><button type="button" class="btn btn-peligro" (click)="quitarLinea(i)" aria-label="Quitar producto">✕</button></td>
             </tr>
-          } @empty { <tr><td colspan="3">Aún no hay productos. Agregue uno para comenzar.</td></tr> }
+          } @empty { <tr><td colspan="5">Aún no hay productos. Agregue uno para comenzar.</td></tr> }
         </tbody>
+        <tfoot><tr><td colspan="3" class="monto">Total estimado</td><td class="monto total">{{ total() | currency: 'PEN' : 'S/ ' }}</td><td></td></tr></tfoot>
       </table>
+      <p class="dato">{{ detalles.length }} productos · {{ unidades() }} unidades. El total definitivo se calcula al registrar con los precios vigentes.</p>
     </form>
   }
 </section>
