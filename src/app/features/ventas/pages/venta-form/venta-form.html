@@ -1,44 +1,101 @@
 <section class="page">
-  <header class="page-header"><h2>Nueva venta</h2><a routerLink="/ventas" class="btn">Volver a ventas</a></header>
+  <header class="page-header"><h2>Nueva venta</h2></header>
   @if (error()) { <div class="alerta" role="alert">{{ error() }}</div> }
-  @if (cargando()) { <p role="status">Cargando clientes y productos...</p> }
-  @else if (!error()) {
-    <form [formGroup]="form" class="card" (submit)="$event.preventDefault()">
-      <h3>1. Cliente</h3>
-      @if (clienteElegido(); as c) {
-        <div class="elegido">
-          <span><strong>{{ c.apellidos }}, {{ c.nombres }}</strong> · DNI {{ c.dni }}</span>
-          <button type="button" class="btn" (click)="cambiarCliente()">Cambiar</button>
-        </div>
-      } @else {
-        <label for="cliente">Cliente</label>
-        <select id="cliente" class="input" formControlName="clienteId">
-          <option [ngValue]="null">Seleccione un cliente</option>
-          @for (c of clientes(); track c.id) { <option [ngValue]="c.id">{{ c.apellidos }}, {{ c.nombres }} · {{ c.dni }}</option> }
-        </select>
-      }
-      <h3>Productos</h3>
-      <div class="catalogo">
-        @for (p of productos(); track p.id) {
-          <button type="button" class="btn" (click)="agregarProducto(p)">+ {{ p.nombre }} · {{ p.precio | currency: 'PEN' : 'S/ ' }} · Stock {{ p.stock }}</button>
-        }
-      </div>
-      <table class="tabla" formArrayName="detalles">
-        <thead><tr><th>Producto</th><th class="monto">Precio</th><th>Cantidad</th><th class="monto">Subtotal</th><th></th></tr></thead>
-        <tbody>
-          @for (linea of detalles.controls; track linea; let i = $index) {
-            <tr [formGroupName]="i">
-              <td>{{ lineas()[i]?.producto?.nombre }}<small class="dato">{{ lineas()[i]?.producto?.categoriaNombre }}</small></td>
-              <td class="monto">{{ lineas()[i]?.precio | currency: 'PEN' : 'S/ ' }}</td>
-              <td><input class="input cantidad" type="number" min="1" step="1" formControlName="cantidad" [attr.aria-label]="'Cantidad de ' + lineas()[i]?.producto?.nombre" /></td>
-              <td class="monto">{{ lineas()[i]?.subtotal | currency: 'PEN' : 'S/ ' }}</td>
-              <td><button type="button" class="btn btn-peligro" (click)="quitarLinea(i)" aria-label="Quitar producto">✕</button></td>
-            </tr>
-          } @empty { <tr><td colspan="5">Aún no hay productos. Agregue uno para comenzar.</td></tr> }
-        </tbody>
-        <tfoot><tr><td colspan="3" class="monto">Total estimado</td><td class="monto total">{{ total() | currency: 'PEN' : 'S/ ' }}</td><td></td></tr></tfoot>
-      </table>
-      <p class="dato">{{ detalles.length }} productos · {{ unidades() }} unidades. El total definitivo se calcula al registrar con los precios vigentes.</p>
-    </form>
+  @for (campo of erroresServidor() | keyvalue; track campo.key) {
+    <p class="error" role="alert">{{ campo.value }}</p>
   }
+  @if (cargando()) { <p role="status">Cargando clientes y productos...</p> }
+  @else if (!cargaFallida()) {
+    <form [formGroup]="form" class="card" (ngSubmit)="revisar()">
+      <fieldset [disabled]="confirmando() || guardando()">
+        <h3>1. Cliente</h3>
+        @if (clienteElegido(); as c) {
+          <div class="elegido">
+            <span><strong>{{ c.apellidos }}, {{ c.nombres }}</strong> · DNI {{ c.dni }}</span>
+            <button type="button" class="btn" (click)="cambiarCliente()">Cambiar</button>
+          </div>
+          @if (!c.estado) { <small class="error">El cliente está inactivo. Seleccione otro cliente.</small> }
+        } @else {
+          <label for="buscar-cliente">Buscar cliente por nombre, apellido o DNI</label>
+          <div class="buscador">
+            <input id="buscar-cliente" class="input" type="search" [formControl]="buscarCliente"
+              (keydown.enter)="$event.preventDefault()" placeholder="Por ejemplo: huaman" />
+            @if (hayBusquedaCliente()) {
+              <ul class="resultados">
+                @for (c of clientesEncontrados(); track c.id) {
+                  <li><button type="button" (click)="elegirCliente(c)"><strong>{{ c.apellidos }}, {{ c.nombres }}</strong><span class="dato">DNI {{ c.dni }}</span></button></li>
+                } @empty { <li class="vacio" role="status">Ningún cliente activo coincide con la búsqueda.</li> }
+              </ul>
+            }
+          </div>
+        }
+        @if (form.controls.clienteId.touched && (!clienteElegido() || form.controls.clienteId.invalid)) {
+          <small class="error">Busque y seleccione el cliente.</small>
+        }
+        <h3>2. Productos</h3>
+        <label for="buscar-producto">Buscar producto por nombre o categoría</label>
+        <div class="buscador">
+          <input id="buscar-producto" class="input" type="search" [formControl]="buscarProducto"
+            (keydown.enter)="agregarPrimero($event)" placeholder="Enter agrega el primer resultado" />
+          @if (hayBusquedaProducto()) {
+            <ul class="resultados">
+              @for (p of productosEncontrados(); track p.id) {
+                <li><button type="button" (click)="agregarProducto(p)"><strong>{{ p.nombre }}</strong>
+                  <span class="dato">{{ p.categoriaNombre }}</span><span class="dato">{{ p.precio | currency: 'PEN' : 'S/ ' }}</span>
+                  <span class="dato">Stock {{ p.stock }}</span>
+                  @if (cantidadEnDetalle(p.id); as n) { <span class="ya">En la venta: {{ n }}</span> }
+                  <span class="agregar">+ Agregar</span>
+                </button></li>
+              } @empty { <li class="vacio" role="status">Ningún producto activo con stock coincide con la búsqueda.</li> }
+            </ul>
+          }
+        </div>
+        <div class="tabla-contenedor">
+          <table class="tabla" formArrayName="detalles">
+            <thead><tr><th>Producto</th><th class="monto">Precio</th><th>Cantidad</th><th class="monto">Subtotal</th><th></th></tr></thead>
+            <tbody>
+              @for (linea of detalles.controls; track linea; let i = $index) {
+                <tr [formGroupName]="i">
+                  <td>{{ lineas()[i]?.producto?.nombre || 'Producto no disponible' }}<small class="dato">{{ lineas()[i]?.producto?.categoriaNombre }}</small></td>
+                  <td class="monto">{{ lineas()[i]?.precio | currency: 'PEN' : 'S/ ' }}</td>
+                  <td>
+                    <input class="input cantidad" type="number" min="1" step="1" formControlName="cantidad"
+                      [attr.aria-label]="'Cantidad de ' + (lineas()[i]?.producto?.nombre || 'producto')"
+                      [attr.aria-invalid]="linea.controls.cantidad.invalid || lineas()[i]?.excedeStock" />
+                    @if (linea.controls.cantidad.touched && linea.controls.cantidad.invalid) { <small class="error">Ingrese una cantidad entera mayor que cero.</small> }
+                    @if (lineas()[i]?.excedeStock) { <small class="error">Supera el stock ({{ lineas()[i]?.producto?.stock }})</small> }
+                    @if (!lineas()[i]?.producto || !lineas()[i]?.producto?.estado || lineas()[i]?.producto?.stock === 0) {
+                      <small class="error">Producto no disponible. Quite esta línea.</small>
+                    }
+                  </td>
+                  <td class="monto">{{ lineas()[i]?.subtotal | currency: 'PEN' : 'S/ ' }}</td>
+                  <td><button type="button" class="btn btn-peligro" (click)="quitarLinea(i)" aria-label="Quitar producto">✕</button></td>
+                </tr>
+              } @empty { <tr><td colspan="5" class="vacio">Aún no hay productos. Use el buscador para agregarlos.</td></tr> }
+            </tbody>
+            <tfoot><tr><td colspan="3" class="monto">Total estimado</td><td class="monto total">{{ total() | currency: 'PEN' : 'S/ ' }}</td><td></td></tr></tfoot>
+          </table>
+        </div>
+        @if (form.controls.detalles.touched && form.controls.detalles.invalid) { <small class="error">Agregue al menos un producto y una cantidad entera mayor que cero en cada línea.</small> }
+        <p class="dato">{{ detalles.length }} productos · {{ unidades() }} unidades.</p>
+        <div class="acciones">
+          @if (!confirmando() && !guardando()) { <a routerLink="/ventas" class="btn">Cancelar</a> }
+          <button type="submit" class="btn btn-primary">Revisar venta</button>
+        </div>
+      </fieldset>
+    </form>
+    @if (confirmando()) {
+      <section class="card confirmacion" role="region" aria-labelledby="confirmar-titulo">
+        <h3 id="confirmar-titulo">¿Confirma el registro de la venta?</h3>
+        <p>Cliente: <strong>{{ clienteElegido()?.apellidos }}, {{ clienteElegido()?.nombres }}</strong></p>
+        <p>Productos: <strong>{{ detalles.length }}</strong> · Total estimado: <strong>{{ total() | currency: 'PEN' : 'S/ ' }}</strong></p>
+        <p class="dato">El total definitivo lo calcula el servidor con los precios vigentes.</p>
+        <label class="check"><input type="checkbox" [checked]="imprimirAlRegistrar()" [disabled]="guardando()"
+          (change)="imprimirAlRegistrar.set($any($event.target).checked)" /> Imprimir el comprobante al registrar</label>
+        <div class="acciones"><button type="button" class="btn" [disabled]="guardando()" (click)="volver()">Volver</button>
+          <button type="button" class="btn btn-primary" [disabled]="guardando()" (click)="confirmar()">{{ guardando() ? 'Registrando...' : 'Confirmar venta' }}</button></div>
+      </section>
+    }
+  }
+  @if (cargaFallida()) { <a routerLink="/ventas" class="btn">Volver a ventas</a> }
 </section>

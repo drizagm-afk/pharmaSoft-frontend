@@ -13,6 +13,7 @@ import { VentaService } from '../../services/venta-service';
 })
 export class VentaDetalle implements OnInit {
   readonly id = input.required<string>();
+  readonly nueva = input<string>();
   private readonly service = inject(VentaService);
   private readonly destroyRef = inject(DestroyRef);
   protected readonly venta = signal<Venta | null>(null);

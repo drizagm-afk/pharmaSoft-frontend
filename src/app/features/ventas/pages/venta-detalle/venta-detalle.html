@@ -3,6 +3,7 @@
   @if (error()) { <div class="alerta" role="alert">{{ error() }}</div> }
   @if (cargando()) { <p role="status">Cargando venta...</p> }
   @if (venta(); as v) {
+    @if (nueva() === '1') { <p class="badge" role="status">Venta registrada correctamente.</p> }
     <article class="card">
       <h3>Venta N.º {{ v.id }}</h3>
       <p>{{ v.clienteNombre }} · {{ v.fecha | date: 'dd/MM/yyyy HH:mm' }} · {{ v.estado }}</p>
