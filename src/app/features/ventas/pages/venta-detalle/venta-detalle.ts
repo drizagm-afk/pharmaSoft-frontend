@@ -1,4 +1,16 @@
-import { afterNextRender, AfterRenderRef, Component, computed, DestroyRef, inject, Injector, input, OnChanges, signal, SimpleChanges } from '@angular/core';
+import {
+  afterNextRender,
+  AfterRenderRef,
+  Component,
+  computed,
+  DestroyRef,
+  inject,
+  Injector,
+  input,
+  OnChanges,
+  signal,
+  SimpleChanges,
+} from '@angular/core';
 import { CurrencyPipe, DatePipe } from '@angular/common';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { RouterLink } from '@angular/router';
@@ -32,7 +44,8 @@ export class VentaDetalle implements OnChanges {
   protected readonly fechaImpresion = signal(new Date());
   protected readonly numero = computed(() => String(this.venta()?.id ?? '').padStart(6, '0'));
   protected readonly unidades = computed(() =>
-    (this.venta()?.detalles ?? []).reduce((suma, d) => suma + d.cantidad, 0));
+    (this.venta()?.detalles ?? []).reduce((suma, d) => suma + d.cantidad, 0),
+  );
 
   constructor() {
     this.destroyRef.onDestroy(() => this.impresionPendiente?.destroy());
@@ -40,7 +53,8 @@ export class VentaDetalle implements OnChanges {
 
   ngOnChanges(cambios: SimpleChanges): void {
     if (cambios['id']) this.cargar();
-    else if (cambios['imprimir'] && this.imprimir() === '1' && this.venta()) this.imprimirComprobante();
+    else if (cambios['imprimir'] && this.imprimir() === '1' && this.venta())
+      this.imprimirComprobante();
   }
 
   private cargar(): void {
@@ -56,21 +70,29 @@ export class VentaDetalle implements OnChanges {
       this.cargando.set(false);
       return;
     }
-    this.peticion = this.service.obtener(Number(id)).pipe(
-      switchMap(venta => this.clienteService.obtener(venta.clienteId).pipe(
-        catchError(() => of(null)),
-        map(cliente => ({ venta, cliente })),
-      )),
-      takeUntilDestroyed(this.destroyRef),
-    ).subscribe({
-      next: ({ venta, cliente }) => {
-        this.venta.set(venta);
-        this.cliente.set(cliente);
-        this.cargando.set(false);
-        if (this.imprimir() === '1') this.imprimirComprobante();
-      },
-      error: err => { this.error.set(mensajeError(err)); this.cargando.set(false); },
-    });
+    this.peticion = this.service
+      .obtener(Number(id))
+      .pipe(
+        switchMap((venta) =>
+          this.clienteService.obtener(venta.clienteId).pipe(
+            catchError(() => of(null)),
+            map((cliente) => ({ venta, cliente })),
+          ),
+        ),
+        takeUntilDestroyed(this.destroyRef),
+      )
+      .subscribe({
+        next: ({ venta, cliente }) => {
+          this.venta.set(venta);
+          this.cliente.set(cliente);
+          this.cargando.set(false);
+          if (this.imprimir() === '1') this.imprimirComprobante();
+        },
+        error: (err) => {
+          this.error.set(mensajeError(err));
+          this.cargando.set(false);
+        },
+      });
   }
 
   protected imprimirComprobante(): void {
@@ -78,8 +100,11 @@ export class VentaDetalle implements OnChanges {
     if (!id || this.cargando()) return;
     this.fechaImpresion.set(new Date());
     this.impresionPendiente?.destroy();
-    this.impresionPendiente = afterNextRender(() => {
-      if (this.venta()?.id === id && !this.cargando()) window.print();
-    }, { injector: this.injector });
+    this.impresionPendiente = afterNextRender(
+      () => {
+        if (this.venta()?.id === id && !this.cargando()) window.print();
+      },
+      { injector: this.injector },
+    );
   }
 }

@@ -29,9 +29,11 @@ export class VentasPorCategoria implements OnInit {
     hasta: this.fb.control<string | null>(null),
   });
   protected readonly totalUnidades = computed(() =>
-    (this.resultado() ?? []).reduce((suma, fila) => suma + fila.cantidad, 0));
-  protected readonly totalVendido = computed(() => redondear(
-    (this.resultado() ?? []).reduce((suma, fila) => suma + fila.total, 0)));
+    (this.resultado() ?? []).reduce((suma, fila) => suma + fila.cantidad, 0),
+  );
+  protected readonly totalVendido = computed(() =>
+    redondear((this.resultado() ?? []).reduce((suma, fila) => suma + fila.total, 0)),
+  );
   protected readonly resumenPeriodo = computed(() => {
     const { desde, hasta } = this.filtrosAplicados();
     if (desde && hasta) return `Desde ${desde} hasta ${hasta}`;
@@ -40,7 +42,9 @@ export class VentasPorCategoria implements OnInit {
     return 'Todo el histórico';
   });
 
-  ngOnInit(): void { this.cargar({ desde: null, hasta: null }); }
+  ngOnInit(): void {
+    this.cargar({ desde: null, hasta: null });
+  }
 
   buscar(): void {
     if (this.cargando()) return;
@@ -63,14 +67,16 @@ export class VentasPorCategoria implements OnInit {
     this.cargando.set(true);
     this.error.set(null);
     const enviados = { ...filtro };
-    this.peticion = this.service.ventasPorCategoria(enviados)
-      .pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
-        next: resultado => {
+    this.peticion = this.service
+      .ventasPorCategoria(enviados)
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: (resultado) => {
           this.resultado.set(resultado);
           this.filtrosAplicados.set(enviados);
           this.cargando.set(false);
         },
-        error: err => {
+        error: (err) => {
           this.resultado.set(null);
           this.error.set(mensajeError(err));
           this.cargando.set(false);

@@ -1,4 +1,14 @@
-import { afterNextRender, AfterRenderRef, Component, computed, DestroyRef, inject, Injector, OnInit, signal } from '@angular/core';
+import {
+  afterNextRender,
+  AfterRenderRef,
+  Component,
+  computed,
+  DestroyRef,
+  inject,
+  Injector,
+  OnInit,
+  signal,
+} from '@angular/core';
 import { CurrencyPipe, DatePipe } from '@angular/common';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
@@ -42,14 +52,20 @@ export class VentaList implements OnInit {
     desde: this.fb.control<string | null>(null),
     hasta: this.fb.control<string | null>(null),
   });
-  protected readonly totalPagina = computed(() => redondear(
-    (this.resultado()?.contenido ?? []).filter(v => v.estado === 'REGISTRADA')
-      .reduce((suma, v) => suma + v.total, 0)));
+  protected readonly totalPagina = computed(() =>
+    redondear(
+      (this.resultado()?.contenido ?? [])
+        .filter((v) => v.estado === 'REGISTRADA')
+        .reduce((suma, v) => suma + v.total, 0),
+    ),
+  );
   protected readonly resumenFiltros = computed(() => {
     const f = this.filtrosAplicados();
-    const cliente = this.clientes().find(c => c.id === f.clienteId);
+    const cliente = this.clientes().find((c) => c.id === f.clienteId);
     const partes = [
-      f.clienteId !== null ? `cliente ${cliente ? cliente.apellidos + ', ' + cliente.nombres : '#' + f.clienteId}` : '',
+      f.clienteId !== null
+        ? `cliente ${cliente ? cliente.apellidos + ', ' + cliente.nombres : '#' + f.clienteId}`
+        : '',
       f.estado ? `estado ${f.estado}` : '',
       f.desde ? `desde ${f.desde}` : '',
       f.hasta ? `hasta ${f.hasta}` : '',
@@ -69,14 +85,21 @@ export class VentaList implements OnInit {
   protected cargarClientes(): void {
     this.cargandoClientes.set(true);
     this.errorClientes.set(null);
-    this.clienteService.listar(0, 100).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
-      next: datos => {
-        if (Array.isArray(datos)) this.errorClientes.set('El servidor debe devolver clientes paginados.');
-        else this.clientes.set(datos.contenido);
-        this.cargandoClientes.set(false);
-      },
-      error: err => { this.errorClientes.set(mensajeError(err)); this.cargandoClientes.set(false); },
-    });
+    this.clienteService
+      .listar(0, 100)
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: (datos) => {
+          if (Array.isArray(datos))
+            this.errorClientes.set('El servidor debe devolver clientes paginados.');
+          else this.clientes.set(datos.contenido);
+          this.cargandoClientes.set(false);
+        },
+        error: (err) => {
+          this.errorClientes.set(mensajeError(err));
+          this.cargandoClientes.set(false);
+        },
+      });
   }
 
   buscar(): void {
@@ -107,9 +130,11 @@ export class VentaList implements OnInit {
     this.cargando.set(true);
     this.error.set(null);
     const enviados = { ...filtro };
-    this.peticion = this.service.buscar(enviados, pagina, 10)
-      .pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
-        next: datos => {
+    this.peticion = this.service
+      .buscar(enviados, pagina, 10)
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: (datos) => {
           if (Array.isArray(datos)) {
             this.resultado.set(null);
             this.error.set('El servidor debe devolver un listado paginado de ventas.');
@@ -119,7 +144,11 @@ export class VentaList implements OnInit {
           }
           this.cargando.set(false);
         },
-        error: err => { this.resultado.set(null); this.error.set(mensajeError(err)); this.cargando.set(false); },
+        error: (err) => {
+          this.resultado.set(null);
+          this.error.set(mensajeError(err));
+          this.cargando.set(false);
+        },
       });
   }
 
@@ -128,8 +157,11 @@ export class VentaList implements OnInit {
     if (this.cargando() || !resultado?.contenido.length) return;
     this.fechaImpresion.set(new Date());
     this.impresionPendiente?.destroy();
-    this.impresionPendiente = afterNextRender(() => {
-      if (this.resultado() === resultado && !this.cargando()) window.print();
-    }, { injector: this.injector });
+    this.impresionPendiente = afterNextRender(
+      () => {
+        if (this.resultado() === resultado && !this.cargando()) window.print();
+      },
+      { injector: this.injector },
+    );
   }
 }

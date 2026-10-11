@@ -19,8 +19,11 @@ export class VentaService {
   }
 
   buscar(filtro: FiltroVentas, pagina = 0, tamanio = 10): Observable<PaginaResponse<Venta>> {
-    let params = new HttpParams().set('pagina', pagina).set('tamanio', tamanio)
-      .set('ordenarPor', 'fecha').set('direccion', 'desc');
+    let params = new HttpParams()
+      .set('pagina', pagina)
+      .set('tamanio', tamanio)
+      .set('ordenarPor', 'fecha')
+      .set('direccion', 'desc');
     if (filtro.clienteId !== null) params = params.set('clienteId', filtro.clienteId);
     if (filtro.estado) params = params.set('estado', filtro.estado);
     if (filtro.desde) params = params.set('desde', filtro.desde);
