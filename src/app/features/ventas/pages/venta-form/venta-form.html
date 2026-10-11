@@ -1,0 +1,32 @@
+<section class="page">
+  <header class="page-header"><h2>Nueva venta</h2><a routerLink="/ventas" class="btn">Volver a ventas</a></header>
+  @if (error()) { <div class="alerta" role="alert">{{ error() }}</div> }
+  @if (cargando()) { <p role="status">Cargando clientes y productos...</p> }
+  @else if (!error()) {
+    <form [formGroup]="form" class="card" (submit)="$event.preventDefault()">
+      <label for="cliente">Cliente</label>
+      <select id="cliente" class="input" formControlName="clienteId">
+        <option [ngValue]="null">Seleccione un cliente</option>
+        @for (c of clientes(); track c.id) { <option [ngValue]="c.id">{{ c.apellidos }}, {{ c.nombres }} · {{ c.dni }}</option> }
+      </select>
+      <h3>Productos</h3>
+      <div class="catalogo">
+        @for (p of productos(); track p.id) {
+          <button type="button" class="btn" (click)="agregarProducto(p)">+ {{ p.nombre }}</button>
+        }
+      </div>
+      <table class="tabla" formArrayName="detalles">
+        <thead><tr><th>Producto</th><th>Cantidad</th><th></th></tr></thead>
+        <tbody>
+          @for (linea of detalles.controls; track linea; let i = $index) {
+            <tr [formGroupName]="i">
+              <td>{{ nombreProducto(linea.controls.productoId.value) }}</td>
+              <td><input class="input cantidad" type="number" min="1" step="1" formControlName="cantidad" [attr.aria-label]="'Cantidad de ' + nombreProducto(linea.controls.productoId.value)" /></td>
+              <td><button type="button" class="btn btn-peligro" (click)="quitarLinea(i)" aria-label="Quitar producto">✕</button></td>
+            </tr>
+          } @empty { <tr><td colspan="3">Aún no hay productos. Agregue uno para comenzar.</td></tr> }
+        </tbody>
+      </table>
+    </form>
+  }
+</section>

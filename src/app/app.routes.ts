@@ -6,6 +6,10 @@ export const routes: Routes = [
         path: '',
         component: MainLayout,
         children: [
+            {
+                path: 'ventas',
+                loadChildren: () => import('./features/ventas/ventas.routes').then(m => m.VENTAS_ROUTES),
+            },
             { path: '', pathMatch: 'full', redirectTo: 'inicio' },
             {
                 path: 'inicio',

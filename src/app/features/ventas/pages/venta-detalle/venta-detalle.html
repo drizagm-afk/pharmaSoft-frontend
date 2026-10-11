@@ -1,0 +1,19 @@
+<section class="page">
+  <header class="page-header"><h2>Detalle de venta</h2><a routerLink="/ventas" class="btn">Volver a ventas</a></header>
+  @if (error()) { <div class="alerta" role="alert">{{ error() }}</div> }
+  @if (cargando()) { <p role="status">Cargando venta...</p> }
+  @if (venta(); as v) {
+    <article class="card">
+      <h3>Venta N.º {{ v.id }}</h3>
+      <p>{{ v.clienteNombre }} · {{ v.fecha | date: 'dd/MM/yyyy HH:mm' }} · {{ v.estado }}</p>
+      <table class="tabla">
+        <thead><tr><th>Producto</th><th>Precio</th><th>Cantidad</th><th>Subtotal</th></tr></thead>
+        <tbody>@for (d of v.detalles; track d.productoId) {
+          <tr><td>{{ d.productoNombre }}</td><td>{{ d.precio | currency: 'PEN' : 'S/ ' }}</td>
+            <td>{{ d.cantidad }}</td><td>{{ d.subtotal | currency: 'PEN' : 'S/ ' }}</td></tr>
+        }</tbody>
+      </table>
+      <p><strong>Total: {{ v.total | currency: 'PEN' : 'S/ ' }}</strong></p>
+    </article>
+  }
+</section>
