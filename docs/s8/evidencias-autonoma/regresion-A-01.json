@@ -1,0 +1,36 @@
+{
+  "case": "regresion-A-01",
+  "executedBy": "Codex",
+  "capturedAt": "2026-10-06T16:33:55.882159-05:00",
+  "request": {
+    "method": "POST",
+    "url": "http://localhost:8080/api/v1/productos",
+    "body": {
+      "nombre": "QA S8 FIX 20261006163355 Producto",
+      "precio": 5.5,
+      "stock": 10,
+      "estado": true,
+      "categoriaId": 69
+    }
+  },
+  "status": 201,
+  "headers": {
+    "Vary": "Origin",
+    "Content-Type": "application/json",
+    "Transfer-Encoding": "chunked",
+    "Date": "Tue, 06 Oct 2026 21:33:55 GMT",
+    "Connection": "close"
+  },
+  "body": {
+    "id": 94,
+    "nombre": "QA S8 FIX 20261006163355 Producto",
+    "descripcion": null,
+    "precio": 5.5,
+    "stock": 10,
+    "categoriaId": 69,
+    "categoriaNombre": "QA S8 FIX 20261006163355 Activa",
+    "estado": true,
+    "fechaCreacion": "2026-10-06T16:33:55.8705701",
+    "fechaModificacion": null
+  }
+}

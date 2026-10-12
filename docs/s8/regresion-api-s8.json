@@ -1,0 +1,201 @@
+{
+  "prefix": "QA S8 FIX 20261006163355",
+  "results": [
+    {
+      "case": "categoria-activa",
+      "expected": 201,
+      "actual": 201,
+      "pass": true,
+      "evidence": "regresion-categoria-activa.json"
+    },
+    {
+      "case": "A-01",
+      "expected": 201,
+      "actual": 201,
+      "pass": true,
+      "evidence": "regresion-A-01.json"
+    },
+    {
+      "case": "A-02",
+      "expected": 400,
+      "actual": 400,
+      "pass": true,
+      "evidence": "regresion-A-02.json"
+    },
+    {
+      "case": "A-03",
+      "expected": 404,
+      "actual": 404,
+      "pass": true,
+      "evidence": "regresion-A-03.json"
+    },
+    {
+      "case": "A-04",
+      "expected": 409,
+      "actual": 409,
+      "pass": true,
+      "evidence": "regresion-A-04.json"
+    },
+    {
+      "case": "A-05",
+      "expected": 409,
+      "actual": 409,
+      "pass": true,
+      "evidence": "regresion-A-05.json"
+    },
+    {
+      "case": "A-06",
+      "expected": 400,
+      "actual": 400,
+      "pass": true,
+      "evidence": "regresion-A-06.json"
+    },
+    {
+      "case": "A-07",
+      "expected": 400,
+      "actual": 400,
+      "pass": true,
+      "evidence": "regresion-A-07.json"
+    },
+    {
+      "case": "C-01",
+      "expected": 200,
+      "actual": 200,
+      "pass": true,
+      "evidence": "regresion-C-01.json"
+    },
+    {
+      "case": "producto-antes-rechazos",
+      "expected": 200,
+      "actual": 200,
+      "pass": true,
+      "evidence": "regresion-producto-antes-rechazos.json"
+    },
+    {
+      "case": "C-02",
+      "expected": 409,
+      "actual": 409,
+      "pass": true,
+      "evidence": "regresion-C-02.json"
+    },
+    {
+      "case": "C-03",
+      "expected": 409,
+      "actual": 409,
+      "pass": true,
+      "evidence": "regresion-C-03.json"
+    },
+    {
+      "case": "categoria-preservada",
+      "expected": 200,
+      "actual": 200,
+      "pass": true,
+      "evidence": "regresion-categoria-preservada.json"
+    },
+    {
+      "case": "C-05",
+      "expected": 404,
+      "actual": 404,
+      "pass": true,
+      "evidence": "regresion-C-05.json"
+    },
+    {
+      "case": "C-06",
+      "expected": 409,
+      "actual": 409,
+      "pass": true,
+      "evidence": "regresion-C-06.json"
+    },
+    {
+      "case": "stock-PUT",
+      "expected": 400,
+      "actual": 400,
+      "pass": true,
+      "evidence": "regresion-stock-PUT.json"
+    },
+    {
+      "case": "producto-preservado",
+      "expected": 200,
+      "actual": 200,
+      "pass": true,
+      "evidence": "regresion-producto-preservado.json"
+    },
+    {
+      "case": "categoria-PUT-valida",
+      "expected": 200,
+      "actual": 200,
+      "pass": true,
+      "evidence": "regresion-categoria-PUT-valida.json"
+    },
+    {
+      "case": "B-05",
+      "expected": 409,
+      "actual": 409,
+      "pass": true,
+      "evidence": "regresion-B-05.json"
+    },
+    {
+      "case": "B-01",
+      "expected": 204,
+      "actual": 204,
+      "pass": true,
+      "evidence": "regresion-B-01.json"
+    },
+    {
+      "case": "producto-inactivo",
+      "expected": 200,
+      "actual": 200,
+      "pass": true,
+      "evidence": "regresion-producto-inactivo.json"
+    },
+    {
+      "case": "B-02",
+      "expected": 409,
+      "actual": 409,
+      "pass": true,
+      "evidence": "regresion-B-02.json"
+    },
+    {
+      "case": "B-04",
+      "expected": 409,
+      "actual": 409,
+      "pass": true,
+      "evidence": "regresion-B-04.json"
+    },
+    {
+      "case": "desactivar-sin-activos",
+      "expected": 200,
+      "actual": 200,
+      "pass": true,
+      "evidence": "regresion-desactivar-sin-activos.json"
+    },
+    {
+      "case": "C-04",
+      "expected": 409,
+      "actual": 409,
+      "pass": true,
+      "evidence": "regresion-C-04.json"
+    },
+    {
+      "case": "categoria-vacia",
+      "expected": 201,
+      "actual": 201,
+      "pass": true,
+      "evidence": "regresion-categoria-vacia.json"
+    },
+    {
+      "case": "B-03",
+      "expected": 204,
+      "actual": 204,
+      "pass": true,
+      "evidence": "regresion-B-03.json"
+    },
+    {
+      "case": "B-03-ausente",
+      "expected": 404,
+      "actual": 404,
+      "pass": true,
+      "evidence": "regresion-B-03-ausente.json"
+    }
+  ]
+}

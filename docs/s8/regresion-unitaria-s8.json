@@ -1,0 +1,19 @@
+{
+  "command": "mvn clean test -q",
+  "suites": [
+    {
+      "suite": "com.edu.upeu.PharmaBackend.controller.DependenciasHttpTest",
+      "tests": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.edu.upeu.PharmaBackend.service.impl.DependenciasRegressionTest",
+      "tests": 10,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  ]
+}

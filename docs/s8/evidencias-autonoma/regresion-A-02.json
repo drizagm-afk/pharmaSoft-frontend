@@ -1,0 +1,33 @@
+{
+  "case": "regresion-A-02",
+  "executedBy": "Codex",
+  "capturedAt": "2026-10-06T16:33:55.903756-05:00",
+  "request": {
+    "method": "POST",
+    "url": "http://localhost:8080/api/v1/productos",
+    "body": {
+      "nombre": "QA S8 FIX 20261006163355 A02",
+      "precio": 5.5,
+      "stock": 10,
+      "estado": true
+    }
+  },
+  "status": 400,
+  "headers": {
+    "Vary": "Origin",
+    "Content-Type": "application/json",
+    "Transfer-Encoding": "chunked",
+    "Date": "Tue, 06 Oct 2026 21:33:55 GMT",
+    "Connection": "close"
+  },
+  "body": {
+    "timestamp": "2026-10-06T16:33:55.9027329",
+    "status": 400,
+    "error": "Bad Request",
+    "message": "Existen errores de validación",
+    "path": "/api/v1/productos",
+    "validationErrors": {
+      "categoriaId": "La categoria es obligatoria"
+    }
+  }
+}

@@ -6,6 +6,14 @@ export const routes: Routes = [
         path: '',
         component: MainLayout,
         children: [
+            {
+                path: 'reportes',
+                loadChildren: () => import('./features/reportes/reportes.routes').then(m => m.REPORTES_ROUTES),
+            },
+            {
+                path: 'ventas',
+                loadChildren: () => import('./features/ventas/ventas.routes').then(m => m.VENTAS_ROUTES),
+            },
             { path: '', pathMatch: 'full', redirectTo: 'inicio' },
             {
                 path: 'inicio',
@@ -26,7 +34,6 @@ export const routes: Routes = [
                 path: 'productos',
                 loadChildren: () => import('./features/productos/productos.routes').then(m => m.PRODUCTOS_ROUTES),
             },
-            { path: 'productos', loadChildren: () => import('./features/productos/productos.routes').then(m => m.PRODUCTOS_ROUTES) },
         ],
     },
     {

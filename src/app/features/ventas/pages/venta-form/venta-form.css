@@ -1,0 +1,110 @@
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+fieldset:disabled {
+  opacity: 0.75;
+}
+.buscador {
+  max-width: 720px;
+}
+.resultados {
+  list-style: none;
+  margin: 4px 0 0;
+  padding: 4px;
+  border: 1px solid #c9d3e3;
+  border-radius: 8px;
+  background: #fff;
+}
+.resultados button {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 12px;
+  width: 100%;
+  padding: 10px;
+  border: 0;
+  border-radius: 6px;
+  background: none;
+  text-align: left;
+  font: inherit;
+  cursor: pointer;
+}
+.resultados button:hover,
+.resultados button:focus-visible {
+  background: #e9f0f9;
+}
+.ya {
+  color: #1f5aa6;
+  font-weight: 600;
+}
+.agregar {
+  margin-left: auto;
+  color: #0f2e5c;
+  font-weight: 600;
+}
+.vacio {
+  padding: 12px;
+  color: #6b7280;
+}
+.tabla-contenedor {
+  overflow-x: auto;
+  margin-top: 16px;
+}
+.error {
+  display: block;
+  margin-top: 4px;
+  color: #b42318;
+}
+.acciones {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 16px;
+}
+.confirmacion {
+  margin-top: 16px;
+  border: 2px solid #f2a900;
+}
+.check {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.cantidad {
+  max-width: 100px;
+}
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+.elegido {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid #b7c8e0;
+  border-radius: 8px;
+  background: #e9f0f9;
+}
+.monto {
+  text-align: right;
+  white-space: nowrap;
+}
+.tabla th.monto {
+  text-align: right;
+}
+.total {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0f2e5c;
+}
+.dato {
+  display: block;
+  color: #4b5563;
+  font-size: 14px;
+}

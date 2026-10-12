@@ -33,6 +33,22 @@ describe('ProductoList', () => {
     expect(fixture.nativeElement.textContent).toContain('QA Producto');
     http.expectNone(r => r.url === url);
   });
+  it('loads 100 records and selects the category received from the route', () => {
+    const fixture = TestBed.createComponent(ProductoList);
+    fixture.componentRef.setInput('categoriaId', '46'); fixture.detectChanges();
+    http.expectOne(`${environment.apiUrl}/categorias`).flush([{ id: 46, nombre: 'QA Categoria', estado: true }, { id: 47, nombre: 'Otra categoria', estado: true }]);
+    const req = http.expectOne(r => r.url === url);
+    expect(req.request.params.get('tamanio')).toBe('100');
+    req.flush({ ...page, tamanio: 100, contenido: [product, { ...product, id: 2, categoriaId: 47, nombre: 'Otra categoria' }] });
+    fixture.detectChanges();
+    expect(fixture.nativeElement.querySelector('select').value).toBe('46');
+    expect(fixture.nativeElement.textContent).toContain('primeros 100 registros');
+    expect(fixture.nativeElement.querySelector('tbody').textContent).not.toContain('Otra categoria');
+    fixture.componentRef.setInput('categoriaId', '47'); fixture.detectChanges();
+    const changed = http.expectOne(r => r.url === url);
+    expect(changed.request.params.get('pagina')).toBe('0'); changed.flush(page);
+    fixture.detectChanges(); expect(fixture.nativeElement.querySelector('select').value).toBe('47');
+  });
   it('resets pagination when sorting and changing page size', () => {
     const fixture = load(); fixture.componentInstance.cambiarPagina(1);
     const next = http.expectOne(r => r.url === url); expect(next.request.params.get('pagina')).toBe('1');

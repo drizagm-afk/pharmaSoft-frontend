@@ -1,0 +1,30 @@
+{
+  "case": "C-06_producto88",
+  "executedBy": "Codex",
+  "capturedAt": "2026-10-06T16:24:32.789841-05:00",
+  "request": {
+    "method": "GET",
+    "url": "http://localhost:8080/api/v1/productos/88",
+    "body": null
+  },
+  "status": 200,
+  "headers": {
+    "Vary": "Origin",
+    "Content-Type": "application/json",
+    "Transfer-Encoding": "chunked",
+    "Date": "Tue, 06 Oct 2026 21:24:32 GMT",
+    "Connection": "close"
+  },
+  "body": {
+    "id": 88,
+    "nombre": "QA S8 AUTO A04",
+    "descripcion": null,
+    "precio": 5.5,
+    "stock": 10,
+    "categoriaId": 49,
+    "categoriaNombre": "QA S8 DelCarpio Inactiva",
+    "estado": true,
+    "fechaCreacion": "2026-10-06T15:44:57.1021774",
+    "fechaModificacion": null
+  }
+}

@@ -1,4 +1,12 @@
-import { Component, computed, DestroyRef, inject, OnInit, signal } from '@angular/core';
+import {
+  Component,
+  computed,
+  DestroyRef,
+  inject,
+  OnInit,
+  signal,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { RouterLink } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -11,6 +19,7 @@ import { ClienteService } from '../../services/cliente-service';
   selector: 'app-cliente-list',
   imports: [RouterLink],
   templateUrl: './cliente-list.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './cliente-list.css',
 })
 export class ClienteList implements OnInit {
@@ -28,31 +37,40 @@ export class ClienteList implements OnInit {
   protected readonly filtro = signal('');
   protected readonly filtrados = computed(() => {
     const texto = this.filtro().trim().toLowerCase();
-    return (this.respuesta()?.contenido ?? []).filter(c =>
-      c.dni.includes(texto) || `${c.nombres} ${c.apellidos}`.toLowerCase().includes(texto)
-      || `${c.apellidos} ${c.nombres}`.toLowerCase().includes(texto));
+    return (this.respuesta()?.contenido ?? []).filter(
+      (c) =>
+        c.dni.includes(texto) ||
+        `${c.nombres} ${c.apellidos}`.toLowerCase().includes(texto) ||
+        `${c.apellidos} ${c.nombres}`.toLowerCase().includes(texto),
+    );
   });
 
-  ngOnInit(): void { this.cargar(); }
+  ngOnInit(): void {
+    this.cargar();
+  }
 
   cargar(): void {
     this.peticion?.unsubscribe();
     this.cargando.set(true);
     this.error.set(null);
-    this.peticion = this.service.listar(this.pagina(), this.tamanio(), this.ordenarPor(), this.direccion())
-      .pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
-        next: datos => {
+    this.peticion = this.service
+      .listar(this.pagina(), this.tamanio(), this.ordenarPor(), this.direccion())
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: (datos) => {
           // An older backend returns an array and ignores pagination parameters.
           if (Array.isArray(datos)) {
             this.respuesta.set(null);
-            this.error.set('El backend debe devolver un listado paginado de clientes. Actualice PharmaBackend a la versión de consultas y reportes.');
+            this.error.set(
+              'El backend debe devolver un listado paginado de clientes. Actualice PharmaBackend a la versión de consultas y reportes.',
+            );
           } else {
             this.respuesta.set(datos);
             this.pagina.set(datos.pagina);
           }
           this.cargando.set(false);
         },
-        error: err => {
+        error: (err) => {
           this.respuesta.set(null);
           this.error.set(mensajeError(err));
           this.cargando.set(false);
@@ -84,12 +102,25 @@ export class ClienteList implements OnInit {
   }
 
   eliminar(cliente: Cliente): void {
-    if (this.dandoBaja() !== null || !confirm(`¿Dar de baja a ${cliente.nombres} ${cliente.apellidos}?`)) return;
+    if (
+      this.dandoBaja() !== null ||
+      !confirm(`¿Dar de baja a ${cliente.nombres} ${cliente.apellidos}?`)
+    )
+      return;
     this.error.set(null);
     this.dandoBaja.set(cliente.id);
-    this.service.eliminar(cliente.id).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
-      next: () => { this.dandoBaja.set(null); this.cargar(); },
-      error: err => { this.dandoBaja.set(null); this.error.set(mensajeError(err)); },
-    });
+    this.service
+      .eliminar(cliente.id)
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: () => {
+          this.dandoBaja.set(null);
+          this.cargar();
+        },
+        error: (err) => {
+          this.dandoBaja.set(null);
+          this.error.set(mensajeError(err));
+        },
+      });
   }
 }

@@ -1,0 +1,30 @@
+{
+  "case": "B-03_preparacion",
+  "executedBy": "Codex",
+  "capturedAt": "2026-10-06T16:26:42.789662-05:00",
+  "request": {
+    "method": "POST",
+    "url": "http://localhost:8080/api/v1/categorias",
+    "body": {
+      "nombre": "QA S8 CODEX B03 20261006",
+      "descripcion": "Categoria vacia aislada para B03",
+      "estado": true
+    }
+  },
+  "status": 201,
+  "headers": {
+    "Vary": "Origin",
+    "Content-Type": "application/json",
+    "Transfer-Encoding": "chunked",
+    "Date": "Tue, 06 Oct 2026 21:26:42 GMT",
+    "Connection": "close"
+  },
+  "body": {
+    "id": 68,
+    "nombre": "QA S8 CODEX B03 20261006",
+    "descripcion": "Categoria vacia aislada para B03",
+    "estado": true,
+    "fechaCreacion": "2026-10-06T16:26:42.7824555",
+    "fechaModificacion": null
+  }
+}

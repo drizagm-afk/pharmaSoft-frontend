@@ -1,0 +1,30 @@
+{
+  "case": "B-01_antes",
+  "executedBy": "Codex",
+  "capturedAt": "2026-10-06T16:26:42.688523-05:00",
+  "request": {
+    "method": "GET",
+    "url": "http://localhost:8080/api/v1/productos/87",
+    "body": null
+  },
+  "status": 200,
+  "headers": {
+    "Vary": "Origin",
+    "Content-Type": "application/json",
+    "Transfer-Encoding": "chunked",
+    "Date": "Tue, 06 Oct 2026 21:26:42 GMT",
+    "Connection": "close"
+  },
+  "body": {
+    "id": 87,
+    "nombre": "qa s8 auto a04",
+    "descripcion": null,
+    "precio": 5.5,
+    "stock": 10,
+    "categoriaId": 46,
+    "categoriaNombre": "QA S8 DelCarpio Activa A",
+    "estado": true,
+    "fechaCreacion": "2026-10-06T15:26:54.0346045",
+    "fechaModificacion": "2026-10-06T16:24:19.6385999"
+  }
+}

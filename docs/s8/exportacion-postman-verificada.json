@@ -1,0 +1,42 @@
+{
+  "sourceFile": "PharmaSoft - S8 Dependencias.postman_collection.json",
+  "destination": "postman/PharmaSoft-S8-Dependencias.json",
+  "sha256": "99665d37903f958864b5b4323b9a765e8adb07d565d90e9a2c0e4c73b68818c4",
+  "collectionName": "PharmaSoft - S8 Dependencias",
+  "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+  "requests": 22,
+  "caseIds": [
+    "A-01",
+    "A-02",
+    "A-03",
+    "A-04",
+    "A-05",
+    "A-06",
+    "A-07",
+    "C-01",
+    "C-02",
+    "C-03",
+    "C-04",
+    "C-05",
+    "C-06",
+    "B-01",
+    "B-02",
+    "B-03",
+    "B-04",
+    "B-05"
+  ],
+  "blankVariables": [
+    "productoId",
+    "categoriaC03Id",
+    "categoriaC04Id",
+    "categoriaVaciaId",
+    "categoriaSoloInactivosId",
+    "categoriaReferenciadaId",
+    "nombreOtroProductoMinusculas"
+  ],
+  "savedResponses": 0,
+  "emptyRequests": [
+    "New Request"
+  ],
+  "copiedWithoutModification": true
+}

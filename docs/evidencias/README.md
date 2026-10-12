@@ -20,7 +20,7 @@ Los nombres siguientes corresponden a archivos PNG originales aportados por el u
 | 8 | `08-busqueda-dni-network`, `08-busqueda-apellido-network` | Fila filtrada por DNI 98765432 y apellido DEL CARPIO CAPTURAS; Network vacío en ambas capturas. |
 | 11 | `11-categorias-network` | Categorías seleccionado, tabla poblada y GET 200 a /api/v1/categorias. |
 
-El usuario completó manualmente los casos 9 y 10 y aportó dos capturas originales. El cliente QA de ID 42 aparece Inactivo. Network muestra una respuesta 204 para 42, una recarga del listado con 200 y otra respuesta 409 para 42; la página muestra «El cliente ya está inactivo.». Las solicitudes no están seleccionadas y la columna Method no aparece, por lo que sus detalles completos no se ven en la captura. La evidencia de los once casos está reunida; se conserva esta limitación de detalle para baja y baja repetida.
+El usuario completó manualmente los casos 9 y 10 y aportó dos capturas originales. El cliente QA de ID 42 aparece Inactivo. Network muestra una respuesta 204 para 42, una recarga del listado con 200 y otra respuesta 409 para 42; la página muestra "El cliente ya está inactivo.". Las solicitudes no están seleccionadas y la columna Method no aparece, por lo que sus detalles completos no se ven en la captura. La evidencia de los once casos está reunida; se conserva esta limitación de detalle para baja y baja repetida.
 
 ### Capturas disponibles
 

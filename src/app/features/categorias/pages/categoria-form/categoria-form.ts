@@ -1,4 +1,4 @@
-import { Component, inject, input, OnInit, signal } from '@angular/core';
+import { Component, inject, input, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
@@ -10,6 +10,7 @@ import { erroresDeValidacion, mensajeError } from '../../../../core/utils/http-e
   selector: 'app-categoria-form',
   imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './categoria-form.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './categoria-form.css',
 })
 export class CategoriaForm implements OnInit {
@@ -35,11 +36,12 @@ export class CategoriaForm implements OnInit {
     const id = this.id();
     if (id) {
       this.categoriaService.obtener(Number(id)).subscribe({
-        next: c => this.form.setValue({
-          nombre: c.nombre,
-          descripcion: c.descripcion ?? '',
-          estado: c.estado,
-        }),
+        next: (c) =>
+          this.form.setValue({
+            nombre: c.nombre,
+            descripcion: c.descripcion ?? '',
+            estado: c.estado,
+          }),
         error: (err: HttpErrorResponse) => this.error.set(mensajeError(err)),
       });
     }
@@ -56,7 +58,7 @@ export class CategoriaForm implements OnInit {
       descripcion: valores.descripcion.trim() || null,
       estado: valores.estado,
     };
-    const id = this.id(); 
+    const id = this.id();
     const peticion = id
       ? this.categoriaService.actualizar(Number(id), dto)
       : this.categoriaService.crear(dto);

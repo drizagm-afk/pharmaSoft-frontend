@@ -1,0 +1,30 @@
+{
+  "case": "regresion-C-03",
+  "executedBy": "Codex",
+  "capturedAt": "2026-10-06T16:33:56.084923-05:00",
+  "request": {
+    "method": "PUT",
+    "url": "http://localhost:8080/api/v1/categorias/69",
+    "body": {
+      "nombre": "QA S8 FIX 20261006163355 Activa",
+      "descripcion": "Regresion aislada S8",
+      "estado": false
+    }
+  },
+  "status": 409,
+  "headers": {
+    "Vary": "Origin",
+    "Content-Type": "application/json",
+    "Transfer-Encoding": "chunked",
+    "Date": "Tue, 06 Oct 2026 21:33:56 GMT",
+    "Connection": "close"
+  },
+  "body": {
+    "timestamp": "2026-10-06T16:33:56.0837975",
+    "status": 409,
+    "error": "Conflict",
+    "message": "No se puede desactivar la categoría porque tiene productos activos. Reasigne o dé de baja esos productos antes de intentarlo de nuevo.",
+    "path": "/api/v1/categorias/69",
+    "validationErrors": null
+  }
+}

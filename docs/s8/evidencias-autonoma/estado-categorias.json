@@ -1,0 +1,108 @@
+{
+  "case": "estado-categorias",
+  "executedBy": "Codex",
+  "capturedAt": "2026-10-06T16:23:09.244404-05:00",
+  "request": {
+    "method": "GET",
+    "url": "http://localhost:8080/api/v1/categorias",
+    "body": null
+  },
+  "status": 200,
+  "headers": {
+    "Vary": "Origin",
+    "Content-Type": "application/json",
+    "Transfer-Encoding": "chunked",
+    "Date": "Tue, 06 Oct 2026 21:23:09 GMT",
+    "Connection": "close"
+  },
+  "body": [
+    {
+      "id": 5,
+      "nombre": "Lácteos",
+      "descripcion": "Productos Lácteos",
+      "estado": true,
+      "fechaCreacion": "2026-08-30T20:53:16.006531",
+      "fechaModificacion": "2026-10-01T09:52:17.022077"
+    },
+    {
+      "id": 67,
+      "nombre": "QA S8 AUTO C04",
+      "descripcion": null,
+      "estado": false,
+      "fechaCreacion": "2026-10-06T16:11:51.5607985",
+      "fechaModificacion": "2026-10-06T16:22:52.196263"
+    },
+    {
+      "id": 46,
+      "nombre": "QA S8 DelCarpio Activa A",
+      "descripcion": "Datos aislados para pruebas S8",
+      "estado": true,
+      "fechaCreacion": "2026-10-06T10:40:41.9371936",
+      "fechaModificacion": null
+    },
+    {
+      "id": 47,
+      "nombre": "QA S8 DelCarpio Activa B",
+      "descripcion": "Datos aislados para pruebas S8",
+      "estado": true,
+      "fechaCreacion": "2026-10-06T10:40:42.0001117",
+      "fechaModificacion": null
+    },
+    {
+      "id": 48,
+      "nombre": "QA S8 DelCarpio Activa C",
+      "descripcion": "Datos aislados para pruebas S8",
+      "estado": true,
+      "fechaCreacion": "2026-10-06T10:40:42.0150245",
+      "fechaModificacion": null
+    },
+    {
+      "id": 49,
+      "nombre": "QA S8 DelCarpio Inactiva",
+      "descripcion": "Datos aislados para pruebas S8",
+      "estado": false,
+      "fechaCreacion": "2026-10-06T10:40:42.0320515",
+      "fechaModificacion": null
+    },
+    {
+      "id": 2,
+      "nombre": "Aceites",
+      "descripcion": "Productos Aceites",
+      "estado": true,
+      "fechaCreacion": "2026-08-20T11:05:21.195698",
+      "fechaModificacion": null
+    },
+    {
+      "id": 3,
+      "nombre": "Tecnologias",
+      "descripcion": "Productos Tecnologias",
+      "estado": true,
+      "fechaCreacion": "2026-08-20T11:05:33.6248945",
+      "fechaModificacion": "2026-08-20T11:06:39.1408317"
+    },
+    {
+      "id": 6,
+      "nombre": "QA Farmacia",
+      "descripcion": "Categoria de prueba - Sesion 5 autonoma",
+      "estado": true,
+      "fechaCreacion": "2026-09-16T03:00:39.605387",
+      "fechaModificacion": null
+    },
+    {
+      "id": 7,
+      "nombre": "QA Cuidado Personal",
+      "descripcion": "Categoria de prueba - Sesion 5 autonoma",
+      "estado": true,
+      "fechaCreacion": "2026-09-16T03:00:39.616098",
+      "fechaModificacion": null
+    },
+    {
+      "id": 66,
+      "nombre": "QA S8 AUTO C03",
+      "descripcion": "Caso C03 aislado",
+      "estado": false,
+      "fechaCreacion": "2026-10-06T15:57:02.2571338",
+      "fechaModificacion": "2026-10-06T15:57:48.1983822"
+    }
+  ]
+}

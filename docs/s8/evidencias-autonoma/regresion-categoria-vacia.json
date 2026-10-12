@@ -1,0 +1,30 @@
+{
+  "case": "regresion-categoria-vacia",
+  "executedBy": "Codex",
+  "capturedAt": "2026-10-06T16:33:56.341692-05:00",
+  "request": {
+    "method": "POST",
+    "url": "http://localhost:8080/api/v1/categorias",
+    "body": {
+      "nombre": "QA S8 FIX 20261006163355 Vacia",
+      "descripcion": "Solo prueba B03",
+      "estado": true
+    }
+  },
+  "status": 201,
+  "headers": {
+    "Vary": "Origin",
+    "Content-Type": "application/json",
+    "Transfer-Encoding": "chunked",
+    "Date": "Tue, 06 Oct 2026 21:33:56 GMT",
+    "Connection": "close"
+  },
+  "body": {
+    "id": 70,
+    "nombre": "QA S8 FIX 20261006163355 Vacia",
+    "descripcion": "Solo prueba B03",
+    "estado": true,
+    "fechaCreacion": "2026-10-06T16:33:56.3350473",
+    "fechaModificacion": null
+  }
+}
