@@ -6,19 +6,27 @@ import { RouterTestingHarness } from '@angular/router/testing';
 import { routes } from './app.routes';
 import { environment } from '../environments/environment';
 import { cliente, pagina } from './features/clientes/cliente.fixture.spec-helper';
+import { AuthService } from './core/auth/auth-service';
+import { crearAuthPrueba } from './core/auth/auth.fixture.spec-helper';
 
 describe('Feature navigation integration', () => {
   let http: HttpTestingController;
   beforeEach(() => {
-    TestBed.configureTestingModule({ providers: [provideRouter(routes, withComponentInputBinding()),
-      provideHttpClient(), provideHttpClientTesting()] });
+    TestBed.configureTestingModule({
+      providers: [
+        provideRouter(routes, withComponentInputBinding()),
+        provideHttpClient(),
+        provideHttpClientTesting(),
+        { provide: AuthService, useValue: crearAuthPrueba() },
+      ],
+    });
     http = TestBed.inject(HttpTestingController);
   });
   afterEach(() => http.verify());
 
   it('preserves the layout while switching from clients to categories', async () => {
     const harness = await RouterTestingHarness.create('/clientes');
-    http.expectOne(r => r.url === `${environment.apiUrl}/clientes`).flush(pagina());
+    http.expectOne((r) => r.url === `${environment.apiUrl}/clientes`).flush(pagina());
     harness.detectChanges();
     const header = harness.routeNativeElement!.querySelector('app-header');
     const sidebar = harness.routeNativeElement!.querySelector('app-sidebar');
@@ -36,6 +44,8 @@ describe('Feature navigation integration', () => {
     const harness = await RouterTestingHarness.create('/clientes/1/editar');
     http.expectOne(`${environment.apiUrl}/clientes/1`).flush(cliente);
     harness.detectChanges();
-    expect((harness.routeNativeElement!.querySelector('#dni') as HTMLInputElement).value).toBe(cliente.dni);
+    expect((harness.routeNativeElement!.querySelector('#dni') as HTMLInputElement).value).toBe(
+      cliente.dni,
+    );
   });
 });

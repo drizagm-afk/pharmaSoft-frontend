@@ -1,0 +1,42 @@
+{
+  "fecha": "2026-10-22",
+  "rama": "feature/seguridad-frontend-delcarpio",
+  "buildProduccion": "Aprobado",
+  "pruebas": {
+    "archivos": 30,
+    "aprobadas": 120,
+    "fallidas": 0
+  },
+  "browser": {
+    "backendReal": true,
+    "cuentas": [
+      "admin",
+      "vendedor",
+      "almacen",
+      "supervisor",
+      "inactivo"
+    ],
+    "verificado": [
+      "URL protegida y returnUrl",
+      "Formulario vacío",
+      "Credenciales incorrectas e inactivo con mensaje uniforme",
+      "Login vendedor y retorno a Ventas",
+      "Productos sin escritura para vendedor",
+      "Restauración tras F5",
+      "Guard de creación de producto",
+      "Login con sesión redirige a inicio",
+      "Logout",
+      "Almacén sin Ventas y con edición",
+      "Supervisor con unión de permisos",
+      "Administrador con acceso a Reportes"
+    ],
+    "porCapturarManualmente": [
+      "Las 16 capturas de la guía",
+      "Token alterado en Session storage (caso 15)",
+      "Duración real de un minuto y restauración a 60 (caso 16)"
+    ]
+  },
+  "cambiosBackend": false,
+  "datosComercialesModificados": false,
+  "commitsRealizados": false
+}

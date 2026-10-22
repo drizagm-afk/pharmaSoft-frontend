@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { RouterLink } from '@angular/router';
+import { SiPermiso } from '../../../../shared/directives/si-permiso';
 import { Subscription } from 'rxjs';
 import { PaginaResponse } from '../../../../core/models/pagina-response';
 import { mensajeError } from '../../../../core/utils/http-error';
@@ -17,7 +18,7 @@ import { ClienteService } from '../../services/cliente-service';
 
 @Component({
   selector: 'app-cliente-list',
-  imports: [RouterLink],
+  imports: [RouterLink, SiPermiso],
   templateUrl: './cliente-list.html',
   changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './cliente-list.css',

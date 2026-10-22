@@ -11,6 +11,7 @@ import {
 } from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { SiPermiso } from '../../../../shared/directives/si-permiso';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Subscription } from 'rxjs';
 import { PaginaResponse } from '../../../../core/models/pagina-response';
@@ -22,7 +23,7 @@ import { ProductoService } from '../../services/producto-service';
 
 @Component({
   selector: 'app-producto-list',
-  imports: [CurrencyPipe, RouterLink],
+  imports: [CurrencyPipe, RouterLink, SiPermiso],
   templateUrl: './producto-list.html',
   changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './producto-list.css',
