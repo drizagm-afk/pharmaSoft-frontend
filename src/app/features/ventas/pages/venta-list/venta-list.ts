@@ -13,6 +13,7 @@ import { CurrencyPipe, DatePipe } from '@angular/common';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { SiPermiso } from '../../../../shared/directives/si-permiso';
 import { Subscription } from 'rxjs';
 import { PaginaResponse } from '../../../../core/models/pagina-response';
 import { mensajeError } from '../../../../core/utils/http-error';
@@ -26,7 +27,7 @@ const SIN_FILTROS: FiltroVentas = { clienteId: null, estado: null, desde: null, 
 
 @Component({
   selector: 'app-venta-list',
-  imports: [RouterLink, CurrencyPipe, DatePipe, ReactiveFormsModule],
+  imports: [RouterLink, CurrencyPipe, DatePipe, ReactiveFormsModule, SiPermiso],
   templateUrl: './venta-list.html',
   styleUrl: './venta-list.css',
 })

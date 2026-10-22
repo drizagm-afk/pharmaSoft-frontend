@@ -8,13 +8,14 @@ import {
 } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { RouterLink } from '@angular/router';
+import { SiPermiso } from '../../../../shared/directives/si-permiso';
 import { Categoria } from '../../models/categoria.model';
 import { CategoriaService } from '../../services/categoria-service';
 import { mensajeError } from '../../../../core/utils/http-error';
 
 @Component({
   selector: 'app-categoria-list',
-  imports: [RouterLink],
+  imports: [RouterLink, SiPermiso],
   templateUrl: './categoria-list.html',
   changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './categoria-list.css',

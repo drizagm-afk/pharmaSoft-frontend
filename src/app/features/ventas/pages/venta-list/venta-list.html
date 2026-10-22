@@ -10,7 +10,9 @@
       >
         🖨 Imprimir consulta
       </button>
-      <a routerLink="nueva" class="btn btn-primary">+ Nueva venta</a>
+      <a *appSiPermiso="'VENTAS_REGISTRAR'" routerLink="nueva" class="btn btn-primary"
+        >+ Nueva venta</a
+      >
     </div>
   </header>
   <p class="solo-impresion resumen-filtros">
