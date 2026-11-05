@@ -1,0 +1,18 @@
+{
+  "informe_paginas": 3,
+  "evidencias_paginas": 78,
+  "casos_matriz": 21,
+  "capturas_incluidas": 73,
+  "impresiones_incluidas": 3,
+  "nombres_archivos_visibles": false,
+  "indice_evidencias": false,
+  "hashes_originales_intactos": true,
+  "respuesta_network_faltante_declarada": true,
+  "paginas_renderizadas": 81,
+  "resultado_comprobaciones": "Correcto",
+  "agrupacion_por_aspecto": true,
+  "impresiones_junto_a_su_caso": true,
+  "titulo_evidencias": true,
+  "parrafos_negros": true,
+  "encabezados_azules_y_acentos_dorados": true
+}

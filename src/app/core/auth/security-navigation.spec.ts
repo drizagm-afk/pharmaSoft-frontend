@@ -32,6 +32,18 @@ describe('Security navigation', () => {
     await RouterTestingHarness.create('/login');
     expect(TestBed.inject(Router).url).toBe('/inicio');
   });
+  it('protects Mi cuenta with the session guard', async () => {
+    auth.sesion.set(null);
+    await RouterTestingHarness.create('/mi-cuenta');
+    expect(TestBed.inject(Router).url).toBe('/login?returnUrl=%2Fmi-cuenta');
+  });
+  it('opens Mi cuenta for any authenticated role without requiring module permissions', async () => {
+    auth.sesion.update((s) => ({ ...s!, permisos: [] }));
+    const harness = await RouterTestingHarness.create('/mi-cuenta');
+    expect(TestBed.inject(Router).url).toBe('/mi-cuenta');
+    expect(harness.routeNativeElement!.textContent).toContain('Permisos por módulo');
+    expect(harness.routeNativeElement!.querySelectorAll('li.concedido').length).toBe(0);
+  });
   it.each([
     '/productos/nuevo',
     '/productos/134/editar',

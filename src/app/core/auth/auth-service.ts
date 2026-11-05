@@ -3,7 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { map, Observable, tap } from 'rxjs';
 import { environment } from '../../../environments/environment';
-import { LoginRequest, LoginResponse, Permiso, Sesion } from './auth.model';
+import {
+  LoginRequest,
+  LoginResponse,
+  PerfilUsuario,
+  PerfilUsuarioApi,
+  Permiso,
+  Sesion,
+} from './auth.model';
 
 /** Clave con la que se guarda la sesión en sessionStorage. */
 const CLAVE_SESION = 'pharmasoft.sesion';
@@ -23,11 +30,17 @@ export class AuthService {
   private readonly url = `${environment.apiUrl}/auth`;
   private readonly sesionActual = signal<Sesion | null>(this.leerSesionGuardada());
   private temporizador?: ReturnType<typeof setTimeout>;
+  private intervalo?: ReturnType<typeof setInterval>;
+  private readonly segundos = signal(0);
+  private readonly avisoDescartado = signal(this.sesionActual()?.avisoOculto === true);
   readonly sesion = this.sesionActual.asReadonly();
   readonly autenticado = computed(() => this.sesionActual() !== null);
+  readonly segundosRestantes = this.segundos.asReadonly();
+  readonly avisoOculto = this.avisoDescartado.asReadonly();
+  readonly porVencer = computed(() => this.sesionActual() !== null && this.segundos() <= 120);
 
   constructor() {
-    inject(DestroyRef).onDestroy(() => clearTimeout(this.temporizador));
+    inject(DestroyRef).onDestroy(() => this.limpiarTemporizadores());
     const sesion = this.sesionActual();
     if (sesion) this.programarExpiracion(sesion);
   }
@@ -47,15 +60,37 @@ export class AuthService {
     );
   }
 
+  obtenerPerfil(): Observable<PerfilUsuario> {
+    return this.http.get<PerfilUsuarioApi>(`${this.url}/me`).pipe(
+      map((r) => ({
+        username: r.username,
+        nombreCompleto: r.nombreCompleto ?? r.empleadoNombre ?? r.username,
+        roles: r.roles,
+        permisos: r.permisos,
+      })),
+    );
+  }
+
+  ocultarAviso(): void {
+    const sesion = this.sesionActual();
+    if (!sesion) return;
+    this.avisoDescartado.set(true);
+    const actualizada = { ...sesion, avisoOculto: true };
+    this.sesionActual.set(actualizada);
+    sessionStorage.setItem(CLAVE_SESION, JSON.stringify(actualizada));
+  }
+
   /**
    * Cierra la sesión y vuelve al login.
    * Si la causa es la expiración, el login lo avisa y, tras entrar de nuevo,
    * regresa a la página donde estaba el usuario.
    */
   cerrarSesion(motivo?: 'expirada', volverA?: string): void {
-    clearTimeout(this.temporizador);
+    this.limpiarTemporizadores();
     sessionStorage.removeItem(CLAVE_SESION);
     this.sesionActual.set(null);
+    this.segundos.set(0);
+    this.avisoDescartado.set(false);
     const queryParams: Record<string, string> = {};
     if (motivo) queryParams['expirada'] = '1';
     if (volverA && volverA !== '/login') queryParams['returnUrl'] = volverA;
@@ -76,16 +111,31 @@ export class AuthService {
   private iniciar(sesion: Sesion): void {
     sessionStorage.setItem(CLAVE_SESION, JSON.stringify(sesion));
     this.sesionActual.set(sesion);
+    this.avisoDescartado.set(false);
     this.programarExpiracion(sesion);
   }
 
   private programarExpiracion(sesion: Sesion): void {
-    clearTimeout(this.temporizador);
+    this.limpiarTemporizadores();
+    const actualizar = () => {
+      this.segundos.set(Math.max(0, Math.floor((sesion.expiraEn - Date.now()) / 1000)));
+      if (Date.now() >= sesion.expiraEn) this.cerrarSesion('expirada', this.router.url);
+    };
+    actualizar();
     const restante = sesion.expiraEn - Date.now();
+    if (restante <= 0) return;
+    this.intervalo = setInterval(actualizar, 1000);
     this.temporizador = setTimeout(
       () => this.cerrarSesion('expirada', this.router.url),
       Math.max(restante, 0),
     );
+  }
+
+  private limpiarTemporizadores(): void {
+    clearTimeout(this.temporizador);
+    clearInterval(this.intervalo);
+    this.temporizador = undefined;
+    this.intervalo = undefined;
   }
 
   /** Recupera la sesión tras recargar la página; descarta la vencida o dañada. */

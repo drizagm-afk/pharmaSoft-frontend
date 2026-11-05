@@ -1,0 +1,20 @@
+{
+  "fecha": "2026-10-25",
+  "casos": 26,
+  "pasa": 26,
+  "falla": 0,
+  "capturas": 83,
+  "paginasInforme": 3,
+  "paginasMatrizEvidencias": 88,
+  "copiasConRegionesOcultas": 24,
+  "originalesModificados": false,
+  "commitsRealizados": false,
+  "revisionVisual": "Aprobada: informe completo, todas las páginas del complemento y revisión ampliada de matriz, transiciones y redacciones",
+  "originalesHashVerificados": 83,
+  "dimensionesPreservadas": 83,
+  "referenciasFigurasVerificadas": 83,
+  "casosMatrizVerificados": 26,
+  "regionesOcultasVerificadas": 27,
+  "desbordamientos": 0,
+  "copiaAulaIdentica": true
+}

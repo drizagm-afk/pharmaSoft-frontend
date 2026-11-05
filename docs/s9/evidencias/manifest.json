@@ -1,0 +1,762 @@
+[
+  {
+    "caso": "PREP",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 171914.png",
+    "archivo": "PREP_clientes.png",
+    "creado": "2026-10-11T17:19:14.242206-05:00",
+    "modificado": "2026-10-11T17:19:14.340070-05:00",
+    "bytes": 256577,
+    "sha256": "951841dc324e01d2fdccbfae895012c62b4adbf1d003e06e637ab60e1e419243",
+    "contenido": "GET clientes 200 y clientes activo/inactivo"
+  },
+  {
+    "caso": "PREP",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 171934.png",
+    "archivo": "PREP_productos.png",
+    "creado": "2026-10-11T17:19:34.604853-05:00",
+    "modificado": "2026-10-11T17:19:34.708256-05:00",
+    "bytes": 281658,
+    "sha256": "4591d6947403ef8672912876fe84d12b1c3ba3d715db2df0da6b7eb725180558",
+    "contenido": "GET productos 200, catálogo inicial"
+  },
+  {
+    "caso": "PREP",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 171953.png",
+    "archivo": "PREP_categorias.png",
+    "creado": "2026-10-11T17:19:53.376738-05:00",
+    "modificado": "2026-10-11T17:19:53.468620-05:00",
+    "bytes": 232715,
+    "sha256": "d38013f515543269ebc11eebd3ec44315cc22f391a37c85edb6bf625ad9d452d",
+    "contenido": "GET categorías 200"
+  },
+  {
+    "caso": "PREP",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 172012.png",
+    "archivo": "PREP_variables.png",
+    "creado": "2026-10-11T17:20:12.866805-05:00",
+    "modificado": "2026-10-11T17:20:12.965442-05:00",
+    "bytes": 40174,
+    "sha256": "6225f4b84b6241f789f4e3e00d261417bcd014bf5838f8297b1a9fc2db945b1f",
+    "contenido": "Variables resueltas: 11,15,133,134,19,22"
+  },
+  {
+    "caso": "B-01",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 172618.png",
+    "archivo": "B-01_inactivo.png",
+    "creado": "2026-10-11T17:26:18.675308-05:00",
+    "modificado": "2026-10-11T17:26:18.837648-05:00",
+    "bytes": 127134,
+    "sha256": "393a2b1b3c9457d46cefb37414432fbdff11947ff9813c22e470dcda8bf535f0",
+    "contenido": "DNI 90000005 sin coincidencia activa"
+  },
+  {
+    "caso": "B-01",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 172643.png",
+    "archivo": "B-01_activo.png",
+    "creado": "2026-10-11T17:26:43.891714-05:00",
+    "modificado": "2026-10-11T17:26:44.067443-05:00",
+    "bytes": 128361,
+    "sha256": "80bc1b28d460a15e5d048e19b40cfa1c6585eb34cbfedb8887f0f0a55de1cd47",
+    "contenido": "huaman encuentra Huamán"
+  },
+  {
+    "caso": "B-02",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 172815.png",
+    "archivo": "B-02_nombre.png",
+    "creado": "2026-10-11T17:28:15.233544-05:00",
+    "modificado": "2026-10-11T17:28:15.320032-05:00",
+    "bytes": 135015,
+    "sha256": "c20bf5ef1241d50f298f3ef54820e17ee006459882eb74be14f49f5189b6cd5c",
+    "contenido": "vitam muestra productos con precio y stock"
+  },
+  {
+    "caso": "B-02",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 172835.png",
+    "archivo": "B-02_categoria.png",
+    "creado": "2026-10-11T17:28:35.225774-05:00",
+    "modificado": "2026-10-11T17:28:35.312954-05:00",
+    "bytes": 130659,
+    "sha256": "3f19de7d693e42da104478673fcb14485366f1b5dcb0648bb7e61793514bb942",
+    "contenido": "Vitaminas muestra coincidencias"
+  },
+  {
+    "caso": "B-02",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 172908.png",
+    "archivo": "B-02_enter.png",
+    "creado": "2026-10-11T17:29:08.353200-05:00",
+    "modificado": "2026-10-11T17:29:08.522906-05:00",
+    "bytes": 126314,
+    "sha256": "c3ce00b00eeb8be46487dc1076068528495c8b10483e116ac314e46ff09ee715",
+    "contenido": "Multivitamínico agregado, búsqueda vacía, sin POST"
+  },
+  {
+    "caso": "C-01",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 174223.png",
+    "archivo": "C-01_spa.png",
+    "creado": "2026-10-11T17:42:24.067073-05:00",
+    "modificado": "2026-10-11T17:42:24.228959-05:00",
+    "bytes": 127112,
+    "sha256": "a8eb7412ca5ca9ebcbb4d4b4d4ce19037778b927d7d5053a2531cea493fbe334",
+    "contenido": "Vitamina D x3, total 37.50"
+  },
+  {
+    "caso": "C-02",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 175517.png",
+    "archivo": "C-02_spa.png",
+    "creado": "2026-10-11T17:55:17.814550-05:00",
+    "modificado": "2026-10-11T17:55:17.897437-05:00",
+    "bytes": 126267,
+    "sha256": "40e63532190d4d744a03ba36edde12a59c1d6ef7c411675866e469c6055fcee3",
+    "contenido": "Protector solar x3, total 56.70"
+  },
+  {
+    "caso": "C-03",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 175723.png",
+    "archivo": "C-03_antes.png",
+    "creado": "2026-10-11T17:57:23.814713-05:00",
+    "modificado": "2026-10-11T17:57:23.900736-05:00",
+    "bytes": 129875,
+    "sha256": "434f8f6a03c18bb44928cc3ceeaf690903a1906fee7181478ef09236da86beb0",
+    "contenido": "Tres líneas, total 77.70"
+  },
+  {
+    "caso": "C-03",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 175742.png",
+    "archivo": "C-03_spa.png",
+    "creado": "2026-10-11T17:57:42.312315-05:00",
+    "modificado": "2026-10-11T17:57:42.477598-05:00",
+    "bytes": 128853,
+    "sha256": "6b7c3e028026f845fdd97ea8ebef593302c314b67914c460219750396be45122",
+    "contenido": "Línea intermedia retirada, total 75.30"
+  },
+  {
+    "caso": "F-01",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 175840.png",
+    "archivo": "F-01_formulario-vacio-complementario.png",
+    "creado": "2026-10-11T17:58:40.476875-05:00",
+    "modificado": "2026-10-11T17:58:40.565987-05:00",
+    "bytes": 127724,
+    "sha256": "dcd9cf9ca5c8ab62a54c37482eaeca24a0f144612cc32bfb842c99a16666d859",
+    "contenido": "Formulario vacío; no acredita por sí solo Volver conservando datos"
+  },
+  {
+    "caso": "PREP",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 175906.png",
+    "archivo": "PREP_consulta-vacia.png",
+    "creado": "2026-10-11T17:59:06.887838-05:00",
+    "modificado": "2026-10-11T17:59:06.978483-05:00",
+    "bytes": 112386,
+    "sha256": "a647355ed0b203357b2513d0a28486e2bb0a4990c2b58a211ff6ce5a1ffaaa2e",
+    "contenido": "Consulta anterior al primer registro"
+  },
+  {
+    "caso": "F-01",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 180020.png",
+    "archivo": "F-01_confirmacion.png",
+    "creado": "2026-10-11T18:00:20.641906-05:00",
+    "modificado": "2026-10-11T18:00:20.808584-05:00",
+    "bytes": 127355,
+    "sha256": "24413cf89866e300a0c20542cc8eac9c06abeb452b55dd7be472cbefeff22fb5",
+    "contenido": "Resumen abierto con total 75.30 y sin POST"
+  },
+  {
+    "caso": "F-01",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 180026.png",
+    "archivo": "F-01_volver.png",
+    "creado": "2026-10-11T18:00:26.630121-05:00",
+    "modificado": "2026-10-11T18:00:26.711227-05:00",
+    "bytes": 129220,
+    "sha256": "3f9c72f550834df688d6d34043b7bb58713969f60a4f280ed0d11273c6de1cfc",
+    "contenido": "Resumen cerrado, dos líneas conservadas, sin POST"
+  },
+  {
+    "caso": "C-04",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 180049.png",
+    "archivo": "C-04_spa-network.png",
+    "creado": "2026-10-11T18:00:49.401337-05:00",
+    "modificado": "2026-10-11T18:00:49.491523-05:00",
+    "bytes": 167880,
+    "sha256": "12a7944b265da7ed7585419a8f9cb20c8d6500a6188cf1f1b3365428cc8dc6bc",
+    "contenido": "Venta 41, total 75.30 y POST 201 en Headers"
+  },
+  {
+    "caso": "X-01",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 180252.png",
+    "archivo": "X-01_consulta.png",
+    "creado": "2026-10-11T18:02:52.743174-05:00",
+    "modificado": "2026-10-11T18:02:52.909834-05:00",
+    "bytes": 118799,
+    "sha256": "65b6fb0a977d62ee31ef76074ede2442ff9f0e18ebe9d7e68cd60534ffff878f",
+    "contenido": "Venta 41 con total 75.30 y dos ítems"
+  },
+  {
+    "caso": "X-01",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 180317.png",
+    "archivo": "X-01_catalogo-parcial.png",
+    "creado": "2026-10-11T18:03:17.842279-05:00",
+    "modificado": "2026-10-11T18:03:17.930633-05:00",
+    "bytes": 169633,
+    "sha256": "1af84aadfd51748c239223cc8cc20ad2b8e4859b9048741b547d57171a28422b",
+    "contenido": "Vista parcial del catálogo antes de otros registros"
+  },
+  {
+    "caso": "V-01",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 180406.png",
+    "archivo": "V-01_spa.png",
+    "creado": "2026-10-11T18:04:06.590300-05:00",
+    "modificado": "2026-10-11T18:04:06.677432-05:00",
+    "bytes": 128235,
+    "sha256": "445725b97f01dec77d0da478b8d3ec3538957ebab01f25eb2cc876416f108446",
+    "contenido": "Cliente y detalle vacío con mensajes de validación"
+  },
+  {
+    "caso": "V-02",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 180456.png",
+    "archivo": "V-02_cero.png",
+    "creado": "2026-10-11T18:04:56.842419-05:00",
+    "modificado": "2026-10-11T18:04:56.936276-05:00",
+    "bytes": 127292,
+    "sha256": "9a080576aa48f689bb20e567a27e2a974bae115b1673a00dfa5989115cf46022",
+    "contenido": "Cantidad 0 bloqueada por SPA"
+  },
+  {
+    "caso": "V-02",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 180505.png",
+    "archivo": "V-02_decimal.png",
+    "creado": "2026-10-11T18:05:05.419612-05:00",
+    "modificado": "2026-10-11T18:05:05.579748-05:00",
+    "bytes": 127368,
+    "sha256": "5c5db8b9df95d528a414be9f0a296049797360597f591f92c675530e30cb563f",
+    "contenido": "Cantidad 2.5 bloqueada por SPA"
+  },
+  {
+    "caso": "V-02",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 180536.png",
+    "archivo": "V-02_api-cero.png",
+    "creado": "2026-10-11T18:05:36.957652-05:00",
+    "modificado": "2026-10-11T18:05:37.056805-05:00",
+    "bytes": 236769,
+    "sha256": "46387850bd8709e5d577550efab4764fa28536367bfbd6f091274a7a500eb8b7",
+    "contenido": "Postman 400 y error cantidad mayor que cero"
+  },
+  {
+    "caso": "V-02",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 180548.png",
+    "archivo": "V-02_api-decimal.png",
+    "creado": "2026-10-11T18:05:48.535483-05:00",
+    "modificado": "2026-10-11T18:05:48.730943-05:00",
+    "bytes": 235111,
+    "sha256": "51047224eb236e80e8627b6e3b44ee9076034c65ab89994a6e80b202a95cb965",
+    "contenido": "Postman 400 y error de tipos enteros"
+  },
+  {
+    "caso": "V-03",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 180626.png",
+    "archivo": "V-03_spa.png",
+    "creado": "2026-10-11T18:06:26.531226-05:00",
+    "modificado": "2026-10-11T18:06:26.621961-05:00",
+    "bytes": 123835,
+    "sha256": "243e3da087a231d2a1e3093db2eff4682bab916c00bf989617fc03808d968ca7",
+    "contenido": "Cantidad 3 supera stock 2"
+  },
+  {
+    "caso": "V-03",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 180644.png",
+    "archivo": "V-03_api.png",
+    "creado": "2026-10-11T18:06:44.898579-05:00",
+    "modificado": "2026-10-11T18:06:44.994745-05:00",
+    "bytes": 234870,
+    "sha256": "35b8d415d1170f97572df9eb3f7187937aaef6d18bcfc78f6fb9852ab2900d11",
+    "contenido": "Postman 409, disponible 2, solicitado 3"
+  },
+  {
+    "caso": "V-04",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 181126.png",
+    "archivo": "V-04_busqueda.png",
+    "creado": "2026-10-11T18:11:26.413491-05:00",
+    "modificado": "2026-10-11T18:11:26.510998-05:00",
+    "bytes": 134084,
+    "sha256": "2336d5f3c583df1f0dda9fcb4f04ce86fb3e830b2aeea2b0f99966ca49b9915a",
+    "contenido": "En la venta 1 para Vitamina D"
+  },
+  {
+    "caso": "V-04",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 181132.png",
+    "archivo": "V-04_spa.png",
+    "creado": "2026-10-11T18:11:32.561324-05:00",
+    "modificado": "2026-10-11T18:11:32.651810-05:00",
+    "bytes": 124694,
+    "sha256": "f4c1c631ff58164f6664a71737f946bcfefbc2e85729e97418788dd9eb7854c2",
+    "contenido": "Una línea, cantidad 2, total 25.00"
+  },
+  {
+    "caso": "B-03",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 181212.png",
+    "archivo": "B-03_sin-stock.png",
+    "creado": "2026-10-11T18:12:12.986451-05:00",
+    "modificado": "2026-10-11T18:12:13.169986-05:00",
+    "bytes": 129261,
+    "sha256": "c395d9e30963855600a8389a04d8e45398da2d6a66ea34842c9a9358f8bb9aec",
+    "contenido": "Guantes de Latex no aparece"
+  },
+  {
+    "caso": "B-03",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 181226.png",
+    "archivo": "B-03_inactivo.png",
+    "creado": "2026-10-11T18:12:27.047773-05:00",
+    "modificado": "2026-10-11T18:12:27.139103-05:00",
+    "bytes": 128781,
+    "sha256": "9b7de3aecf7fa32088fec1bf5403ded7e775a56abfa3850659bef94624379a55",
+    "contenido": "Jabón de mesa no aparece"
+  },
+  {
+    "caso": "C-05",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 181250.png",
+    "archivo": "C-05_antes.png",
+    "creado": "2026-10-11T18:12:50.908032-05:00",
+    "modificado": "2026-10-11T18:12:51.077091-05:00",
+    "bytes": 130096,
+    "sha256": "bba56b58636b0f50fc35530f19fbc24acf93911ec294838665ec769ce87c3632",
+    "contenido": "Total 31.40 con A x1 y B x1"
+  },
+  {
+    "caso": "C-05",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 181300.png",
+    "archivo": "C-05_spa.png",
+    "creado": "2026-10-11T18:13:00.915562-05:00",
+    "modificado": "2026-10-11T18:13:01.044005-05:00",
+    "bytes": 129881,
+    "sha256": "b7771561e6e29a44b07e93e72e40ed6e97c4d69380c7ec3753a264848a3811d0",
+    "contenido": "Cantidad A x2, subtotal 25 y total 43.90"
+  },
+  {
+    "caso": "M-02",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 181336.png",
+    "archivo": "M-02_api.png",
+    "creado": "2026-10-11T18:13:37.023436-05:00",
+    "modificado": "2026-10-11T18:13:37.124273-05:00",
+    "bytes": 235200,
+    "sha256": "3a7b49e30f6b677a0b2af990f9556bec02e6b715b38ada662d803827ac7e1cf7",
+    "contenido": "409 para cliente inactivo"
+  },
+  {
+    "caso": "V-06",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 181551.png",
+    "archivo": "V-06_nulo.png",
+    "creado": "2026-10-11T18:15:51.572321-05:00",
+    "modificado": "2026-10-11T18:15:51.675826-05:00",
+    "bytes": 231430,
+    "sha256": "2375b97e93b9e471983d1c9e374583c834cfe5cb731163c6344cb4684e32b1f1",
+    "contenido": "400 por detalle nulo"
+  },
+  {
+    "caso": "V-06",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 181612.png",
+    "archivo": "V-06_decimal.png",
+    "creado": "2026-10-11T18:16:12.894277-05:00",
+    "modificado": "2026-10-11T18:16:13.085559-05:00",
+    "bytes": 235393,
+    "sha256": "aab05877afe5fa7aa9d449d817131b81abc37c4a33741469ebe587a6b2ed8f62",
+    "contenido": "400 por cantidad 1.5"
+  },
+  {
+    "caso": "V-05",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 181732.png",
+    "archivo": "V-05_stock-antes.png",
+    "creado": "2026-10-11T18:17:32.854925-05:00",
+    "modificado": "2026-10-11T18:17:32.938508-05:00",
+    "bytes": 179578,
+    "sha256": "bb64c441b592546f3520930a85a27a206fcb8cc70cf95d0e403ffd21056a2cb7",
+    "contenido": "Vitamina D stock 27, Protector solar 23"
+  },
+  {
+    "caso": "V-05",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 181830.png",
+    "archivo": "V-05_api.png",
+    "creado": "2026-10-11T18:18:30.151049-05:00",
+    "modificado": "2026-10-11T18:18:30.249711-05:00",
+    "bytes": 237184,
+    "sha256": "384138a5ef4ff13a31cc9c94e0f87fe036250a10b0c9ae829bba2c4ebb6bfcb6",
+    "contenido": "Venta 42, dos líneas repetidas, total 37.50, HTTP 201"
+  },
+  {
+    "caso": "V-05",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 181842.png",
+    "archivo": "V-05_stock-despues.png",
+    "creado": "2026-10-11T18:18:42.428588-05:00",
+    "modificado": "2026-10-11T18:18:42.523595-05:00",
+    "bytes": 191088,
+    "sha256": "b31a170357166e302b6b00449b9be8d81b554354c0f751405109125bc333b6c0",
+    "contenido": "Vitamina D stock 24"
+  },
+  {
+    "caso": "V-05",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 181901.png",
+    "archivo": "V-05_preparacion-rollback.png",
+    "creado": "2026-10-11T18:19:01.082771-05:00",
+    "modificado": "2026-10-11T18:19:01.174280-05:00",
+    "bytes": 230127,
+    "sha256": "9de3785e54f0bc8ab4fb72c5a4190eef2344b006ecb1912fc9e8b5da90af4114",
+    "contenido": "GET producto 133, stock 24"
+  },
+  {
+    "caso": "V-05",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 181920.png",
+    "archivo": "V-05_rollback.png",
+    "creado": "2026-10-11T18:19:20.628187-05:00",
+    "modificado": "2026-10-11T18:19:20.809411-05:00",
+    "bytes": 241702,
+    "sha256": "8bcf608237a2a64af553404bc2e477fcc1ccfe71113074f395615460ab2a8111",
+    "contenido": "409, disponible 11 solicitado 13 tras descontar primera línea en transacción"
+  },
+  {
+    "caso": "V-05",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 181933.png",
+    "archivo": "V-05_stock-conservado.png",
+    "creado": "2026-10-11T18:19:33.196657-05:00",
+    "modificado": "2026-10-11T18:19:33.381830-05:00",
+    "bytes": 197175,
+    "sha256": "1a2f646e38bdbe6a0b971abd9c573454fb7512193201cdf7cf2db0788f36a44c",
+    "contenido": "Stock final 24 confirma rollback de primera línea"
+  },
+  {
+    "caso": "F-02",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 182135.png",
+    "archivo": "F-02_spa-network.png",
+    "creado": "2026-10-11T18:21:35.944246-05:00",
+    "modificado": "2026-10-11T18:21:36.131357-05:00",
+    "bytes": 162208,
+    "sha256": "0d9d5d0cc49b5d78c9031849cb8e8af75708b81f2f06b242fdcf287d166f42e8",
+    "contenido": "Venta 43, total 18.90 y único POST visible 201"
+  },
+  {
+    "caso": "F-02",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 182155.png",
+    "archivo": "F-02_stock.png",
+    "creado": "2026-10-11T18:21:55.876331-05:00",
+    "modificado": "2026-10-11T18:21:55.974444-05:00",
+    "bytes": 182222,
+    "sha256": "e1b68ca20a569d099755f7f5bdd858101b7a35cdd1cad153b537c8c4231cab76",
+    "contenido": "Protector solar stock 22"
+  },
+  {
+    "caso": "M-01",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 182627.png",
+    "archivo": "M-01_primera-preparada.png",
+    "creado": "2026-10-11T18:26:27.824631-05:00",
+    "modificado": "2026-10-11T18:26:28.041201-05:00",
+    "bytes": 166377,
+    "sha256": "6a64c0e197e4d56251c7258e8f526f2ca1df961aca88738ffee4241af8a8790a",
+    "contenido": "Primera pestaña con Gel x2"
+  },
+  {
+    "caso": "M-01",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 182645.png",
+    "archivo": "M-01_primera.png",
+    "creado": "2026-10-11T18:26:45.583111-05:00",
+    "modificado": "2026-10-11T18:26:45.682043-05:00",
+    "bytes": 171991,
+    "sha256": "266a716555f3ad0e6897f9d850a989172b73ffe5066bdeaafa88f8e2cca3b907",
+    "contenido": "Venta 44 total 8.70, POST 201"
+  },
+  {
+    "caso": "M-01",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 182655.png",
+    "archivo": "M-01_segunda-preparada.png",
+    "creado": "2026-10-11T18:26:56.025685-05:00",
+    "modificado": "2026-10-11T18:26:56.230711-05:00",
+    "bytes": 163892,
+    "sha256": "2fe9922a804a03fb63e8de50cd1920dfd0ad2b6c8fa7f50246d5274007252b26",
+    "contenido": "Segunda pestaña preparada con Gel x2"
+  },
+  {
+    "caso": "M-01",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 182712.png",
+    "archivo": "M-01_conflicto.png",
+    "creado": "2026-10-11T18:27:12.151091-05:00",
+    "modificado": "2026-10-11T18:27:12.346432-05:00",
+    "bytes": 165269,
+    "sha256": "7feb849390fdedb9c451f0948ce8c815ba36b44dddbfed0c067f5328dec64b57",
+    "contenido": "409, disponible 0 y formulario conservado"
+  },
+  {
+    "caso": "M-01",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 182756.png",
+    "archivo": "M-01_corregida.png",
+    "creado": "2026-10-11T18:27:57.031872-05:00",
+    "modificado": "2026-10-11T18:27:57.224559-05:00",
+    "bytes": 161439,
+    "sha256": "7a9b45c72674295265678bcde1ac50e514b7767a57268d6c280372db2d58e53e",
+    "contenido": "Sustitución por Vitamina D x20, resumen reabierto; 409 previo en Network"
+  },
+  {
+    "caso": "M-01",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 182801.png",
+    "archivo": "M-01_corregida-sin-post.png",
+    "creado": "2026-10-11T18:28:01.987808-05:00",
+    "modificado": "2026-10-11T18:28:02.077566-05:00",
+    "bytes": 123919,
+    "sha256": "655bf9d6eaa76027bf20154d9a24e2973d525f2cfb462e481a6b113b18960dd3",
+    "contenido": "Resumen reabierto con sustitución, sin nueva petición"
+  },
+  {
+    "caso": "M-01",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 182814.png",
+    "archivo": "M-01_stock.png",
+    "creado": "2026-10-11T18:28:14.895545-05:00",
+    "modificado": "2026-10-11T18:28:15.082708-05:00",
+    "bytes": 189438,
+    "sha256": "3f810f9e9e6fc5429432d19e904ebd7e96251dcf629ce061a71971f1fcce78eb",
+    "contenido": "Gel stock 0"
+  },
+  {
+    "caso": "M-03",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 182928.png",
+    "archivo": "M-03_offline-preparado.png",
+    "creado": "2026-10-11T18:29:28.085687-05:00",
+    "modificado": "2026-10-11T18:29:28.178289-05:00",
+    "bytes": 123936,
+    "sha256": "fa1bf1d12ea11a82e142934070df4e5b454c5b1b39a4b4f3442dbb7ab83b276b",
+    "contenido": "Formulario preparado con Network Offline"
+  },
+  {
+    "caso": "M-03",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 182939.png",
+    "archivo": "M-03_error.png",
+    "creado": "2026-10-11T18:29:39.447655-05:00",
+    "modificado": "2026-10-11T18:29:39.640901-05:00",
+    "bytes": 158276,
+    "sha256": "a2e76d9e7ac58105c24aa9d74826b41888ad161da53e53469ce9fdc07c24aff9",
+    "contenido": "Mensaje de conexión, formulario conservado, petición fallida"
+  },
+  {
+    "caso": "M-03",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 182958.png",
+    "archivo": "M-03_reintento-preparado.png",
+    "creado": "2026-10-11T18:29:59.026009-05:00",
+    "modificado": "2026-10-11T18:29:59.119873-05:00",
+    "bytes": 116581,
+    "sha256": "e15a053702cce609fbbc3a225bb7709e9f5448a2b7038b9f96b6d7ce4121166e",
+    "contenido": "Online, resumen reabierto y fallo previo visible"
+  },
+  {
+    "caso": "M-03",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 183007.png",
+    "archivo": "M-03_recuperada.png",
+    "creado": "2026-10-11T18:30:07.584267-05:00",
+    "modificado": "2026-10-11T18:30:07.672901-05:00",
+    "bytes": 164302,
+    "sha256": "0570ff321f557af97b1ab04f10f440da70f23d7c929525037c974ddc60da78a6",
+    "contenido": "Venta 45, total 18.90, POST 201"
+  },
+  {
+    "caso": "R-01",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 183442.png",
+    "archivo": "R-01_historico.png",
+    "creado": "2026-10-11T18:34:42.191819-05:00",
+    "modificado": "2026-10-11T18:34:42.290207-05:00",
+    "bytes": 179890,
+    "sha256": "149f3c14e70383c83f647f69cf402e88f76b840a9dd3b848b9403a09d36e1b08",
+    "contenido": "GET sin fechas 200, 12 unidades, total 159.30 y barras 100/89"
+  },
+  {
+    "caso": "R-02",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 183516.png",
+    "archivo": "R-02_rango.png",
+    "creado": "2026-10-11T18:35:16.743659-05:00",
+    "modificado": "2026-10-11T18:35:16.935892-05:00",
+    "bytes": 184257,
+    "sha256": "cfadf994230580764c58f406dd419ec36ea2ef1c1037df78a8c3a67b25348449",
+    "contenido": "GET desde y hasta 200, total 159.30"
+  },
+  {
+    "caso": "R-03",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 183545.png",
+    "archivo": "R-03_solo-desde.png",
+    "creado": "2026-10-11T18:35:45.535073-05:00",
+    "modificado": "2026-10-11T18:35:45.714135-05:00",
+    "bytes": 182957,
+    "sha256": "0d0e3590c5958c405a09c859ac1575ab5ab2605e6e3c51ba3136c77cdacbc5e9",
+    "contenido": "GET solo desde 200"
+  },
+  {
+    "caso": "R-04",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 183600.png",
+    "archivo": "R-04_solo-hasta.png",
+    "creado": "2026-10-11T18:36:00.848314-05:00",
+    "modificado": "2026-10-11T18:36:00.943694-05:00",
+    "bytes": 183287,
+    "sha256": "4c3b801b76a6554cb71c3db7c9cca3fad46396e8d39956c2b4ed815edfb8c16a",
+    "contenido": "GET solo hasta 200"
+  },
+  {
+    "caso": "R-05",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 183624.png",
+    "archivo": "R-05_spa.png",
+    "creado": "2026-10-11T18:36:24.448077-05:00",
+    "modificado": "2026-10-11T18:36:24.539714-05:00",
+    "bytes": 148821,
+    "sha256": "6654724a603f2ad426dfc58d5d2cfb0dbf7ca06b1df6e975d70c0e65e7cb1ca1",
+    "contenido": "Rango invertido bloqueado sin petición nueva"
+  },
+  {
+    "caso": "R-05",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 183641.png",
+    "archivo": "R-05_api.png",
+    "creado": "2026-10-11T18:36:41.432567-05:00",
+    "modificado": "2026-10-11T18:36:41.541657-05:00",
+    "bytes": 229321,
+    "sha256": "31b1f62e8dab51802fa5c5a3e9e53dda5ae42a34c0c802854c7aa3ddd8607531",
+    "contenido": "Postman rango invertido 409"
+  },
+  {
+    "caso": "R-06",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 183752.png",
+    "archivo": "R-06_vacio.png",
+    "creado": "2026-10-11T18:37:52.974197-05:00",
+    "modificado": "2026-10-11T18:37:53.085062-05:00",
+    "bytes": 165567,
+    "sha256": "d9e15eb7608ea29b446dbf939291e1c4f5790975f34fda2413c2c1c6a5230caa",
+    "contenido": "Período 1900, GET 200 y mensaje vacío"
+  },
+  {
+    "caso": "I-01",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 184202.png",
+    "archivo": "I-01_impresion-automatica.png",
+    "creado": "2026-10-11T18:42:02.620861-05:00",
+    "modificado": "2026-10-11T18:42:02.833243-05:00",
+    "bytes": 135080,
+    "sha256": "3a34f8dfc0b0cef2eefb6396e1acac88c033c58cafc4a9db0d70e291ad9fdc75",
+    "contenido": "Diálogo PDF tras registrar venta 46"
+  },
+  {
+    "caso": "I-01",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 184231.png",
+    "archivo": "I-01_registro-network.png",
+    "creado": "2026-10-11T18:42:31.431764-05:00",
+    "modificado": "2026-10-11T18:42:31.627804-05:00",
+    "bytes": 162882,
+    "sha256": "77cc4ba4620030b435ad90075d1bcd124202fe3dfc4a9a4e385ec66c4b484854",
+    "contenido": "Venta 46, total 12.50, POST 201"
+  },
+  {
+    "caso": "I-01",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 185330.png",
+    "archivo": "I-01_impresion-anulada.png",
+    "creado": "2026-10-11T18:53:30.645519-05:00",
+    "modificado": "2026-10-11T18:53:30.737222-05:00",
+    "bytes": 145380,
+    "sha256": "2e4f18f93ddc7fdc00c7c768e1d3d37be9cfc6748a563314e8dc2c4c4bf9dcfb",
+    "contenido": "Diálogo PDF con sello ANULADA"
+  },
+  {
+    "caso": "I-01",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 185355.png",
+    "archivo": "I-01_anulada-spa.png",
+    "creado": "2026-10-11T18:53:55.326722-05:00",
+    "modificado": "2026-10-11T18:53:55.500917-05:00",
+    "bytes": 146084,
+    "sha256": "12d7461009a14fac5646d329950468fd2d0b84189020bf6a2b2524a64ec15da9",
+    "contenido": "Venta 46 ANULADA, GET 200; banner de creación permanece"
+  },
+  {
+    "caso": "I-01",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 185528.png",
+    "archivo": "I-01_impresion-consulta.png",
+    "creado": "2026-10-11T18:55:28.194509-05:00",
+    "modificado": "2026-10-11T18:55:28.288503-05:00",
+    "bytes": 156533,
+    "sha256": "2554a849877dc92ecba61fad938b9e0c7e20c16f8e0084e3dd5b2487b7c3604a",
+    "contenido": "Diálogo PDF consulta filtrada, total 159.30"
+  },
+  {
+    "caso": "I-01",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 185600.png",
+    "archivo": "I-01_consulta-network.png",
+    "creado": "2026-10-11T18:56:00.086331-05:00",
+    "modificado": "2026-10-11T18:56:00.178928-05:00",
+    "bytes": 177759,
+    "sha256": "d9a4e97301bd798daa908f8ba79f2166cd9b82e810cf9a283e69fccf89a5a446",
+    "contenido": "Consulta filtrada GET 200 con cinco registradas"
+  },
+  {
+    "caso": "R-07",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-11 185634.png",
+    "archivo": "R-07_exclusion-anulada.png",
+    "creado": "2026-10-11T18:56:34.525325-05:00",
+    "modificado": "2026-10-11T18:56:34.611873-05:00",
+    "bytes": 142069,
+    "sha256": "78fd9afbcc32d3781075d9bd15203bbd82b9521550a908c825af83457cc5c3c6",
+    "contenido": "Reporte tras anulación, 12 unidades y 159.30"
+  },
+  {
+    "caso": "I-01",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\DetalleDeVenta_I01.pdf",
+    "archivo": "I-01_registrada.pdf",
+    "creado": "2026-10-11T18:42:23.762543-05:00",
+    "modificado": "2026-10-11T18:42:24.184442-05:00",
+    "bytes": 66376,
+    "sha256": "825134093410fb7019dcabac7e8fedc6eff1109fa59a2bfb6ab0dbb7327b0bd0",
+    "contenido": "PDF de impresión inspeccionado; original conservado sin cambios"
+  },
+  {
+    "caso": "I-01",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\DetalleDeVenta_Anulada_I01.pdf",
+    "archivo": "I-01_anulada.pdf",
+    "creado": "2026-10-11T18:53:44.044381-05:00",
+    "modificado": "2026-10-11T18:53:44.421536-05:00",
+    "bytes": 72135,
+    "sha256": "55aac79f0dc3024ec8d661b7f28fc48ec03956362e920696c2f953cbbe2b86fd",
+    "contenido": "PDF de impresión inspeccionado; original conservado sin cambios"
+  },
+  {
+    "caso": "I-01",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Consulta_I01.pdf",
+    "archivo": "I-01_consulta.pdf",
+    "creado": "2026-10-11T18:55:33.720649-05:00",
+    "modificado": "2026-10-11T18:55:34.061084-05:00",
+    "bytes": 61418,
+    "sha256": "caab24194c767dcfb65e2613a247e1169fa596f95b676b7462aaf6b4edb53c6d",
+    "contenido": "PDF de impresión inspeccionado; original conservado sin cambios"
+  },
+  {
+    "caso": "V-01",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\New Evidence\\Captura de pantalla 2026-10-11 191354.png",
+    "archivo": "V-01_api.png",
+    "creado": "2026-10-11T19:13:54.412208-05:00",
+    "modificado": "2026-10-11T19:13:54.510548-05:00",
+    "bytes": 231931,
+    "sha256": "39330b425e196169c71c9d3ebe095c7a86e58d612cdaa9a7cc98c4c7df487cd7",
+    "contenido": "Postman 400 y errores de cliente obligatorio y detalles vacíos; retest"
+  },
+  {
+    "caso": "I-01",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\New Evidence\\Captura de pantalla 2026-10-11 191415.png",
+    "archivo": "I-01_stock-restaurado.png",
+    "creado": "2026-10-11T19:14:15.373826-05:00",
+    "modificado": "2026-10-11T19:14:15.468091-05:00",
+    "bytes": 183813,
+    "sha256": "a696496dd20217a73b431f304f55e487324a58bc97fb632fafb4d276114ba7a6",
+    "contenido": "Vitamina D stock 24 después de anular 46"
+  },
+  {
+    "caso": "I-01",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\New Evidence\\Captura de pantalla 2026-10-11 191457.png",
+    "archivo": "I-01_anulada-retest-impresion.png",
+    "creado": "2026-10-11T19:14:58.026888-05:00",
+    "modificado": "2026-10-11T19:14:58.217757-05:00",
+    "bytes": 136849,
+    "sha256": "a672117e712e77f1665ec26ac041efd7a65ba94c33ac4c849376d3274c4af920",
+    "contenido": "Vista previa de impresión de venta 46 ANULADA; URL sin nueva"
+  },
+  {
+    "caso": "I-01",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\New Evidence\\Captura de pantalla 2026-10-11 191507.png",
+    "archivo": "I-01_anulada-retest.png",
+    "creado": "2026-10-11T19:15:08.005516-05:00",
+    "modificado": "2026-10-11T19:15:08.094476-05:00",
+    "bytes": 132027,
+    "sha256": "28065e08b6e23ea44833bdb19ea10b4d741195b2418b44fecfa5b1cb31b3e709",
+    "contenido": "Venta 46 ANULADA, sin banner verde; URL /ventas/46, sin nueva=1"
+  }
+]

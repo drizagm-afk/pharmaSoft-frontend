@@ -1,0 +1,353 @@
+[
+  {
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-12 132939.png",
+    "archivo": "captura-01.png",
+    "grupo": "Formulario y buscadores",
+    "titulo": "P01 · Formulario vacío",
+    "descripcion": "Los mensajes exigen cliente y al menos un producto. No aparece confirmación y Red no registra peticiones.",
+    "sha256": "28bb4d2ae3694580b602966ffbb0c55c49e3ea2e1b6f11667a7b77b4191b87ab",
+    "orden": 1
+  },
+  {
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-12 133018.png",
+    "archivo": "captura-02.png",
+    "grupo": "Formulario y buscadores",
+    "titulo": "P02 · Búsqueda sin tilde",
+    "descripcion": "La búsqueda huaman encuentra a Huamán Flores, María Elena, DNI 90000001.",
+    "sha256": "db311d2f8ca573cab50f32c804cf7bf4cc5904ac794bd5a319c95d1eacaaf482",
+    "orden": 2
+  },
+  {
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-12 133052.png",
+    "archivo": "captura-03.png",
+    "grupo": "Formulario y buscadores",
+    "titulo": "P02 · Cliente inactivo excluido",
+    "descripcion": "Guevara no produce coincidencias activas en el buscador de ventas.",
+    "sha256": "20755f3cb4432f854ee2b5ab7c0a7f73b078800863ea6a31381990daa58147f0",
+    "orden": 3
+  },
+  {
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-12 133105.png",
+    "archivo": "captura-04.png",
+    "grupo": "Formulario y buscadores",
+    "titulo": "P02 · Estado del cliente",
+    "descripcion": "El catálogo confirma que Guevara Salmón está inactivo y María Elena está activa.",
+    "sha256": "4ebf8a3320bf9eefccb57cfb54692989fc14f8a9356d661c31270622ce5f3f16",
+    "orden": 4
+  },
+  {
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-12 133137.png",
+    "archivo": "captura-05.png",
+    "grupo": "Líneas y cálculos",
+    "titulo": "P03 · Cantidad y subtotal",
+    "descripcion": "Vitamina D por S/12.50, cantidad 3: subtotal y total S/37.50.",
+    "sha256": "40bb17d311a2edde010f77070f1b29d7cb54ce126a106deab069d2dd75884f3c",
+    "orden": 5
+  },
+  {
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-12 133233.png",
+    "archivo": "captura-06.png",
+    "grupo": "Líneas y cálculos",
+    "titulo": "P04 · Tres productos",
+    "descripcion": "Vitamina D x3, Protector solar x1 y Vitamina C x1: S/57.60; sin POST visible.",
+    "sha256": "ed5870f0f24140638a6d15ec1f59a00600a92f5fb8fec58cdabdbbd2755a92b4",
+    "orden": 6
+  },
+  {
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-12 133246.png",
+    "archivo": "captura-07.png",
+    "grupo": "Líneas y cálculos",
+    "titulo": "P04 · Quitar una línea",
+    "descripcion": "Al retirar Vitamina C quedan dos productos y total S/56.40.",
+    "sha256": "6dc2fee5ae17287bd0159f7d8dc02d6444607d91516a0cf177db3ea87b5a0244",
+    "orden": 7
+  },
+  {
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-12 133308.png",
+    "archivo": "captura-08.png",
+    "grupo": "Líneas y cálculos",
+    "titulo": "P05 · Producto ya seleccionado",
+    "descripcion": "El resultado de Vitamina D indica En la venta: 3 y stock 24.",
+    "sha256": "500d5b257a496a56e870a4f8dada895e3da24c919391d5435d0b93e3ab5b1cdf",
+    "orden": 8
+  },
+  {
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-12 133315.png",
+    "archivo": "captura-09.png",
+    "grupo": "Líneas y cálculos",
+    "titulo": "P05 · Incrementar sin duplicar",
+    "descripcion": "Una sola fila de Vitamina D pasa a cantidad 4; total S/68.90.",
+    "sha256": "f80532ed36b1dca69f5424bb4bdc2cb857602954e1e72a34ad8c5fcedcb67be2",
+    "orden": 9
+  },
+  {
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-12 133352.png",
+    "archivo": "captura-10.png",
+    "grupo": "Validación y confirmación",
+    "titulo": "P06 · Stock excedido",
+    "descripcion": "Cantidad 25 con stock 24 genera Supera el stock; no aparece confirmación ni POST.",
+    "sha256": "1d713f6ba5432e5cf07a2897615280ce0ee19c1f757a56e1ed30bd6ce2ac410e",
+    "orden": 10
+  },
+  {
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-12 133405.png",
+    "archivo": "captura-11.png",
+    "grupo": "Validación y confirmación",
+    "titulo": "P07 · Datos corregidos",
+    "descripcion": "Vitamina D x3 y Protector solar x2: dos productos, cinco unidades, S/75.30.",
+    "sha256": "f1d80318202cc9a1ad26e267fd064e61c6e1320913c9e0b514de122f64d5cf63",
+    "orden": 11
+  },
+  {
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-12 133437.png",
+    "archivo": "captura-12.png",
+    "grupo": "Validación y confirmación",
+    "titulo": "P07 · Resumen de confirmación",
+    "descripcion": "El resumen muestra cliente, dos productos y S/75.30. La impresión al registrar está marcada.",
+    "sha256": "70b32570a747d2a002f6c350871944fbe7bba8531bdb01b9a9a15a59a1ee9a6c",
+    "orden": 12
+  },
+  {
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-12 133502.png",
+    "archivo": "captura-13.png",
+    "grupo": "Validación y confirmación",
+    "titulo": "P08 · Volver sin registrar",
+    "descripcion": "El formulario conserva sus dos líneas, se cierra el resumen y Red sigue sin solicitudes.",
+    "sha256": "48b01f401e029b699b34ca00096617c3dda54bb1c61fbd34abca895ea8bb758d",
+    "orden": 13
+  },
+  {
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-12 133557.png",
+    "archivo": "captura-14.png",
+    "grupo": "Registro y comprobante",
+    "titulo": "P09-P10 · Venta guardada",
+    "descripcion": "La venta 47 queda REGISTRADA por S/75.30, con mensaje de éxito y POST 201 visible en Red.",
+    "sha256": "3700dd9dbe6182acdeeb3ed50bd67e15cddcd8c1a4516cb677d4592714d34156",
+    "orden": 14
+  },
+  {
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-12 133647.png",
+    "archivo": "captura-15.png",
+    "grupo": "Registro y comprobante",
+    "titulo": "P09 · Request de registro",
+    "descripcion": "Payload contiene clienteId 11 y detalles con productoId y cantidad, sin precios ni total.",
+    "sha256": "2aa81272722bacb83f0607da85eb151e4a24b6bdb956db1f98a30c3598ffaba2",
+    "orden": 15
+  },
+  {
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-12 133657.png",
+    "archivo": "captura-16.png",
+    "grupo": "Registro y comprobante",
+    "titulo": "P09 · Detalles enviados",
+    "descripcion": "El Payload expandido muestra Vitamina D (133) x3 y Protector solar (134) x2.",
+    "sha256": "32c1972b2f92963c393ba3b4f47cbdd176b4676e84c98470129e49c9fb9515bb",
+    "orden": 16
+  },
+  {
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-12 133705.png",
+    "archivo": "captura-17.png",
+    "grupo": "Registro y comprobante",
+    "titulo": "P09-P10 · Importes del servidor",
+    "descripcion": "Response de la venta 47 muestra total 75.30 y subtotales 37.50 y 37.80, iguales al cálculo manual.",
+    "sha256": "fd777e218e50635f5ecb26a412f68648315df3a1fa42945a9b0e944ada24400a",
+    "orden": 17
+  },
+  {
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-12 133925.png",
+    "archivo": "captura-18.png",
+    "grupo": "Impresión y consulta",
+    "titulo": "P12 · Venta anulada en la consulta",
+    "descripcion": "Filtro ANULADA devuelve venta 46, total S/12.50, con acción de impresión por fila y GET 200.",
+    "sha256": "7672399d9e26412f7f9a23d3daa7a1bd7ea85f01c599d4b2db235a4687441ce7",
+    "orden": 18
+  },
+  {
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-12 133934.png",
+    "archivo": "captura-19.png",
+    "grupo": "Impresión y consulta",
+    "titulo": "P12 · Vista previa anulada",
+    "descripcion": "La ruta incluye imprimir=1. El comprobante tiene DNI, sello ANULADA y pie, sin controles de la SPA.",
+    "sha256": "1b8eaf7171da8f84f679581a0d190c4472f88c342d03753ac591e2979c1634bb",
+    "orden": 19
+  },
+  {
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-12 134135.png",
+    "archivo": "captura-20.png",
+    "grupo": "Impresión y consulta",
+    "titulo": "P13 · Consulta filtrada",
+    "descripcion": "Cliente María Elena, estado REGISTRADA y fechas 11-12 de octubre: seis ventas, incluida la 47.",
+    "sha256": "e4f76f562800997c4def6cdfd81067524e83219e9646a1db17b8c07c601e46b6",
+    "orden": 20
+  },
+  {
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-12 134149.png",
+    "archivo": "captura-21.png",
+    "grupo": "Impresión y consulta",
+    "titulo": "P13 · Vista previa de consulta",
+    "descripcion": "La impresión presenta filtros, tabla y total registrado S/234.60, sin menú ni botones de la aplicación.",
+    "sha256": "25ba2917183f17686bf094379adcbdea14ece403fa199441e0a52e06de62f3fb",
+    "orden": 21
+  },
+  {
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-12 134308.png",
+    "archivo": "captura-22.png",
+    "grupo": "Consistencia del stock",
+    "titulo": "P14 · Stock después de la venta",
+    "descripcion": "Vitamina D queda en 21 y Protector solar en 19; Vitamina C permanece en 40.",
+    "sha256": "b973c1cc57a332851f2dcb03a2f4d9ce2d8a72d4e94420c9a5a97a45f7eb0a0e",
+    "orden": 22
+  },
+  {
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-12 135133.png",
+    "archivo": "captura-23.png",
+    "grupo": "Conflicto entre cajas",
+    "titulo": "P15 · Precondición de stock",
+    "descripcion": "Gel antibacterial se repuso a dos unidades; precio S/4.35 y estado activo.",
+    "sha256": "f650a0f1ec060a2a2ae0bee3e7dfd0bf394c20d907fa03e264065258692061ec",
+    "orden": 23
+  },
+  {
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-12 135246.png",
+    "archivo": "captura-24.png",
+    "grupo": "Conflicto entre cajas",
+    "titulo": "P15 · Primera caja preparada",
+    "descripcion": "La primera pestaña contiene Gel antibacterial x2, total S/8.70.",
+    "sha256": "8cdd382dec11d2bc52f9804f094709106f69afbd032435cffb0e8d022a81759c",
+    "orden": 24
+  },
+  {
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-12 135543.png",
+    "archivo": "captura-25.png",
+    "grupo": "Conflicto entre cajas",
+    "titulo": "P15 · Segunda caja preparada",
+    "descripcion": "La segunda pestaña conserva la misma cantidad y total antes de registrar.",
+    "sha256": "a4f442c0a2690d6a284402a83f701edc15f915bf42fb564efb24d90bff9a6301",
+    "orden": 25
+  },
+  {
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-12 135555.png",
+    "archivo": "captura-26.png",
+    "grupo": "Conflicto entre cajas",
+    "titulo": "P15 · Confirmación de primera caja",
+    "descripcion": "Resumen de Gel antibacterial x2 por S/8.70, sin impresión automática.",
+    "sha256": "00f4575b198dc2234699cbd699db1eebd4d75c40553ddeefc9918e558002e90e",
+    "orden": 26
+  },
+  {
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-12 135603.png",
+    "archivo": "captura-27.png",
+    "grupo": "Conflicto entre cajas",
+    "titulo": "P15 · Primera caja registra",
+    "descripcion": "Comprobante 48, REGISTRADA, total S/8.70; Headers del POST muestran 201 Created.",
+    "sha256": "4d0c3538d3890240394a65aeb86fa442c8436332f3f9753ffbd0515d844052bd",
+    "orden": 27
+  },
+  {
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-12 135616.png",
+    "archivo": "captura-28.png",
+    "grupo": "Conflicto entre cajas",
+    "titulo": "P15 · Segunda caja confirma",
+    "descripcion": "La segunda pestaña mantiene su resumen de S/8.70 después de vender en la primera.",
+    "sha256": "7adea44eadfd3ac6935a1d2451c156a0ae4bc911499f529702134563d011226e",
+    "orden": 28
+  },
+  {
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-12 135627.png",
+    "archivo": "captura-29.png",
+    "grupo": "Conflicto entre cajas",
+    "titulo": "P15 · Conflicto 409",
+    "descripcion": "Headers muestran POST 409 Conflict; el formulario conserva los datos y avisa stock insuficiente, disponible 0.",
+    "sha256": "31ef5455ffeaa26959c48fdbb569fb0fa035fe2e3e4c71e92b20924247b65121",
+    "orden": 29
+  },
+  {
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-12 135641.png",
+    "archivo": "captura-30.png",
+    "grupo": "Conflicto entre cajas",
+    "titulo": "P15 · Payload del intento rechazado",
+    "descripcion": "La segunda solicitud envió cliente 11 y producto 22, cantidad 2.",
+    "sha256": "6881a50d01682bb3834a942eb406d31523a2901a973b97d8a5430e47ef5573cb",
+    "orden": 30
+  },
+  {
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-12 135704.png",
+    "archivo": "captura-31.png",
+    "grupo": "Conflicto entre cajas",
+    "titulo": "P15 · Respuesta del conflicto",
+    "descripcion": "Response contiene estado 409 y mensaje Stock insuficiente para Gel antibacterial, disponible 0, solicitado 2.",
+    "sha256": "33844dba7b1937a0e19bed3a0ce22af31af915397c8fe9058da9d04a8760121e",
+    "orden": 31
+  },
+  {
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-12 140329.png",
+    "archivo": "captura-32.png",
+    "grupo": "Conflicto entre cajas",
+    "titulo": "P15 · Respuesta conservada",
+    "descripcion": "Vista adicional del Response 409 y del formulario corregible; no representa otra venta registrada.",
+    "sha256": "f8be001a80f22c4e13661fed8017a16564f297aee2ab4bd5e0278d3e586d8193",
+    "orden": 32
+  },
+  {
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-12 140349.png",
+    "archivo": "captura-33.png",
+    "grupo": "Conflicto entre cajas",
+    "titulo": "P15 · Stock agotado",
+    "descripcion": "El catálogo confirma Gel antibacterial en stock 0 después del único registro válido.",
+    "sha256": "20c8fbd82b49f7cd93b4d931fa8b57bf55784798f75e1d940ba020f04f8f1d5a",
+    "orden": 33
+  },
+  {
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-12 140415.png",
+    "archivo": "captura-34.png",
+    "grupo": "Conflicto entre cajas",
+    "titulo": "P15 · Consulta después del conflicto",
+    "descripcion": "Las ventas REGISTRADAS muestran la 48 y la 47; el listado contiene siete registros, sin otra venta por el rechazo.",
+    "sha256": "7726ea02b2144e12a1e2d6aae071a190bfdd17d0ea0b8d84eae17c2f0bea3bed",
+    "orden": 34
+  },
+  {
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-12 140513.png",
+    "archivo": "captura-35.png",
+    "grupo": "Filtros y fechas",
+    "titulo": "P16 · Parámetros enviados",
+    "descripcion": "GET 200 con clienteId 11 y fechas 2026-10-11 a 2026-10-12; Estado Todos no añade estado a la URL.",
+    "sha256": "dec375cf0a3cd73a56577942ff12ae8cef9a97d95f2d75ee7a91f80788cd783d",
+    "orden": 35
+  },
+  {
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-12 140923.png",
+    "archivo": "captura-36.png",
+    "grupo": "Filtros y fechas",
+    "titulo": "P16 · Respuesta paginada",
+    "descripcion": "Response incluye contenido y metadatos: pagina 0, tamanio 10, totalElementos 8, totalPaginas 1 y ultima true.",
+    "sha256": "ae114cc2b4376e141b2761ca7e0472841f238fa3bdf03b8840b7468eab32eff0",
+    "orden": 36
+  },
+  {
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-12 141034.png",
+    "archivo": "captura-37.png",
+    "grupo": "Filtros y fechas",
+    "titulo": "P17 · Rango inválido",
+    "descripcion": "Desde 13/10/2026 y hasta 12/10/2026: mensaje en la SPA y Red sin solicitudes nuevas.",
+    "sha256": "76f5c0e70e51d5d4c1947122af48674207475bcbec4d94105fd916668093bd49",
+    "orden": 37
+  },
+  {
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\S9_P_Anulada.pdf",
+    "archivo": "S9_P_Anulada.pdf",
+    "grupo": "Impresión y consulta",
+    "titulo": "P12 · Comprobante anulado conservado",
+    "descripcion": "Impresión de la venta 46: total S/12.50, DNI 90000001, sello y pie.",
+    "sha256": "7a059d7496fbad8359402bcec7dc5b16ccbc4d5cdb67d27c6b1f2f5a039bd857",
+    "orden": 100
+  },
+  {
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\S9_P_Consulta.pdf",
+    "archivo": "S9_P_Consulta.pdf",
+    "grupo": "Impresión y consulta",
+    "titulo": "P13 · Consulta impresa conservada",
+    "descripcion": "Seis ventas REGISTRADAS, filtros de cliente y fechas, total S/234.60. Corresponde al momento anterior a la venta 48.",
+    "sha256": "92e9753a0704bfff23e0eef28f824dbfe182a74effdb2c04fc3c7933a5edf59b",
+    "orden": 101
+  }
+]
