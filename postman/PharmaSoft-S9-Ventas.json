@@ -1,0 +1,1279 @@
+{
+  "info": {
+    "_postman_id": "7098e2e8-3dc1-4109-bfd9-d08fae16b4a8",
+    "name": "PharmaSoft - S9 Ventas",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "58501459",
+    "_collection_link": "https://go.postman.co/collection/58501459-7098e2e8-3dc1-4109-bfd9-d08fae16b4a8?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "01 - Preparación y consultas (solo lectura)",
+      "item": [
+        {
+          "name": "01 - Clientes: resolver IDs",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "const clientes = pm.response.json().contenido;",
+                  "const activo = clientes.find(c => c.estado);",
+                  "const inactivo = clientes.find(c => !c.estado);",
+                  "pm.test(\"Cliente activo e inactivo disponibles\", () => { pm.expect(activo).to.exist; pm.expect(inactivo).to.exist; });",
+                  "for (const [key, cliente] of [[\"clienteId\", activo], [\"clienteInactivoId\", inactivo]]) {",
+                  "  if (cliente) pm.collectionVariables.set(key, String(cliente.id));",
+                  "  else pm.collectionVariables.unset(key);",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/clientes?pagina=0&tamanio=100&ordenarPor=id&direccion=asc",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clientes"
+              ],
+              "query": [
+                {
+                  "key": "pagina",
+                  "value": "0"
+                },
+                {
+                  "key": "tamanio",
+                  "value": "100"
+                },
+                {
+                  "key": "ordenarPor",
+                  "value": "id"
+                },
+                {
+                  "key": "direccion",
+                  "value": "asc"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "02 - Productos: resolver IDs y precondiciones",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "const productos = pm.response.json().contenido;",
+                  "const disponibles = productos.filter(p => p.estado && p.stock > 0);",
+                  "pm.test(\"Al menos 8 productos activos con stock\", () => pm.expect(disponibles.length).to.be.at.least(8));",
+                  "for (const [key, producto] of [",
+                  "  [\"producto1250Id\", disponibles.find(p => p.precio === 12.5)],",
+                  "  [\"producto1890Id\", disponibles.find(p => p.precio === 18.9)],",
+                  "  [\"productoIntermedioId\", disponibles.find(p => p.precio === 1.2)],",
+                  "  [\"productoStock2Id\", disponibles.find(p => p.stock === 2)]",
+                  "]) {",
+                  "  pm.test(key + \" disponible\", () => pm.expect(producto).to.exist);",
+                  "  if (producto) pm.collectionVariables.set(key, String(producto.id));",
+                  "  else pm.collectionVariables.unset(key);",
+                  "}",
+                  "// M-01 y V-03 necesitan stock exactamente 2 antes de su ejecución."
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/productos?pagina=0&tamanio=100&ordenarPor=id&direccion=asc",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "productos"
+              ],
+              "query": [
+                {
+                  "key": "pagina",
+                  "value": "0"
+                },
+                {
+                  "key": "tamanio",
+                  "value": "100"
+                },
+                {
+                  "key": "ordenarPor",
+                  "value": "id"
+                },
+                {
+                  "key": "direccion",
+                  "value": "asc"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "03 - Categorías",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/categorias",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "categorias"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "04 - Stock inicial de A",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "pm.collectionVariables.set(\"stockInicialA\", String(pm.response.json().stock));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/productos/{{producto1250Id}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "productos",
+                "{{producto1250Id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "05 - Stock inicial de G",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "pm.collectionVariables.set(\"stockInicialG\", String(pm.response.json().stock));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/productos/{{productoStock2Id}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "productos",
+                "{{productoStock2Id}}"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "02 - Validaciones API",
+      "item": [
+        {
+          "name": "V-01 - Sin cliente y sin detalles",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 400\", () => pm.response.to.have.status(400));",
+                  "pm.test(\"Respuesta de error legible\", () => pm.expect(pm.response.json().message).to.be.a(\"string\"));",
+                  "pm.test(\"Sin stack trace\", () => pm.expect(pm.response.json()).not.to.have.property(\"trace\"));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"clienteId\":null,\"detalles\":[]}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/ventas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "V-02 - Cantidad cero",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 400\", () => pm.response.to.have.status(400));",
+                  "pm.test(\"Respuesta de error legible\", () => pm.expect(pm.response.json().message).to.be.a(\"string\"));",
+                  "pm.test(\"Sin stack trace\", () => pm.expect(pm.response.json()).not.to.have.property(\"trace\"));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clienteId\": {{clienteId}},\n  \"detalles\": [\n    { \"productoId\": {{producto1250Id}}, \"cantidad\": 0 }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/ventas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "V-02 - Cantidad decimal 2.5",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 400\", () => pm.response.to.have.status(400));",
+                  "pm.test(\"Respuesta de error legible\", () => pm.expect(pm.response.json().message).to.be.a(\"string\"));",
+                  "pm.test(\"Sin stack trace\", () => pm.expect(pm.response.json()).not.to.have.property(\"trace\"));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clienteId\": {{clienteId}},\n  \"detalles\": [\n    { \"productoId\": {{producto1250Id}}, \"cantidad\": 2.5 }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/ventas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "V-03 - Superar stock 2 (requiere preparación)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 409\", () => pm.response.to.have.status(409));",
+                  "pm.test(\"Respuesta de error legible\", () => pm.expect(pm.response.json().message).to.be.a(\"string\"));",
+                  "pm.test(\"Sin stack trace\", () => pm.expect(pm.response.json()).not.to.have.property(\"trace\"));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clienteId\": {{clienteId}},\n  \"detalles\": [\n    { \"productoId\": {{productoStock2Id}}, \"cantidad\": 3 }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/ventas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "M-02 - Cliente inactivo",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 409\", () => pm.response.to.have.status(409));",
+                  "pm.test(\"Respuesta de error legible\", () => pm.expect(pm.response.json().message).to.be.a(\"string\"));",
+                  "pm.test(\"Sin stack trace\", () => pm.expect(pm.response.json()).not.to.have.property(\"trace\"));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clienteId\": {{clienteInactivoId}},\n  \"detalles\": [\n    { \"productoId\": {{producto1250Id}}, \"cantidad\": 1 }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/ventas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "V-06 - Detalle nulo",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 400\", () => pm.response.to.have.status(400));",
+                  "pm.test(\"Respuesta de error legible\", () => pm.expect(pm.response.json().message).to.be.a(\"string\"));",
+                  "pm.test(\"Sin stack trace\", () => pm.expect(pm.response.json()).not.to.have.property(\"trace\"));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"clienteId\":{{clienteId}},\"detalles\":[null]}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/ventas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "V-06 - Cantidad decimal 1.5",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 400\", () => pm.response.to.have.status(400));",
+                  "pm.test(\"Respuesta de error legible\", () => pm.expect(pm.response.json().message).to.be.a(\"string\"));",
+                  "pm.test(\"Sin stack trace\", () => pm.expect(pm.response.json()).not.to.have.property(\"trace\"));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clienteId\": {{clienteId}},\n  \"detalles\": [\n    { \"productoId\": {{producto1250Id}}, \"cantidad\": 1.5 }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/ventas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Extra - Producto inexistente",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 404\", () => pm.response.to.have.status(404));",
+                  "pm.test(\"Respuesta de error legible\", () => pm.expect(pm.response.json().message).to.be.a(\"string\"));",
+                  "pm.test(\"Sin stack trace\", () => pm.expect(pm.response.json()).not.to.have.property(\"trace\"));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clienteId\": {{clienteId}},\n  \"detalles\": [\n    { \"productoId\": 999999999999, \"cantidad\": 1 }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/ventas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "V-05 - Preparar cantidad repetida superior al stock (solo lectura)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "const stock = pm.response.json().stock;",
+                  "pm.test(\"Stock >= 2 para comprobar la suma\", () => pm.expect(stock).to.be.at.least(2));",
+                  "pm.collectionVariables.set(\"cantidadDuplicadaSobreStock\", String(Math.floor(stock / 2) + 1));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/productos/{{producto1250Id}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "productos",
+                "{{producto1250Id}}"
+              ]
+            },
+            "description": "Ejecutar inmediatamente antes del siguiente POST. Se necesitan al menos 2 unidades para que cada línea individual quepa y la suma no."
+          },
+          "response": []
+        },
+        {
+          "name": "V-05 - Repetidos: suma superior al stock (rollback)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 409\", () => pm.response.to.have.status(409));",
+                  "pm.test(\"Mensaje de stock\", () => pm.expect(pm.response.json().message).to.include(\"Stock insuficiente\"));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clienteId\": {{clienteId}},\n  \"detalles\": [\n    {\"productoId\": {{producto1250Id}}, \"cantidad\": {{cantidadDuplicadaSobreStock}}},\n    {\"productoId\": {{producto1250Id}}, \"cantidad\": {{cantidadDuplicadaSobreStock}}}\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/ventas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas"
+              ]
+            },
+            "description": "Usar la cantidad calculada por la consulta anterior. Cada línea cabe individualmente, pero juntas superan el stock. Comparar stock antes/después: debe mantenerse."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "03 - Registro de ventas (modifica stock)",
+      "item": [
+        {
+          "name": "C-04 - CREA VENTA: A x3 y B x2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 201\", () => pm.response.to.have.status(201));",
+                  "const venta = pm.response.json();",
+                  "pm.collectionVariables.set(\"ventaId\", String(venta.id));",
+                  "pm.test(\"Total 75.30 = 12.50 x3 + 18.90 x2\", () => pm.expect(venta.total).to.eql(75.3));",
+                  "pm.test(\"Dos líneas y cinco unidades\", () => { pm.expect(venta.detalles.length).to.eql(2); pm.expect(venta.detalles.reduce((n,d) => n+d.cantidad,0)).to.eql(5); });"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clienteId\": {{clienteId}},\n  \"detalles\": [\n    { \"productoId\": {{producto1250Id}}, \"cantidad\": 3 },\n    { \"productoId\": {{producto1890Id}}, \"cantidad\": 2 }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/ventas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas"
+              ]
+            },
+            "description": "Crea una venta permanente y descuenta stock. Ejecutar deliberadamente durante validación; no sustituye la ejecución C-04 de la SPA."
+          },
+          "response": []
+        },
+        {
+          "name": "V-05 - CREA VENTA: producto repetido (1 + 2)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 201\", () => pm.response.to.have.status(201));",
+                  "const venta = pm.response.json();",
+                  "pm.test(\"Dos líneas permitidas\", () => pm.expect(venta.detalles.length).to.eql(2));",
+                  "pm.test(\"Total 37.50\", () => pm.expect(venta.total).to.eql(37.5));",
+                  "pm.test(\"Tres unidades agregadas\", () => pm.expect(venta.detalles.reduce((n,d) => n+d.cantidad,0)).to.eql(3));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clienteId\": {{clienteId}},\n  \"detalles\": [\n    { \"productoId\": {{producto1250Id}}, \"cantidad\": 1 },\n    { \"productoId\": {{producto1250Id}}, \"cantidad\": 2 }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/ventas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas"
+              ]
+            },
+            "description": "Requiere stock de A >= 3. Comprobar también GET de producto antes/después: descuento agregado de 3."
+          },
+          "response": []
+        },
+        {
+          "name": "M-01 - CREA VENTA: consume las dos unidades de G",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 201\", () => pm.response.to.have.status(201));",
+                  "pm.test(\"Total 8.70\", () => pm.expect(pm.response.json().total).to.eql(8.7));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clienteId\": {{clienteId}},\n  \"detalles\": [\n    { \"productoId\": {{productoStock2Id}}, \"cantidad\": 2 }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/ventas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas"
+              ]
+            },
+            "description": "Petición auxiliar: consume stock. La prueba oficial M-01 se ejecuta con dos pestañas de la SPA preparadas antes de la primera compra."
+          },
+          "response": []
+        },
+        {
+          "name": "M-01 - Repetición tras agotarse G",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 409\", () => pm.response.to.have.status(409));",
+                  "pm.test(\"Respuesta de error legible\", () => pm.expect(pm.response.json().message).to.be.a(\"string\"));",
+                  "pm.test(\"Sin stack trace\", () => pm.expect(pm.response.json()).not.to.have.property(\"trace\"));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clienteId\": {{clienteId}},\n  \"detalles\": [\n    { \"productoId\": {{productoStock2Id}}, \"cantidad\": 2 }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/ventas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "X-01 - Leer venta C-04",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/ventas/{{ventaId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas",
+                "{{ventaId}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "X-01 - Consulta por cliente y estado",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/ventas/buscar?clienteId={{clienteId}}&estado=REGISTRADA&pagina=0&tamanio=10&ordenarPor=fecha&direccion=desc",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas",
+                "buscar"
+              ],
+              "query": [
+                {
+                  "key": "clienteId",
+                  "value": "{{clienteId}}"
+                },
+                {
+                  "key": "estado",
+                  "value": "REGISTRADA"
+                },
+                {
+                  "key": "pagina",
+                  "value": "0"
+                },
+                {
+                  "key": "tamanio",
+                  "value": "10"
+                },
+                {
+                  "key": "ordenarPor",
+                  "value": "fecha"
+                },
+                {
+                  "key": "direccion",
+                  "value": "desc"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "X-01 - Stock final A",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/productos/{{producto1250Id}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "productos",
+                "{{producto1250Id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "X-01 - Stock final B",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/productos/{{producto1890Id}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "productos",
+                "{{producto1890Id}}"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "04 - Reporte por categoría",
+      "item": [
+        {
+          "name": "R-01 - Histórico sin fechas",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"Lista de categorías\", () => pm.expect(pm.response.json()).to.be.an(\"array\"));",
+                  "for (const fila of pm.response.json()) {",
+                  "  pm.test(\"Contrato real del backend\", () => {",
+                  "    pm.expect(fila).to.have.all.keys(\"categoriaId\", \"categoria\", \"cantidad\", \"total\");",
+                  "    pm.expect(fila.cantidad).to.be.a(\"number\"); pm.expect(fila.total).to.be.a(\"number\");",
+                  "  });",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/reportes/ventas-por-categoria",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "reportes",
+                "ventas-por-categoria"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "R-02 - Solo desde",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"Lista de categorías\", () => pm.expect(pm.response.json()).to.be.an(\"array\"));",
+                  "for (const fila of pm.response.json()) {",
+                  "  pm.test(\"Contrato real del backend\", () => {",
+                  "    pm.expect(fila).to.have.all.keys(\"categoriaId\", \"categoria\", \"cantidad\", \"total\");",
+                  "    pm.expect(fila.cantidad).to.be.a(\"number\"); pm.expect(fila.total).to.be.a(\"number\");",
+                  "  });",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/reportes/ventas-por-categoria?desde={{desde}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "reportes",
+                "ventas-por-categoria"
+              ],
+              "query": [
+                {
+                  "key": "desde",
+                  "value": "{{desde}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "R-03 - Solo hasta",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"Lista de categorías\", () => pm.expect(pm.response.json()).to.be.an(\"array\"));",
+                  "for (const fila of pm.response.json()) {",
+                  "  pm.test(\"Contrato real del backend\", () => {",
+                  "    pm.expect(fila).to.have.all.keys(\"categoriaId\", \"categoria\", \"cantidad\", \"total\");",
+                  "    pm.expect(fila.cantidad).to.be.a(\"number\"); pm.expect(fila.total).to.be.a(\"number\");",
+                  "  });",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/reportes/ventas-por-categoria?hasta={{hasta}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "reportes",
+                "ventas-por-categoria"
+              ],
+              "query": [
+                {
+                  "key": "hasta",
+                  "value": "{{hasta}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "R-04 - Ambas fechas",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"Lista de categorías\", () => pm.expect(pm.response.json()).to.be.an(\"array\"));",
+                  "for (const fila of pm.response.json()) {",
+                  "  pm.test(\"Contrato real del backend\", () => {",
+                  "    pm.expect(fila).to.have.all.keys(\"categoriaId\", \"categoria\", \"cantidad\", \"total\");",
+                  "    pm.expect(fila.cantidad).to.be.a(\"number\"); pm.expect(fila.total).to.be.a(\"number\");",
+                  "  });",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/reportes/ventas-por-categoria?desde={{desde}}&hasta={{hasta}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "reportes",
+                "ventas-por-categoria"
+              ],
+              "query": [
+                {
+                  "key": "desde",
+                  "value": "{{desde}}"
+                },
+                {
+                  "key": "hasta",
+                  "value": "{{hasta}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "R-05 - Rango invertido",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 409\", () => pm.response.to.have.status(409));",
+                  "pm.test(\"Respuesta de error legible\", () => pm.expect(pm.response.json().message).to.be.a(\"string\"));",
+                  "pm.test(\"Sin stack trace\", () => pm.expect(pm.response.json()).not.to.have.property(\"trace\"));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/reportes/ventas-por-categoria?desde=2026-10-14&hasta=2026-10-11",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "reportes",
+                "ventas-por-categoria"
+              ],
+              "query": [
+                {
+                  "key": "desde",
+                  "value": "2026-10-14"
+                },
+                {
+                  "key": "hasta",
+                  "value": "2026-10-11"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "R-06 - Período vacío controlado",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"Lista vacía (sin ventas en 1900)\", () => pm.expect(pm.response.json()).to.eql([]));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/reportes/ventas-por-categoria?desde=1900-01-01&hasta=1900-01-02",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "reportes",
+                "ventas-por-categoria"
+              ],
+              "query": [
+                {
+                  "key": "desde",
+                  "value": "1900-01-01"
+                },
+                {
+                  "key": "hasta",
+                  "value": "1900-01-02"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080/api/v1"
+    },
+    {
+      "key": "clienteId",
+      "value": "11"
+    },
+    {
+      "key": "clienteInactivoId",
+      "value": "15"
+    },
+    {
+      "key": "producto1250Id",
+      "value": "133"
+    },
+    {
+      "key": "producto1890Id",
+      "value": "134"
+    },
+    {
+      "key": "productoIntermedioId",
+      "value": "19"
+    },
+    {
+      "key": "productoStock2Id",
+      "value": "22"
+    },
+    {
+      "key": "ventaId",
+      "value": "41"
+    },
+    {
+      "key": "desde",
+      "value": "2026-10-11"
+    },
+    {
+      "key": "hasta",
+      "value": "2026-10-14"
+    },
+    {
+      "key": "cantidadDuplicadaSobreStock",
+      "value": "13"
+    }
+  ]
+}

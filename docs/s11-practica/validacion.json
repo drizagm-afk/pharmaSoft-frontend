@@ -30,13 +30,16 @@
       "Supervisor con unión de permisos",
       "Administrador con acceso a Reportes"
     ],
-    "porCapturarManualmente": [
-      "Las 16 capturas de la guía",
-      "Token alterado en Session storage (caso 15)",
-      "Duración real de un minuto y restauración a 60 (caso 16)"
-    ]
+    "porCapturarManualmente": []
   },
   "cambiosBackend": false,
   "datosComercialesModificados": false,
-  "commitsRealizados": false
+  "commitsRealizados": false,
+  "evidenciaManual": {
+    "casos": 16,
+    "capturas": 27,
+    "fecha": "2026-10-22",
+    "informe": "docs/DelCarpio_LP2_S11_Practica.pdf",
+    "revision": "Conforme con los resultados observados; reporte adicional 403 identificado como fetch."
+  }
 }

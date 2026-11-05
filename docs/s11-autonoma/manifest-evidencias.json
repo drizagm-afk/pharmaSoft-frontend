@@ -1,0 +1,1516 @@
+[
+  {
+    "numero": 1,
+    "caso": "L-02",
+    "titulo": "Rechazo de usuario inexistente",
+    "descripcion": "POST auth/login responde 401; se conserva el usuario y se elimina la contraseña del formulario.",
+    "archivo": "L-02_001.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 113932.png",
+    "creado": "2026-10-25T11:39:32.990941-05:00",
+    "dimensiones": [
+      1917,
+      883
+    ],
+    "sha256Original": "fb214d01e25e027812e51473092a997eeb773d44f56e5e50ccfa36eacc937c1d",
+    "sha256Documento": "fb214d01e25e027812e51473092a997eeb773d44f56e5e50ccfa36eacc937c1d",
+    "regionesOcultas": []
+  },
+  {
+    "numero": 2,
+    "caso": "L-02",
+    "titulo": "Credenciales de usuario inexistente",
+    "descripcion": "La petición permite identificar el intento de autenticación que se contrasta con el rechazo.",
+    "archivo": "L-02_002.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 113938.png",
+    "creado": "2026-10-25T11:39:38.290142-05:00",
+    "dimensiones": [
+      1917,
+      877
+    ],
+    "sha256Original": "e9a678ff27456a6078123be96b050f9c88c7a95565e10794ea4a1e1adc3b25c6",
+    "sha256Documento": "e9a678ff27456a6078123be96b050f9c88c7a95565e10794ea4a1e1adc3b25c6",
+    "regionesOcultas": []
+  },
+  {
+    "numero": 3,
+    "caso": "L-02",
+    "titulo": "Mensaje para usuario inexistente",
+    "descripcion": "La respuesta mantiene el mismo mensaje genérico: Usuario o contraseña incorrectos.",
+    "archivo": "L-02_003.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 113952.png",
+    "creado": "2026-10-25T11:39:52.930149-05:00",
+    "dimensiones": [
+      1917,
+      878
+    ],
+    "sha256Original": "cccd23cef1122a513e319ef4c433c7494b94413477dd378a8bf8d6f0142c7385",
+    "sha256Documento": "cccd23cef1122a513e319ef4c433c7494b94413477dd378a8bf8d6f0142c7385",
+    "regionesOcultas": []
+  },
+  {
+    "numero": 4,
+    "caso": "L-02",
+    "titulo": "Rechazo de contraseña incorrecta de admin",
+    "descripcion": "POST auth/login responde 401; se conserva el usuario y se elimina la contraseña del formulario.",
+    "archivo": "L-02_004.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 114039.png",
+    "creado": "2026-10-25T11:40:39.913552-05:00",
+    "dimensiones": [
+      1917,
+      877
+    ],
+    "sha256Original": "824d111c946f47946fb7bb4a4b41ad9a89bd66ccf54e0dcf10ad0944d7361e48",
+    "sha256Documento": "824d111c946f47946fb7bb4a4b41ad9a89bd66ccf54e0dcf10ad0944d7361e48",
+    "regionesOcultas": []
+  },
+  {
+    "numero": 5,
+    "caso": "L-02",
+    "titulo": "Credenciales de contraseña incorrecta de admin",
+    "descripcion": "La petición permite identificar el intento de autenticación que se contrasta con el rechazo.",
+    "archivo": "L-02_005.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 114046.png",
+    "creado": "2026-10-25T11:40:46.144623-05:00",
+    "dimensiones": [
+      1917,
+      881
+    ],
+    "sha256Original": "76563d84500477a65d4cf7639d49e916017dc9e00f67e039d749dd05493468ff",
+    "sha256Documento": "76563d84500477a65d4cf7639d49e916017dc9e00f67e039d749dd05493468ff",
+    "regionesOcultas": []
+  },
+  {
+    "numero": 6,
+    "caso": "L-02",
+    "titulo": "Mensaje para contraseña incorrecta de admin",
+    "descripcion": "La respuesta mantiene el mismo mensaje genérico: Usuario o contraseña incorrectos.",
+    "archivo": "L-02_006.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 114053.png",
+    "creado": "2026-10-25T11:40:53.749131-05:00",
+    "dimensiones": [
+      1917,
+      877
+    ],
+    "sha256Original": "7423238ace5f8ce17739950a34010a4acc182b1febb51451b3934b04b3867f9f",
+    "sha256Documento": "7423238ace5f8ce17739950a34010a4acc182b1febb51451b3934b04b3867f9f",
+    "regionesOcultas": []
+  },
+  {
+    "numero": 7,
+    "caso": "L-02",
+    "titulo": "Rechazo de cuenta inactiva",
+    "descripcion": "POST auth/login responde 401; se conserva el usuario y se elimina la contraseña del formulario.",
+    "archivo": "L-02_007.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 114112.png",
+    "creado": "2026-10-25T11:41:12.798306-05:00",
+    "dimensiones": [
+      1917,
+      877
+    ],
+    "sha256Original": "45b502b455ee8355be9b0f00cf2b88784f4a5ebdf913619a04c0d2528743c387",
+    "sha256Documento": "45b502b455ee8355be9b0f00cf2b88784f4a5ebdf913619a04c0d2528743c387",
+    "regionesOcultas": []
+  },
+  {
+    "numero": 8,
+    "caso": "L-02",
+    "titulo": "Credenciales de cuenta inactiva",
+    "descripcion": "La petición permite identificar el intento de autenticación que se contrasta con el rechazo.",
+    "archivo": "L-02_008.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 114118.png",
+    "creado": "2026-10-25T11:41:18.647049-05:00",
+    "dimensiones": [
+      1917,
+      886
+    ],
+    "sha256Original": "76c167ccfa34b01c6b87e9a815bde047789d7f84e73da787e015f86098c3b57a",
+    "sha256Documento": "76c167ccfa34b01c6b87e9a815bde047789d7f84e73da787e015f86098c3b57a",
+    "regionesOcultas": []
+  },
+  {
+    "numero": 9,
+    "caso": "L-02",
+    "titulo": "Mensaje para cuenta inactiva",
+    "descripcion": "La respuesta mantiene el mismo mensaje genérico: Usuario o contraseña incorrectos.",
+    "archivo": "L-02_009.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 114126.png",
+    "creado": "2026-10-25T11:41:26.417706-05:00",
+    "dimensiones": [
+      1917,
+      872
+    ],
+    "sha256Original": "d80aea3902e1b417dad5868c2989134f2955b5fd476eaec8fb7e4a67d5fd6709",
+    "sha256Documento": "d80aea3902e1b417dad5868c2989134f2955b5fd476eaec8fb7e4a67d5fd6709",
+    "regionesOcultas": []
+  },
+  {
+    "numero": 10,
+    "caso": "L-01",
+    "titulo": "Formulario vacío",
+    "descripcion": "Los campos muestran mensajes obligatorios y Network permanece sin solicitudes de login.",
+    "archivo": "L-01_010.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 114141.png",
+    "creado": "2026-10-25T11:41:41.729950-05:00",
+    "dimensiones": [
+      1917,
+      880
+    ],
+    "sha256Original": "c0a9b633582eeeee30d7a855db960444e02c2f0f625a3994dae3baeea75fa996",
+    "sha256Documento": "c0a9b633582eeeee30d7a855db960444e02c2f0f625a3994dae3baeea75fa996",
+    "regionesOcultas": []
+  },
+  {
+    "numero": 11,
+    "caso": "L-03",
+    "titulo": "Preparación del doble envío",
+    "descripcion": "Formulario completo antes de comprobar el bloqueo de envíos simultáneos.",
+    "archivo": "L-03_011.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 114512.png",
+    "creado": "2026-10-25T11:45:12.884980-05:00",
+    "dimensiones": [
+      1917,
+      877
+    ],
+    "sha256Original": "97427dc6e5c67724bb425192adba590e6192e4ad5c1858b2f2434d5e332b7afb",
+    "sha256Documento": "97427dc6e5c67724bb425192adba590e6192e4ad5c1858b2f2434d5e332b7afb",
+    "regionesOcultas": []
+  },
+  {
+    "numero": 12,
+    "caso": "L-03",
+    "titulo": "Petición en curso",
+    "descripcion": "Ingresando... aparece deshabilitado mientras existe una única solicitud login pendiente.",
+    "archivo": "L-03_012.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 114548.png",
+    "creado": "2026-10-25T11:45:48.627296-05:00",
+    "dimensiones": [
+      1917,
+      882
+    ],
+    "sha256Original": "3024795f525bb9599cf0877df846c94879d2dd9063fae5c850483c69d95f63aa",
+    "sha256Documento": "3024795f525bb9599cf0877df846c94879d2dd9063fae5c850483c69d95f63aa",
+    "regionesOcultas": []
+  },
+  {
+    "numero": 13,
+    "caso": "L-03",
+    "titulo": "Login completado",
+    "descripcion": "Una petición POST login devuelve 200 y abre Inicio con la cuenta vendedor.",
+    "archivo": "L-03_013.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 114555.png",
+    "creado": "2026-10-25T11:45:55.642285-05:00",
+    "dimensiones": [
+      1917,
+      877
+    ],
+    "sha256Original": "a53853e54f7200a0ba215677fdebe6bcf74c2c3011663e2c36cd49f2ec647bd5",
+    "sha256Documento": "a53853e54f7200a0ba215677fdebe6bcf74c2c3011663e2c36cd49f2ec647bd5",
+    "regionesOcultas": []
+  },
+  {
+    "numero": 14,
+    "caso": "L-04",
+    "titulo": "Destino externo solicitado",
+    "descripcion": "La URL de login incluye returnUrl con un dominio externo de prueba.",
+    "archivo": "L-04_014.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 114658.png",
+    "creado": "2026-10-25T11:46:58.529152-05:00",
+    "dimensiones": [
+      1917,
+      957
+    ],
+    "sha256Original": "19895ebd979bf8f9940a2172a30172ea0357014294371157040d3fbe9445550b",
+    "sha256Documento": "19895ebd979bf8f9940a2172a30172ea0357014294371157040d3fbe9445550b",
+    "regionesOcultas": []
+  },
+  {
+    "numero": 15,
+    "caso": "L-04",
+    "titulo": "Destino interno seguro",
+    "descripcion": "Después del login la navegación termina en localhost:4200/inicio.",
+    "archivo": "L-04_015.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 114705.png",
+    "creado": "2026-10-25T11:47:05.681854-05:00",
+    "dimensiones": [
+      1917,
+      958
+    ],
+    "sha256Original": "0d6da054f2b2bb3aa96f7ae843aa0fa9c4b26e36c1df4c809f80e03451ba9e7c",
+    "sha256Documento": "0d6da054f2b2bb3aa96f7ae843aa0fa9c4b26e36c1df4c809f80e03451ba9e7c",
+    "regionesOcultas": []
+  },
+  {
+    "numero": 16,
+    "caso": "L-05",
+    "titulo": "Usuario con espacios finales",
+    "descripcion": "Se introduce vendedor con espacios al final; el cursor permite observar la separación.",
+    "archivo": "L-05_016.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 114749.png",
+    "creado": "2026-10-25T11:47:50.003436-05:00",
+    "dimensiones": [
+      1917,
+      877
+    ],
+    "sha256Original": "176af44351e6c1a2e63972b4f01ba91dfebe2e1f0bd1abe20e3f50a6e18539cf",
+    "sha256Documento": "176af44351e6c1a2e63972b4f01ba91dfebe2e1f0bd1abe20e3f50a6e18539cf",
+    "regionesOcultas": []
+  },
+  {
+    "numero": 17,
+    "caso": "L-05",
+    "titulo": "Identidad canónica",
+    "descripcion": "El login permite el acceso y devuelve username vendedor con duración normal de 3600 segundos.",
+    "archivo": "L-05_017.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 114813.png",
+    "creado": "2026-10-25T11:48:13.775497-05:00",
+    "dimensiones": [
+      1917,
+      877
+    ],
+    "sha256Original": "8acd808a94a8f34e4166ffe2b7ff1a6bbd33961f45fb5158523d57c0552ac237",
+    "sha256Documento": "6cc590e05544af5f583d04c00562db0dd6bb37e6700624f4a7a3aa94724757e9",
+    "regionesOcultas": [
+      [
+        1610,
+        350,
+        1917,
+        380
+      ]
+    ]
+  },
+  {
+    "numero": 18,
+    "caso": "S-01",
+    "titulo": "Catálogo con sesión",
+    "descripcion": "Productos se muestra con la identidad de vendedor antes de la recarga.",
+    "archivo": "S-01_018.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 115002.png",
+    "creado": "2026-10-25T11:50:02.785000-05:00",
+    "dimensiones": [
+      1917,
+      1017
+    ],
+    "sha256Original": "caf63a36fb250e3e9ee518d7129e56ee68c3fb2a0d32084f0ea9a3acf4cee1c7",
+    "sha256Documento": "caf63a36fb250e3e9ee518d7129e56ee68c3fb2a0d32084f0ea9a3acf4cee1c7",
+    "regionesOcultas": []
+  },
+  {
+    "numero": 19,
+    "caso": "S-01",
+    "titulo": "Recarga de la aplicación",
+    "descripcion": "Después de F5 se conserva la identidad y las consultas vuelven a responder 200.",
+    "archivo": "S-01_019.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 115010.png",
+    "creado": "2026-10-25T11:50:10.884644-05:00",
+    "dimensiones": [
+      1917,
+      1018
+    ],
+    "sha256Original": "fbde38b62abb42243141a42dd1314e2d655e15a401b1ab73273f177dc65bc3a7",
+    "sha256Documento": "fbde38b62abb42243141a42dd1314e2d655e15a401b1ab73273f177dc65bc3a7",
+    "regionesOcultas": []
+  },
+  {
+    "numero": 20,
+    "caso": "S-01",
+    "titulo": "Nueva ventana sin sesión",
+    "descripcion": "La nueva ventana de prueba presenta el login.",
+    "archivo": "S-01_020.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 115030.png",
+    "creado": "2026-10-25T11:50:30.364017-05:00",
+    "dimensiones": [
+      1917,
+      1020
+    ],
+    "sha256Original": "0e3a03f6e7460da9a123ad8c37caa54db4825061d99a8b6b5384f808ef86791c",
+    "sha256Documento": "0e3a03f6e7460da9a123ad8c37caa54db4825061d99a8b6b5384f808ef86791c",
+    "regionesOcultas": []
+  },
+  {
+    "numero": 21,
+    "caso": "S-02",
+    "titulo": "Vencimiento local en el pasado",
+    "descripcion": "En sessionStorage se establece expiraEn: 1, manteniendo los demás datos de prueba.",
+    "archivo": "S-02_021.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 115236.png",
+    "creado": "2026-10-25T11:52:36.257985-05:00",
+    "dimensiones": [
+      1917,
+      877
+    ],
+    "sha256Original": "2752f26a6d2451594b4c55de5f5bcda85448ff087d10ccb231738f6e4785c562",
+    "sha256Documento": "14d217fd9dc82982b0ed0440a1b9070afd3b3ea4e48cec7ca5caf40456b3b280",
+    "regionesOcultas": [
+      [
+        1330,
+        185,
+        1715,
+        212
+      ],
+      [
+        1280,
+        675,
+        1917,
+        702
+      ]
+    ]
+  },
+  {
+    "numero": 22,
+    "caso": "S-02",
+    "titulo": "Sesión vencida descartada",
+    "descripcion": "Tras recargar aparece login y desaparece pharmasoft.sesion.",
+    "archivo": "S-02_022.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 115248.png",
+    "creado": "2026-10-25T11:52:48.432431-05:00",
+    "dimensiones": [
+      1917,
+      871
+    ],
+    "sha256Original": "8d00a60e08fb67bda13ac97263be880a1c351358911e5149920ca1b0a79a8356",
+    "sha256Documento": "8d00a60e08fb67bda13ac97263be880a1c351358911e5149920ca1b0a79a8356",
+    "regionesOcultas": []
+  },
+  {
+    "numero": 23,
+    "caso": "S-03",
+    "titulo": "Contenido que no es JSON",
+    "descripcion": "El valor de sesión se sustituye por HELLO, WORLD! para comprobar la recuperación ante datos dañados.",
+    "archivo": "S-03_023.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 115344.png",
+    "creado": "2026-10-25T11:53:44.463725-05:00",
+    "dimensiones": [
+      1917,
+      881
+    ],
+    "sha256Original": "61cb02434b9ba1a771b36de2b2ca758ee3f3106c6450c2f3885510738508fff9",
+    "sha256Documento": "195deaec3cddda4d4d3fc63759a8a7175e808cafd2e243941ccd803d0d623c55",
+    "regionesOcultas": [
+      [
+        1280,
+        675,
+        1917,
+        702
+      ]
+    ]
+  },
+  {
+    "numero": 24,
+    "caso": "S-03",
+    "titulo": "Recuperación del almacenamiento inválido",
+    "descripcion": "La SPA muestra login y elimina el valor que no puede interpretar.",
+    "archivo": "S-03_024.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 115402.png",
+    "creado": "2026-10-25T11:54:02.128945-05:00",
+    "dimensiones": [
+      1917,
+      877
+    ],
+    "sha256Original": "79e922bb9a3d7706b30208c41b424c39862e1fbc9ff14c71ebe0348a07a13af8",
+    "sha256Documento": "79e922bb9a3d7706b30208c41b424c39862e1fbc9ff14c71ebe0348a07a13af8",
+    "regionesOcultas": []
+  },
+  {
+    "numero": 25,
+    "caso": "S-04",
+    "titulo": "Dos contextos con sesión",
+    "descripcion": "Ambas ventanas muestran Productos con vendedor autenticado.",
+    "archivo": "S-04_025.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 115459.png",
+    "creado": "2026-10-25T11:54:59.653630-05:00",
+    "dimensiones": [
+      1917,
+      1016
+    ],
+    "sha256Original": "93fcb4f4ec1bb50a35bb048ab73f82ead95dd7212808907d35a8e4ff01c18bca",
+    "sha256Documento": "93fcb4f4ec1bb50a35bb048ab73f82ead95dd7212808907d35a8e4ff01c18bca",
+    "regionesOcultas": []
+  },
+  {
+    "numero": 26,
+    "caso": "S-04",
+    "titulo": "Logout independiente",
+    "descripcion": "Una ventana queda en login; la otra continúa navegando por Categorías con su propia sesión.",
+    "archivo": "S-04_026.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 115537.png",
+    "creado": "2026-10-25T11:55:37.844883-05:00",
+    "dimensiones": [
+      1917,
+      1015
+    ],
+    "sha256Original": "7db341d18e2c06d1b73cfda2b2f9f516e2ddc64a5aba6b7af9a915ac2675640f",
+    "sha256Documento": "7db341d18e2c06d1b73cfda2b2f9f516e2ddc64a5aba6b7af9a915ac2675640f",
+    "regionesOcultas": []
+  },
+  {
+    "numero": 27,
+    "caso": "S-05",
+    "titulo": "JSON con estructura incorrecta",
+    "descripcion": "El JSON es válido, pero expiraEn contiene mañana en lugar de un número.",
+    "archivo": "S-05_027.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 115642.png",
+    "creado": "2026-10-25T11:56:42.094898-05:00",
+    "dimensiones": [
+      1917,
+      881
+    ],
+    "sha256Original": "edb8b0f6f1da71a8919ffe63980d74718f012d608a0531b795c6ce84e1a857ff",
+    "sha256Documento": "edb8b0f6f1da71a8919ffe63980d74718f012d608a0531b795c6ce84e1a857ff",
+    "regionesOcultas": []
+  },
+  {
+    "numero": 28,
+    "caso": "S-05",
+    "titulo": "Estructura inválida descartada",
+    "descripcion": "La recarga presenta login y limpia la entrada inválida de sessionStorage.",
+    "archivo": "S-05_028.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 115655.png",
+    "creado": "2026-10-25T11:56:55.251388-05:00",
+    "dimensiones": [
+      1917,
+      877
+    ],
+    "sha256Original": "b871b37dc8e34479764f3cb7e26b657508d96253628e0d10b779760f592d1da2",
+    "sha256Documento": "b871b37dc8e34479764f3cb7e26b657508d96253628e0d10b779760f592d1da2",
+    "regionesOcultas": []
+  },
+  {
+    "numero": 29,
+    "caso": "I-01",
+    "titulo": "Bearer en la API protegida",
+    "descripcion": "La consulta autenticada de Categorías contiene Authorization: Bearer y responde 200.",
+    "archivo": "I-01_029.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 115835.png",
+    "creado": "2026-10-25T11:58:35.499562-05:00",
+    "dimensiones": [
+      1917,
+      881
+    ],
+    "sha256Original": "b83622a1f4f2aced5933c85327ab8a156d0a491d0fd3752c16149ab0db5bef95",
+    "sha256Documento": "82312aa908c7355f663702462bd19225bf478d09721a54674e26cf369a9c8b49",
+    "regionesOcultas": [
+      [
+        1398,
+        620,
+        1904,
+        646
+      ],
+      [
+        1205,
+        646,
+        1904,
+        742
+      ]
+    ]
+  },
+  {
+    "numero": 30,
+    "caso": "I-01",
+    "titulo": "Login sin Authorization",
+    "descripcion": "Los encabezados de POST auth/login no incluyen Authorization.",
+    "archivo": "I-01_030.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 115845.png",
+    "creado": "2026-10-25T11:58:45.495227-05:00",
+    "dimensiones": [
+      1917,
+      875
+    ],
+    "sha256Original": "253f690ed25753e348f1b99a21694e2349d316bcd6f2424b8f7adc4e8cbb6c87",
+    "sha256Documento": "253f690ed25753e348f1b99a21694e2349d316bcd6f2424b8f7adc4e8cbb6c87",
+    "regionesOcultas": []
+  },
+  {
+    "numero": 31,
+    "caso": "I-01",
+    "titulo": "Dominio externo sin Bearer",
+    "descripcion": "GET https://httpbin.org/get responde 200 sin Authorization entre los encabezados enviados.",
+    "archivo": "I-01_031.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 120002.png",
+    "creado": "2026-10-25T12:00:02.273653-05:00",
+    "dimensiones": [
+      1917,
+      876
+    ],
+    "sha256Original": "282382f2ec12bac550d524f650ca3c10c6ece5a7c3b29e43f44c279a68afcbee",
+    "sha256Documento": "282382f2ec12bac550d524f650ca3c10c6ece5a7c3b29e43f44c279a68afcbee",
+    "regionesOcultas": []
+  },
+  {
+    "numero": 32,
+    "caso": "I-01",
+    "titulo": "Petición externa desde Angular",
+    "descripcion": "La consola ejecuta HttpClient desde el componente y confirma que la petición externa terminó.",
+    "archivo": "I-01_032.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 120014.png",
+    "creado": "2026-10-25T12:00:14.865718-05:00",
+    "dimensiones": [
+      1917,
+      883
+    ],
+    "sha256Original": "a0b20f5a10faee2536c4f57d7260ded2f68db59e4a4abb1f2451df777e9cbacb",
+    "sha256Documento": "a0b20f5a10faee2536c4f57d7260ded2f68db59e4a4abb1f2451df777e9cbacb",
+    "regionesOcultas": []
+  },
+  {
+    "numero": 33,
+    "caso": "I-02",
+    "titulo": "Sesión antes de la interrupción",
+    "descripcion": "Inicio muestra al vendedor autenticado antes de detener el backend.",
+    "archivo": "I-02_033.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 120142.png",
+    "creado": "2026-10-25T12:01:42.266319-05:00",
+    "dimensiones": [
+      1917,
+      1020
+    ],
+    "sha256Original": "57b967c7a30730c3528c39356b4f133ae1e9ef80beaddc2c7678ec90314f8abf",
+    "sha256Documento": "57b967c7a30730c3528c39356b4f133ae1e9ef80beaddc2c7678ec90314f8abf",
+    "regionesOcultas": []
+  },
+  {
+    "numero": 34,
+    "caso": "I-02",
+    "titulo": "Backend detenido",
+    "descripcion": "La consola del backend registra la detención de la aplicación.",
+    "archivo": "I-02_034.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 120150.png",
+    "creado": "2026-10-25T12:01:50.267053-05:00",
+    "dimensiones": [
+      1917,
+      1017
+    ],
+    "sha256Original": "03fa7971852275a0fed0b2ac7fc609ad53edfc214405a334b9af73575ca90bc6",
+    "sha256Documento": "03fa7971852275a0fed0b2ac7fc609ad53edfc214405a334b9af73575ca90bc6",
+    "regionesOcultas": []
+  },
+  {
+    "numero": 35,
+    "caso": "I-02",
+    "titulo": "Error de conexión",
+    "descripcion": "Productos comunica la imposibilidad de conectar con el servidor y conserva la identidad del vendedor.",
+    "archivo": "I-02_035.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 120237.png",
+    "creado": "2026-10-25T12:02:37.946635-05:00",
+    "dimensiones": [
+      1917,
+      960
+    ],
+    "sha256Original": "9b737d1b3ea413cb0836a531224cdc3f409d74dbc3ba4347bca1a96754a49e2d",
+    "sha256Documento": "4649d343f0973b460d4032c54f1a1aeea66b31f031a7d11d83d3ddce878181ca",
+    "regionesOcultas": [
+      [
+        1430,
+        640,
+        1917,
+        777
+      ]
+    ]
+  },
+  {
+    "numero": 36,
+    "caso": "I-02",
+    "titulo": "Backend reiniciado",
+    "descripcion": "La aplicación backend vuelve a iniciar para recuperar las consultas.",
+    "archivo": "I-02_036.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 120304.png",
+    "creado": "2026-10-25T12:03:04.491486-05:00",
+    "dimensiones": [
+      1917,
+      1012
+    ],
+    "sha256Original": "b441172b935d73491a115324e6e6de01db98c5c1564685522a3928636692ae12",
+    "sha256Documento": "b441172b935d73491a115324e6e6de01db98c5c1564685522a3928636692ae12",
+    "regionesOcultas": []
+  },
+  {
+    "numero": 37,
+    "caso": "I-02",
+    "titulo": "Recuperación de Productos",
+    "descripcion": "GET productos vuelve a responder 200; el catálogo está disponible y permanece el aviso independiente de Categorías.",
+    "archivo": "I-02_037.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 120324.png",
+    "creado": "2026-10-25T12:03:24.764658-05:00",
+    "dimensiones": [
+      1917,
+      1020
+    ],
+    "sha256Original": "3148c3e5a48fd3cce96d9f65d9d1c75aee26dbeef340eac6a5ffe5156911913b",
+    "sha256Documento": "32230790589eba1a49f88e4ce217a53b89518f0abe04298aed763171c5979c5d",
+    "regionesOcultas": [
+      [
+        1430,
+        784,
+        1917,
+        922
+      ]
+    ]
+  },
+  {
+    "numero": 38,
+    "caso": "I-02",
+    "titulo": "Recuperación completa del catálogo",
+    "descripcion": "Después de recuperar también Categorías, el listado queda sin avisos de conexión y conserva la sesión.",
+    "archivo": "I-02_038.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 120334.png",
+    "creado": "2026-10-25T12:03:35.005768-05:00",
+    "dimensiones": [
+      1917,
+      1018
+    ],
+    "sha256Original": "e2b49036f1ad9fc8c46cdffc7c9c8f25eb8f250d410c140cd12468acb3f58480",
+    "sha256Documento": "c4f642137aeca6c8a36986318a0cc8a10f95bb94bfd5420f8db78e093c20f3e3",
+    "regionesOcultas": [
+      [
+        1430,
+        784,
+        1917,
+        922
+      ]
+    ]
+  },
+  {
+    "numero": 39,
+    "caso": "I-03",
+    "titulo": "Alteración del token",
+    "descripcion": "Se modifica la firma dentro de la sesión conservando el JSON y el vencimiento.",
+    "archivo": "I-03_039.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 120432.png",
+    "creado": "2026-10-25T12:04:32.431660-05:00",
+    "dimensiones": [
+      1917,
+      882
+    ],
+    "sha256Original": "e1c35425ce08924908c9a4497fb290c587a780df614d42623d04846048f388b4",
+    "sha256Documento": "ea6c4f81acdf3a8532413b06f00a91946680c651f945bfbca62f7d3a57732711",
+    "regionesOcultas": [
+      [
+        1375,
+        185,
+        1917,
+        216
+      ],
+      [
+        1280,
+        678,
+        1917,
+        705
+      ]
+    ]
+  },
+  {
+    "numero": 40,
+    "caso": "I-03",
+    "titulo": "Ventas rechaza el token",
+    "descripcion": "GET ventas/buscar responde 401 y la aplicación muestra Su sesión expiró.",
+    "archivo": "I-03_040.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 120544.png",
+    "creado": "2026-10-25T12:05:45.009804-05:00",
+    "dimensiones": [
+      1917,
+      877
+    ],
+    "sha256Original": "1904194dda4b5d1e813da835d9dc80ed115565b8d7ec62dd2a5e0bbf271a2bdc",
+    "sha256Documento": "560c4febbcf5b292ae93464f99f1a172b473a67743e6f5a19783e11ecfd3f181",
+    "regionesOcultas": [
+      [
+        1430,
+        641,
+        1917,
+        781
+      ]
+    ]
+  },
+  {
+    "numero": 41,
+    "caso": "I-03",
+    "titulo": "Respuesta de token inválido",
+    "descripcion": "El cuerpo del 401 identifica El token no es válido en /api/v1/ventas/buscar.",
+    "archivo": "I-03_041.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 120550.png",
+    "creado": "2026-10-25T12:05:50.589913-05:00",
+    "dimensiones": [
+      1917,
+      876
+    ],
+    "sha256Original": "34010b62dde6fbc2df650ba03ac62e6e7a8238b54bfef8a6316594e82bb08fc6",
+    "sha256Documento": "34010b62dde6fbc2df650ba03ac62e6e7a8238b54bfef8a6316594e82bb08fc6",
+    "regionesOcultas": []
+  },
+  {
+    "numero": 42,
+    "caso": "I-03",
+    "titulo": "Retorno a Ventas conservado",
+    "descripcion": "La URL del login conserva expirada=1 y returnUrl=%2Fventas.",
+    "archivo": "I-03_042.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 120612.png",
+    "creado": "2026-10-25T12:06:12.732202-05:00",
+    "dimensiones": [
+      1917,
+      958
+    ],
+    "sha256Original": "1b471aaf285347d05fae614bf55191e64b6bf6012a728ad010d1d796f82e03e6",
+    "sha256Documento": "1b471aaf285347d05fae614bf55191e64b6bf6012a728ad010d1d796f82e03e6",
+    "regionesOcultas": []
+  },
+  {
+    "numero": 43,
+    "caso": "G-01",
+    "titulo": "Preparación de rutas anónimas",
+    "descripcion": "Se preparan las tres rutas directas en ventanas privadas antes de observar las redirecciones.",
+    "archivo": "G-01_043.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 120953.png",
+    "creado": "2026-10-25T12:09:53.600181-05:00",
+    "dimensiones": [
+      1917,
+      1020
+    ],
+    "sha256Original": "99c9c1da91454da3a5508f0eb65fccadeb827b17034c096a325ab1327a7cc884",
+    "sha256Documento": "99c9c1da91454da3a5508f0eb65fccadeb827b17034c096a325ab1327a7cc884",
+    "regionesOcultas": []
+  },
+  {
+    "numero": 44,
+    "caso": "G-01",
+    "titulo": "Edición requiere autenticación",
+    "descripcion": "La ruta de edición sin sesión redirige al login con su returnUrl.",
+    "archivo": "G-01_044.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 121040.png",
+    "creado": "2026-10-25T12:10:40.520633-05:00",
+    "dimensiones": [
+      1917,
+      1018
+    ],
+    "sha256Original": "ce805f1b0fc9857f6085582cd41c8f1ec3d144dc9dc5a5323b8c14a9f8afcff7",
+    "sha256Documento": "ce805f1b0fc9857f6085582cd41c8f1ec3d144dc9dc5a5323b8c14a9f8afcff7",
+    "regionesOcultas": []
+  },
+  {
+    "numero": 45,
+    "caso": "G-01",
+    "titulo": "Nueva venta requiere autenticación",
+    "descripcion": "La ruta /ventas/nueva sin sesión redirige al login conservando el destino.",
+    "archivo": "G-01_045.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 121045.png",
+    "creado": "2026-10-25T12:10:46.009876-05:00",
+    "dimensiones": [
+      1917,
+      1015
+    ],
+    "sha256Original": "ea541b4fe404330e87f016c88d905cfa84ad0d5aa693bb62d7c6df3201dea102",
+    "sha256Documento": "ea541b4fe404330e87f016c88d905cfa84ad0d5aa693bb62d7c6df3201dea102",
+    "regionesOcultas": []
+  },
+  {
+    "numero": 46,
+    "caso": "G-01",
+    "titulo": "Inicio requiere autenticación",
+    "descripcion": "La ruta /inicio sin sesión redirige al login con returnUrl correspondiente.",
+    "archivo": "G-01_046.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 121059.png",
+    "creado": "2026-10-25T12:10:59.863983-05:00",
+    "dimensiones": [
+      1917,
+      1020
+    ],
+    "sha256Original": "7797808d190933d5640aee096e826626325957896e7fdcb753049629f7bfa4cc",
+    "sha256Documento": "7797808d190933d5640aee096e826626325957896e7fdcb753049629f7bfa4cc",
+    "regionesOcultas": []
+  },
+  {
+    "numero": 47,
+    "caso": "G-02",
+    "titulo": "Alta de categoría como vendedor",
+    "descripcion": "Se solicita /categorias/nuevo con una cuenta sin CATALOGO_ESCRIBIR.",
+    "archivo": "G-02_047.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 121329.png",
+    "creado": "2026-10-25T12:13:29.159505-05:00",
+    "dimensiones": [
+      1917,
+      1018
+    ],
+    "sha256Original": "f1ba322ea3cfdbcd4bb3f6f2b21f06e28f447d0bf1a460cb9667d9e6a8905ab6",
+    "sha256Documento": "f1ba322ea3cfdbcd4bb3f6f2b21f06e28f447d0bf1a460cb9667d9e6a8905ab6",
+    "regionesOcultas": []
+  },
+  {
+    "numero": 48,
+    "caso": "G-02",
+    "titulo": "Categoría protegida por permiso",
+    "descripcion": "El guard muestra 403 · Acceso denegado dentro del layout del vendedor.",
+    "archivo": "G-02_048.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 121335.png",
+    "creado": "2026-10-25T12:13:35.873339-05:00",
+    "dimensiones": [
+      1917,
+      1018
+    ],
+    "sha256Original": "716d2bff418ea1fad2387bb8a693825015a4b3c27dfc9fa400e1388cae7c36e1",
+    "sha256Documento": "716d2bff418ea1fad2387bb8a693825015a4b3c27dfc9fa400e1388cae7c36e1",
+    "regionesOcultas": []
+  },
+  {
+    "numero": 49,
+    "caso": "G-02",
+    "titulo": "Edición de producto como vendedor",
+    "descripcion": "Se solicita /productos/1/editar con la misma cuenta de lectura.",
+    "archivo": "G-02_049.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 121409.png",
+    "creado": "2026-10-25T12:14:10.024376-05:00",
+    "dimensiones": [
+      1917,
+      1020
+    ],
+    "sha256Original": "a0fed9712cd63b45fcfed616367d63b8403eba0ac1a21d384493d955fe67bb7e",
+    "sha256Documento": "a0fed9712cd63b45fcfed616367d63b8403eba0ac1a21d384493d955fe67bb7e",
+    "regionesOcultas": []
+  },
+  {
+    "numero": 50,
+    "caso": "G-02",
+    "titulo": "Edición protegida por permiso",
+    "descripcion": "La navegación termina en Acceso denegado y conserva la sesión.",
+    "archivo": "G-02_050.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 121419.png",
+    "creado": "2026-10-25T12:14:19.075723-05:00",
+    "dimensiones": [
+      1917,
+      1018
+    ],
+    "sha256Original": "f06bed6d1bd7b96ae6d3092ab9d11d5592d284438387e84f35336c7be26dd4a0",
+    "sha256Documento": "f06bed6d1bd7b96ae6d3092ab9d11d5592d284438387e84f35336c7be26dd4a0",
+    "regionesOcultas": []
+  },
+  {
+    "numero": 51,
+    "caso": "G-02",
+    "titulo": "Nueva venta como almacén",
+    "descripcion": "Se solicita /ventas/nueva con ALMACENERO, que no tiene VENTAS_REGISTRAR.",
+    "archivo": "G-02_051.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 121443.png",
+    "creado": "2026-10-25T12:14:43.197561-05:00",
+    "dimensiones": [
+      1917,
+      1016
+    ],
+    "sha256Original": "6a6d31a440ac6c7e95eab50fc1ae1ab59ab2a35a78943d4635b3403c5f5c12e0",
+    "sha256Documento": "6a6d31a440ac6c7e95eab50fc1ae1ab59ab2a35a78943d4635b3403c5f5c12e0",
+    "regionesOcultas": []
+  },
+  {
+    "numero": 52,
+    "caso": "G-02",
+    "titulo": "Ventas protegida por permiso",
+    "descripcion": "Almacén recibe Acceso denegado y conserva su menú de catálogo.",
+    "archivo": "G-02_052.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 121454.png",
+    "creado": "2026-10-25T12:14:54.539989-05:00",
+    "dimensiones": [
+      1917,
+      1018
+    ],
+    "sha256Original": "91950abd6ef5036321a8da8b3ece6d6a6fcdc21ca22e1df73d889643f865e3ad",
+    "sha256Documento": "91950abd6ef5036321a8da8b3ece6d6a6fcdc21ca22e1df73d889643f865e3ad",
+    "regionesOcultas": []
+  },
+  {
+    "numero": 53,
+    "caso": "M-01",
+    "titulo": "Menú y acciones de ADMIN",
+    "descripcion": "Menú completo, Reportes y controles de escritura del catálogo.",
+    "archivo": "M-01_053.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 121715.png",
+    "creado": "2026-10-25T12:17:15.792581-05:00",
+    "dimensiones": [
+      1917,
+      876
+    ],
+    "sha256Original": "39fe241b10f3bf9809231fb422842517755a9de1d49cb4c9c16dd792cb8b31fa",
+    "sha256Documento": "e5d8c624cca0f8ea90404721ed6241fa66e28df5923ed2fcc8c08be9d37342f8",
+    "regionesOcultas": [
+      [
+        1545,
+        325,
+        1917,
+        355
+      ]
+    ]
+  },
+  {
+    "numero": 54,
+    "caso": "M-01",
+    "titulo": "Menú y acciones de VENDEDOR",
+    "descripcion": "Catálogo de lectura, Clientes y Ventas; sin acciones de escritura de productos.",
+    "archivo": "M-01_054.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 121838.png",
+    "creado": "2026-10-25T12:18:38.305013-05:00",
+    "dimensiones": [
+      1916,
+      877
+    ],
+    "sha256Original": "9c83f33af231aeeb4acf2fd877d88c523e1c2fa0dd8cb3108feb4094b8804f11",
+    "sha256Documento": "713456ec29dfb395f8f4aeba3b1854db3c10a123253013c9f84fd55dd659ce4f",
+    "regionesOcultas": [
+      [
+        1545,
+        325,
+        1917,
+        355
+      ]
+    ]
+  },
+  {
+    "numero": 55,
+    "caso": "M-01",
+    "titulo": "Menú y acciones de ALMACENERO",
+    "descripcion": "Inicio y catálogo editable; no aparecen Clientes, Ventas ni Reportes.",
+    "archivo": "M-01_055.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 121853.png",
+    "creado": "2026-10-25T12:18:53.797696-05:00",
+    "dimensiones": [
+      1917,
+      882
+    ],
+    "sha256Original": "e9be9d814ea97b74b9286c0ebccd4d4826103d6960f081a597df586a4457d0b6",
+    "sha256Documento": "6ffa8396b2a7760f20ba5233716e2971bb08deed696e8099a71d2a8b2b70648c",
+    "regionesOcultas": [
+      [
+        1545,
+        328,
+        1917,
+        358
+      ]
+    ]
+  },
+  {
+    "numero": 56,
+    "caso": "M-01",
+    "titulo": "Menú y acciones de supervisor",
+    "descripcion": "La unión ALMACENERO y VENDEDOR permite editar catálogo y acceder a Ventas, sin Reportes.",
+    "archivo": "M-01_056.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 121911.png",
+    "creado": "2026-10-25T12:19:12.019909-05:00",
+    "dimensiones": [
+      1917,
+      880
+    ],
+    "sha256Original": "885710cfbf5c80b0e09265159cdc66a92461289cac0a4f323ac513ade690c1a1",
+    "sha256Documento": "d2bc06f602f99c81338f54c28044c5a0df2cb3998d4daabc0cb8e23ffe83d173",
+    "regionesOcultas": [
+      [
+        1545,
+        325,
+        1917,
+        355
+      ]
+    ]
+  },
+  {
+    "numero": 57,
+    "caso": "M-02",
+    "titulo": "Estado inicial ADMIN",
+    "descripcion": "La misma pestaña muestra el menú administrativo antes de cerrar la sesión.",
+    "archivo": "M-02_057.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 121951.png",
+    "creado": "2026-10-25T12:19:52.067746-05:00",
+    "dimensiones": [
+      1917,
+      877
+    ],
+    "sha256Original": "2febe3f6605336e1ae41177396788fe35429dd2e360d5cbeacf70e1ff579c18e",
+    "sha256Documento": "2febe3f6605336e1ae41177396788fe35429dd2e360d5cbeacf70e1ff579c18e",
+    "regionesOcultas": []
+  },
+  {
+    "numero": 58,
+    "caso": "M-02",
+    "titulo": "Cambio a ALMACENERO",
+    "descripcion": "Al entrar como almacén se retiran los módulos no permitidos y cambia la identidad sin F5.",
+    "archivo": "M-02_058.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 122011.png",
+    "creado": "2026-10-25T12:20:11.495315-05:00",
+    "dimensiones": [
+      1917,
+      872
+    ],
+    "sha256Original": "1fa4fb5cad05a9750914ecdd544e8c61393661744109aa2daf9f2fb50f41d155",
+    "sha256Documento": "1fa4fb5cad05a9750914ecdd544e8c61393661744109aa2daf9f2fb50f41d155",
+    "regionesOcultas": []
+  },
+  {
+    "numero": 59,
+    "caso": "E-01",
+    "titulo": "Acción Angular forzada",
+    "descripcion": "La consola invoca darDeBaja del componente y abre la confirmación sobre Alcohol 70%.",
+    "archivo": "E-01_059.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 122135.png",
+    "creado": "2026-10-25T12:21:35.789986-05:00",
+    "dimensiones": [
+      1917,
+      962
+    ],
+    "sha256Original": "4b45852bdae53b991ccf1562f8157e7705d47c1bb7df8d824355ba7698028b4b",
+    "sha256Documento": "4b45852bdae53b991ccf1562f8157e7705d47c1bb7df8d824355ba7698028b4b",
+    "regionesOcultas": []
+  },
+  {
+    "numero": 60,
+    "caso": "E-01",
+    "titulo": "403 comunicado en la SPA",
+    "descripcion": "El componente muestra No tienes permisos para realizar esta operación; el usuario continúa autenticado.",
+    "archivo": "E-01_060.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 122144.png",
+    "creado": "2026-10-25T12:21:44.918044-05:00",
+    "dimensiones": [
+      1917,
+      878
+    ],
+    "sha256Original": "5b78286fcacd1ed6d9c577d1c6bba50478b10cd66c307c67ac55203d19da6671",
+    "sha256Documento": "5b78286fcacd1ed6d9c577d1c6bba50478b10cd66c307c67ac55203d19da6671",
+    "regionesOcultas": []
+  },
+  {
+    "numero": 61,
+    "caso": "E-01",
+    "titulo": "Producto conservado y respuesta 403",
+    "descripcion": "La respuesta identifica /api/v1/productos/21 y status 403; Alcohol 70% sigue Activo con stock 25.",
+    "archivo": "E-01_061.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 122203.png",
+    "creado": "2026-10-25T12:22:03.316891-05:00",
+    "dimensiones": [
+      1917,
+      878
+    ],
+    "sha256Original": "3194a772fdf843248e68ea49b6c9b525bd9958bba2f1c9ad53447ad67c19156e",
+    "sha256Documento": "3194a772fdf843248e68ea49b6c9b525bd9958bba2f1c9ad53447ad67c19156e",
+    "regionesOcultas": []
+  },
+  {
+    "numero": 62,
+    "caso": "B-01",
+    "titulo": "Sesión de tres minutos",
+    "descripcion": "La respuesta de login indica expiraEnSegundos: 180 y todavía no se presenta el aviso.",
+    "archivo": "B-01_062.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 122513.png",
+    "creado": "2026-10-25T12:25:13.948834-05:00",
+    "dimensiones": [
+      1917,
+      882
+    ],
+    "sha256Original": "f7561769d610f715bad2864b2fd8d6e5dc7c87399e37f146f36be1c4cfc94a58",
+    "sha256Documento": "6026312cc74948856a342a394ed4bd92f93d4e6bf8a1d3808d0dc6955cf8eb64",
+    "regionesOcultas": [
+      [
+        1460,
+        426,
+        1917,
+        453
+      ]
+    ]
+  },
+  {
+    "numero": 63,
+    "caso": "B-01",
+    "titulo": "Aviso previo visible",
+    "descripcion": "El aviso aparece sobre Productos cuando quedan menos de dos minutos; la captura muestra 01:56.",
+    "archivo": "B-01_063.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 122601.png",
+    "creado": "2026-10-25T12:26:01.228814-05:00",
+    "dimensiones": [
+      1917,
+      877
+    ],
+    "sha256Original": "d584094d98fa8699a548332fd517c871e55cbaa11798473368d65fe1f40eedc6",
+    "sha256Documento": "299f26edd86bcde95f05a795239305f7eaabac94cb80af9971e28198cb80f78e",
+    "regionesOcultas": [
+      [
+        1460,
+        426,
+        1917,
+        453
+      ]
+    ]
+  },
+  {
+    "numero": 64,
+    "caso": "B-02",
+    "titulo": "Cuenta regresiva en avance",
+    "descripcion": "El mismo aviso muestra 01:09, manteniendo la duración de emisión de 180 segundos.",
+    "archivo": "B-02_064.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 122649.png",
+    "creado": "2026-10-25T12:26:49.175793-05:00",
+    "dimensiones": [
+      1917,
+      875
+    ],
+    "sha256Original": "5b19238cba743f93a44c2a04b8c52e9171e91cd082061e4a9775e40feeedf454",
+    "sha256Documento": "0c8a09cd350a198d3606d96da36222686d589ed16e172147184241960ffd5c51",
+    "regionesOcultas": [
+      [
+        1460,
+        423,
+        1917,
+        452
+      ]
+    ]
+  },
+  {
+    "numero": 65,
+    "caso": "B-03",
+    "titulo": "Aviso oculto",
+    "descripcion": "Después de pulsar × desaparece el aviso y Productos permanece disponible durante esa sesión.",
+    "archivo": "B-03_065.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 122726.png",
+    "creado": "2026-10-25T12:27:26.453765-05:00",
+    "dimensiones": [
+      1917,
+      1020
+    ],
+    "sha256Original": "23541dd49a58c9092eda147754c50c73edb739925ada9bd968da0c095a2981a2",
+    "sha256Documento": "61378176bac9b36ee00e5a976cb6c7eea41fce1132c01f9a1adaf395cd25b3a4",
+    "regionesOcultas": [
+      [
+        1460,
+        569,
+        1917,
+        598
+      ]
+    ]
+  },
+  {
+    "numero": 66,
+    "caso": "B-04",
+    "titulo": "Cierre automático al vencer",
+    "descripcion": "La aplicación presenta login con aviso de expiración y sessionStorage sin pharmasoft.sesion.",
+    "archivo": "B-04_066.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 122803.png",
+    "creado": "2026-10-25T12:28:03.674664-05:00",
+    "dimensiones": [
+      1917,
+      965
+    ],
+    "sha256Original": "3a0c9918fac1d0979472b16ca8c533ee4e96419a62ad20a5faa2220b49227827",
+    "sha256Documento": "3a0c9918fac1d0979472b16ca8c533ee4e96419a62ad20a5faa2220b49227827",
+    "regionesOcultas": []
+  },
+  {
+    "numero": 67,
+    "caso": "B-04",
+    "titulo": "Aviso en una sesión nueva",
+    "descripcion": "Un nuevo login vuelve a habilitar el aviso y muestra el botón Cerrar sesión ahora.",
+    "archivo": "B-04_067.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 122954.png",
+    "creado": "2026-10-25T12:29:54.896611-05:00",
+    "dimensiones": [
+      1917,
+      882
+    ],
+    "sha256Original": "ec4672b42f9ccebeb5c224daa737edf3c0296ea654274df5852cf43edb05d3d2",
+    "sha256Documento": "2dd5ac35245512490aa36ed177f3c2bb2f7d8630346f2095d5e93e16c5bc4f35",
+    "regionesOcultas": [
+      [
+        1460,
+        433,
+        1917,
+        462
+      ]
+    ]
+  },
+  {
+    "numero": 68,
+    "caso": "B-04",
+    "titulo": "Cierre manual inmediato",
+    "descripcion": "Después del cierre manual aparece login sin aviso de expiración y el almacenamiento de sesión queda vacío.",
+    "archivo": "B-04_068.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 123003.png",
+    "creado": "2026-10-25T12:30:03.231805-05:00",
+    "dimensiones": [
+      1917,
+      873
+    ],
+    "sha256Original": "1930abef80af82804b1db39e720b1710ffbc1453509a75b28f95b881fa67657d",
+    "sha256Documento": "1930abef80af82804b1db39e720b1710ffbc1453509a75b28f95b881fa67657d",
+    "regionesOcultas": []
+  },
+  {
+    "numero": 69,
+    "caso": "G-03",
+    "titulo": "Mi cuenta sin sesión",
+    "descripcion": "La navegación anónima redirige al login con returnUrl=%2Fmi-cuenta.",
+    "archivo": "G-03_069.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 123114.png",
+    "creado": "2026-10-25T12:31:14.804940-05:00",
+    "dimensiones": [
+      1917,
+      967
+    ],
+    "sha256Original": "ed287321dd670ab7baeea148d8985f0bede459352c87bdb02729380508cfb987",
+    "sha256Documento": "ed287321dd670ab7baeea148d8985f0bede459352c87bdb02729380508cfb987",
+    "regionesOcultas": []
+  },
+  {
+    "numero": 70,
+    "caso": "G-03",
+    "titulo": "Mi cuenta para almacén",
+    "descripcion": "ALMACENERO accede a /mi-cuenta; GET auth/me responde 200 sin exigir permisos adicionales de módulo.",
+    "archivo": "G-03_070.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 123127.png",
+    "creado": "2026-10-25T12:31:27.811393-05:00",
+    "dimensiones": [
+      1917,
+      963
+    ],
+    "sha256Original": "322ab52376348fb754b7865ab829c0c42ef2b100c61da67bb3dd2f0d045afc35",
+    "sha256Documento": "322ab52376348fb754b7865ab829c0c42ef2b100c61da67bb3dd2f0d045afc35",
+    "regionesOcultas": []
+  },
+  {
+    "numero": 71,
+    "caso": "C-01",
+    "titulo": "Perfil ADMIN",
+    "descripcion": "El perfil administrativo muestra nombre, usuario, rol y los ocho permisos concedidos en cinco módulos.",
+    "archivo": "C-01_071.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 123218.png",
+    "creado": "2026-10-25T12:32:18.491915-05:00",
+    "dimensiones": [
+      1917,
+      886
+    ],
+    "sha256Original": "4899b42060d2656c0bc0bff6eccd4bd2793996a411d1c39a67cc68bee3c7f195",
+    "sha256Documento": "4899b42060d2656c0bc0bff6eccd4bd2793996a411d1c39a67cc68bee3c7f195",
+    "regionesOcultas": []
+  },
+  {
+    "numero": 72,
+    "caso": "C-01",
+    "titulo": "Perfil VENDEDOR",
+    "descripcion": "El perfil muestra permisos de lectura del catálogo, Clientes y Ventas; duración normal de 3600 segundos.",
+    "archivo": "C-01_072.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 123239.png",
+    "creado": "2026-10-25T12:32:39.110760-05:00",
+    "dimensiones": [
+      1917,
+      886
+    ],
+    "sha256Original": "a867a7094b4894fbf0a67a545a6eee9f4fe8512c6767c3150f064b3cffa33ec0",
+    "sha256Documento": "5d3c8e4d2551c5f2d0a9f8fa510d605afaa9d9640f833a97f64ea00eef9c5418",
+    "regionesOcultas": [
+      [
+        1460,
+        432,
+        1917,
+        459
+      ]
+    ]
+  },
+  {
+    "numero": 73,
+    "caso": "C-01",
+    "titulo": "Perfil supervisor",
+    "descripcion": "El perfil presenta ambos roles y la unión de permisos de Catálogo, Clientes y Ventas.",
+    "archivo": "C-01_073.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 123256.png",
+    "creado": "2026-10-25T12:32:56.778401-05:00",
+    "dimensiones": [
+      1917,
+      880
+    ],
+    "sha256Original": "1c57e45baafe69f6ff79a35b2cec3e05fdff39899cccc3b69239ee7164a326f3",
+    "sha256Documento": "de8c9585891541c8e9f2bef4fd543fbc8c7bd3b5999091a5e06754aa4716f41b",
+    "regionesOcultas": [
+      [
+        1460,
+        425,
+        1917,
+        453
+      ]
+    ]
+  },
+  {
+    "numero": 74,
+    "caso": "C-02",
+    "titulo": "Error al consultar Mi cuenta",
+    "descripcion": "Al bloquear auth/me aparece un mensaje de conexión y Reintentar; se mantiene la sesión de supervisor.",
+    "archivo": "C-02_074.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 123342.png",
+    "creado": "2026-10-25T12:33:42.095184-05:00",
+    "dimensiones": [
+      1917,
+      876
+    ],
+    "sha256Original": "b8b158563cd5bdddd3ea87e7ab9042bbf38a593593e82dac653aa3210d651988",
+    "sha256Documento": "b8b158563cd5bdddd3ea87e7ab9042bbf38a593593e82dac653aa3210d651988",
+    "regionesOcultas": []
+  },
+  {
+    "numero": 75,
+    "caso": "C-02",
+    "titulo": "Recuperación de Mi cuenta",
+    "descripcion": "Tras quitar el bloqueo, auth/me responde 200 y vuelven a mostrarse el perfil y sus permisos.",
+    "archivo": "C-02_075.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 123428.png",
+    "creado": "2026-10-25T12:34:28.152033-05:00",
+    "dimensiones": [
+      1917,
+      872
+    ],
+    "sha256Original": "05a29a226138f7605c23e491bd0c919a3a1bb1812aa2bbc0e3f028700db9434b",
+    "sha256Documento": "05a29a226138f7605c23e491bd0c919a3a1bb1812aa2bbc0e3f028700db9434b",
+    "regionesOcultas": []
+  },
+  {
+    "numero": 76,
+    "caso": "M-03",
+    "titulo": "Preparación de cuentas separadas",
+    "descripcion": "Se prepara la sesión vendedor y el acceso administrativo de Swagger en ventanas independientes.",
+    "archivo": "M-03_076.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 123632.png",
+    "creado": "2026-10-25T12:36:32.665570-05:00",
+    "dimensiones": [
+      1917,
+      1017
+    ],
+    "sha256Original": "2712dc9ae155aba34d28aa6cd2c330aa6cc809cf4814d72eeb76e2950d7954eb",
+    "sha256Documento": "2712dc9ae155aba34d28aa6cd2c330aa6cc809cf4814d72eeb76e2950d7954eb",
+    "regionesOcultas": []
+  },
+  {
+    "numero": 77,
+    "caso": "M-03",
+    "titulo": "Estado inicial de la prueba",
+    "descripcion": "La SPA conserva vendedor; Swagger autentica al administrador para modificar roles en el servidor.",
+    "archivo": "M-03_077.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 123647.png",
+    "creado": "2026-10-25T12:36:47.150465-05:00",
+    "dimensiones": [
+      1917,
+      1016
+    ],
+    "sha256Original": "55ad59f817392729bd4524bf0c29b49edadaa0b4c2925d37b973a48f23c7174b",
+    "sha256Documento": "89775749af55e40ac1e965232615cdc235b6fabae67afb025a8642f5cf188b0f",
+    "regionesOcultas": [
+      [
+        1105,
+        257,
+        1858,
+        325
+      ]
+    ]
+  },
+  {
+    "numero": 78,
+    "caso": "M-03",
+    "titulo": "Identificación del usuario",
+    "descripcion": "GET usuarios confirma vendedor con id 2 y su rol original VENDEDOR.",
+    "archivo": "M-03_078.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 123832.png",
+    "creado": "2026-10-25T12:38:32.968805-05:00",
+    "dimensiones": [
+      1917,
+      1016
+    ],
+    "sha256Original": "4f7055e4585d45a00031eda62f8c71d389baf3eab5949a855813bb26e7189f3a",
+    "sha256Documento": "61e9767a7d61639d9ec013003368baba0adf25ada67147e976e4bea47ae0ce25",
+    "regionesOcultas": [
+      [
+        1170,
+        219,
+        1862,
+        244
+      ]
+    ]
+  },
+  {
+    "numero": 79,
+    "caso": "M-03",
+    "titulo": "Identificación de roles",
+    "descripcion": "GET roles identifica VENDEDOR id 2 y ALMACENERO id 3.",
+    "archivo": "M-03_079.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 124008.png",
+    "creado": "2026-10-25T12:40:08.328817-05:00",
+    "dimensiones": [
+      1917,
+      1020
+    ],
+    "sha256Original": "f5b72cef45cfbc7d676ee185d5630db651cc6d5936f7aa34ee4876da95900e95",
+    "sha256Documento": "bbadcfc2778244753a0373e8f44a48c42562b0981079bee2d399929eb76bbc5b",
+    "regionesOcultas": [
+      [
+        1170,
+        193,
+        1862,
+        218
+      ]
+    ]
+  },
+  {
+    "numero": 80,
+    "caso": "M-03",
+    "titulo": "Roles adicionales en el servidor",
+    "descripcion": "PUT usuarios/2/roles devuelve 200 con ambos roles; el perfil de la SPA todavía muestra su consulta anterior.",
+    "archivo": "M-03_080.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 124155.png",
+    "creado": "2026-10-25T12:41:55.759543-05:00",
+    "dimensiones": [
+      1917,
+      1018
+    ],
+    "sha256Original": "3d3220bee8af3e6f85e28c1b13a8c00e9200f1bb580ab872e891db62923ab92c",
+    "sha256Documento": "3d3220bee8af3e6f85e28c1b13a8c00e9200f1bb580ab872e891db62923ab92c",
+    "regionesOcultas": []
+  },
+  {
+    "numero": 81,
+    "caso": "M-03",
+    "titulo": "Diferencia de permisos detectada",
+    "descripcion": "Actualizar perfil consulta auth/me con 200, muestra ambos roles y advierte que deben actualizarse mediante un nuevo ingreso; el encabezado conserva VENDEDOR.",
+    "archivo": "M-03_081.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 124301.png",
+    "creado": "2026-10-25T12:43:02.031270-05:00",
+    "dimensiones": [
+      1917,
+      1018
+    ],
+    "sha256Original": "100b4b0b9c60efa70258fe4b3128f14ba5b68bf072d3791f6cffc7286086fa22",
+    "sha256Documento": "a879586117aff8968adc347d6bdc6283bfafea589ecea4b9665ffc14a8347f9c",
+    "regionesOcultas": [
+      [
+        1036,
+        954,
+        1205,
+        1018
+      ]
+    ]
+  },
+  {
+    "numero": 82,
+    "caso": "M-03",
+    "titulo": "Roles originales restaurados",
+    "descripcion": "PUT usuarios/2/roles con [2] restaura VENDEDOR; el perfil aún conserva la respuesta previa hasta actualizar.",
+    "archivo": "M-03_082.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 124417.png",
+    "creado": "2026-10-25T12:44:18.048014-05:00",
+    "dimensiones": [
+      1917,
+      1020
+    ],
+    "sha256Original": "28e9d385186244c1860cf6605ded9c27bde71f1d5f7c2ee3b4fcc164a220f79c",
+    "sha256Documento": "28e9d385186244c1860cf6605ded9c27bde71f1d5f7c2ee3b4fcc164a220f79c",
+    "regionesOcultas": []
+  },
+  {
+    "numero": 83,
+    "caso": "M-03",
+    "titulo": "Perfil sincronizado con la restauración",
+    "descripcion": "Después de actualizar, Mi cuenta vuelve a VENDEDOR y desaparece la advertencia de permisos cambiados.",
+    "archivo": "M-03_083.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-25 124443.png",
+    "creado": "2026-10-25T12:44:43.222785-05:00",
+    "dimensiones": [
+      1917,
+      1017
+    ],
+    "sha256Original": "9ce5fc9e02e0240b4aae3c5ce07e1b04cecf9198b2f4d57bd01185c7af123dbc",
+    "sha256Documento": "9ce5fc9e02e0240b4aae3c5ce07e1b04cecf9198b2f4d57bd01185c7af123dbc",
+    "regionesOcultas": []
+  }
+]

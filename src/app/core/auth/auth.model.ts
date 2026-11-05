@@ -35,4 +35,20 @@ export interface Sesion {
   nombreCompleto: string;
   roles: string[];
   permisos: Permiso[];
+  /** Conserva el descarte del aviso tras F5, solo durante esta sesión. */
+  avisoOculto?: boolean;
+}
+
+/** Perfil actual obtenido del servidor, independiente de la sesión guardada. */
+export interface PerfilUsuario {
+  username: string;
+  nombreCompleto: string;
+  roles: string[];
+  permisos: Permiso[];
+}
+
+/** /auth/me usa empleadoNombre en el backend existente. */
+export interface PerfilUsuarioApi extends Omit<PerfilUsuario, 'nombreCompleto'> {
+  nombreCompleto?: string;
+  empleadoNombre?: string;
 }

@@ -1,0 +1,26 @@
+{
+  "fecha": "2026-10-24",
+  "zonaHoraria": "America/Lima",
+  "rama": "feature/seguridad-spa-pruebas-delcarpio",
+  "buildProduccion": "Aprobado",
+  "pruebas": {
+    "archivos": 32,
+    "aprobadas": 137,
+    "fallidas": 0
+  },
+  "navegador": {
+    "perfilVendedorDesdeBackendReal": "Aprobado",
+    "nombreEmpleadoAdaptado": "Aprobado",
+    "cincoModulosYOchoPermisos": "Aprobado",
+    "rutaSinSesionRedirigeLogin": "Aprobado",
+    "F5ConservaPerfilYSesion": "Aprobado",
+    "tabDePruebaCerradaSesion": true
+  },
+  "casosManualesPreparados": 26,
+  "resultadosManuales": "Pendientes",
+  "backendModificado": false,
+  "duracionJWTModificada": false,
+  "rolesYPasswordsModificados": false,
+  "datosComercialesModificados": false,
+  "commitsRealizados": false
+}

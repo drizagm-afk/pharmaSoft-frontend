@@ -1,0 +1,407 @@
+[
+  {
+    "numero": 1,
+    "grupo": "Acceso y formulario",
+    "caso": "01",
+    "titulo": "Ruta protegida sin sesión",
+    "descripcion": "La URL de Ventas redirige al login con returnUrl=%2Fventas. El formulario aparece fuera del layout privado.",
+    "archivo": "S11-01_01.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-22 124529.png",
+    "creado": "2026-10-22T12:45:30.024903-05:00",
+    "dimensiones": [
+      1917,
+      963
+    ],
+    "sha256": "037624495b7e32d53ca8b5f4b1d77b5f83433f54bd5fae44ccbf07a24c78d831"
+  },
+  {
+    "numero": 2,
+    "grupo": "Acceso y formulario",
+    "caso": "02",
+    "titulo": "Validación de campos obligatorios",
+    "descripcion": "Usuario y contraseña vacíos muestran sus mensajes; Network permanece sin solicitudes de login.",
+    "archivo": "S11-02_02.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-22 124543.png",
+    "creado": "2026-10-22T12:45:43.863163-05:00",
+    "dimensiones": [
+      1917,
+      965
+    ],
+    "sha256": "278e01f53e3c0a5e1ee71f577401cc543380be13e4e6cdf5cb443b1387c4fbc5"
+  },
+  {
+    "numero": 3,
+    "grupo": "Acceso y formulario",
+    "caso": "03",
+    "titulo": "Contraseña incorrecta",
+    "descripcion": "POST auth/login devuelve 401; el formulario muestra Usuario o contraseña incorrectos y conserva el login.",
+    "archivo": "S11-03_03.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-22 124636.png",
+    "creado": "2026-10-22T12:46:36.483144-05:00",
+    "dimensiones": [
+      1917,
+      872
+    ],
+    "sha256": "514d4907df3edbe8c06189a94ee3bcacdd0c9394b3e395faebac0bce5a5f3a1c"
+  },
+  {
+    "numero": 4,
+    "grupo": "Acceso y formulario",
+    "caso": "04",
+    "titulo": "Cuenta inactiva",
+    "descripcion": "Login de inactivo devuelve 401 y el mismo mensaje genérico de credenciales.",
+    "archivo": "S11-04_04.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-22 124713.png",
+    "creado": "2026-10-22T12:47:13.734933-05:00",
+    "dimensiones": [
+      1917,
+      876
+    ],
+    "sha256": "c834a774413a3b4aae689da37acc76ee8b816d97e45fec1549850d2a8b56e94b"
+  },
+  {
+    "numero": 5,
+    "grupo": "Acceso y formulario",
+    "caso": "04",
+    "titulo": "Cuenta inactiva: comprobación adicional",
+    "descripcion": "Se confirma el rechazo 401 sin revelar al usuario que la cuenta existe o está deshabilitada.",
+    "archivo": "S11-04_05.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-22 124748.png",
+    "creado": "2026-10-22T12:47:48.283297-05:00",
+    "dimensiones": [
+      1915,
+      875
+    ],
+    "sha256": "c53394fdc13e45c374839c901547a1b68940a7654e0011e768e5c52049695142"
+  },
+  {
+    "numero": 6,
+    "grupo": "Sesión y peticiones HTTP",
+    "caso": "05",
+    "titulo": "Login y retorno a Ventas",
+    "descripcion": "Login 200; se abre Consulta de ventas y el encabezado identifica a Lucia Ramos Cutipa, VENDEDOR, con su hora de expiración.",
+    "archivo": "S11-05_06.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-22 124955.png",
+    "creado": "2026-10-22T12:49:55.173877-05:00",
+    "dimensiones": [
+      1917,
+      875
+    ],
+    "sha256": "16ebedcf65aeb8595129c31135ad51aa5d27d390da08248ce47850ae92e5c26e"
+  },
+  {
+    "numero": 7,
+    "grupo": "Sesión y peticiones HTTP",
+    "caso": "05",
+    "titulo": "Respuesta de autenticación",
+    "descripcion": "La respuesta de login incluye token, expiración, nombre, roles y permisos del vendedor.",
+    "archivo": "S11-05_07.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-22 125001.png",
+    "creado": "2026-10-22T12:50:01.754093-05:00",
+    "dimensiones": [
+      1917,
+      878
+    ],
+    "sha256": "558cf2635b729242c1f62c9ca19332f51d59e83cfe10fdae137b6f8601b084cf"
+  },
+  {
+    "numero": 8,
+    "grupo": "Sesión y peticiones HTTP",
+    "caso": "06",
+    "titulo": "Consulta autenticada del catálogo",
+    "descripcion": "GET productos devuelve 200 desde la SPA con sesión iniciada.",
+    "archivo": "S11-06_08.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-22 125028.png",
+    "creado": "2026-10-22T12:50:28.463226-05:00",
+    "dimensiones": [
+      1917,
+      885
+    ],
+    "sha256": "094818ff92ab86f9b14e920ca117c1617dd9a81981756aed297d532ce9ce4096"
+  },
+  {
+    "numero": 9,
+    "grupo": "Sesión y peticiones HTTP",
+    "caso": "06",
+    "titulo": "Encabezado Authorization",
+    "descripcion": "El GET productos muestra Authorization: Bearer seguido del JWT en Request Headers.",
+    "archivo": "S11-06_09.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-22 125101.png",
+    "creado": "2026-10-22T12:51:01.165732-05:00",
+    "dimensiones": [
+      1917,
+      887
+    ],
+    "sha256": "7f87a70a4b83a550242680a6fcdf16ff86934e4550e6343294a2ee6baa8ca095"
+  },
+  {
+    "numero": 10,
+    "grupo": "Sesión y peticiones HTTP",
+    "caso": "07",
+    "titulo": "Sesión almacenada en el navegador",
+    "descripcion": "Session storage contiene pharmasoft.sesion y sus datos de perfil, permisos y token. No contiene la contraseña de acceso.",
+    "archivo": "S11-07_10.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-22 125138.png",
+    "creado": "2026-10-22T12:51:39.136548-05:00",
+    "dimensiones": [
+      1917,
+      880
+    ],
+    "sha256": "51f5537b6406844eab16e001881542d981944f8cf0e93a2e2c6454418382c355"
+  },
+  {
+    "numero": 11,
+    "grupo": "Sesión y peticiones HTTP",
+    "caso": "08",
+    "titulo": "Persistencia después de F5",
+    "descripcion": "Productos se mantiene con la cuenta del vendedor; las consultas del catálogo vuelven a responder 200 después de recargar.",
+    "archivo": "S11-08_11.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-22 125235.png",
+    "creado": "2026-10-22T12:52:36.096602-05:00",
+    "dimensiones": [
+      1917,
+      965
+    ],
+    "sha256": "97da9449270e7f2b8edecd3a863fb2f952f45679656c6693a154ea049e5691a0"
+  },
+  {
+    "numero": 12,
+    "grupo": "Permisos y rutas protegidas",
+    "caso": "09",
+    "titulo": "Productos en modo lectura",
+    "descripcion": "VENDEDOR ve el catálogo completo sin Nuevo producto ni columna Acciones.",
+    "archivo": "S11-09_12.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-22 125321.png",
+    "creado": "2026-10-22T12:53:22.045633-05:00",
+    "dimensiones": [
+      1917,
+      965
+    ],
+    "sha256": "748041713fa2d8a1a2d14d9427ae13eebc30c9a79c951c4145795a4d806f7583"
+  },
+  {
+    "numero": 13,
+    "grupo": "Permisos y rutas protegidas",
+    "caso": "09",
+    "titulo": "Categorías en modo lectura",
+    "descripcion": "El vendedor conserva Ver productos, pero no tiene controles para crear, editar o eliminar categorías.",
+    "archivo": "S11-09_13.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-22 125331.png",
+    "creado": "2026-10-22T12:53:31.435503-05:00",
+    "dimensiones": [
+      1917,
+      877
+    ],
+    "sha256": "061c5914e30a56277f5ac1f53994c1b30d432cde2020d86442763e9c427a9cff"
+  },
+  {
+    "numero": 14,
+    "grupo": "Permisos y rutas protegidas",
+    "caso": "10",
+    "titulo": "Creación bloqueada por el guard",
+    "descripcion": "La navegación sin CATALOGO_ESCRIBIR termina en /acceso-denegado, con título 403 · Acceso denegado y sesión vigente.",
+    "archivo": "S11-10_14.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-22 125350.png",
+    "creado": "2026-10-22T12:53:50.199459-05:00",
+    "dimensiones": [
+      1917,
+      961
+    ],
+    "sha256": "588896673d3b439904d81d90ee436b6535de4379c9305cd6185015ec21c1cfd5"
+  },
+  {
+    "numero": 15,
+    "grupo": "Permisos y rutas protegidas",
+    "caso": "10",
+    "titulo": "Bloqueo de ruta y sesión conservada",
+    "descripcion": "El mensaje de acceso denegado se presenta dentro del layout del vendedor. Es una decisión del guard, no un error HTTP del formulario de alta.",
+    "archivo": "S11-10_15.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-22 125412.png",
+    "creado": "2026-10-22T12:54:12.312171-05:00",
+    "dimensiones": [
+      1917,
+      971
+    ],
+    "sha256": "7084bf25048052c9e919e9a1dca5848dd48e8c36c25dd9168e4cd2a4f2886621"
+  },
+  {
+    "numero": 16,
+    "grupo": "Permisos y rutas protegidas",
+    "caso": "11",
+    "titulo": "Login inaccesible con sesión iniciada",
+    "descripcion": "invitadoGuard lleva a /inicio; el encabezado y el menú permanecen asociados al vendedor.",
+    "archivo": "S11-11_16.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-22 125429.png",
+    "creado": "2026-10-22T12:54:30.022094-05:00",
+    "dimensiones": [
+      1917,
+      968
+    ],
+    "sha256": "26a9bad33d9c1f990fbdb2180c1437f717f97473c9d51bf4bdc14b77db45bbba"
+  },
+  {
+    "numero": 17,
+    "grupo": "Cierre de sesión y roles",
+    "caso": "12",
+    "titulo": "Logout y eliminación del almacenamiento",
+    "descripcion": "La aplicación vuelve al login y Session storage ya no contiene pharmasoft.sesion.",
+    "archivo": "S11-12_17.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-22 125450.png",
+    "creado": "2026-10-22T12:54:51.153517-05:00",
+    "dimensiones": [
+      1917,
+      963
+    ],
+    "sha256": "184549030f484d043a891112123137273a3bd18df1a04112232bcb2c64a11d83"
+  },
+  {
+    "numero": 18,
+    "grupo": "Cierre de sesión y roles",
+    "caso": "13",
+    "titulo": "Almacén no puede acceder a Ventas",
+    "descripcion": "ALMACENERO no tiene Ventas en el menú y la navegación directa muestra Acceso denegado sin cerrar la sesión.",
+    "archivo": "S11-13_18.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-22 125628.png",
+    "creado": "2026-10-22T12:56:28.273809-05:00",
+    "dimensiones": [
+      1917,
+      965
+    ],
+    "sha256": "0eee5db250ac7284d33d86a60be7f334def85e325a837eceee810a346b15e68c"
+  },
+  {
+    "numero": 19,
+    "grupo": "Cierre de sesión y roles",
+    "caso": "13",
+    "titulo": "Menú de almacén",
+    "descripcion": "El menú de Pedro Quispe Mamani contiene Inicio, Categorías y Productos; no expone Clientes, Ventas ni Reportes.",
+    "archivo": "S11-13_19.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-22 125640.png",
+    "creado": "2026-10-22T12:56:40.132406-05:00",
+    "dimensiones": [
+      1917,
+      966
+    ],
+    "sha256": "053ec946a76d703420c67062afef5f0bce25dc57802b2904dc22fe3edf82d7fa"
+  },
+  {
+    "numero": 20,
+    "grupo": "Cierre de sesión y roles",
+    "caso": "13",
+    "titulo": "Catálogo editable para almacén",
+    "descripcion": "La cuenta ALMACENERO muestra Nuevo producto, Editar y Dar de baja. La comprobación no ejecuta esas operaciones.",
+    "archivo": "S11-13_20.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-22 125712.png",
+    "creado": "2026-10-22T12:57:12.132450-05:00",
+    "dimensiones": [
+      1917,
+      881
+    ],
+    "sha256": "857713cb66440d54c988125dddd9a9a5abcca3fa462e38c9d457b6548bbba275"
+  },
+  {
+    "numero": 21,
+    "grupo": "Cierre de sesión y roles",
+    "caso": "14",
+    "titulo": "Supervisor con unión de permisos",
+    "descripcion": "Ana Torres Vilca presenta ALMACENERO y VENDEDOR: Ventas aparece en el menú y el catálogo muestra controles de edición.",
+    "archivo": "S11-14_21.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-22 125818.png",
+    "creado": "2026-10-22T12:58:18.823550-05:00",
+    "dimensiones": [
+      1917,
+      877
+    ],
+    "sha256": "5eb2c3b1985be45718ebc1dc63704fbdc64a368fc9bd123143e6578f60df145b"
+  },
+  {
+    "numero": 22,
+    "grupo": "Integridad del token y manejo de 401",
+    "caso": "15",
+    "titulo": "Sesión antes de alterar el token",
+    "descripcion": "La sesión de supervisor se inspecciona en Session storage antes de modificar el JWT.",
+    "archivo": "S11-15_22.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-22 130119.png",
+    "creado": "2026-10-22T13:01:19.466948-05:00",
+    "dimensiones": [
+      1917,
+      881
+    ],
+    "sha256": "51e857b1705e93f03f57d117404d3f542f2e88828f494f15f6361acc2cb690e5"
+  },
+  {
+    "numero": 23,
+    "grupo": "Integridad del token y manejo de 401",
+    "caso": "15",
+    "titulo": "Edición controlada del token",
+    "descripcion": "Se edita el token dentro del JSON de pharmasoft.sesion, manteniendo los demás datos de la sesión.",
+    "archivo": "S11-15_23.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-22 130136.png",
+    "creado": "2026-10-22T13:01:36.998093-05:00",
+    "dimensiones": [
+      1917,
+      880
+    ],
+    "sha256": "2635d1135c92012bf398879471b583f3d151220b6e0d0c8d519d26bc9f8044d3"
+  },
+  {
+    "numero": 24,
+    "grupo": "Integridad del token y manejo de 401",
+    "caso": "15",
+    "titulo": "Rechazo del token alterado",
+    "descripcion": "GET categorías responde 401 tras la recarga; la SPA vuelve al login con expirada=1, returnUrl a Productos y el aviso Su sesión expiró.",
+    "archivo": "S11-15_24.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-22 130233.png",
+    "creado": "2026-10-22T13:02:33.939615-05:00",
+    "dimensiones": [
+      1917,
+      967
+    ],
+    "sha256": "3cb44ffb5090284f3c93c84a377af8c4e571388b2f9d3d394961675dea8c14cf"
+  },
+  {
+    "numero": 25,
+    "grupo": "Expiración automática y retorno",
+    "caso": "16",
+    "titulo": "Emisión de un token de un minuto",
+    "descripcion": "Login de vendedor devuelve expiraEnSegundos: 60. Productos permanece disponible antes de que venza el temporizador.",
+    "archivo": "S11-16_25.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-22 130438.png",
+    "creado": "2026-10-22T13:04:38.533241-05:00",
+    "dimensiones": [
+      1917,
+      971
+    ],
+    "sha256": "c3de0e88496fd849f03d1119c049ced9d6d10cce7f629acd37fec1908a13ffd6"
+  },
+  {
+    "numero": 26,
+    "grupo": "Expiración automática y retorno",
+    "caso": "16",
+    "titulo": "Cierre automático al vencer",
+    "descripcion": "La SPA vuelve al login con el aviso de expiración y returnUrl=%2Fproductos. Se conserva la respuesta de login con duración 60 segundos.",
+    "archivo": "S11-16_26.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-22 130537.png",
+    "creado": "2026-10-22T13:05:37.771285-05:00",
+    "dimensiones": [
+      1917,
+      961
+    ],
+    "sha256": "abd25e8bf0a4e8fc908fb685ef35658a5725d53d4d16ca5e649a67cfbb48683e"
+  },
+  {
+    "numero": 27,
+    "grupo": "Autorización HTTP adicional",
+    "caso": "AD",
+    "titulo": "Reporte prohibido sin cerrar sesión",
+    "descripcion": "Una consulta GET al reporte con fetch devuelve 403 y el mensaje No tiene permisos para realizar esta operación; el vendedor sigue en Productos. La petición usa fetch y no atraviesa los interceptores de Angular.",
+    "archivo": "S11-AD_27.png",
+    "original": "C:\\Users\\DRIZA\\Documents\\UNI\\Evidence\\Captura de pantalla 2026-10-22 130839.png",
+    "creado": "2026-10-22T13:08:40.025951-05:00",
+    "dimensiones": [
+      1917,
+      877
+    ],
+    "sha256": "54c4c58b2d564753c45ca77c89acdfb2ddc0bf6034e8c5c5a702a0f1342d2c05"
+  }
+]

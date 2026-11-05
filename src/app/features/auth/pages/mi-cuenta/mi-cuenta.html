@@ -1,0 +1,54 @@
+<section class="page">
+  <header class="page-header">
+    <h1>Mi cuenta</h1>
+    <button type="button" class="btn" [disabled]="cargando()" (click)="cargar()">
+      Actualizar perfil
+    </button>
+  </header>
+  @if (cargando()) {
+    <p role="status">Cargando perfil...</p>
+  }
+  @if (error()) {
+    <div class="alerta" role="alert">{{ error() }}</div>
+    <button type="button" class="btn btn-primary" (click)="cargar()">Reintentar</button>
+  }
+  @if (perfil(); as usuario) {
+    <article class="card datos-perfil">
+      <h2>{{ usuario.nombreCompleto }}</h2>
+      <p>
+        Usuario: <strong>{{ usuario.username }}</strong>
+      </p>
+      <div class="roles" aria-label="Roles actuales">
+        @for (rol of usuario.roles; track rol) {
+          <span class="chip">{{ rol }}</span>
+        }
+      </div>
+    </article>
+    @if (permisosCambiaron()) {
+      <p class="cambios" role="status">
+        Sus permisos cambiaron. Cierre sesión y vuelva a ingresar para actualizarlos.
+      </p>
+    }
+    <h2>Permisos por módulo</h2>
+    <div class="modulos">
+      @for (modulo of modulos; track modulo.nombre) {
+        <section class="card modulo">
+          <h3>{{ modulo.nombre }}</h3>
+          <ul>
+            @for (permiso of modulo.permisos; track permiso.codigo) {
+              <li [class.concedido]="tienePermiso(permiso.codigo)">
+                <span aria-hidden="true">{{ tienePermiso(permiso.codigo) ? '✔' : '✘' }}</span>
+                <span
+                  >{{ permiso.etiqueta }}<small>{{ permiso.codigo }}</small></span
+                >
+                <span class="sr-only">{{
+                  tienePermiso(permiso.codigo) ? 'Permitido' : 'No permitido'
+                }}</span>
+              </li>
+            }
+          </ul>
+        </section>
+      }
+    </div>
+  }
+</section>
