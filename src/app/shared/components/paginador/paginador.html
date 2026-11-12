@@ -1,0 +1,55 @@
+<nav class="paginador" aria-label="Paginación">
+  <span class="resumen" data-testid="resumen-paginacion"
+    >{{ desde() }}–{{ hasta() }} de {{ totalElementos() }}</span
+  >
+  <label
+    >Filas
+    <select
+      class="input"
+      [value]="tamanio()"
+      [disabled]="deshabilitado()"
+      (change)="cambiarTamanio($any($event.target).value)"
+    >
+      @for (t of tamanios(); track t) {
+        <option [value]="t" [selected]="t === tamanio()">{{ t }}</option>
+      }
+    </select>
+  </label>
+  <button
+    type="button"
+    class="btn"
+    (click)="ir(0)"
+    [disabled]="deshabilitado() || esPrimera()"
+    aria-label="Primera página"
+  >
+    «
+  </button>
+  <button
+    type="button"
+    class="btn"
+    (click)="ir(pagina() - 1)"
+    [disabled]="deshabilitado() || esPrimera()"
+  >
+    Anterior
+  </button>
+  <span data-testid="pagina-actual" aria-live="polite"
+    >Página {{ pagina() + 1 }} de {{ totalPaginas() || 1 }}</span
+  >
+  <button
+    type="button"
+    class="btn"
+    (click)="ir(pagina() + 1)"
+    [disabled]="deshabilitado() || esUltima()"
+  >
+    Siguiente
+  </button>
+  <button
+    type="button"
+    class="btn"
+    (click)="ir(totalPaginas() - 1)"
+    [disabled]="deshabilitado() || esUltima()"
+    aria-label="Última página"
+  >
+    »
+  </button>
+</nav>
