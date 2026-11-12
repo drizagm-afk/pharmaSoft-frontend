@@ -1,0 +1,20 @@
+[
+  {
+    "path": "/index.html",
+    "http": 200,
+    "contentType": "text/html",
+    "cacheControl": "no-cache"
+  },
+  {
+    "path": "/productos?pagina=250&tamanio=20",
+    "http": 200,
+    "contentType": "text/html",
+    "cacheControl": "no-cache"
+  },
+  {
+    "path": "/api/v1/productos?pagina=0&tamanio=20",
+    "http": 401,
+    "contentType": "application/json;charset=UTF-8",
+    "cacheControl": "no-cache, no-store, max-age=0, must-revalidate"
+  }
+]

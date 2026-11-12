@@ -1,4 +1,6 @@
-# Sesión 14 - Solo pasos 1 a 4
+# Sesión 14 - Integración y estabilización
+
+Estado: pasos 1 a 4 implementados, medidos y confirmados en Git. Paso 5 aplicado y validado en Oracle, documentado en docs/s14/paso-05.md del backend. Se recuperó también el despliegue Nginx: ver [05-nginx.md](05-nginx.md). Los pasos 6 en adelante se implementan después del siguiente checkpoint de commits.
 
 ## Alcance implementado
 
