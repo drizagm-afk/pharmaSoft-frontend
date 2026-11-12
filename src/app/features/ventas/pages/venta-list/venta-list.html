@@ -5,7 +5,7 @@
       <button
         type="button"
         class="btn"
-        [disabled]="cargando() || !resultado()?.contenido?.length"
+        [disabled]="cargando() || !!consulta.error() || !resultado()?.contenido?.length"
         (click)="imprimirConsulta()"
       >
         🖨 Imprimir consulta
@@ -60,16 +60,29 @@
   }
   @if (cargando()) {
     <p class="no-imprimir" role="status">Buscando ventas...</p>
-  } @else if (resultado(); as r) {
+  }
+  @if (resultado(); as r) {
     <div class="tabla-contenedor">
-      <table class="tabla">
+      <table class="tabla" data-testid="tabla-ventas" [attr.aria-busy]="cargando()">
         <thead>
           <tr>
-            <th>N.º</th>
-            <th>Fecha</th>
+            <th>
+              <button class="orden" type="button" (click)="ordenarPor('id')">
+                N.º {{ orden() === 'id' ? (dir() === 'asc' ? '↑' : '↓') : '↕' }}
+              </button>
+            </th>
+            <th>
+              <button class="orden" type="button" (click)="ordenarPor('fecha')">
+                Fecha {{ orden() === 'fecha' ? (dir() === 'asc' ? '↑' : '↓') : '↕' }}
+              </button>
+            </th>
             <th>Cliente</th>
             <th>Ítems</th>
-            <th class="monto">Total</th>
+            <th class="monto">
+              <button class="orden" type="button" (click)="ordenarPor('total')">
+                Total {{ orden() === 'total' ? (dir() === 'asc' ? '↑' : '↓') : '↕' }}
+              </button>
+            </th>
             <th>Estado</th>
             <th class="no-imprimir"></th>
           </tr>
@@ -112,26 +125,21 @@
         >Total registrado en la página (sin anuladas):
         {{ totalPagina() | currency: 'PEN' : 'S/ ' }} ·
       </span>
-      <span
+      <span class="solo-impresion"
         >Página {{ r.pagina + 1 }} de {{ r.totalPaginas || 1 }} ·
         {{ r.totalElementos }} ventas</span
       >
-      <button
-        type="button"
-        class="btn no-imprimir"
-        [disabled]="r.pagina === 0"
-        (click)="irA(r.pagina - 1)"
-      >
-        Anterior
-      </button>
-      <button
-        type="button"
-        class="btn no-imprimir"
-        [disabled]="r.ultima"
-        (click)="irA(r.pagina + 1)"
-      >
-        Siguiente
-      </button>
     </footer>
+    <app-paginador
+      class="no-imprimir"
+      [pagina]="r.pagina"
+      [totalPaginas]="r.totalPaginas"
+      [totalElementos]="r.totalElementos"
+      [tamanio]="r.tamanio"
+      [tamanios]="tamanios"
+      [deshabilitado]="cargando()"
+      (cambioPagina)="irA($event)"
+      (cambioTamanio)="cambiarTamanio($event)"
+    />
   }
 </section>
