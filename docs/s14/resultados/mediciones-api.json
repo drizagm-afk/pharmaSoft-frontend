@@ -1,0 +1,135 @@
+{
+  "timestamp": "2026-11-12T09:14:48.087787-05:00",
+  "profile": "dev",
+  "method": "urllib secuencial, una muestra por URL; duración HTTP completa y bytes del cuerpo sin compresión, no bytes de red con cabeceras",
+  "sourceCounts": {
+    "productos": 5011,
+    "productosCarga": 5000,
+    "ventas": 20012,
+    "ultimaPaginaProductos": 250
+  },
+  "requests": [
+    {
+      "case": "productos-20",
+      "url": "http://localhost:8080/api/v1/productos?pagina=0&tamanio=20",
+      "http": 200,
+      "expectedHttp": 200,
+      "elapsedMs": 1437.005,
+      "responseBodyBytes": 5620,
+      "encoding": "identity",
+      "requestId": "1659a06b",
+      "cache": {
+        "key": "productos::0-20-nombre-asc",
+        "deleted": 0
+      },
+      "passHttp": true,
+      "pagina": 0,
+      "tamanio": 20,
+      "totalElementos": 5011,
+      "totalPaginas": 251,
+      "ultima": false,
+      "returnedRows": 20,
+      "passPage": true
+    },
+    {
+      "case": "productos-100",
+      "url": "http://localhost:8080/api/v1/productos?pagina=0&tamanio=100",
+      "http": 200,
+      "expectedHttp": 200,
+      "elapsedMs": 132.093,
+      "responseBodyBytes": 27719,
+      "encoding": "identity",
+      "requestId": "60ddc114",
+      "cache": {
+        "key": "productos::0-100-nombre-asc",
+        "deleted": 0
+      },
+      "passHttp": true,
+      "pagina": 0,
+      "tamanio": 100,
+      "totalElementos": 5011,
+      "totalPaginas": 51,
+      "ultima": false,
+      "returnedRows": 100,
+      "passPage": true
+    },
+    {
+      "case": "productos-249",
+      "url": "http://localhost:8080/api/v1/productos?pagina=249&tamanio=20",
+      "http": 200,
+      "expectedHttp": 200,
+      "elapsedMs": 110.594,
+      "responseBodyBytes": 5560,
+      "encoding": "identity",
+      "requestId": "b2a69cc6",
+      "cache": {
+        "key": "productos::249-20-nombre-asc",
+        "deleted": 0
+      },
+      "passHttp": true,
+      "pagina": 249,
+      "tamanio": 20,
+      "totalElementos": 5011,
+      "totalPaginas": 251,
+      "ultima": false,
+      "returnedRows": 20,
+      "passPage": true
+    },
+    {
+      "case": "productos-ultima",
+      "url": "http://localhost:8080/api/v1/productos?pagina=250&tamanio=20",
+      "http": 200,
+      "expectedHttp": 200,
+      "elapsedMs": 100.885,
+      "responseBodyBytes": 3081,
+      "encoding": "identity",
+      "requestId": "1b42a707",
+      "cache": {
+        "key": "productos::250-20-nombre-asc",
+        "deleted": 0
+      },
+      "passHttp": true,
+      "pagina": 250,
+      "tamanio": 20,
+      "totalElementos": 5011,
+      "totalPaginas": 251,
+      "ultima": true,
+      "returnedRows": 11,
+      "passPage": true
+    },
+    {
+      "case": "productos-500",
+      "url": "http://localhost:8080/api/v1/productos?pagina=0&tamanio=500",
+      "http": 409,
+      "expectedHttp": 409,
+      "elapsedMs": 73.376,
+      "responseBodyBytes": 208,
+      "encoding": "identity",
+      "requestId": "ea768ca3",
+      "cache": {
+        "key": "productos::0-500-nombre-asc",
+        "deleted": 0
+      },
+      "passHttp": true,
+      "message": "El tamaño de página debe estar entre 1 y 100"
+    },
+    {
+      "case": "ventas-fechas",
+      "url": "http://localhost:8080/api/v1/ventas/buscar?desde=2026-11-01&hasta=2026-11-12&pagina=0",
+      "http": 200,
+      "expectedHttp": 200,
+      "elapsedMs": 190.225,
+      "responseBodyBytes": 1734,
+      "encoding": "identity",
+      "requestId": "dda8bc6e",
+      "cache": null,
+      "passHttp": true,
+      "pagina": 0,
+      "tamanio": 10,
+      "totalElementos": 607,
+      "totalPaginas": 61,
+      "ultima": false,
+      "returnedRows": 10
+    }
+  ]
+}
