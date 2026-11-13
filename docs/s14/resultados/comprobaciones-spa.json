@@ -1,0 +1,135 @@
+{
+  "timestamp": "2026-11-12T14:24:04.333Z",
+  "checks": [
+    {
+      "check": "productos-inicio",
+      "url": "http://localhost:4200/productos",
+      "rows": 20,
+      "page": "Página 1 de 251",
+      "range": "1–20 de 5011"
+    },
+    {
+      "check": "productos-pagina-2",
+      "url": "http://localhost:4200/productos?pagina=1",
+      "page": "Página 2 de 251",
+      "range": "21–40 de 5011"
+    },
+    {
+      "check": "productos-F5",
+      "url": "http://localhost:4200/productos?pagina=1",
+      "page": "Página 2 de 251",
+      "rows": 20
+    },
+    {
+      "check": "productos-tamanio-50",
+      "url": "http://localhost:4200/productos?pagina=0&tamanio=50",
+      "rows": 50,
+      "range": "1–50 de 5011"
+    },
+    {
+      "check": "productos-orden-asc",
+      "url": "http://localhost:4200/productos?pagina=0&tamanio=50&orden=precio&dir=asc"
+    },
+    {
+      "check": "productos-orden-desc",
+      "url": "http://localhost:4200/productos?pagina=0&tamanio=50&orden=precio&dir=desc"
+    },
+    {
+      "check": "productos-ultima",
+      "url": "http://localhost:4200/productos?pagina=100&tamanio=50&orden=precio&dir=desc",
+      "rows": 11,
+      "range": "5001–5011 de 5011",
+      "nextEnabled": false,
+      "lastEnabled": false
+    },
+    {
+      "check": "productos-categoria-reinicia",
+      "url": "http://localhost:4200/productos?pagina=0&tamanio=20&orden=precio&dir=desc&categoriaId=9",
+      "page": "Página 1 de 251",
+      "category": "9"
+    },
+    {
+      "check": "ventas-inicio",
+      "url": "http://localhost:4200/ventas",
+      "rows": 20,
+      "page": "Página 1 de 1001",
+      "range": "1–20 de 20012"
+    },
+    {
+      "check": "ventas-filtros-reinician-pagina",
+      "url": "http://localhost:4200/ventas?pagina=0&estado=REGISTRADA&desde=2026-11-01&hasta=2026-11-12",
+      "page": "Página 1 de 31",
+      "range": "1–20 de 607"
+    },
+    {
+      "check": "ventas-pagina-2-con-filtros",
+      "url": "http://localhost:4200/ventas?pagina=1&estado=REGISTRADA&desde=2026-11-01&hasta=2026-11-12",
+      "page": "Página 2 de 31"
+    },
+    {
+      "check": "ventas-F5",
+      "url": "http://localhost:4200/ventas?pagina=1&estado=REGISTRADA&desde=2026-11-01&hasta=2026-11-12",
+      "page": "Página 2 de 31",
+      "filters": [
+        {
+          "name": "clienteId",
+          "value": "0: null"
+        },
+        {
+          "name": "estado",
+          "value": "REGISTRADA"
+        },
+        {
+          "name": "desde",
+          "value": "2026-11-01"
+        },
+        {
+          "name": "hasta",
+          "value": "2026-11-12"
+        }
+      ]
+    },
+    {
+      "check": "ventas-tamanio-50",
+      "url": "http://localhost:4200/ventas?pagina=0&estado=REGISTRADA&desde=2026-11-01&hasta=2026-11-12&tamanio=50",
+      "rows": 50
+    },
+    {
+      "check": "ventas-orden-total",
+      "url": "http://localhost:4200/ventas?pagina=0&estado=REGISTRADA&desde=2026-11-01&hasta=2026-11-12&tamanio=50&orden=total&dir=asc",
+      "page": "Página 1 de 13"
+    },
+    {
+      "check": "ventas-atras",
+      "url": "http://localhost:4200/ventas?pagina=0&estado=REGISTRADA&desde=2026-11-01&hasta=2026-11-12&tamanio=50",
+      "expected": "http://localhost:4200/ventas?pagina=0&estado=REGISTRADA&desde=2026-11-01&hasta=2026-11-12&tamanio=50",
+      "pass": true
+    },
+    {
+      "check": "ventas-adelante",
+      "url": "http://localhost:4200/ventas?pagina=0&estado=REGISTRADA&desde=2026-11-01&hasta=2026-11-12&tamanio=50&orden=total&dir=asc",
+      "expected": "http://localhost:4200/ventas?pagina=0&estado=REGISTRADA&desde=2026-11-01&hasta=2026-11-12&tamanio=50&orden=total&dir=asc",
+      "pass": true
+    },
+    {
+      "check": "ventas-limpiar",
+      "url": "http://localhost:4200/ventas?pagina=0&tamanio=50&orden=total&dir=asc",
+      "page": "Página 1 de 401",
+      "range": "1–50 de 20012"
+    },
+    {
+      "check": "productos-ultima-20",
+      "url": "http://localhost:4200/productos?pagina=250&tamanio=20&orden=nombre&dir=asc",
+      "rows": 11,
+      "range": "5001–5011 de 5011",
+      "nextEnabled": false
+    },
+    {
+      "check": "filas-tras-F5-corregido",
+      "url": "http://localhost:4200/productos?pagina=250&tamanio=20&orden=nombre&dir=asc",
+      "selectedSize": "20",
+      "pass": true
+    }
+  ],
+  "console": []
+}

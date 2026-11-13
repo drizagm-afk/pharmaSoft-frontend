@@ -1,0 +1,18 @@
+{
+  "timestamp": "2026-11-13T13:51:52.422736-05:00",
+  "producto": {
+    "creadoPor": "admin",
+    "modificadoPor": "admin",
+    "id": 5160,
+    "nombre": "Aceite de almendras 60 ml",
+    "descripcion": null,
+    "precio": 13.5,
+    "stock": 30,
+    "categoriaId": 11,
+    "categoriaNombre": "Higiene",
+    "estado": true,
+    "fechaCreacion": "2026-11-13T13:50:33.6522689",
+    "fechaModificacion": "2026-11-13T13:50:47.3491006"
+  },
+  "reporteDelDia": []
+}

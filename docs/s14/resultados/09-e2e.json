@@ -1,0 +1,125 @@
+{
+  "playwright": "1.65.0",
+  "stats": {
+    "startTime": "2026-11-13T19:06:58.972Z",
+    "duration": 6785.852,
+    "expected": 7,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "casos": [
+    {
+      "archivo": "autenticacion.spec.ts",
+      "caso": "una ruta protegida sin sesión lleva al login con returnUrl",
+      "estado": "passed",
+      "duracionMs": 577,
+      "reintento": 0
+    },
+    {
+      "archivo": "autenticacion.spec.ts",
+      "caso": "credenciales incorrectas muestran el mensaje del backend",
+      "estado": "passed",
+      "duracionMs": 677,
+      "reintento": 0
+    },
+    {
+      "archivo": "autenticacion.spec.ts",
+      "caso": "tras iniciar sesión vuelve a la página pedida",
+      "estado": "passed",
+      "duracionMs": 684,
+      "reintento": 0
+    },
+    {
+      "archivo": "flujo-venta.spec.ts",
+      "caso": "flujo principal: el vendedor registra una venta y el stock baja",
+      "estado": "passed",
+      "duracionMs": 1355,
+      "reintento": 0
+    },
+    {
+      "archivo": "paginacion.spec.ts",
+      "caso": "productos se paginan en el servidor con la página en la URL",
+      "estado": "passed",
+      "duracionMs": 1030,
+      "reintento": 0
+    },
+    {
+      "archivo": "permisos.spec.ts",
+      "caso": "el almacenero no ve Ventas y la URL directa es denegada",
+      "estado": "passed",
+      "duracionMs": 879,
+      "reintento": 0
+    },
+    {
+      "archivo": "permisos.spec.ts",
+      "caso": "el vendedor ve Productos sin botones de edición",
+      "estado": "passed",
+      "duracionMs": 696,
+      "reintento": 0
+    }
+  ],
+  "venta": {
+    "ventaId": 20079,
+    "producto": "Aceite de almendras 60 ml",
+    "stockAntes": 26,
+    "stockDespues": 24,
+    "requestId": "90b83c9f"
+  },
+  "diagnosticos": [
+    {
+      "caso": "una ruta protegida sin sesión lleva al login con returnUrl",
+      "erroresConsola": [],
+      "erroresPagina": [],
+      "respuestas500": []
+    },
+    {
+      "caso": "credenciales incorrectas muestran el mensaje del backend",
+      "erroresConsola": [
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ],
+      "erroresPagina": [],
+      "respuestas500": []
+    },
+    {
+      "caso": "tras iniciar sesión vuelve a la página pedida",
+      "erroresConsola": [],
+      "erroresPagina": [],
+      "respuestas500": []
+    },
+    {
+      "caso": "flujo principal: el vendedor registra una venta y el stock baja",
+      "erroresConsola": [],
+      "erroresPagina": [],
+      "respuestas500": []
+    },
+    {
+      "caso": "productos se paginan en el servidor con la página en la URL",
+      "erroresConsola": [],
+      "erroresPagina": [],
+      "respuestas500": []
+    },
+    {
+      "caso": "el almacenero no ve Ventas y la URL directa es denegada",
+      "erroresConsola": [],
+      "erroresPagina": [],
+      "respuestas500": []
+    },
+    {
+      "caso": "el vendedor ve Productos sin botones de edición",
+      "erroresConsola": [],
+      "erroresPagina": [],
+      "respuestas500": []
+    }
+  ],
+  "correlacionLog": {
+    "post201": true,
+    "respuesta500MismoRequestId": false,
+    "eventoVenta": true
+  },
+  "primeraCorrida": {
+    "aprobadas": 6,
+    "fallidas": 1,
+    "incidencia": "INC-02: selector exacto del encabezado"
+  }
+}

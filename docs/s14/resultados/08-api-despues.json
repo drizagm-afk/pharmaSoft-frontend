@@ -1,0 +1,69 @@
+{
+  "timestamp": "2026-11-13T13:52:36.342560-05:00",
+  "producto": {
+    "creadoPor": "admin",
+    "modificadoPor": "admin",
+    "id": 5160,
+    "nombre": "Aceite de almendras 60 ml",
+    "descripcion": null,
+    "precio": 13.5,
+    "stock": 28,
+    "categoriaId": 11,
+    "categoriaNombre": "Higiene",
+    "estado": true,
+    "fechaCreacion": "2026-11-13T13:50:33.6522689",
+    "fechaModificacion": "2026-11-13T13:51:59.1515505"
+  },
+  "reporteDelDia": [
+    {
+      "id": 5160,
+      "nombre": "Aceite de almendras 60 ml",
+      "categoria": "Higiene",
+      "cantidad": 2,
+      "total": 27
+    }
+  ],
+  "precios": {
+    "contenido": [
+      {
+        "id": 2,
+        "fecha": "2026-11-13T13:50:47.37198",
+        "usuario": "admin",
+        "accion": "PRECIO_MODIFICADO",
+        "entidad": "Producto",
+        "entidadId": 5160,
+        "detalle": "12.9 -> 13.5",
+        "requestId": "d040fa14"
+      }
+    ],
+    "pagina": 0,
+    "tamanio": 20,
+    "totalElementos": 1,
+    "totalPaginas": 1,
+    "ultima": true
+  },
+  "ventas": {
+    "contenido": [
+      {
+        "id": 5,
+        "fecha": "2026-11-13T13:51:59.210442",
+        "usuario": "vendedor",
+        "accion": "VENTA_REGISTRADA",
+        "entidad": "Venta",
+        "entidadId": 20077,
+        "detalle": "total=27.0 | items=1",
+        "requestId": "0f96b8b8"
+      }
+    ],
+    "pagina": 0,
+    "tamanio": 20,
+    "totalElementos": 1,
+    "totalPaginas": 1,
+    "ultima": true
+  },
+  "correlacion": {
+    "requestId": "0f96b8b8",
+    "ventaId": 20077,
+    "post201EnLog": true
+  }
+}

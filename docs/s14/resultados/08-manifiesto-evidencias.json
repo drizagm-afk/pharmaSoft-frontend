@@ -1,0 +1,132 @@
+[
+  {
+    "archivo": "I-01-cliente-en-venta.jpg",
+    "creacion": "2026-11-13T13:50:04.616655-05:00",
+    "modificacion": "2026-11-13T13:50:04.617656-05:00",
+    "dimensiones": [
+      1521,
+      695
+    ],
+    "sha256": "0674de6bc20a884430a9a6000d9dd5333ba49b25471d16502ab029019e21ed08"
+  },
+  {
+    "archivo": "I-06-precio-actualizado.jpg",
+    "creacion": "2026-11-13T13:50:47.578087-05:00",
+    "modificacion": "2026-11-13T13:57:54.812472-05:00",
+    "dimensiones": [
+      1521,
+      695
+    ],
+    "sha256": "7531589de94075f04b984f90699e3e848ebb35aa44ef6ca4604323e77b27f111"
+  },
+  {
+    "archivo": "I-02-producto-vigente.jpg",
+    "creacion": "2026-11-13T13:51:20.477179-05:00",
+    "modificacion": "2026-11-13T13:51:20.481884-05:00",
+    "dimensiones": [
+      1521,
+      695
+    ],
+    "sha256": "955879b756743f0778cfa6c85e35723feb6cfd6ddc8e86691b388c81890cde36"
+  },
+  {
+    "archivo": "I-03-venta-confirmada.jpg",
+    "creacion": "2026-11-13T13:52:06.307460-05:00",
+    "modificacion": "2026-11-13T13:52:06.307460-05:00",
+    "dimensiones": [
+      1536,
+      702
+    ],
+    "sha256": "57a39afc3a6cb7689b7f6baeb4abd34c0c42d2eeb7321aefc42913ca77ef7860"
+  },
+  {
+    "archivo": "I-03-stock-sin-recarga.jpg",
+    "creacion": "2026-11-13T13:52:06.558996-05:00",
+    "modificacion": "2026-11-13T13:52:06.560012-05:00",
+    "dimensiones": [
+      1521,
+      695
+    ],
+    "sha256": "52af58b0b3c21b6da9d7890b110c8de840fc6d3e5ac098a2e37d40840fd8943a"
+  },
+  {
+    "archivo": "I-08-pagina-cinco.jpg",
+    "creacion": "2026-11-13T13:53:09.326667-05:00",
+    "modificacion": "2026-11-13T13:53:09.327667-05:00",
+    "dimensiones": [
+      1521,
+      695
+    ],
+    "sha256": "55200caa13e9b1d96d2f25581d74cd7fb6f1b788613fdb035ab3e68337903a84"
+  },
+  {
+    "archivo": "I-08-filtro-reinicia-pagina.jpg",
+    "creacion": "2026-11-13T13:53:23.551228-05:00",
+    "modificacion": "2026-11-13T13:53:23.551228-05:00",
+    "dimensiones": [
+      1536,
+      702
+    ],
+    "sha256": "9f0c0168e8847d825d02f0b7b69353768ff9b67b82203cb2487b855f92900514"
+  },
+  {
+    "archivo": "I-07-venta-sesion-por-vencer.jpg",
+    "creacion": "2026-11-13T13:54:29.388945-05:00",
+    "modificacion": "2026-11-13T13:54:29.388945-05:00",
+    "dimensiones": [
+      1521,
+      695
+    ],
+    "sha256": "87b5333dfcf24f8c7612cec2c6ccc0deb734998ceda5d4453bdea81192c2b77b"
+  },
+  {
+    "archivo": "I-07-sesion-expirada.jpg",
+    "creacion": "2026-11-13T13:55:32.198487-05:00",
+    "modificacion": "2026-11-13T13:55:32.199543-05:00",
+    "dimensiones": [
+      1536,
+      702
+    ],
+    "sha256": "b2b1834a063b12ad8b04c7eeadfb68ebaf281be14b9586ff5551b5b76efccae0"
+  },
+  {
+    "archivo": "I-07-regreso-a-venta.jpg",
+    "creacion": "2026-11-13T13:55:33.617656-05:00",
+    "modificacion": "2026-11-13T13:55:33.617656-05:00",
+    "dimensiones": [
+      1521,
+      695
+    ],
+    "sha256": "5bc4b8033c7c1bc8e9e8d14472bcb732527d28e557d349e5f10dad7787823e7b"
+  },
+  {
+    "archivo": "I-02-sin-stock-excluido.jpg",
+    "creacion": "2026-11-13T13:57:04.709299-05:00",
+    "modificacion": "2026-11-13T13:57:04.709299-05:00",
+    "dimensiones": [
+      1521,
+      695
+    ],
+    "sha256": "ef0fe4ac85cc9e6e9e6130230ad29a74d17de5f5e9d16aa275e4e539817b0eb6"
+  },
+  {
+    "archivo": "I-02-inactivo-excluido.jpg",
+    "creacion": "2026-11-13T13:57:15.240471-05:00",
+    "modificacion": "2026-11-13T13:57:15.240471-05:00",
+    "dimensiones": [
+      1521,
+      695
+    ],
+    "sha256": "ef0fe4ac85cc9e6e9e6130230ad29a74d17de5f5e9d16aa275e4e539817b0eb6"
+  },
+  {
+    "archivo": "I-02-producto-restaurado.jpg",
+    "creacion": "2026-11-13T13:57:16.833074-05:00",
+    "modificacion": "2026-11-13T13:57:54.763946-05:00",
+    "dimensiones": [
+      1521,
+      695
+    ],
+    "sha256": "7531589de94075f04b984f90699e3e848ebb35aa44ef6ca4604323e77b27f111"
+  }
+]

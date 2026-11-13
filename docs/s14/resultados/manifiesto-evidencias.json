@@ -1,0 +1,122 @@
+[
+  {
+    "file": "02-volumen-productos.png",
+    "created": "2026-11-12T09:14:48.096968-05:00",
+    "sha256": "5699c915d7ab55bc6550da677601aa1e1388b8fade142ec8c18e738fc8f58253",
+    "note": "Conteo proporcionado desde DBeaver"
+  },
+  {
+    "file": "02-volumen-productos-carga.png",
+    "created": "2026-11-12T09:14:48.102970-05:00",
+    "sha256": "62d35ff4deec7b7af29382a216d68b0a2f913eab15be013f0ede06cc672f7834",
+    "note": "Conteo proporcionado desde DBeaver"
+  },
+  {
+    "file": "02-volumen-ventas.png",
+    "created": "2026-11-12T09:14:48.109257-05:00",
+    "sha256": "67832d402d8dc7c95b8de1eb6b1d755ff88c09ef634a0316e2c8ccd94e4b39ca",
+    "note": "Conteo proporcionado desde DBeaver"
+  },
+  {
+    "file": "02-volumen-ultima-pagina.png",
+    "created": "2026-11-12T09:14:48.112789-05:00",
+    "sha256": "88b0687f7237c94af0353fcaa39c9610163a8dbc61790af4bd08a2b9505fe625",
+    "note": "Conteo proporcionado desde DBeaver"
+  },
+  {
+    "file": "02-consultas-dbeaver.png",
+    "created": "2026-11-12T09:14:48.114806-05:00",
+    "sha256": "581821335dd028aed7cfc13ea0a9043e45c0b15f8f69c377fc052ec4719211d4",
+    "note": "Conteo proporcionado desde DBeaver"
+  },
+  {
+    "file": "04-productos-pagina-2.png",
+    "created": "2026-11-12T09:16:03.761119-05:00",
+    "sha256": "fbf7771b68a06e50b28dcccbd5cd1ea09029d3e40aa22a8889e65a214ba0a47e",
+    "note": "Verificacion previa al ajuste visual del selector Filas"
+  },
+  {
+    "file": "04-productos-F5.png",
+    "created": "2026-11-12T09:16:27.881554-05:00",
+    "sha256": "cf71aaecc8089d55a2144af145e08d07c973d39243d6d5c74678eadffc3bdcb7",
+    "note": "Verificacion previa al ajuste visual del selector Filas"
+  },
+  {
+    "file": "04-productos-orden-asc.png",
+    "created": "2026-11-12T09:16:54.192695-05:00",
+    "sha256": "d9160b30e48d1f05b934fda38161aab9f3eaee8f11ecf5040119f41aef2aebdb",
+    "note": "Verificacion previa al ajuste visual del selector Filas"
+  },
+  {
+    "file": "04-productos-orden-desc.png",
+    "created": "2026-11-12T09:16:54.646423-05:00",
+    "sha256": "a7759e1e654c451dc383a5ad1a27443221147f60f5b0e48a3b91b6f09f504457",
+    "note": "Verificacion previa al ajuste visual del selector Filas"
+  },
+  {
+    "file": "04-productos-ultima.png",
+    "created": "2026-11-12T09:17:24.112373-05:00",
+    "sha256": "7b16504a75abae877f56a7c786d4555daac657b7ef1ba2fc348512ba4329cdf7",
+    "note": "Verificacion previa al ajuste visual del selector Filas"
+  },
+  {
+    "file": "04-productos-inicio.png",
+    "created": "2026-11-12T09:17:24.640511-05:00",
+    "sha256": "602b64cdaa16f9c10763ffd531956931904a23f3317eea35019ea62cb76376fd",
+    "note": "Verificacion previa al ajuste visual del selector Filas"
+  },
+  {
+    "file": "04-productos-categoria.png",
+    "created": "2026-11-12T09:17:55.387324-05:00",
+    "sha256": "c519a5b770c462dcd4ad0dbb23ba726b90053248527a009166e6eb8240fdffe7",
+    "note": "Verificacion previa al ajuste visual del selector Filas"
+  },
+  {
+    "file": "04-ventas-filtros.png",
+    "created": "2026-11-12T09:18:49.144444-05:00",
+    "sha256": "2f0567327a100d421660b6ca239c565eae13487adc1710452f50d824fca2d878",
+    "note": "Verificacion previa al ajuste visual del selector Filas"
+  },
+  {
+    "file": "04-ventas-F5.png",
+    "created": "2026-11-12T09:19:12.857585-05:00",
+    "sha256": "f669c95d332b343a54487b3b1c1c33db1c0d0c9da301071ba836be8f99e21a63",
+    "note": "Verificacion previa al ajuste visual del selector Filas"
+  },
+  {
+    "file": "04-ventas-historial.png",
+    "created": "2026-11-12T09:19:14.255851-05:00",
+    "sha256": "95e327e40432fe671c19b27b681720d5aabb4ead13a3a1b760d1ae9d9bfcb3a0",
+    "note": "Verificacion previa al ajuste visual del selector Filas"
+  },
+  {
+    "file": "04-ventas-limpiar.png",
+    "created": "2026-11-12T09:20:00.604017-05:00",
+    "sha256": "d061460ac085cab505723c745d3944798948f80248daee3ac558378059485f8b",
+    "note": "Verificacion previa al ajuste visual del selector Filas"
+  },
+  {
+    "file": "04-productos-ultima-20.png",
+    "created": "2026-11-12T09:20:01.509530-05:00",
+    "sha256": "c4b84d201ea9acabf9e5b9fb194bafff1e9b01739dfcaf7d2266035deb2a2b52",
+    "note": "Verificacion previa al ajuste visual del selector Filas"
+  },
+  {
+    "file": "04-productos-ultima-resumen.png",
+    "created": "2026-11-12T09:21:53.862418-05:00",
+    "sha256": "166b0b7bbb13a64d66c293b0fa32ed7dbde05868f42b3009811bc1b4d662ff14",
+    "note": "Captura final corregida"
+  },
+  {
+    "file": "02-mediciones-HTTP.png",
+    "created": "2026-11-12T09:25:08.179636-05:00",
+    "sha256": "ddb91fce900daa823e89fdcb085aff537675dac18e33fa3102e585daf22d0ac0",
+    "note": "Resultado de medidas HTTP/SQL"
+  },
+  {
+    "file": "02-SQL-paginacion.png",
+    "created": "2026-11-12T09:25:17.709123-05:00",
+    "sha256": "a41cb3321bbd6c9923478f90f3f4f1052399cc1dbf1b6d4a7a24498a6d7cd852",
+    "note": "Resultado de medidas HTTP/SQL"
+  }
+]

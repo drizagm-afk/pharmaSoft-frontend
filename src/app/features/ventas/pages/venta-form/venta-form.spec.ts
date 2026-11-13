@@ -32,9 +32,9 @@ describe('VentaForm', () => {
   let fixture: ComponentFixture<VentaForm>;
   let http: HttpTestingController;
   const url = environment.apiUrl;
-  const catalogo = (stock = 3) => {
-    http.expectOne((r) => r.url === `${url}/clientes`).flush(pagina([cliente]));
-    http.expectOne((r) => r.url === `${url}/productos`).flush(pagina([{ ...producto, stock }]));
+  const actualizarSeleccion = (stock = 3) => {
+    http.expectOne(`${url}/clientes/${cliente.id}`).flush(cliente);
+    http.expectOne(`${url}/productos/${producto.id}`).flush({ ...producto, stock });
     fixture.detectChanges();
   };
   const preparar = () => {
@@ -50,11 +50,11 @@ describe('VentaForm', () => {
     http = TestBed.inject(HttpTestingController);
     fixture = TestBed.createComponent(VentaForm);
     fixture.detectChanges();
-    catalogo();
   });
   afterEach(() => {
     http.verify();
     vi.restoreAllMocks();
+    vi.useRealTimers();
   });
 
   it('requires a client and details without sending a request', () => {
@@ -115,7 +115,7 @@ describe('VentaForm', () => {
     http
       .expectOne(`${url}/ventas`)
       .flush({ message: 'Stock insuficiente' }, { status: 409, statusText: 'Conflict' });
-    catalogo(0);
+    actualizarSeleccion(0);
     expect(fixture.componentInstance.detalles.length).toBe(1);
     expect(fixture.nativeElement.textContent).toContain('Stock insuficiente');
     expect(fixture.nativeElement.textContent).toContain('Producto no disponible');
@@ -138,5 +138,88 @@ describe('VentaForm', () => {
     http
       .expectOne(`${url}/ventas`)
       .flush({ message: 'Error temporal' }, { status: 500, statusText: 'Error' });
+  });
+
+  const escribir = (campo: string, texto: string) => {
+    const input: HTMLInputElement = fixture.nativeElement.querySelector(`[data-testid="${campo}"]`);
+    input.value = texto;
+    input.dispatchEvent(new Event('input'));
+    fixture.detectChanges();
+  };
+
+  it('finds a product outside the old 100-record window through the server', async () => {
+    vi.useFakeTimers();
+    http.expectNone((r) => r.url === `${url}/productos` || r.url === `${url}/clientes`);
+    escribir('buscar-producto', 'Solución salina');
+    await vi.advanceTimersByTimeAsync(250);
+    const req = http.expectOne((r) => r.url === `${url}/productos/buscar`);
+    expect(req.request.params.get('texto')).toBe('Solución salina');
+    req.flush(pagina([{ ...producto, id: 5015, nombre: 'Solución salina 100 ml' }]));
+    fixture.detectChanges();
+    expect(
+      fixture.nativeElement.querySelector('[data-testid="opcion-producto"]').textContent,
+    ).toContain('Solución salina 100 ml');
+  });
+
+  it('cancels an old search and retains the selected product and total', async () => {
+    vi.useFakeTimers();
+    preparar();
+    escribir('buscar-producto', 'Vitamina');
+    await vi.advanceTimersByTimeAsync(250);
+    const anterior = http.expectOne((r) => r.url === `${url}/productos/buscar`);
+    escribir('buscar-producto', 'Solución');
+    expect(anterior.cancelled).toBe(true);
+    await vi.advanceTimersByTimeAsync(250);
+    http
+      .expectOne((r) => r.url === `${url}/productos/buscar`)
+      .flush(pagina([{ ...producto, id: 5015, nombre: 'Solución salina 100 ml' }]));
+    fixture.detectChanges();
+    expect(
+      fixture.nativeElement.querySelector('[data-testid="total-venta"]').textContent,
+    ).toContain('1.20');
+    expect(fixture.componentInstance.detalles.at(0).controls.productoId.value).toBe(1);
+  });
+
+  it('selects a customer from a server search without a preloaded list', async () => {
+    vi.useFakeTimers();
+    vi.spyOn(TestBed.inject(Router), 'navigate').mockResolvedValue(true);
+    escribir('buscar-cliente', 'Nicolás Zúñiga');
+    await vi.advanceTimersByTimeAsync(250);
+    http
+      .expectOne((r) => r.url === `${url}/clientes/buscar`)
+      .flush(pagina([{ ...cliente, id: 1001, nombres: 'Nicolás', apellidos: 'Zúñiga Salas' }]));
+    fixture.detectChanges();
+    fixture.nativeElement.querySelector('[data-testid="opcion-cliente"]').click();
+    fixture.componentInstance.agregarProducto(producto);
+    fixture.componentInstance.revisar();
+    fixture.componentInstance.confirmar();
+    const req = http.expectOne(`${url}/ventas`);
+    expect(req.request.body.clienteId).toBe(1001);
+    req.flush({ id: 44 });
+  });
+
+  it('recovers from a failed search and clears obsolete results immediately', async () => {
+    vi.useFakeTimers();
+    escribir('buscar-producto', 'Vitamina');
+    await vi.advanceTimersByTimeAsync(250);
+    http
+      .expectOne((r) => r.url === `${url}/productos/buscar`)
+      .flush(
+        { message: 'No se pudo consultar el catálogo' },
+        { status: 503, statusText: 'Unavailable' },
+      );
+    fixture.detectChanges();
+    expect(fixture.nativeElement.textContent).toContain('No se pudo consultar el catálogo');
+    escribir('buscar-producto', 'Vitamina C');
+    await vi.advanceTimersByTimeAsync(250);
+    http.expectOne((r) => r.url === `${url}/productos/buscar`).flush(pagina([producto]));
+    fixture.detectChanges();
+    expect(fixture.nativeElement.querySelectorAll('[data-testid="opcion-producto"]')).toHaveLength(
+      1,
+    );
+    escribir('buscar-producto', '');
+    expect(fixture.nativeElement.querySelectorAll('[data-testid="opcion-producto"]')).toHaveLength(
+      0,
+    );
   });
 });

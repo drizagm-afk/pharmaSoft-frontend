@@ -27,6 +27,15 @@ form.card {
   text-align: right;
   white-space: nowrap;
 }
+.orden {
+  color: inherit;
+  background: none;
+  border: 0;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+}
 .tabla th.monto {
   text-align: right;
 }

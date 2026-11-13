@@ -1,40 +1,43 @@
 import { TestBed } from '@angular/core/testing';
 import { provideHttpClient } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
+import { provideRouter, Router, withComponentInputBinding } from '@angular/router';
+import { RouterTestingHarness } from '@angular/router/testing';
 import { ProductoList } from './producto-list';
 import { environment } from '../../../../../environments/environment';
-import { provideRouter } from '@angular/router';
 import { AuthService } from '../../../../core/auth/auth-service';
 import { crearAuthPrueba } from '../../../../core/auth/auth.fixture.spec-helper';
 
-describe('ProductoList', () => {
-  let http: HttpTestingController;
+describe('ProductoList con estado en URL', () => {
   const url = `${environment.apiUrl}/productos`;
-  const product = {
+  const producto = {
     id: 1,
-    nombre: 'QA Producto',
+    nombre: 'Vitamina C',
     precio: 5,
     stock: 2,
     estado: true,
     categoriaId: 46,
-    categoriaNombre: 'QA Categoria',
+    categoriaNombre: 'Vitaminas',
     descripcion: null,
     fechaCreacion: '2026-10-06',
     fechaModificacion: null,
   };
-  const page = {
-    contenido: [product],
+  const pagina = {
+    contenido: [producto],
     pagina: 0,
-    tamanio: 10,
-    totalElementos: 12,
-    totalPaginas: 2,
+    tamanio: 20,
+    totalElementos: 45,
+    totalPaginas: 3,
     ultima: false,
   };
+  let http: HttpTestingController;
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [ProductoList],
       providers: [
-        provideRouter([]),
+        provideRouter(
+          [{ path: 'productos', component: ProductoList }],
+          withComponentInputBinding(),
+        ),
         provideHttpClient(),
         provideHttpClientTesting(),
         { provide: AuthService, useValue: crearAuthPrueba() },
@@ -43,113 +46,104 @@ describe('ProductoList', () => {
     http = TestBed.inject(HttpTestingController);
   });
   afterEach(() => http.verify());
-  function load() {
-    const fixture = TestBed.createComponent(ProductoList);
-    fixture.detectChanges();
-    http.expectOne(`${environment.apiUrl}/categorias`).flush([]);
-    const req = http.expectOne((r) => r.url === url);
-    expect(req.request.params.toString()).toBe(
-      'pagina=0&tamanio=10&ordenarPor=nombre&direccion=asc',
-    );
-    req.flush(page);
-    fixture.detectChanges();
-    return fixture;
+  async function abrir(ruta = '/productos') {
+    const harness = await RouterTestingHarness.create();
+    const component = await harness.navigateByUrl(ruta, ProductoList);
+    http
+      .expectOne(`${environment.apiUrl}/categorias`)
+      .flush([{ id: 46, nombre: 'Vitaminas', estado: true }]);
+    return { harness, component };
   }
-  it('filters the current page without making HTTP requests', () => {
-    const fixture = load();
-    fixture.componentInstance.filtrarPorCategoria('47');
-    fixture.detectChanges();
-    expect(fixture.nativeElement.textContent).toContain('No hay productos de esta');
-    fixture.componentInstance.filtrarPorCategoria('46');
-    fixture.detectChanges();
-    expect(fixture.nativeElement.textContent).toContain('QA Producto');
+  function lectura() {
+    return http.expectOne((r) => r.url === url);
+  }
+
+  it('restaura pagina, tamanio y orden de una URL directa', async () => {
+    const { harness } = await abrir('/productos?pagina=2&tamanio=20&orden=precio&dir=desc');
+    const req = lectura();
+    expect(req.request.params.toString()).toBe(
+      'pagina=2&tamanio=20&ordenarPor=precio&direccion=desc',
+    );
+    req.flush({ ...pagina, pagina: 2, ultima: true });
+    await harness.fixture.whenStable();
+    harness.detectChanges();
+    expect(harness.routeNativeElement?.textContent).toContain('Página 3 de 3');
+    expect(
+      harness.routeNativeElement?.querySelector('[data-testid="tabla-productos"]'),
+    ).not.toBeNull();
+  });
+  it('mantiene la tabla durante la carga y cancela peticiones sustituidas', async () => {
+    const { harness } = await abrir();
+    lectura().flush(pagina);
+    await harness.fixture.whenStable();
+    await harness.navigateByUrl('/productos?pagina=1', ProductoList);
+    const anterior = lectura();
+    harness.detectChanges();
+    expect(harness.routeNativeElement?.textContent).toContain('Vitamina C');
+    await harness.navigateByUrl('/productos?pagina=2', ProductoList);
+    expect(anterior.cancelled).toBe(true);
+    lectura().flush({ ...pagina, pagina: 2, ultima: true });
+    await harness.fixture.whenStable();
+  });
+  it('guarda tamaño, orden y categoría en la URL y reinicia la página', async () => {
+    const { component, harness } = await abrir('/productos?pagina=2');
+    lectura().flush({ ...pagina, pagina: 2 });
+    await harness.fixture.whenStable();
+    component.ordenar('precio');
+    await vi.waitFor(() => expect(TestBed.inject(Router).url).toContain('orden=precio'));
+    expect(TestBed.inject(Router).url).toContain('pagina=0');
+    lectura().flush(pagina);
+    await harness.fixture.whenStable();
+    component.cambiarTamanio(50);
+    await vi.waitFor(() => expect(TestBed.inject(Router).url).toContain('tamanio=50'));
+    const req = lectura();
+    expect(req.request.params.get('tamanio')).toBe('50');
+    req.flush({ ...pagina, tamanio: 50, totalPaginas: 1 });
+    await harness.fixture.whenStable();
+    component.filtrarPorCategoria('47');
+    await vi.waitFor(() => expect(TestBed.inject(Router).url).toContain('categoriaId=47'));
+    harness.detectChanges();
+    expect(harness.routeNativeElement?.textContent).toContain('No hay productos de esta');
     http.expectNone((r) => r.url === url);
   });
-  it('hides write actions for a reader and restores them when permissions change', () => {
+  it('preserva permisos y la baja recarga la página actual', async () => {
+    const { component, harness } = await abrir();
+    lectura().flush(pagina);
+    await harness.fixture.whenStable();
+    const confirm = vi.spyOn(window, 'confirm').mockReturnValue(true);
+    component.darDeBaja(producto);
+    http.expectOne(`${url}/1`).flush(null);
+    TestBed.tick();
+    lectura().flush({ ...pagina, contenido: [{ ...producto, estado: false }] });
+    await harness.fixture.whenStable();
+    harness.detectChanges();
+    expect(harness.routeNativeElement?.textContent).toContain('Inactivo');
+    confirm.mockRestore();
     const auth = TestBed.inject(AuthService) as unknown as ReturnType<typeof crearAuthPrueba>;
     auth.sesion.update((s) => ({ ...s!, permisos: ['CATALOGO_LEER'] }));
-    const fixture = load();
-    expect(fixture.nativeElement.textContent).not.toContain('Acciones');
-    expect(fixture.nativeElement.querySelector('a[routerLink="nuevo"]')).toBeNull();
-    auth.sesion.update((s) => ({ ...s!, permisos: ['CATALOGO_LEER', 'CATALOGO_ESCRIBIR'] }));
-    fixture.detectChanges();
-    expect(fixture.nativeElement.textContent).toContain('Acciones');
-    expect(fixture.nativeElement.textContent).toContain('Dar de baja');
+    harness.detectChanges();
+    expect(harness.routeNativeElement?.textContent).not.toContain('Acciones');
+    expect(harness.routeNativeElement?.textContent).not.toContain('Dar de baja');
   });
-  it('loads 100 records and selects the category received from the route', () => {
-    const fixture = TestBed.createComponent(ProductoList);
-    fixture.componentRef.setInput('categoriaId', '46');
-    fixture.detectChanges();
-    http.expectOne(`${environment.apiUrl}/categorias`).flush([
-      { id: 46, nombre: 'QA Categoria', estado: true },
-      { id: 47, nombre: 'Otra categoria', estado: true },
-    ]);
-    const req = http.expectOne((r) => r.url === url);
-    expect(req.request.params.get('tamanio')).toBe('100');
-    req.flush({
-      ...page,
-      tamanio: 100,
-      contenido: [product, { ...product, id: 2, categoriaId: 47, nombre: 'Otra categoria' }],
-    });
-    fixture.detectChanges();
-    expect(fixture.nativeElement.querySelector('select').value).toBe('46');
-    expect(fixture.nativeElement.textContent).toContain('primeros 100 registros');
-    expect(fixture.nativeElement.querySelector('tbody').textContent).not.toContain(
-      'Otra categoria',
+  it('normaliza parámetros inválidos y mantiene visible el fallo de categorías', async () => {
+    const harness = await RouterTestingHarness.create();
+    await harness.navigateByUrl(
+      '/productos?pagina=-1&tamanio=500&orden=password&dir=x',
+      ProductoList,
     );
-    fixture.componentRef.setInput('categoriaId', '47');
-    fixture.detectChanges();
-    const changed = http.expectOne((r) => r.url === url);
-    expect(changed.request.params.get('pagina')).toBe('0');
-    changed.flush(page);
-    fixture.detectChanges();
-    expect(fixture.nativeElement.querySelector('select').value).toBe('47');
-  });
-  it('resets pagination when sorting and changing page size', () => {
-    const fixture = load();
-    fixture.componentInstance.cambiarPagina(1);
-    const next = http.expectOne((r) => r.url === url);
-    expect(next.request.params.get('pagina')).toBe('1');
-    next.flush({ ...page, pagina: 1, ultima: true });
-    fixture.componentInstance.ordenar('precio');
-    const sorted = http.expectOne((r) => r.url === url);
-    expect(sorted.request.params.get('pagina')).toBe('0');
-    expect(sorted.request.params.get('direccion')).toBe('asc');
-    sorted.flush(page);
-    fixture.componentInstance.ordenar('precio');
-    const desc = http.expectOne((r) => r.url === url);
-    expect(desc.request.params.get('direccion')).toBe('desc');
-    desc.flush(page);
-    fixture.componentInstance.cambiarTamanio('5');
-    const size = http.expectOne((r) => r.url === url);
-    expect(size.request.params.get('tamanio')).toBe('5');
-    size.flush(page);
-  });
-  it('keeps a category loading failure visible after products load', () => {
-    const fixture = TestBed.createComponent(ProductoList);
-    fixture.detectChanges();
     http
       .expectOne(`${environment.apiUrl}/categorias`)
       .flush({}, { status: 500, statusText: 'Error' });
-    http.expectOne((r) => r.url === url).flush(page);
-    fixture.detectChanges();
-    expect(fixture.nativeElement.textContent).toContain('No se pudieron cargar las');
-    expect(fixture.nativeElement.textContent).toContain('QA Producto');
-  });
-  it('reloads after soft deletion and disables the inactive product button', () => {
-    const fixture = load();
-    const confirm = vi.spyOn(window, 'confirm').mockReturnValue(true);
-    fixture.componentInstance.darDeBaja(product);
-    const deletion = http.expectOne(`${url}/1`);
-    expect(deletion.request.method).toBe('DELETE');
-    deletion.flush(null);
-    http
-      .expectOne((r) => r.url === url)
-      .flush({ ...page, contenido: [{ ...product, estado: false }] });
-    fixture.detectChanges();
-    expect(fixture.nativeElement.textContent).toContain('Inactivo');
-    const buttons = [...fixture.nativeElement.querySelectorAll('button')] as HTMLButtonElement[];
-    expect(buttons.find((b) => b.textContent?.includes('Dar de baja'))?.disabled).toBe(true);
-    confirm.mockRestore();
+    const req = lectura();
+    expect(req.request.params.toString()).toBe(
+      'pagina=0&tamanio=20&ordenarPor=nombre&direccion=asc',
+    );
+    req.flush(pagina);
+    await harness.fixture.whenStable();
+    harness.detectChanges();
+    expect(harness.routeNativeElement?.textContent).toContain(
+      'No se pudieron cargar las categorías',
+    );
+    expect(harness.routeNativeElement?.textContent).toContain('Vitamina C');
   });
 });

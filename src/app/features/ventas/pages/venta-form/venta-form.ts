@@ -1,4 +1,12 @@
-import { Component, computed, DestroyRef, inject, OnInit, signal } from '@angular/core';
+import {
+  Component,
+  computed,
+  DestroyRef,
+  inject,
+  OnInit,
+  signal,
+  WritableSignal,
+} from '@angular/core';
 import { CurrencyPipe, KeyValuePipe } from '@angular/common';
 import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import {
@@ -9,10 +17,20 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { forkJoin } from 'rxjs';
+import {
+  catchError,
+  distinctUntilChanged,
+  finalize,
+  forkJoin,
+  map,
+  Observable,
+  of,
+  switchMap,
+  timer,
+} from 'rxjs';
 import { erroresDeValidacion, mensajeError } from '../../../../core/utils/http-error';
 import { redondear } from '../../../../core/utils/numeros';
-import { coincide } from '../../../../core/utils/texto';
+import { PaginaResponse } from '../../../../core/models/pagina-response';
 import { Cliente } from '../../../clientes/models/cliente.model';
 import { ClienteService } from '../../../clientes/services/cliente-service';
 import { Producto } from '../../../productos/models/producto.model';
@@ -40,9 +58,8 @@ export class VentaForm implements OnInit {
   private readonly router = inject(Router);
   protected readonly clientes = signal<Cliente[]>([]);
   protected readonly productos = signal<Producto[]>([]);
-  protected readonly cargando = signal(true);
+  protected readonly cargando = signal(false);
   protected readonly error = signal<string | null>(null);
-  protected readonly cargaFallida = signal(false);
   protected readonly confirmando = signal(false);
   protected readonly guardando = signal(false);
   protected readonly imprimirAlRegistrar = signal(true);
@@ -90,71 +107,96 @@ export class VentaForm implements OnInit {
   protected readonly buscarProducto = new FormControl('', { nonNullable: true });
   private readonly textoCliente = toSignal(this.buscarCliente.valueChanges, { initialValue: '' });
   private readonly textoProducto = toSignal(this.buscarProducto.valueChanges, { initialValue: '' });
+  protected readonly cargandoClientes = signal(false);
+  protected readonly cargandoProductos = signal(false);
+  protected readonly errorClientes = signal<string | null>(null);
+  protected readonly errorProductos = signal<string | null>(null);
+  protected readonly clientesEncontrados = signal<Cliente[]>([]);
+  protected readonly productosEncontrados = signal<Producto[]>([]);
   protected readonly hayBusquedaCliente = computed(() => this.textoCliente().trim().length > 0);
   protected readonly hayBusquedaProducto = computed(() => this.textoProducto().trim().length > 0);
-  protected readonly clientesEncontrados = computed(() =>
-    !this.hayBusquedaCliente()
-      ? []
-      : this.clientes()
-          .filter((c) => c.estado && coincide(this.textoCliente(), c.nombres, c.apellidos, c.dni))
-          .slice(0, 6),
-  );
-  protected readonly productosEncontrados = computed(() =>
-    !this.hayBusquedaProducto()
-      ? []
-      : this.productos()
-          .filter(
-            (p) =>
-              p.estado &&
-              p.stock > 0 &&
-              coincide(this.textoProducto(), p.nombre, p.categoriaNombre),
-          )
-          .slice(0, 6),
-  );
 
   get detalles() {
     return this.form.controls.detalles;
   }
 
   ngOnInit(): void {
-    this.cargarCatalogo();
+    this.iniciarBusqueda(
+      this.buscarCliente,
+      (texto) => this.clienteService.buscar(texto),
+      this.clientesEncontrados,
+      this.cargandoClientes,
+      this.errorClientes,
+    );
+    this.iniciarBusqueda(
+      this.buscarProducto,
+      (texto) => this.productoService.buscar(texto),
+      this.productosEncontrados,
+      this.cargandoProductos,
+      this.errorProductos,
+    );
   }
 
-  private cargarCatalogo(actualizar = false): void {
+  private iniciarBusqueda<T>(
+    control: FormControl<string>,
+    buscar: (texto: string) => Observable<PaginaResponse<T>>,
+    resultados: WritableSignal<T[]>,
+    cargando: WritableSignal<boolean>,
+    error: WritableSignal<string | null>,
+  ): void {
+    control.valueChanges
+      .pipe(
+        map((texto) => texto.trim()),
+        distinctUntilChanged(),
+        switchMap((texto) => {
+          resultados.set([]);
+          error.set(null);
+          cargando.set(!!texto);
+          return texto
+            ? timer(250).pipe(
+                switchMap(() => buscar(texto)),
+                map((pagina) => pagina.contenido),
+                catchError((err) => {
+                  error.set(mensajeError(err));
+                  return of([] as T[]);
+                }),
+                finalize(() => cargando.set(false)),
+              )
+            : of([] as T[]);
+        }),
+        takeUntilDestroyed(this.destroyRef),
+      )
+      .subscribe((lista) => resultados.set(lista));
+  }
+
+  private actualizarSeleccion(): void {
     this.cargando.set(true);
+    const clienteId = this.form.controls.clienteId.value;
     forkJoin({
-      clientes: this.clienteService.listar(0, 100),
-      productos: this.productoService.listar(0, 100, 'nombre', 'asc'),
+      cliente: clienteId ? this.clienteService.obtener(clienteId) : of(null),
+      productos: this.productos().length
+        ? forkJoin(this.productos().map((producto) => this.productoService.obtener(producto.id)))
+        : of([]),
     })
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
-        next: ({ clientes, productos }) => {
-          if (Array.isArray(clientes) || Array.isArray(productos)) {
-            this.error.set('El servidor debe devolver clientes y productos paginados.');
-            this.cargaFallida.set(true);
-          } else {
-            this.clientes.set(clientes.contenido);
-            this.productos.set(productos.contenido);
-            this.cargaFallida.set(false);
-          }
+        next: ({ cliente, productos }) => {
+          this.clientes.set(cliente ? [cliente] : []);
+          this.productos.set(productos);
           this.cargando.set(false);
         },
         error: (err) => {
-          if (actualizar) {
-            this.error.update(
-              (mensaje) =>
-                `${mensaje ?? ''} No se pudo actualizar la disponibilidad; revise el stock antes de reintentar.`,
-            );
-          } else {
-            this.error.set(mensajeError(err));
-            this.cargaFallida.set(true);
-          }
+          this.error.update(
+            (mensaje) =>
+              `${mensaje ?? ''} No se pudo actualizar la disponibilidad: ${mensajeError(err)}`,
+          );
           this.cargando.set(false);
         },
       });
   }
   agregarProducto(producto: Producto): void {
     if (this.confirmando() || this.guardando() || !producto.estado || producto.stock <= 0) return;
+    this.productos.update((lista) => [...lista.filter((p) => p.id !== producto.id), producto]);
     const existente = this.detalles.controls.find(
       (l) => l.controls.productoId.value === producto.id,
     );
@@ -183,6 +225,7 @@ export class VentaForm implements OnInit {
 
   elegirCliente(cliente: Cliente): void {
     if (this.confirmando() || this.guardando() || !cliente.estado) return;
+    this.clientes.set([cliente]);
     this.form.controls.clienteId.setValue(cliente.id);
     this.buscarCliente.setValue('');
   }
@@ -192,7 +235,12 @@ export class VentaForm implements OnInit {
   }
 
   quitarLinea(indice: number): void {
-    if (!this.confirmando() && !this.guardando()) this.detalles.removeAt(indice);
+    if (this.confirmando() || this.guardando()) return;
+    this.detalles.removeAt(indice);
+    const elegidos = new Set(
+      this.detalles.controls.map((linea) => linea.controls.productoId.value),
+    );
+    this.productos.update((lista) => lista.filter((producto) => elegidos.has(producto.id)));
   }
 
   cambiarCliente(): void {
@@ -209,7 +257,7 @@ export class VentaForm implements OnInit {
   }
 
   revisar(): void {
-    if (this.cargando() || this.cargaFallida() || this.confirmando() || this.guardando()) return;
+    if (this.cargando() || this.confirmando() || this.guardando()) return;
     this.form.markAllAsTouched();
     this.error.set(null);
     this.erroresServidor.set({});
@@ -251,7 +299,7 @@ export class VentaForm implements OnInit {
           this.confirmando.set(false);
           this.error.set(mensajeError(err));
           this.erroresServidor.set(erroresDeValidacion(err));
-          if (err.status === 409) this.cargarCatalogo(true);
+          if (err.status === 409) this.actualizarSeleccion();
         },
       });
   }
