@@ -1,6 +1,6 @@
 # Sesión 14 - Integración y estabilización
 
-Estado: pasos 1 a 4 implementados, medidos y confirmados en Git. Paso 5 aplicado y validado en Oracle, documentado en docs/s14/paso-05.md del backend. Se recuperó también el despliegue Nginx: ver [05-nginx.md](05-nginx.md). Los pasos 6 en adelante se implementan después del siguiente checkpoint de commits.
+Estado: pasos 1 a 7 implementados y confirmados en Git. Migración, autores y bitácora documentados en docs/s14/paso-05.md, paso-06.md y paso-07.md del backend. Se recuperó también el despliegue Nginx: ver [05-nginx.md](05-nginx.md). Paso 8 recorrido y documentado en [08-integracion.md](08-integracion.md), con una incidencia de búsqueda registrada para estabilización. Playwright y las correcciones siguen después del checkpoint de esta etapa.
 
 ## Alcance implementado
 

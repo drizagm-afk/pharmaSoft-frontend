@@ -27,6 +27,7 @@
           <div class="buscador">
             <input
               id="buscar-cliente"
+              data-testid="buscar-cliente"
               class="input"
               type="search"
               [formControl]="buscarCliente"
@@ -37,7 +38,7 @@
               <ul class="resultados">
                 @for (c of clientesEncontrados(); track c.id) {
                   <li>
-                    <button type="button" (click)="elegirCliente(c)">
+                    <button type="button" data-testid="opcion-cliente" (click)="elegirCliente(c)">
                       <strong>{{ c.apellidos }}, {{ c.nombres }}</strong
                       ><span class="dato">DNI {{ c.dni }}</span>
                     </button>
@@ -61,6 +62,7 @@
         <div class="buscador">
           <input
             id="buscar-producto"
+            data-testid="buscar-producto"
             class="input"
             type="search"
             [formControl]="buscarProducto"
@@ -71,7 +73,7 @@
             <ul class="resultados">
               @for (p of productosEncontrados(); track p.id) {
                 <li>
-                  <button type="button" (click)="agregarProducto(p)">
+                  <button type="button" data-testid="opcion-producto" [attr.data-stock]="p.stock" (click)="agregarProducto(p)">
                     <strong>{{ p.nombre }}</strong> <span class="dato">{{ p.categoriaNombre }}</span
                     ><span class="dato">{{ p.precio | currency: 'PEN' : 'S/ ' }}</span>
                     <span class="dato">Stock {{ p.stock }}</span>
@@ -115,6 +117,7 @@
                       min="1"
                       step="1"
                       formControlName="cantidad"
+                      data-testid="cantidad"
                       [attr.aria-label]="
                         'Cantidad de ' + (lineas()[i]?.producto?.nombre || 'producto')
                       "
@@ -161,7 +164,7 @@
             <tfoot>
               <tr>
                 <td colspan="3" class="monto">Total estimado</td>
-                <td class="monto total">{{ total() | currency: 'PEN' : 'S/ ' }}</td>
+                <td class="monto total" data-testid="total-venta">{{ total() | currency: 'PEN' : 'S/ ' }}</td>
                 <td></td>
               </tr>
             </tfoot>
