@@ -1,0 +1,49 @@
+{
+  "productoFueraDePrimeraPagina": true,
+  "busquedaProducto": {
+    "contenido": [
+      {
+        "creadoPor": null,
+        "modificadoPor": null,
+        "id": 133,
+        "nombre": "Vitamina D",
+        "descripcion": "Vitamina D para presentación",
+        "precio": 12.5,
+        "stock": 19,
+        "categoriaId": 10,
+        "categoriaNombre": "Vitaminas",
+        "estado": true,
+        "fechaCreacion": "2026-10-11T21:42:47",
+        "fechaModificacion": "2026-10-15T10:53:28.0728751"
+      }
+    ],
+    "pagina": 0,
+    "tamanio": 6,
+    "totalElementos": 1,
+    "totalPaginas": 1,
+    "ultima": true
+  },
+  "busquedaClienteSinTilde": {
+    "contenido": [
+      {
+        "creadoPor": null,
+        "modificadoPor": null,
+        "id": 11,
+        "dni": "90000001",
+        "nombres": "María Elena",
+        "apellidos": "Huamán Flores",
+        "email": "maria.huaman@gmail.com",
+        "telefono": "900000001",
+        "direccion": "Por Lurigancho Chosica, Alameda",
+        "estado": true,
+        "fechaCreacion": "2026-10-11T19:29:44",
+        "fechaModificacion": null
+      }
+    ],
+    "pagina": 0,
+    "tamanio": 6,
+    "totalElementos": 1,
+    "totalPaginas": 1,
+    "ultima": true
+  }
+}

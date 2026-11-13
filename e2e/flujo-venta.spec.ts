@@ -1,14 +1,42 @@
 import { DATOS_VENTA, expect, iniciarSesion, test } from './apoyo';
 
-test('flujo principal: el vendedor registra una venta y el stock baja', async ({ page }, testInfo) => {
+test('flujo principal: el vendedor registra una venta y el stock baja', async ({
+  page,
+}, testInfo) => {
   await iniciarSesion(page, 'vendedor', '/ventas/nueva');
   await page.getByTestId('buscar-cliente').fill(DATOS_VENTA.cliente);
   await page.getByTestId('opcion-cliente').filter({ hasText: DATOS_VENTA.cliente }).first().click();
+  // INC-01: this record is outside the former 100-product preload in the development data.
+  const busquedaRemota = page.waitForResponse((r) => {
+    const url = new URL(r.url());
+    return (
+      url.pathname === '/api/v1/productos/buscar' &&
+      url.searchParams.get('texto') === DATOS_VENTA.productoFueraDePagina
+    );
+  });
+  await page.getByTestId('buscar-producto').fill(DATOS_VENTA.productoFueraDePagina);
+  expect((await busquedaRemota).status()).toBe(200);
+  await expect(
+    page
+      .getByTestId('opcion-producto')
+      .filter({ hasText: DATOS_VENTA.productoFueraDePagina })
+      .first(),
+  ).toBeVisible();
+  await testInfo.attach('busqueda-catalogo-completo', {
+    body: await page.screenshot(),
+    contentType: 'image/png',
+  });
   await page.getByTestId('buscar-producto').fill(DATOS_VENTA.producto);
-  const opcion = page.getByTestId('opcion-producto').filter({ hasText: DATOS_VENTA.producto }).first();
+  const opcion = page
+    .getByTestId('opcion-producto')
+    .filter({ hasText: DATOS_VENTA.producto })
+    .first();
   await expect(opcion).toBeVisible();
   const stockAntes = Number(await opcion.getAttribute('data-stock'));
-  expect(stockAntes, 'El producto necesita al menos dos unidades disponibles').toBeGreaterThanOrEqual(2);
+  expect(
+    stockAntes,
+    'El producto necesita al menos dos unidades disponibles',
+  ).toBeGreaterThanOrEqual(2);
   await opcion.click();
   await page.getByTestId('cantidad').last().fill('2');
   await expect(page.getByTestId('total-venta')).not.toHaveText(/S\/\s*0\.00/);
@@ -23,21 +51,33 @@ test('flujo principal: el vendedor registra una venta y el stock baja', async ({
   const venta = await respuesta.json();
   await expect(page.getByText('Venta registrada correctamente.', { exact: true })).toBeVisible();
   await expect(page).toHaveURL(new RegExp('/ventas/' + venta.id + '\\?nueva=1$'));
-  await testInfo.attach('venta-registrada', { body: await page.screenshot(), contentType: 'image/png' });
+  await testInfo.attach('venta-registrada', {
+    body: await page.screenshot(),
+    contentType: 'image/png',
+  });
   // Router navigation, without F5: this must request fresh stock after cache invalidation.
   await page.getByRole('link', { name: 'Productos', exact: true }).click();
-  const fila = page.getByTestId('tabla-productos').locator('tbody tr', { hasText: DATOS_VENTA.producto });
+  const fila = page
+    .getByTestId('tabla-productos')
+    .locator('tbody tr', { hasText: DATOS_VENTA.producto });
   await expect(fila).toHaveCount(1);
   await expect(fila.locator('td').nth(3)).toHaveText(String(stockAntes - 2));
-  await testInfo.attach('stock-actualizado', { body: await page.screenshot(), contentType: 'image/png' });
+  await testInfo.attach('stock-actualizado', {
+    body: await page.screenshot(),
+    contentType: 'image/png',
+  });
   await testInfo.attach('resultado-venta', {
-    body: JSON.stringify({
-      ventaId: venta.id,
-      producto: DATOS_VENTA.producto,
-      stockAntes,
-      stockDespues: stockAntes - 2,
-      requestId: respuesta.headers()['x-request-id'],
-    }, null, 2),
+    body: JSON.stringify(
+      {
+        ventaId: venta.id,
+        producto: DATOS_VENTA.producto,
+        stockAntes,
+        stockDespues: stockAntes - 2,
+        requestId: respuesta.headers()['x-request-id'],
+      },
+      null,
+      2,
+    ),
     contentType: 'application/json',
   });
 });

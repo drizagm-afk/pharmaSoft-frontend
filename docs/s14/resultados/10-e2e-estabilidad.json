@@ -1,0 +1,389 @@
+{
+  "comando": "playwright test --repeat-each=3",
+  "retries": 0,
+  "stats": {
+    "startTime": "2026-11-13T21:09:42.675Z",
+    "duration": 23622.058,
+    "expected": 21,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "corridas": [
+    {
+      "repeticion": 1,
+      "aprobadas": 7,
+      "fallidas": 0
+    },
+    {
+      "repeticion": 2,
+      "aprobadas": 7,
+      "fallidas": 0
+    },
+    {
+      "repeticion": 3,
+      "aprobadas": 7,
+      "fallidas": 0
+    }
+  ],
+  "casos": [
+    {
+      "repeticion": 1,
+      "archivo": "autenticacion.spec.ts",
+      "caso": "una ruta protegida sin sesión lleva al login con returnUrl",
+      "estado": "passed",
+      "reintento": 0,
+      "duracionMs": 654
+    },
+    {
+      "repeticion": 2,
+      "archivo": "autenticacion.spec.ts",
+      "caso": "una ruta protegida sin sesión lleva al login con returnUrl",
+      "estado": "passed",
+      "reintento": 0,
+      "duracionMs": 564
+    },
+    {
+      "repeticion": 3,
+      "archivo": "autenticacion.spec.ts",
+      "caso": "una ruta protegida sin sesión lleva al login con returnUrl",
+      "estado": "passed",
+      "reintento": 0,
+      "duracionMs": 657
+    },
+    {
+      "repeticion": 1,
+      "archivo": "autenticacion.spec.ts",
+      "caso": "credenciales incorrectas muestran el mensaje del backend",
+      "estado": "passed",
+      "reintento": 0,
+      "duracionMs": 647
+    },
+    {
+      "repeticion": 2,
+      "archivo": "autenticacion.spec.ts",
+      "caso": "credenciales incorrectas muestran el mensaje del backend",
+      "estado": "passed",
+      "reintento": 0,
+      "duracionMs": 708
+    },
+    {
+      "repeticion": 3,
+      "archivo": "autenticacion.spec.ts",
+      "caso": "credenciales incorrectas muestran el mensaje del backend",
+      "estado": "passed",
+      "reintento": 0,
+      "duracionMs": 744
+    },
+    {
+      "repeticion": 1,
+      "archivo": "autenticacion.spec.ts",
+      "caso": "tras iniciar sesión vuelve a la página pedida",
+      "estado": "passed",
+      "reintento": 0,
+      "duracionMs": 657
+    },
+    {
+      "repeticion": 2,
+      "archivo": "autenticacion.spec.ts",
+      "caso": "tras iniciar sesión vuelve a la página pedida",
+      "estado": "passed",
+      "reintento": 0,
+      "duracionMs": 741
+    },
+    {
+      "repeticion": 3,
+      "archivo": "autenticacion.spec.ts",
+      "caso": "tras iniciar sesión vuelve a la página pedida",
+      "estado": "passed",
+      "reintento": 0,
+      "duracionMs": 736
+    },
+    {
+      "repeticion": 1,
+      "archivo": "flujo-venta.spec.ts",
+      "caso": "flujo principal: el vendedor registra una venta y el stock baja",
+      "estado": "passed",
+      "reintento": 0,
+      "duracionMs": 2341
+    },
+    {
+      "repeticion": 2,
+      "archivo": "flujo-venta.spec.ts",
+      "caso": "flujo principal: el vendedor registra una venta y el stock baja",
+      "estado": "passed",
+      "reintento": 0,
+      "duracionMs": 2262
+    },
+    {
+      "repeticion": 3,
+      "archivo": "flujo-venta.spec.ts",
+      "caso": "flujo principal: el vendedor registra una venta y el stock baja",
+      "estado": "passed",
+      "reintento": 0,
+      "duracionMs": 2182
+    },
+    {
+      "repeticion": 1,
+      "archivo": "paginacion.spec.ts",
+      "caso": "productos se paginan en el servidor con la página en la URL",
+      "estado": "passed",
+      "reintento": 0,
+      "duracionMs": 1097
+    },
+    {
+      "repeticion": 2,
+      "archivo": "paginacion.spec.ts",
+      "caso": "productos se paginan en el servidor con la página en la URL",
+      "estado": "passed",
+      "reintento": 0,
+      "duracionMs": 1173
+    },
+    {
+      "repeticion": 3,
+      "archivo": "paginacion.spec.ts",
+      "caso": "productos se paginan en el servidor con la página en la URL",
+      "estado": "passed",
+      "reintento": 0,
+      "duracionMs": 1088
+    },
+    {
+      "repeticion": 1,
+      "archivo": "permisos.spec.ts",
+      "caso": "el almacenero no ve Ventas y la URL directa es denegada",
+      "estado": "passed",
+      "reintento": 0,
+      "duracionMs": 768
+    },
+    {
+      "repeticion": 2,
+      "archivo": "permisos.spec.ts",
+      "caso": "el almacenero no ve Ventas y la URL directa es denegada",
+      "estado": "passed",
+      "reintento": 0,
+      "duracionMs": 1015
+    },
+    {
+      "repeticion": 3,
+      "archivo": "permisos.spec.ts",
+      "caso": "el almacenero no ve Ventas y la URL directa es denegada",
+      "estado": "passed",
+      "reintento": 0,
+      "duracionMs": 848
+    },
+    {
+      "repeticion": 1,
+      "archivo": "permisos.spec.ts",
+      "caso": "el vendedor ve Productos sin botones de edición",
+      "estado": "passed",
+      "reintento": 0,
+      "duracionMs": 786
+    },
+    {
+      "repeticion": 2,
+      "archivo": "permisos.spec.ts",
+      "caso": "el vendedor ve Productos sin botones de edición",
+      "estado": "passed",
+      "reintento": 0,
+      "duracionMs": 779
+    },
+    {
+      "repeticion": 3,
+      "archivo": "permisos.spec.ts",
+      "caso": "el vendedor ve Productos sin botones de edición",
+      "estado": "passed",
+      "reintento": 0,
+      "duracionMs": 682
+    }
+  ],
+  "ventas": [
+    {
+      "repeticion": 1,
+      "ventaId": 20080,
+      "producto": "Aceite de almendras 60 ml",
+      "stockAntes": 24,
+      "stockDespues": 22,
+      "requestId": "161dde8a",
+      "post201EnLog": true,
+      "eventoEnLog": true,
+      "respuesta500MismoRequestId": false
+    },
+    {
+      "repeticion": 2,
+      "ventaId": 20081,
+      "producto": "Aceite de almendras 60 ml",
+      "stockAntes": 22,
+      "stockDespues": 20,
+      "requestId": "dd10476c",
+      "post201EnLog": true,
+      "eventoEnLog": true,
+      "respuesta500MismoRequestId": false
+    },
+    {
+      "repeticion": 3,
+      "ventaId": 20082,
+      "producto": "Aceite de almendras 60 ml",
+      "stockAntes": 20,
+      "stockDespues": 18,
+      "requestId": "a91486a6",
+      "post201EnLog": true,
+      "eventoEnLog": true,
+      "respuesta500MismoRequestId": false
+    }
+  ],
+  "diagnosticos": [
+    {
+      "repeticion": 1,
+      "caso": "una ruta protegida sin sesión lleva al login con returnUrl",
+      "erroresConsola": [],
+      "erroresPagina": [],
+      "respuestas500": []
+    },
+    {
+      "repeticion": 2,
+      "caso": "una ruta protegida sin sesión lleva al login con returnUrl",
+      "erroresConsola": [],
+      "erroresPagina": [],
+      "respuestas500": []
+    },
+    {
+      "repeticion": 3,
+      "caso": "una ruta protegida sin sesión lleva al login con returnUrl",
+      "erroresConsola": [],
+      "erroresPagina": [],
+      "respuestas500": []
+    },
+    {
+      "repeticion": 1,
+      "caso": "credenciales incorrectas muestran el mensaje del backend",
+      "erroresConsola": [
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ],
+      "erroresPagina": [],
+      "respuestas500": []
+    },
+    {
+      "repeticion": 2,
+      "caso": "credenciales incorrectas muestran el mensaje del backend",
+      "erroresConsola": [
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ],
+      "erroresPagina": [],
+      "respuestas500": []
+    },
+    {
+      "repeticion": 3,
+      "caso": "credenciales incorrectas muestran el mensaje del backend",
+      "erroresConsola": [
+        "Failed to load resource: the server responded with a status of 401 ()"
+      ],
+      "erroresPagina": [],
+      "respuestas500": []
+    },
+    {
+      "repeticion": 1,
+      "caso": "tras iniciar sesión vuelve a la página pedida",
+      "erroresConsola": [],
+      "erroresPagina": [],
+      "respuestas500": []
+    },
+    {
+      "repeticion": 2,
+      "caso": "tras iniciar sesión vuelve a la página pedida",
+      "erroresConsola": [],
+      "erroresPagina": [],
+      "respuestas500": []
+    },
+    {
+      "repeticion": 3,
+      "caso": "tras iniciar sesión vuelve a la página pedida",
+      "erroresConsola": [],
+      "erroresPagina": [],
+      "respuestas500": []
+    },
+    {
+      "repeticion": 1,
+      "caso": "flujo principal: el vendedor registra una venta y el stock baja",
+      "erroresConsola": [],
+      "erroresPagina": [],
+      "respuestas500": []
+    },
+    {
+      "repeticion": 2,
+      "caso": "flujo principal: el vendedor registra una venta y el stock baja",
+      "erroresConsola": [],
+      "erroresPagina": [],
+      "respuestas500": []
+    },
+    {
+      "repeticion": 3,
+      "caso": "flujo principal: el vendedor registra una venta y el stock baja",
+      "erroresConsola": [],
+      "erroresPagina": [],
+      "respuestas500": []
+    },
+    {
+      "repeticion": 1,
+      "caso": "productos se paginan en el servidor con la página en la URL",
+      "erroresConsola": [],
+      "erroresPagina": [],
+      "respuestas500": []
+    },
+    {
+      "repeticion": 2,
+      "caso": "productos se paginan en el servidor con la página en la URL",
+      "erroresConsola": [],
+      "erroresPagina": [],
+      "respuestas500": []
+    },
+    {
+      "repeticion": 3,
+      "caso": "productos se paginan en el servidor con la página en la URL",
+      "erroresConsola": [],
+      "erroresPagina": [],
+      "respuestas500": []
+    },
+    {
+      "repeticion": 1,
+      "caso": "el almacenero no ve Ventas y la URL directa es denegada",
+      "erroresConsola": [],
+      "erroresPagina": [],
+      "respuestas500": []
+    },
+    {
+      "repeticion": 2,
+      "caso": "el almacenero no ve Ventas y la URL directa es denegada",
+      "erroresConsola": [],
+      "erroresPagina": [],
+      "respuestas500": []
+    },
+    {
+      "repeticion": 3,
+      "caso": "el almacenero no ve Ventas y la URL directa es denegada",
+      "erroresConsola": [],
+      "erroresPagina": [],
+      "respuestas500": []
+    },
+    {
+      "repeticion": 1,
+      "caso": "el vendedor ve Productos sin botones de edición",
+      "erroresConsola": [],
+      "erroresPagina": [],
+      "respuestas500": []
+    },
+    {
+      "repeticion": 2,
+      "caso": "el vendedor ve Productos sin botones de edición",
+      "erroresConsola": [],
+      "erroresPagina": [],
+      "respuestas500": []
+    },
+    {
+      "repeticion": 3,
+      "caso": "el vendedor ve Productos sin botones de edición",
+      "erroresConsola": [],
+      "erroresPagina": [],
+      "respuestas500": []
+    }
+  ]
+}

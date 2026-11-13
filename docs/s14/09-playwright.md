@@ -66,4 +66,6 @@ e2e:estable ejecuta playwright test --repeat-each=3. Esa comprobación se hará 
 
 El paso 10 corregirá INC-01, agregará la comprobación de regresión que corresponda y volverá a ejecutar los siete E2E tres veces sin reintentos. Los hashes de corrección se completarán después de los commits.
 
+Actualización: el paso 10 completó esa corrección y las tres repeticiones, con 7/7, 7/7 y 7/7. Los resultados posteriores se conservan en 10-estabilizacion.md.
+
 Referencia de ejecución y reportes: [CLI de Playwright](https://playwright.dev/docs/test-cli), [reporters de Playwright](https://playwright.dev/docs/test-reporters).

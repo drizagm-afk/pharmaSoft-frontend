@@ -69,3 +69,5 @@ Backend y Angular quedan ejecutándose. La salida del backend restaurado está e
 ## Siguiente etapa
 
 Después del commit de este paso se implementará la suite Playwright del paso 9. La estabilización y la resolución de INC-01 corresponden al paso 10.
+
+Actualización del paso 10: INC-01 está corregida y verificada con búsqueda remota y 21/21 E2E. El resultado inicial se conserva en esta matriz; la corrección y su regresión están documentadas en 10-estabilizacion.md.

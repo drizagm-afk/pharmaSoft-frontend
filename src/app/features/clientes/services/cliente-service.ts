@@ -10,11 +10,23 @@ export class ClienteService {
   private readonly http = inject(HttpClient);
   private readonly url = `${environment.apiUrl}/clientes`;
 
-  listar(pagina = 0, tamanio = 10, ordenarPor: ClienteOrden = 'apellidos',
-         direccion: 'asc' | 'desc' = 'asc'): Observable<PaginaResponse<Cliente>> {
+  buscar(texto: string): Observable<PaginaResponse<Cliente>> {
+    return this.http.get<PaginaResponse<Cliente>>(`${this.url}/buscar`, {
+      params: { texto, pagina: 0, tamanio: 6 },
+    });
+  }
+
+  listar(
+    pagina = 0,
+    tamanio = 10,
+    ordenarPor: ClienteOrden = 'apellidos',
+    direccion: 'asc' | 'desc' = 'asc',
+  ): Observable<PaginaResponse<Cliente>> {
     const params = new HttpParams()
-      .set('pagina', pagina).set('tamanio', tamanio)
-      .set('ordenarPor', ordenarPor).set('direccion', direccion);
+      .set('pagina', pagina)
+      .set('tamanio', tamanio)
+      .set('ordenarPor', ordenarPor)
+      .set('direccion', direccion);
     return this.http.get<PaginaResponse<Cliente>>(this.url, { params });
   }
 

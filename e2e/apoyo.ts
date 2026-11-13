@@ -10,6 +10,7 @@ const USUARIOS = {
 export const DATOS_VENTA = {
   cliente: process.env['E2E_CLIENTE'] ?? 'Elena Patricia',
   producto: process.env['E2E_PRODUCTO'] ?? 'Aceite de almendras 60 ml',
+  productoFueraDePagina: process.env['E2E_PRODUCTO_FUERA_PAGINA'] ?? 'Vitamina D',
 };
 
 // Every test owns a fresh context. Diagnostics observe real requests without mocking them.

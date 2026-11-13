@@ -10,6 +10,11 @@ import { Direccion, OrdenProducto, Producto, ProductoRequest } from '../models/p
 export class ProductoService {
   private readonly http = inject(HttpClient);
   private readonly url = `${environment.apiUrl}/productos`;
+  buscar(texto: string): Observable<PaginaResponse<Producto>> {
+    return this.http.get<PaginaResponse<Producto>>(`${this.url}/buscar`, {
+      params: { texto, pagina: 0, tamanio: 6 },
+    });
+  }
   listar(consulta: ConsultaPagina<OrdenProducto>): Observable<PaginaResponse<Producto>>;
   listar(
     pagina?: number,
