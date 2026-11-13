@@ -6,7 +6,11 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "e2e": "playwright test",
+    "e2e:ui": "playwright test --ui",
+    "e2e:estable": "playwright test --repeat-each=3",
+    "e2e:report": "playwright show-report"
   },
   "private": true,
   "packageManager": "npm@10.9.2",
@@ -24,6 +28,7 @@
     "@angular/build": "^22.2.2",
     "@angular/cli": "^22.2.2",
     "@angular/compiler-cli": "^22.2.2",
+    "@playwright/test": "^1.65.0",
     "jsdom": "^28.0.0",
     "prettier": "^3.8.1",
     "typescript": "~6.0.3",

@@ -1,6 +1,6 @@
 # Sesión 14 - Integración y estabilización
 
-Estado: pasos 1 a 7 implementados y confirmados en Git. Migración, autores y bitácora documentados en docs/s14/paso-05.md, paso-06.md y paso-07.md del backend. Se recuperó también el despliegue Nginx: ver [05-nginx.md](05-nginx.md). Paso 8 recorrido y documentado en [08-integracion.md](08-integracion.md), con una incidencia de búsqueda registrada para estabilización. Playwright y las correcciones siguen después del checkpoint de esta etapa.
+Estado: pasos 1 a 8 implementados y confirmados en Git. Migración, autores y bitácora documentados en docs/s14/paso-05.md, paso-06.md y paso-07.md del backend. Se recuperó también el despliegue Nginx: ver [05-nginx.md](05-nginx.md). Matriz del paso 8: [08-integracion.md](08-integracion.md). Paso 9 implementado con 7/7 E2E aprobados: [09-playwright.md](09-playwright.md). La corrección de la búsqueda limitada a 100 registros y las tres repeticiones de estabilidad corresponden al próximo checkpoint de trabajo; incidencias en [../incidencias.md](../incidencias.md).
 
 ## Alcance implementado
 
